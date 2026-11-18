@@ -5,6 +5,8 @@ description: Research, audit, plan, implement and validate SEO for any authorize
 
 # SEO engineering
 
+Source candidate: 0.2.0-rc.1. For version and verification status read the library's docs/01-foundations/distribution-version.json and docs/01-foundations/release-candidate.md when reporting installation or release readiness. No stable release or independently measured agent improvement is established.
+
 Reusable workflow; never assume a particular brand, stack, market or conversion. Do not promise rankings. Read [task router](references/router.md) to select only relevant modules and [execution contract](references/execution-contract.md) for scope and outputs. Both describe how to locate the maintained library in a checkout or bundled installation.
 
 ## Run

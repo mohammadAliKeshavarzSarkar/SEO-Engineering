@@ -4,6 +4,7 @@ Candidate commit, version, Python/runtime, reviewer and date:
 
 | Gate | Expected | Actual evidence | Status |
 |---|---|---|---|
+| Candidate identity | Exact source commit and bundled version metadata, archive checksum and receipt | | not-run |
 | Repository tests | All required pass | | not-run |
 | Internal docs and routing | References resolve | | not-run |
 | Package build and scope | Review archive, no private data | | not-run |
@@ -15,6 +16,7 @@ Candidate commit, version, Python/runtime, reviewer and date:
 | Benchmark isolation and evidence | Matched environments, actual runs/traces, independent rubric and held-out cases, review and missingness documented | | not-run |
 | Behavioral comparison | Required cases meet agreed rubric against matched baseline | | not-run |
 | Content-level privacy review | Actual archive and public diff reviewed for credentials, PII, private project material; owner acceptance recorded | | not-run |
+| License and distribution decision | Owner-approved license or explicit reuse permissions; reviewed candidate distribution scope | | not-run |
 | Human review | Accuracy, privacy, source currency, limitations | | not-run |
 
 Record exact commands, output/exit codes, failures and corrective commits. Archive checksum and source commit:

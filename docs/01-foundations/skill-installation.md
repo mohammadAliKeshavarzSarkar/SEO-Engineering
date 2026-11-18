@@ -1,5 +1,9 @@
 # Use this SEO skill on another project
 
+## Candidate version
+
+Current source candidate: 0.2.0-rc.1. See [candidate notes](release-candidate.md) and [version metadata](distribution-version.json); pin the exact candidate commit. External activation and independent behavioral evaluation remain pending. Review actual archive contents and reuse permissions before sharing.
+
 ## Repository mode
 
 Clone or otherwise grant the agent read access to the complete SEO Engineering library, ideally pinned to a reviewed commit. Open the new website separately and provide exact authorized target and task. Read the master file at skills/seo-engineering/SKILL.md and the linked router. The library and website are different workspaces; never edit the library to store private target data.
@@ -8,9 +12,9 @@ Clone or otherwise grant the agent read access to the complete SEO Engineering l
 
 From a trusted checkout, run (Python 3.10+):
 ```sh
-python3 scripts/build_skill.py --out seo-engineering-skill.zip
+python3 scripts/build_skill.py --out seo-engineering-0.2.0-rc.1.zip
 ```
-Run `python3 scripts/verify_package.py --archive seo-engineering-skill.zip --report package-receipt.json` against this trusted checkout. See [portable skill acceptance](portable-skill-acceptance.md) for the integrity and new-project acceptance process. Inspect ZIP contents, especially the public documents and scripts, before sharing. Extract the contained seo-engineering folder into the skill location supported by your runtime; for Codex this may be a project .agents/skills directory or user-level skill directory. Other runtimes may require manual loading or a different installation procedure. Do not install two copies with the same skill name unless the runtime's precedence is understood.
+Run `python3 scripts/verify_package.py --archive seo-engineering-0.2.0-rc.1.zip --report seo-engineering-0.2.0-rc.1-receipt.json` against this trusted checkout. See [portable skill acceptance](portable-skill-acceptance.md) for the integrity and new-project acceptance process. Inspect ZIP contents, especially the public documents and scripts, before sharing. Extract the contained seo-engineering folder into the skill location supported by your runtime; for Codex this may be a project .agents/skills directory or user-level skill directory. Other runtimes may require manual loading or a different installation procedure. Do not install two copies with the same skill name unless the runtime's precedence is understood.
 
 The packaged SKILL.md uses references/library as its library root; this is a generated snapshot of allowlisted docs, templates, decision protocols, workflows, patterns, evaluations, examples and selected standalone audit scripts. No projects/, private/, repository history or credentials are intentionally included. The builder is not a content-level secret scanner: review and sanitize allowed resources before release. Rebuild after library updates; record the source commit and archive SHA-256 alongside the distributed archive. Compare two builds in the same pinned Python/zlib runtime for byte reproducibility; inspect the actual archive contents.
 

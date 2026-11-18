@@ -2,7 +2,11 @@
 
 A reusable, evidence-led SEO engineering system for developers, product teams, content strategists and AI coding agents. Optimize for discoverability, usefulness, performance and measurable business outcomes — not ranking tricks.
 
-**Version:** 0.1.0 · **Status:** v0.2.0 in development — initial R01–R10 modules written; stabilization in progress · **Research checkpoint:** 2026-11-18
+**Version:** 0.2.0-rc.1 · **Status:** source release candidate — stable release and independent behavioral validation pending · **Research checkpoint:** 2026-11-18
+
+## Release candidate
+
+See [0.2.0-rc.1 candidate notes](docs/01-foundations/release-candidate.md) and [version metadata](docs/01-foundations/distribution-version.json). This is a source candidate, not a stable release or public binary distribution. Pin the exact candidate commit, verify the archive, and complete the remaining review gates before sharing. No license is assigned.
 
 ## For AI agents and new websites
 

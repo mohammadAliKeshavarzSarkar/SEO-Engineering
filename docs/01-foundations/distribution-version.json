@@ -1,0 +1,15 @@
+{
+  "schema_version": "1",
+  "skill_name": "seo-engineering",
+  "version": "0.2.0-rc.1",
+  "status": "release_candidate",
+  "stable_release": false,
+  "behavioral_validation": "not_run",
+  "external_runtime_activation": "not_run",
+  "full_content_privacy_review": "pending",
+  "comprehensive_source_review": "pending",
+  "license_status": "unassigned",
+  "distribution_approval": "pending",
+  "minimum_python": "3.10",
+  "compatibility_note": "Declared minimum for utilities; full runtime/version matrix not established."
+}
