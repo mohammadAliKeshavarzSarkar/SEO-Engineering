@@ -11,9 +11,9 @@ Status: in development; not a released version. Checkpoint: 2026-11-18.
 | R05 | [Competitor intelligence](r05-competitor-intelligence.md) | Role register, scoped footprint, page benchmarks and opportunity review | Initial methodology; behavioral evaluation pending |
 | R06 | [Keyword-to-page mapping](r06-keyword-to-page-mapping.md) | Page registry, task ownership, page briefs and URL-treatment gates | Initial methodology; behavioral evaluation pending |
 | R07 | [Content gaps and topical architecture](r07-content-gaps-and-topical-architecture.md) | Task coverage, editorial lifecycle, link planning and offline graph diagnostics | Initial methodology; behavioral evaluation pending |
-| R08 | Opportunity prioritization | Transparent criteria, confidence, cost and risk | Planned |
+| R08 | [Opportunity prioritization](r08-opportunity-prioritization.md) | Severity and evidence gates, effort sensitivity, dependency-aware backlog utility | Initial methodology; behavioral evaluation pending |
 | R09 | Persian search engineering | Locale, script and regional evidence quality | Planned |
 | R10 | Research automation and validation | Repeatable imports, QA, reproducible exercises | Planned |
 
-Follow [R01](r01-business-and-positioning.md), [R02](r02-keyword-discovery.md), [R03](r03-search-intent-and-serp.md), [R04](r04-keyword-normalization-and-clustering.md), [R05](r05-competitor-intelligence.md), [R06](r06-keyword-to-page-mapping.md) and [R07](r07-content-gaps-and-topical-architecture.md) as applicable.
+Follow [R01](r01-business-and-positioning.md), [R02](r02-keyword-discovery.md), [R03](r03-search-intent-and-serp.md), [R04](r04-keyword-normalization-and-clustering.md), [R05](r05-competitor-intelligence.md), [R06](r06-keyword-to-page-mapping.md), [R07](r07-content-gaps-and-topical-architecture.md) and [R08](r08-opportunity-prioritization.md) as applicable.
 Progress each module from research to reviewed methodology, practical exercise, verification and revisions. Critical technical or privacy issues need not wait for this sequence. Keep live project observations and sensitive business decisions in an approved private workspace. Only generic methods and synthetic examples belong in the public repository unless publication is approved.

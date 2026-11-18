@@ -1,0 +1,107 @@
+[
+  {
+    "id": "incident",
+    "severity": "P0",
+    "status": "pending",
+    "fit": "unknown",
+    "risk": "high",
+    "confidence": "unknown",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "repair",
+    "severity": "P1",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "low",
+    "confidence": "high",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "links",
+    "severity": "P2",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "low",
+    "confidence": "high",
+    "impact": 4,
+    "effort_days": [
+      2,
+      4
+    ],
+    "depends_on": []
+  },
+  {
+    "id": "guide",
+    "severity": "P2",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "medium",
+    "confidence": "medium",
+    "impact": 5,
+    "effort_days": [
+      2,
+      6
+    ],
+    "depends_on": []
+  },
+  {
+    "id": "migration",
+    "severity": "P2",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "high",
+    "confidence": "high",
+    "impact": 5,
+    "effort_days": [
+      1,
+      2
+    ],
+    "depends_on": []
+  },
+  {
+    "id": "new-page",
+    "severity": "P2",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "low",
+    "confidence": "high",
+    "impact": 4,
+    "effort_days": [
+      1,
+      2
+    ],
+    "depends_on": [
+      "repair"
+    ]
+  },
+  {
+    "id": "new-market",
+    "severity": "P3",
+    "status": "pending",
+    "fit": "unknown",
+    "risk": "low",
+    "confidence": "unknown",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "unrelated-content",
+    "severity": "P3",
+    "status": "pending",
+    "fit": "excluded",
+    "risk": "low",
+    "confidence": "high",
+    "impact": 5,
+    "effort_days": [
+      1,
+      1
+    ],
+    "depends_on": []
+  }
+]

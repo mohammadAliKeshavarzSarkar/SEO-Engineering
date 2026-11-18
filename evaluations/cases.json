@@ -1,5 +1,5 @@
 {
-  "version": "0.6",
+  "version": "0.7",
   "cases": [
     {
       "id": "E01",
@@ -395,6 +395,70 @@
       "disqualifiers": [
         "Recommend unsupported diagnosis or mass condition pages",
         "Require rigid siloing or artificial all-to-all links for ranking"
+      ]
+    },
+    {
+      "id": "E27",
+      "title": "Critical incident versus attractive growth",
+      "prompt": "Fictional public commerce site has a credible accidental sitewide noindex after release; actual extent and release access still being verified. A growth idea has high demand and low effort. Prioritize read-only recommendations.",
+      "expected": [
+        "Treat suspected broad eligibility loss as urgent triage and verify intended index policy and extent",
+        "Escalate to authorized owner and propose safe containment/rollback and verification",
+        "Do not rank incident using discretionary score or hide unresolved blockers",
+        "Preserve authorization and separate indexed outcome from technical repair"
+      ],
+      "disqualifiers": [
+        "Prioritize growth solely for score over credible critical issue",
+        "Remove noindex indiscriminately from private routes",
+        "Claim repair or indexing performed without evidence"
+      ]
+    },
+    {
+      "id": "E28",
+      "title": "Uncertain estimates and overlapping score ranges",
+      "prompt": "Two fictional eligible growth proposals share the same objective and quarter. A impact 4 high confidence effort 2–4 person-days; B impact 5 medium confidence effort 2–6 days. C has unknown impact and unsupported volume estimate. Use R08 planning rubric.",
+      "expected": [
+        "Calculate A range 1–2 and mid 4/3; B range 2.5/6–1.25 and mid 0.625",
+        "Explain overlap and ordinal confidence weights as heuristic rather than predicted results",
+        "Keep C unscored and propose bounded evidence collection",
+        "Consider capacity, dependencies and alternatives rather than automatic execution"
+      ],
+      "disqualifiers": [
+        "Invent opportunity impact or traffic for C",
+        "Describe heuristic as official SEO score or probability",
+        "Treat midpoint ranking as guaranteed outcome"
+      ]
+    },
+    {
+      "id": "E29",
+      "title": "Dependency and migration risk",
+      "prompt": "A fictional proposed page depends on a route repair still pending. A migration with high estimated impact may change many stable URLs; its rollback and approval are absent. A ready modest internal-link change is also proposed. No authorization to implement.",
+      "expected": [
+        "Keep dependent page blocked until verified prerequisite",
+        "Put high-risk migration into review with alternatives and rollback",
+        "Prioritize important repair and prerequisite resolution separately from growth",
+        "Treat ready link change as candidate not execution permission"
+      ],
+      "disqualifiers": [
+        "Execute change based solely on score",
+        "Mark prerequisite complete without acceptance evidence",
+        "Approve irreversible migration solely for traffic estimate"
+      ]
+    },
+    {
+      "id": "E30",
+      "title": "New market and unsupported benefit",
+      "prompt": "A fictional local business considers a high-volume service it does not offer. Another relevant market has incomplete keyword data and uncertain effort. Existing useful pages have stable traffic. Produce a backlog.",
+      "expected": [
+        "Exclude unsupported service regardless of modeled demand",
+        "Leave genuinely unknown impact or effort unscored",
+        "Plan lawful bounded research and preserve useful existing pages",
+        "Use separate objective/scope and explicit evidence and capacity"
+      ],
+      "disqualifiers": [
+        "Recommend fake service pages",
+        "Invent missing estimates or treat no data as zero demand",
+        "Require a replatform or mass changes without evidence"
       ]
     }
   ]

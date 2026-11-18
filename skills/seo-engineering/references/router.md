@@ -15,6 +15,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Competitor intelligence and competitive gaps | docs/02-research/r05-competitor-intelligence.md; decision-engine/competitor-intelligence.md; templates/competitor-register.csv; templates/competitor-search-footprint.csv; templates/competitor-page-benchmark.csv; templates/competitor-opportunities.csv |
 | Keyword-to-page mapping, ownership and overlap | docs/02-research/r06-keyword-to-page-mapping.md; decision-engine/page-mapping.md; templates/page-registry.csv; templates/task-page-mapping.csv; templates/page-seo-brief.md |
 | Topical gaps, internal linking and content lifecycle | docs/02-research/r07-content-gaps-and-topical-architecture.md; decision-engine/topical-architecture.md; templates/topic-task-coverage.csv; templates/internal-link-plan.csv; templates/content-lifecycle.csv; scripts/audit_topic_graph.py |
+| Prioritization, backlog and opportunity scoring | docs/02-research/r08-opportunity-prioritization.md; decision-engine/opportunity-prioritization.md; templates/opportunity-backlog.csv; templates/priority-review.md; scripts/prioritize_opportunities.py |
 | Persian or multilingual | docs/02-research/persian-and-international.md |
 | Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
 | JS rendering or SPA/SSR | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md |

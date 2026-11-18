@@ -18,6 +18,7 @@ class BuildSkillTests(unittest.TestCase):
         self.write('scripts/check_docs.py', '# check')
         self.write('scripts/cluster_keywords.py', '# cluster')
         self.write('scripts/audit_topic_graph.py', '# graph')
+        self.write('scripts/prioritize_opportunities.py', '# prioritize')
 
     def write(self, name, content):
         p = self.root / name
@@ -37,6 +38,7 @@ class BuildSkillTests(unittest.TestCase):
             self.assertIn('seo-engineering/SKILL.md', names)
             self.assertIn('seo-engineering/references/library/scripts/cluster_keywords.py', names)
             self.assertIn('seo-engineering/references/library/scripts/audit_topic_graph.py', names)
+            self.assertIn('seo-engineering/references/library/scripts/prioritize_opportunities.py', names)
             self.assertIn('seo-engineering/references/library/docs/demo.md', names)
             self.assertFalse(any(b'not for distribution' in z.read(n) for n in names))
             self.assertIsNone(z.testzip())
