@@ -1,0 +1,138 @@
+{
+  "schema_version": "1",
+  "incident_id": "fictional-incident-12",
+  "scope_ref": "fictional-public-route-cohort",
+  "subject": {
+    "scope_ref": "fictional-public-route-cohort",
+    "revision": "fictional-a",
+    "artifact": "build-a",
+    "environment": "production.example.invalid",
+    "profile": "mobile-anonymous-v1",
+    "config_ref": "config-a"
+  },
+  "recovery_subject": {
+    "scope_ref": "fictional-public-route-cohort",
+    "revision": "fictional-b",
+    "artifact": "build-b",
+    "environment": "production.example.invalid",
+    "profile": "mobile-anonymous-v1",
+    "config_ref": "config-b"
+  },
+  "evidence": [
+    {
+      "id": "initial-noindex",
+      "subject": {
+        "scope_ref": "fictional-public-route-cohort",
+        "revision": "fictional-a",
+        "artifact": "build-a",
+        "environment": "production.example.invalid",
+        "profile": "mobile-anonymous-v1",
+        "config_ref": "config-a"
+      },
+      "ref": "synthetic-initial-noindex",
+      "quality": "complete"
+    },
+    {
+      "id": "control-conflict",
+      "subject": {
+        "scope_ref": "fictional-public-route-cohort",
+        "revision": "fictional-a",
+        "artifact": "build-a",
+        "environment": "production.example.invalid",
+        "profile": "mobile-anonymous-v1",
+        "config_ref": "config-a"
+      },
+      "ref": "synthetic-control-conflict",
+      "quality": "complete"
+    },
+    {
+      "id": "old-preview",
+      "subject": {
+        "scope_ref": "fictional-public-route-cohort",
+        "revision": "fictional-a",
+        "artifact": "build-a",
+        "environment": "preview.example.invalid",
+        "profile": "mobile-anonymous-v1",
+        "config_ref": "config-a"
+      },
+      "ref": "synthetic-old-preview",
+      "quality": "complete"
+    },
+    {
+      "id": "partial-log",
+      "subject": {
+        "scope_ref": "fictional-public-route-cohort",
+        "revision": "fictional-a",
+        "artifact": "build-a",
+        "environment": "production.example.invalid",
+        "profile": "mobile-anonymous-v1",
+        "config_ref": "config-a"
+      },
+      "ref": "synthetic-partial-log",
+      "quality": "partial"
+    },
+    {
+      "id": "fixed-http",
+      "subject": {
+        "scope_ref": "fictional-public-route-cohort",
+        "revision": "fictional-b",
+        "artifact": "build-b",
+        "environment": "production.example.invalid",
+        "profile": "mobile-anonymous-v1",
+        "config_ref": "config-b"
+      },
+      "ref": "synthetic-fixed-http",
+      "quality": "complete"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "header-config",
+      "claim": "A gateway header affects an intended public cohort",
+      "falsifier": "Matched requests show expected directives independent of gateway configuration",
+      "assessments": [
+        {
+          "evidence_id": "initial-noindex",
+          "relation": "supports"
+        },
+        {
+          "evidence_id": "control-conflict",
+          "relation": "refutes"
+        },
+        {
+          "evidence_id": "old-preview",
+          "relation": "supports"
+        }
+      ]
+    },
+    {
+      "id": "reporting-lag",
+      "claim": "Reporting incomplete",
+      "falsifier": "Complete matched reports show same loss",
+      "assessments": [
+        {
+          "evidence_id": "partial-log",
+          "relation": "supports"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "http-header",
+      "required": true,
+      "assertion": "Expected HTTP and header behavior",
+      "evidence_id": "fixed-http",
+      "outcome": "pass"
+    },
+    {
+      "id": "rendered-directive",
+      "required": true,
+      "assertion": "Expected rendered directive across selected samples",
+      "evidence_id": null,
+      "outcome": null
+    }
+  ],
+  "exposure_ref": null,
+  "search_follow_up": "pending"
+}

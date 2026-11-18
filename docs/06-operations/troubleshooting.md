@@ -17,3 +17,5 @@ For traffic drops, segment equations: total clicks ≈ impressions × CTR (aggre
 For international or CDN discrepancies, inspect representative geo and device requests with authorized tools; distinguish cache keys, locale redirects, WAF and deployment differences. Document actual data vs assumptions. Roll back only when regression evidence and risks justify it.
 
 Sources: [debug Search traffic drops](https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops), [URL inspection](https://support.google.com/webmasters/answer/9012289).
+
+For a full incident procedure, competing hypotheses, bounded evidence records and separate technical/search recovery, use [T12](../03-technical/t12-technical-troubleshooting.md) and [incident workflow](../../workflows/technical-incident.md).

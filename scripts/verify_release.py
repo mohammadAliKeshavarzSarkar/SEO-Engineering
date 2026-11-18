@@ -23,6 +23,7 @@ FIXTURES = (
     ('audit_metadata.py', 'examples/metadata/sample.json'),
     ('audit_performance.py', 'examples/performance/sample.json'),
     ('review_release_gates.py', 'examples/deployment-regression/sample.json'),
+    ('review_incident.py', 'examples/technical-incident/sample.json'),
 )
 
 

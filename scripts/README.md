@@ -97,3 +97,7 @@ Maintainer-only `scripts/score_benchmark.py` prepares prompt tasks from a frozen
 ## T11 deployment gate review
 
 `python3 scripts/review_release_gates.py --input examples/deployment-regression/sample.json --output release-gates.json` evaluates a reviewed, project-specific gate manifest. Required checks with missing, stale or failed evidence block readiness; optional gaps remain visible, and supplied confirmed exposure escalates independently. Exit zero means a valid report was generated, not deployment approval; inspect its disposition. No network, CI provider calls, actual testing, release or rollback. Fresh output path, standard library, repository/package fixture parity. See [T11](../docs/03-technical/t11-deployment-regression.md).
+
+## T12 technical incident review
+
+`python3 scripts/review_incident.py --input examples/technical-incident/sample.json --output incident-report.json` validates a reviewed incident ledger and summarizes scoped, revision-bound hypothesis evidence and separate recovery checks. Unmatched observations cannot support a current disposition; absence, conflicting evidence and incomplete verification remain visible. Reported exposure escalates independently. No root-cause inference, investigation, monitoring, live recovery, search outcome or closure approval. Exit zero means processed; new output path, standard library, repository/package fixture parity. See [T12](../docs/03-technical/t12-technical-troubleshooting.md).

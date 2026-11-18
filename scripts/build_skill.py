@@ -39,7 +39,7 @@ def collect(root):
     folder('skills/seo-engineering/references', 'seo-engineering/references')
     for relative in LIBRARY_DIRS:
         folder(relative, f'seo-engineering/references/library/{relative}')
-    for relative in ('scripts/audit_html.py', 'scripts/check_docs.py', 'scripts/cluster_keywords.py', 'scripts/audit_topic_graph.py', 'scripts/prioritize_opportunities.py', 'scripts/audit_locale_manifest.py', 'scripts/validate_research.py', 'scripts/inspect_architecture.py', 'scripts/audit_rendering.py', 'scripts/audit_spa_build.py', 'scripts/audit_next_delivery.py', 'scripts/audit_crawl_evidence.py', 'scripts/audit_index_evidence.py', 'scripts/audit_migration.py', 'scripts/audit_metadata.py', 'scripts/audit_performance.py', 'scripts/audit_technical.py', 'scripts/review_release_gates.py', 'scripts/README.md'):
+    for relative in ('scripts/audit_html.py', 'scripts/check_docs.py', 'scripts/cluster_keywords.py', 'scripts/audit_topic_graph.py', 'scripts/prioritize_opportunities.py', 'scripts/audit_locale_manifest.py', 'scripts/validate_research.py', 'scripts/inspect_architecture.py', 'scripts/audit_rendering.py', 'scripts/audit_spa_build.py', 'scripts/audit_next_delivery.py', 'scripts/audit_crawl_evidence.py', 'scripts/audit_index_evidence.py', 'scripts/audit_migration.py', 'scripts/audit_metadata.py', 'scripts/audit_performance.py', 'scripts/audit_technical.py', 'scripts/review_release_gates.py', 'scripts/review_incident.py', 'scripts/README.md'):
         include(root / relative, f'seo-engineering/references/library/{relative}')
     return entries
 

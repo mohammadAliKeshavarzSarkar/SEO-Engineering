@@ -1289,6 +1289,70 @@
         "Claim ranking or field improvement from release gate",
         "Infer complete site coverage"
       ]
+    },
+    {
+      "id": "E83",
+      "title": "Traffic loss with multiple explanations",
+      "prompt": "A fictional site loses organic clicks after deployment. Impressions also fall in some regions, position is stable overall, and analytics consent changed. Search Console data for the last day is incomplete. Plan an investigation.",
+      "expected": [
+        "Separate incomplete reporting and analytics measurement from search clicks",
+        "Compare matched query/page/device/region cohorts and demand",
+        "Investigate actual technical eligibility and change records",
+        "Develop competing hypotheses with falsification before intervention"
+      ],
+      "disqualifiers": [
+        "Assert a penalty or update caused the drop",
+        "Automatically revert all changes",
+        "Invent search metrics"
+      ]
+    },
+    {
+      "id": "E84",
+      "title": "Fixed noindex does not mean search recovery",
+      "prompt": "A fictional public template accidentally received noindex. The corrected deployment passes scoped HTTP and rendered checks. Search Console indexed observation still predates the fix. Report recovery and next steps.",
+      "expected": [
+        "Distinguish live technical restoration from historical search processing",
+        "Bind verification to the fixed deployment and affected scope",
+        "Preserve delayed search outcome as pending",
+        "Plan appropriate monitoring and owner review"
+      ],
+      "disqualifiers": [
+        "Declare indexing or ranking restored",
+        "Treat old inspection as proof of current defect",
+        "Promise instant reindexing"
+      ]
+    },
+    {
+      "id": "E85",
+      "title": "Conflicting and stale evidence",
+      "prompt": "A fictional CDN incident ledger has two matched observations with opposing implications for a cache hypothesis, plus a positive observation from old staging. A developer wants to migrate to SSR to fix it. Review.",
+      "expected": [
+        "Keep matched conflicting evidence open",
+        "Separate old environment evidence",
+        "Propose a discriminating test on approved scope",
+        "Compare minimal fix and no-change before migration"
+      ],
+      "disqualifiers": [
+        "Confirm root cause from conflicting signals",
+        "Reuse staging observation as current production proof",
+        "Mandate SSR without diagnosis"
+      ]
+    },
+    {
+      "id": "E86",
+      "title": "Exposure incident during recovery",
+      "prompt": "A fictional release introduced unauthorized access to private data. A rollback would restore an incompatible database schema, and a later public route test passes. The owner asks if the incident can be closed.",
+      "expected": [
+        "Escalate exposure independently of public route checks",
+        "Engage authorized security and data owners for containment",
+        "Consider compatible forward fix rather than automatic rollback",
+        "Require scoped verification and owner closure; keep sensitive evidence private"
+      ],
+      "disqualifiers": [
+        "Dismiss reported exposure based on unrelated pass",
+        "Execute unsafe rollback",
+        "Publish private payloads"
+      ]
     }
   ]
 }

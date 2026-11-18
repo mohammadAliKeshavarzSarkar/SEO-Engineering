@@ -38,7 +38,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Analytics, lead, ecommerce events, consent | docs/05-measurement/analytics.md; docs/05-measurement/privacy-and-qa.md |
 | Local, ecommerce, SaaS or programmatic | docs/07-specialties/site-types.md |
 | AI search | docs/07-specialties/ai-search.md |
-| Traffic loss or diagnostic | docs/06-operations/troubleshooting.md; relevant evidence guides |
+| Traffic loss, technical incidents, root cause or recovery | docs/03-technical/t12-technical-troubleshooting.md; workflows/technical-incident.md; decision-engine/technical-incident.md; templates/incident-record.md; scripts/review_incident.py; docs/06-operations/troubleshooting.md; relevant evidence guides |
 | Authority | docs/04-content/authority.md |
 | Experiment/monitoring | docs/06-operations/experiments.md |
 | Coordinated technical audit, evidence consolidation and reviewed triage | docs/03-technical/t10-audit-automation.md; workflows/technical-audit.md; decision-engine/technical-audit.md; templates/technical-audit-review.csv; scripts/audit_technical.py |

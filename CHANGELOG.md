@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.11
+## Unreleased — 0.3.0-dev.12
+
+- T12: incident scoping, competing hypotheses and falsification, symptom-specific playbooks, independent exposure escalation, recovery verification distinct from search outcomes, offline incident ledger, synthetic fixture, regression tests and E83–E86 public cases. All twelve technical modules have initial development; stabilization, independent behavioral validation, provider integration and stable release remain pending. T11 exact-commit hosted CI passed.
 
 - T11: version- and environment-bound, reviewed release gate evidence; separate candidate and production checks, explicit missing/stale evidence, independent access-exposure escalation, offline gate utility, synthetic fixtures, regression tests and E79–E82 public cases. No live deployment, monitoring, rollback execution, external provider adapter or stable release.
 
