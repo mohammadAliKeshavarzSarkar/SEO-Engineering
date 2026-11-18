@@ -16,3 +16,5 @@ Schema.org vocabulary and Google rich-result support are different. Check curren
 Validate schema syntax with Schema Markup Validator; Google-supported features with Rich Results Test; verify visible parity and URL Inspection on production. Record exact errors/warnings, eligibility and release. Use `og:title`, `og:description`, `og:image` and `og:url` consistently for sharing; social tags are not a ranking guarantee.
 
 Sources: [Search gallery](https://developers.google.com/search/docs/appearance/structured-data/search-gallery), [Article](https://developers.google.com/search/docs/appearance/structured-data/article), [Schema.org](https://schema.org/), [changelog — FAQ removal](https://developers.google.com/search/updates).
+
+For typed generation, actual source/render comparisons, safe JSON-LD serialization and layered validation see [T08](../03-technical/t08-metadata-structured-data.md). The local article profile is an internal convention, not Google's required-property list. Never equate local syntax or literal checks with semantic validity or feature eligibility.

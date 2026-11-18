@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.7
+## Unreleased — 0.3.0-dev.8
+
+- T08: route-specific localized metadata, reviewed entity facts and feature selection, safe JSON-LD serialization, narrow Article/BlogPosting draft and literal observation QA, 15 unit test methods and E67–E70 public scenarios. No actual rich-results validation, deployed build, provider adapter or stable release.
 
 - T07: stable URL identity, meaningful query and Unicode preservation, explicit migration mapping, planned and observed redirect chains/cycles, scope-aware partial traces, domain move and rollback. Added offline migration QA, 14 unit test methods and E63–E66 public scenarios. No live migration, host-rule generation, network access, provider-specific adapter or stable release.
 

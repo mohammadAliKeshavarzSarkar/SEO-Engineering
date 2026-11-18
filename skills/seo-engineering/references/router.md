@@ -28,6 +28,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Index eligibility, canonical conflicts or Search Console indexing evidence | docs/03-technical/t06-indexing-canonicals.md; decision-engine/index-canonical.md; implementation-patterns/index-canonical.md; templates/index-canonical-inventory.csv; scripts/audit_index_evidence.py |
 | URL architecture, redirect chains, domain moves or migration validation | docs/03-technical/t07-url-migrations.md; decision-engine/url-migration.md; implementation-patterns/url-migration.md; templates/migration-url-map.csv; scripts/audit_migration.py |
 | URL, canonical, redirect, migration | docs/03-technical/urls-and-migrations.md |
+| Metadata generation, JSON-LD, entity claims and rich-result QA | docs/03-technical/t08-metadata-structured-data.md; decision-engine/metadata-entities.md; implementation-patterns/metadata-entities.md; templates/metadata-entity-inventory.csv; scripts/audit_metadata.py |
 | Content, trust, metadata | docs/04-content/on-page-and-editorial.md |
 | Structured data/social/entity | docs/04-content/structured-data.md |
 | Images, video, Discover | docs/04-content/media.md |

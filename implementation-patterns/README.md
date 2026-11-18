@@ -27,3 +27,5 @@ Before writing code, inspect real project configuration and current dependencies
 - [Index and canonical patterns](index-canonical.md): equivalent variants, intended exclusions and distinct current/processed evidence timelines. No live modification or search API.
 
 - [URL migration patterns](url-migration.md): explicit mapping, HTTP trace expectations and acceptance/rollback; no live deployment or host-specific executable configuration.
+
+- [Metadata and entity patterns](metadata-entities.md): reviewed public facts, typed JSON-LD, script-context-safe serialization and layered feature validation; snippets illustrative, not compiled or deployed.

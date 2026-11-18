@@ -18,7 +18,7 @@ class VerifyPackageTests(unittest.TestCase):
         self.write('skills/seo-engineering/references/router.md', 'router')
         self.write('skills/seo-engineering/references/execution-contract.md', 'contract')
         for name in ('audit_html.py','check_docs.py','cluster_keywords.py','audit_topic_graph.py',
-                     'prioritize_opportunities.py','audit_locale_manifest.py','validate_research.py','inspect_architecture.py','audit_rendering.py','audit_spa_build.py','audit_next_delivery.py','audit_crawl_evidence.py','audit_index_evidence.py','audit_migration.py','README.md'):
+                     'prioritize_opportunities.py','audit_locale_manifest.py','validate_research.py','inspect_architecture.py','audit_rendering.py','audit_spa_build.py','audit_next_delivery.py','audit_crawl_evidence.py','audit_index_evidence.py','audit_migration.py','audit_metadata.py','README.md'):
             self.write('scripts/' + name, 'demo')
         self.archive = self.root / 'skill.zip'
 

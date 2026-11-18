@@ -20,6 +20,7 @@ FIXTURES = (
     ('audit_crawl_evidence.py', 'examples/crawl-evidence/sample.json'),
     ('audit_index_evidence.py', 'examples/index-evidence/sample.json'),
     ('audit_migration.py', 'examples/migration/sample.json'),
+    ('audit_metadata.py', 'examples/metadata/sample.json'),
 )
 
 

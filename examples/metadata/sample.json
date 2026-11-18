@@ -1,0 +1,175 @@
+{
+  "schema_version": "1",
+  "scope": "Synthetic public metadata facts and supplied capture strings, not real website",
+  "pages": [
+    {
+      "id": "guide",
+      "expected_context": "fixture:context",
+      "plan": {
+        "reviewed": true,
+        "facts_ref": "fixture:public-facts",
+        "title": "راهنمای انتخاب صندلی",
+        "description": "راهنمای بررسی ابعاد و تناسب صندلی.",
+        "share_title": "راهنمای صندلی",
+        "share_description": "بررسی ابعاد و تناسب",
+        "locale": "fa",
+        "canonical": "https://example.org/fa/راهنما/",
+        "share_image": "https://example.org/img/chair.jpg",
+        "article": {
+          "type": "BlogPosting",
+          "headline": "راهنمای انتخاب صندلی",
+          "author_type": "Organization",
+          "author_name": "Example",
+          "image": "https://example.org/img/chair.jpg",
+          "date_published": "2026-11-17",
+          "date_modified": null,
+          "facts_ref": "fixture:article"
+        }
+      },
+      "source": {
+        "status": "complete",
+        "context_id": "fixture:context",
+        "evidence_ref": "fixture:source",
+        "metadata": {
+          "title": [
+            "راهنمای انتخاب صندلی"
+          ],
+          "description": [
+            "راهنمای بررسی ابعاد و تناسب صندلی."
+          ],
+          "canonical": [
+            "https://example.org/fa/راهنما/"
+          ],
+          "og:title": [
+            "راهنمای صندلی"
+          ],
+          "og:description": [
+            "بررسی ابعاد و تناسب"
+          ],
+          "og:type": [
+            "article"
+          ],
+          "og:url": [
+            "https://example.org/fa/راهنما/"
+          ],
+          "og:image": [
+            "https://example.org/img/chair.jpg"
+          ]
+        },
+        "jsonld_blocks": [
+          "{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"@id\":\"https://example.org/fa/راهنما/#article\",\"mainEntityOfPage\":\"https://example.org/fa/راهنما/\",\"headline\":\"راهنمای انتخاب صندلی\",\"image\":\"https://example.org/img/chair.jpg\",\"datePublished\":\"2026-11-17\",\"author\":{\"@type\":\"Organization\",\"name\":\"Example\"},\"inLanguage\":\"fa\"}"
+        ]
+      },
+      "rendered": {
+        "status": "complete",
+        "context_id": "fixture:context",
+        "evidence_ref": "fixture:rendered",
+        "metadata": {
+          "title": [
+            "راهنمای انتخاب صندلی"
+          ],
+          "description": [
+            "راهنمای بررسی ابعاد و تناسب صندلی."
+          ],
+          "canonical": [
+            "https://example.org/fa/راهنما/"
+          ],
+          "og:title": [
+            "راهنمای صندلی"
+          ],
+          "og:description": [
+            "بررسی ابعاد و تناسب"
+          ],
+          "og:type": [
+            "article"
+          ],
+          "og:url": [
+            "https://example.org/fa/راهنما/"
+          ],
+          "og:image": [
+            "https://example.org/img/chair.jpg"
+          ]
+        },
+        "jsonld_blocks": [
+          "{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"@id\":\"https://example.org/fa/راهنما/#article\",\"mainEntityOfPage\":\"https://example.org/fa/راهنما/\",\"headline\":\"راهنمای انتخاب صندلی\",\"image\":\"https://example.org/img/chair.jpg\",\"datePublished\":\"2026-11-17\",\"author\":{\"@type\":\"Organization\",\"name\":\"Example\"},\"inLanguage\":\"fa\"}"
+        ]
+      }
+    },
+    {
+      "id": "second",
+      "expected_context": "fixture:context",
+      "plan": {
+        "reviewed": true,
+        "facts_ref": "fixture:public-facts",
+        "title": "راهنمای دوم",
+        "description": "راهنمای بررسی ابعاد و تناسب صندلی.",
+        "share_title": "راهنمای صندلی",
+        "share_description": "بررسی ابعاد و تناسب",
+        "locale": "fa",
+        "canonical": "https://example.org/fa/دوم/",
+        "share_image": "https://example.org/img/chair.jpg",
+        "article": {
+          "type": "BlogPosting",
+          "headline": "راهنمای انتخاب صندلی",
+          "author_type": "Organization",
+          "author_name": "Example",
+          "image": "https://example.org/img/chair.jpg",
+          "date_published": "2026-11-17",
+          "date_modified": null,
+          "facts_ref": "fixture:article"
+        }
+      },
+      "source": {
+        "status": "complete",
+        "context_id": "fixture:context",
+        "evidence_ref": "fixture:conflict",
+        "metadata": {
+          "title": [
+            "Generic title"
+          ],
+          "description": [
+            "راهنمای بررسی ابعاد و تناسب صندلی."
+          ],
+          "canonical": [
+            "https://example.org/fa/دوم/",
+            "https://example.org/fa/راهنما/"
+          ],
+          "og:title": [
+            "راهنمای صندلی"
+          ],
+          "og:description": [
+            "بررسی ابعاد و تناسب"
+          ],
+          "og:type": [
+            "article"
+          ],
+          "og:url": [
+            "https://example.org/fa/راهنما/"
+          ],
+          "og:image": [
+            "https://example.org/img/chair.jpg"
+          ]
+        },
+        "jsonld_blocks": [
+          "{"
+        ]
+      },
+      "rendered": {
+        "status": "not_collected",
+        "context_id": "fixture:context",
+        "evidence_ref": null,
+        "metadata": {
+          "title": null,
+          "description": null,
+          "canonical": null,
+          "og:title": null,
+          "og:description": null,
+          "og:type": null,
+          "og:url": null,
+          "og:image": null
+        },
+        "jsonld_blocks": null
+      }
+    }
+  ]
+}
