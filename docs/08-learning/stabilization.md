@@ -1,14 +1,14 @@
 # v0.2.0 stabilization and release readiness
 
-Status: development candidate; not released or behaviorally certified. S01 checkpoint: 2026-11-18.
+Status: development candidate; not released or behaviorally certified. S02 checkpoint: 2026-11-18.
 
 ## Roadmap
 
 | ID | Stage | Exit evidence | State |
 |---|---|---|---|
 | S01 | Repository quality audit | Inventory, reference scan, targeted fixes and regressions, explicit limits | Initial structural audit and targeted fixes complete; wider semantic review remains |
-| S02 | Full automated testing | Actual complete checkout, unit test and utility fixture outcomes; fix and rerun failures | Pending |
-| S03 | Portable skill validation | Build twice in pinned runtime, compare checksums, inspect archive, run extracted fixtures and reference checks | Pending full integration |
+| S02 | Full automated testing | Actual complete checkout, unit test and utility fixture outcomes; fix and rerun failures | Base full CI passed; four additional regression tests passed locally; corrected-commit CI to be confirmed |
+| S03 | Portable skill validation | Build twice in pinned runtime, compare checksums, inspect archive, run extracted fixtures and reference checks | Base automated package checks passed; final archive/content review and external loading pending |
 | S04 | Agent behavioral benchmarking | Matched baseline and skill runs, independent grading, held-out cases, actual failure records | Pending |
 | S05 | Corrections and improvements | Regressions, reviewed source and privacy checks, reruns for affected gates | Pending |
 | S06 | v0.2.0 release | Explicit owner review and release decision, source commit and package checksum, all required checks | Not released |
@@ -44,3 +44,11 @@ Use fresh output names. Record Python/zlib versions, commit, output and exit cod
 ## Wider quality review still needed
 
 Revalidate change-sensitive platform claims against current primary sources, inspect cross-module terminology and precedence for semantic conflicts, consider stronger malformed-input and fixture-semantic assertions, review privacy boundaries including content inside allowlisted directories, and conduct independent model evaluation. Do not infer these reviews passed from an inventory or source-path check. A released skill provides procedural context, not training or guaranteed rankings.
+
+## S02 automated test record
+
+Direct GitHub cloning remained blocked in the local execution environment. Reconstructed a code-only test workspace using the authorized public repository's source and test blobs and existing identical public files; checked all 16 original source/test Git blob SHA-1 values against the repository tree. This was not a full checkout. Python 3.13.5, unittest discovery: 62/62 existing tests passed (HTML 8; locale 9; graph 8; package 5; docs 7; keyword 9; priority 9; research 7). Both original HTML fixtures also matched repository hashes; valid fixture exited 0; negative fixture exited 1 with two findings.
+
+Added a read-only GitHub Actions workflow scoped to this repository, triggered on main pushes and manual dispatch. [Base CI run](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44266796827) for commit 4360565c0e2291abccf0dd80fe8b7ee26f5ff80c completed successfully. Verified job step conclusions: exact-commit checkout, full offline verification (unit tests, repository and extracted-package smoke checks, archive integrity and fixture output parity), deterministic full package (two builds, byte comparison and checksum command). Connector reports step status, not full logs or archive bytes; no archive checksum value is asserted here. No other repositories or production targets accessed.
+
+Adversarial input review found that the research envelope accepted NaN/Infinity, Python's permissive JSON parser could overwrite duplicate object keys, and alternative ISO date encodings were accepted. Hardened validation to reject non-finite values even nested inside evidence and duplicate keys at CLI parse time, and selected YYYY-MM-DD as the canonical calendar date contract. Four new regression tests cover non-finite values, alternative dates and invalid CLI input without report creation. Expanded local suite: 66/66 passed. The two corrected source/test hashes are ac208f823843e98f980056ed4acad172b55deae4 and fa49cd8f8d62a9aa4f6dff08f351dfd4bf5d5b0a, respectively. Check corrected-commit CI separately before final release. These are deterministic software tests, not proof of review accuracy or agent behavior. Further malformed-input and fixture-semantic coverage can be expanded based on demonstrated failures.

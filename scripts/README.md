@@ -41,3 +41,7 @@ From the full trusted repository checkout only, run `python3 scripts/verify_rele
 ## S01 packaging reproducibility
 
 The package builder fixes member timestamps, permissions and compression level. Repeated builds of the same included bytes in the same pinned Python/zlib runtime should produce identical ZIP bytes. Use fresh filenames and verify actual byte equality and archive SHA-256 before release. This does not scan secrets inside permitted files. See [stabilization](../docs/08-learning/stabilization.md).
+
+## S02 research input integrity and CI
+
+The R10 handoff validator requires calendar dates in YYYY-MM-DD, rejects non-finite/non-serializable evidence, and rejects duplicate JSON object keys on CLI ingestion. Invalid input fails before the output report is opened. This is a structural safeguard, not proof of factual accuracy. Run `python3 -m unittest discover -s tests -v` and `python3 scripts/verify_release.py` from the trusted checkout. The read-only GitHub Actions workflow runs the verifier and full package byte-reproducibility check on pushes to main or manual dispatch. Review actual run conclusions for the specific commit; a configured workflow is not proof of a pass.

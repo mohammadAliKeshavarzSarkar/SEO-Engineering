@@ -1,4 +1,9 @@
 import unittest
+import json
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
 from scripts.validate_research import validate
 
 
@@ -46,3 +51,35 @@ class ResearchTests(unittest.TestCase):
         data = fixture()
         data['decisions'][0].pop('reviewer')
         with self.assertRaises(ValueError): validate(data)
+
+    def test_nonfinite_evidence(self):
+        for value in (float('nan'), float('inf'), {'nested': [float('-inf')]}):
+            data = fixture()
+            data['evidence'][0]['value'] = value
+            with self.assertRaises(ValueError): validate(data)
+
+    def test_canonical_calendar_date(self):
+        for value in ('20261118', '2026-W47-3'):
+            data = fixture()
+            data['evidence'][0]['collected_date'] = value
+            with self.assertRaises(ValueError): validate(data)
+
+    def test_duplicate_json_key_cli(self):
+        raw = json.dumps(fixture()).replace('"schema_version": "1"',
+                                           '"schema_version": "0", "schema_version": "1"')
+        self.assert_invalid_cli(raw)
+
+    def test_nonfinite_cli(self):
+        data = fixture()
+        data['evidence'][0]['value'] = float('inf')
+        self.assert_invalid_cli(json.dumps(data))
+
+    def assert_invalid_cli(self, raw):
+        script = Path(__file__).resolve().parents[1] / 'scripts/validate_research.py'
+        with tempfile.TemporaryDirectory() as tmp:
+            source, output = Path(tmp) / 'input.json', Path(tmp) / 'report.json'
+            source.write_text(raw, encoding='utf-8')
+            result = subprocess.run([sys.executable, str(script), '--input', str(source),
+                                     '--output', str(output)], capture_output=True, text=True)
+            self.assertEqual(result.returncode, 1)
+            self.assertFalse(output.exists())

@@ -6,7 +6,18 @@ from datetime import date
 from pathlib import Path
 
 
+def unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f'duplicate JSON key: {key}')
+        result[key] = value
+    return result
+
+
 def validate(data):
+    # Reject non-finite or non-serializable evidence even when called as a library.
+    json.dumps(data, allow_nan=False)
     def nonempty(value):
         return isinstance(value, str) and bool(value.strip())
 
@@ -30,7 +41,9 @@ def validate(data):
             raise ValueError('invalid evidence kind')
         if not all(nonempty(row[k]) for k in ('source_ref', 'scope', 'limitations')):
             raise ValueError('missing provenance or limitations')
-        date.fromisoformat(row['collected_date'])
+        collected = row['collected_date']
+        if not isinstance(collected, str) or date.fromisoformat(collected).isoformat() != collected:
+            raise ValueError('collected_date must be YYYY-MM-DD')
         if row['kind'] == 'unknown' and row['value'] is not None:
             raise ValueError('unknown value must be null')
         if row['kind'] != 'unknown' and row['value'] is None:
@@ -59,7 +72,7 @@ def main():
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args()
     try:
-        report = validate(json.loads(args.input.read_text(encoding='utf-8')))
+        report = validate(json.loads(args.input.read_text(encoding='utf-8'), object_pairs_hook=unique_object))
         with args.output.open('x', encoding='utf-8') as f:
             json.dump(report, f, indent=2, allow_nan=False)
             f.write('\n')

@@ -2,6 +2,8 @@
 
 ## Unreleased — v0.2.0 in development
 
+- S02: added read-only main-branch CI; base exact-commit full verification and deterministic package steps succeeded. Executed 62 existing unit tests locally using hash-matched code, hardened R10 handoff validation for non-finite numbers, duplicate JSON keys and canonical dates, and reran 66/66 tests successfully. Corrected-commit CI, final distribution review and behavioral gates remain separate.
+
 - S01 stabilization: audited 80 Markdown files, 224 relative link targets and 68 router resource paths in the base commit; hardened documentation/routing checks for repository and portable layouts; deterministic ZIP metadata; 12 targeted local tests passed (8 new). Full checkout testing, actual bundle integration, source/privacy review and behavioral benchmarks remain pending. Added stabilization roadmap.
 
 - Added R10 integrated research pipeline, handoff validator, seven unit tests, release-check runner, two review templates, synthetic fixture and E35–E38 evaluation cases. All ten initial research modules are written; full release gates remain pending. Added tools README to portable package to support bundled documentation.
