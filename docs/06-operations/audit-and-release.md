@@ -17,3 +17,5 @@ P0: important pages blocked or returning wrong status broadly, personal data tra
 Use the local static checker as a narrow smoke test. Production verification still requires network, browser and authorized search/analytics tools.
 
 For coordinated offline T01–T09 execution and reviewed R08 grouping, use [T10](../03-technical/t10-audit-automation.md) and [technical audit workflow](../../workflows/technical-audit.md). Module processing, findings, actual audit coverage, review and release approval are separate. Preserve blocked/failed/deferred checks and native evidence. Do not use CLI exit zero as a release gate.
+
+For revision-bound candidate and production verification gates, follow [T11](../03-technical/t11-deployment-regression.md). A passing offline gate report warrants human review, not deployment authorization or proof of search processing.

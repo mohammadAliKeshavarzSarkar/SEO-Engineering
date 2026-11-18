@@ -42,6 +42,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Authority | docs/04-content/authority.md |
 | Experiment/monitoring | docs/06-operations/experiments.md |
 | Coordinated technical audit, evidence consolidation and reviewed triage | docs/03-technical/t10-audit-automation.md; workflows/technical-audit.md; decision-engine/technical-audit.md; templates/technical-audit-review.csv; scripts/audit_technical.py |
+| Release regression prevention, deployment review, pre/post-release gate evidence | docs/03-technical/t11-deployment-regression.md; workflows/deployment-regression.md; templates/deployment-gate-inventory.csv; scripts/review_release_gates.py |
 | Implementation and QA | implementation-patterns/README.md; docs/06-operations/audit-and-release.md; templates/release-checklist.md |
 | Skill updates/competence | docs/01-foundations/module-standard.md; docs/08-learning/stabilization.md; docs/08-learning/distribution-privacy-review.md; templates/skill-release-review.md; evaluations/README.md |
 

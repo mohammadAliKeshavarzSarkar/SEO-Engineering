@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.10
+## Unreleased — 0.3.0-dev.11
+
+- T11: version- and environment-bound, reviewed release gate evidence; separate candidate and production checks, explicit missing/stale evidence, independent access-exposure escalation, offline gate utility, synthetic fixtures, regression tests and E79–E82 public cases. No live deployment, monitoring, rollback execution, external provider adapter or stable release.
 
 - T10: fixed offline coordinator for T01–T09, explicit task selection and collection gaps, native reports and snapshot-bound signals, independent access-exposure escalation, reviewed grouping and optional R08 triage. Added composite synthetic fixture, workflow, review inventory, 13 unit test methods and E75–E78 public scenarios. No live audit, automatic fixes, provider adapter, actual severity inference or stable release.
 

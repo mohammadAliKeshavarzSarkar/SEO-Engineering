@@ -2,7 +2,7 @@
 
 These synthetic cases test agent decisions and behavior, not actual rankings or tool availability. Cases in [cases.json](cases.json) are original fictional scenarios. No model has been scored by publishing this file.
 
-For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 78 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
+For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 82 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
 
 ## Run protocol
 
@@ -37,3 +37,5 @@ T08 adds E67–E70 (localized metadata, truthful feature eligibility, safe seria
 T09 adds E71–E74 (field scope and missing values, LCP render delay, interaction/late shifts, matched regression evidence). Current 74-case suite at three repeats plans 222 matched pairs / 444 individual runs; none independently executed.
 
 T10 adds E75–E78 (scope and missing capability, reviewed grouping, incident prioritization, stale references and failures). Current 78-case suite at three repeats plans 234 matched pairs / 468 individual runs; none independently executed.
+
+T11 adds E79–E82 (staging policy, stale evidence, production regression and incomplete coverage). Current 82-case suite at three repeats plans 246 matched pairs / 492 individual runs; none independently executed.
