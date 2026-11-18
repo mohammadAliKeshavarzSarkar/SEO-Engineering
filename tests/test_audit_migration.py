@@ -88,9 +88,10 @@ class MigrationTests(unittest.TestCase):
         for hops in (trace(tx(A,301,B),tx(C,200),status='complete'),trace(tx(A,304),status='complete'),
                      trace(tx(A,301,B),status='complete')):
             with self.assertRaises(ValueError): self.row(trace=hops)
+        with self.assertRaises(ValueError): self.row(terminal_statuses=[304])
 
     def test_invalid_urls_and_duplicate_records(self):
-        for u in ('https://user@old.example.org/a/','https://old.example.org/a#x','https://old.example.org/%xy'):
+        for u in ('https://user@old.example.org/a/','https://old.example.org/a#x','https://old.example.org/%xy','https://old.example.org:0/a/'):
             with self.assertRaises(ValueError): self.row(u=u)
         with self.assertRaises(ValueError): audit(envelope(route(),route()))
 

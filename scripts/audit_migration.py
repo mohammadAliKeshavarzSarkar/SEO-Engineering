@@ -21,7 +21,8 @@ def absolute(v):
         return False
     try:
         p=urlsplit(v)
-        _=p.port
+        if p.port == 0:
+            return False
         return p.scheme in ('http','https') and bool(p.hostname) and p.username is None and p.password is None
     except ValueError:
         return False
@@ -29,7 +30,7 @@ def absolute(v):
 
 def origin(v):
     p=urlsplit(v)
-    return (p.scheme,p.hostname,p.port or (443 if p.scheme=='https' else 80))
+    return (p.scheme,p.hostname,p.port if p.port is not None else (443 if p.scheme=='https' else 80))
 
 
 def identity(pairs):
@@ -77,7 +78,7 @@ def audit(data):
         elif target is not None:
             raise ValueError('non-redirect action must have null target')
         expected=r['terminal_statuses']
-        if expected is not None and (not isinstance(expected,list) or not expected or any(type(s)is not int or not 200<=s<=599 or s in REDIRECTS for s in expected) or len(set(expected))!=len(expected)):
+        if expected is not None and (not isinstance(expected,list) or not expected or any(type(s)is not int or not 200<=s<=599 or s in REDIRECTS or s==304 for s in expected) or len(set(expected))!=len(expected)):
             raise ValueError('invalid terminal status expectation')
         if action=='remove' and expected is not None and not set(expected)<= {404,410}:
             raise ValueError('removed public document expects 404/410')
