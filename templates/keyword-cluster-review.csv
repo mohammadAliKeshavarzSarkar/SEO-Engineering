@@ -1,0 +1,1 @@
+review_id,query_a_id,query_b_id,cluster_candidate_id,normalization_version,scope,snapshot_a_id,snapshot_b_id,unique_urls_a,unique_urls_b,shared_urls,jaccard,threshold,primary_task_match,constraint_match,offering_fit,confidence,existing_pages,proposed_decision,alternative,evidence_refs,review_status,reviewer,notes

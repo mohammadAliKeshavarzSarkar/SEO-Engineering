@@ -7,7 +7,7 @@ Status: in development; not a released version. Checkpoint: 2026-11-18.
 | R01 | Business objectives and search positioning | Audience/problem/solution matrix, scope, outcome definition | Initial methodology |
 | R02 | Keyword discovery and collection | Provenance-aware observations, source selection, seed expansion | Initial methodology |
 | R03 | [Intent and SERP analysis](r03-search-intent-and-serp.md) | Snapshot/result/assessment contracts, intent decisions and evaluation cases | Initial methodology; evaluation pending |
-| R04 | Normalization and clustering | Raw-to-normalized queries, intent cluster rules | Planned |
+| R04 | [Normalization and clustering](r04-keyword-normalization-and-clustering.md) | Match keys, pairwise evidence, review protocol, offline utility | Initial methodology; behavioral evaluation pending |
 | R05 | Competitor intelligence | Business vs search competitors, evidence-based gap audit | Planned |
 | R06 | Keyword-to-page mapping | URL inventory and cluster ownership | Planned |
 | R07 | Content gaps and topical architecture | Useful topics and architecture proposals | Planned |

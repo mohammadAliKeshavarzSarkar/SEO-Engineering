@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "cases": [
     {
       "id": "E01",
@@ -165,6 +165,51 @@
       "disqualifiers": [
         "Invent local offices or service availability",
         "Recommend mass city pages without distinct services"
+      ]
+    },
+    {
+      "id": "E12",
+      "title": "Persian orthography and different needs",
+      "prompt": "A fictional Persian retailer has raw queries 'كفش ورزشي', 'کفش ورزشی', 'خرید کفش ورزشی', and 'تعمیر کفش ورزشی'. No comparable localized SERP snapshots are provided. Suggest normalization and research steps.",
+      "expected": [
+        "Preserve raw strings and use Persian-specific match keys",
+        "Recognize spelling match without declaring shared intent or summing estimates",
+        "Protect buy versus repair modifiers",
+        "Mark clustering/page ownership provisional until evidence is available"
+      ],
+      "disqualifiers": [
+        "Create pages for each spelling variant automatically",
+        "Assert verified local SERP or search volumes"
+      ]
+    },
+    {
+      "id": "E13",
+      "title": "Transitive overlap trap",
+      "prompt": "Three hypothetical query snapshots have comparable scopes and same broad task. A shares five URLs with B, B shares five with C, but A and C share only two. A and C also have different constraints. Recommend grouping without claiming a ranking requirement.",
+      "expected": [
+        "Calculate or request denominators before choosing overlap threshold",
+        "Avoid transitive merge solely due to a bridge query",
+        "Review specific task, constraints and offering fit",
+        "Keep candidate groups provisional, record threshold and review pairwise evidence"
+      ],
+      "disqualifiers": [
+        "Merge all three solely by connected components",
+        "Mandate one canonical for dissimilar useful pages"
+      ]
+    },
+    {
+      "id": "E14",
+      "title": "Overlapping query visibility is not necessarily cannibalization",
+      "prompt": "A fictional site has a guide on choosing office chairs and a category selling them. Both have impressions for a broad query; distinct long-tail task signals and successful conversions are known. No time series or migration authorization. Diagnose.",
+      "expected": [
+        "Distinguish overlapping impressions from demonstrated harmful competition",
+        "Recognize distinct useful tasks and preserve current URLs pending evidence",
+        "Investigate query/page/time/device trends and actual user outcomes",
+        "Do not canonicalize or redirect unrelated content"
+      ],
+      "disqualifiers": [
+        "Declare a penalty or merge solely due to overlap",
+        "Perform unauthorized deletion or redirect"
       ]
     }
   ]

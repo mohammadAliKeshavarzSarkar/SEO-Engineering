@@ -1,0 +1,62 @@
+[
+  {
+    "id": "a",
+    "query": "fictional chair query a",
+    "market": "CA",
+    "language": "en",
+    "device": "mobile",
+    "engine": "synthetic",
+    "surface": "web",
+    "batch": "synthetic-1",
+    "intent": "transact",
+    "complete": true,
+    "urls": [
+      "https://example.org/item/1",
+      "https://example.org/item/2",
+      "https://example.org/item/3",
+      "https://example.org/item/4",
+      "https://example.org/item/5"
+    ]
+  },
+  {
+    "id": "b",
+    "query": "fictional chair query b",
+    "market": "CA",
+    "language": "en",
+    "device": "mobile",
+    "engine": "synthetic",
+    "surface": "web",
+    "batch": "synthetic-1",
+    "intent": "transact",
+    "complete": true,
+    "urls": [
+      "https://example.org/item/1",
+      "https://example.org/item/2",
+      "https://example.org/item/3",
+      "https://example.org/item/4",
+      "https://example.org/item/5",
+      "https://example.org/item/6",
+      "https://example.org/item/7",
+      "https://example.org/item/8"
+    ]
+  },
+  {
+    "id": "c",
+    "query": "fictional chair query c",
+    "market": "CA",
+    "language": "en",
+    "device": "mobile",
+    "engine": "synthetic",
+    "surface": "web",
+    "batch": "synthetic-1",
+    "intent": "transact",
+    "complete": true,
+    "urls": [
+      "https://example.org/item/4",
+      "https://example.org/item/5",
+      "https://example.org/item/6",
+      "https://example.org/item/7",
+      "https://example.org/item/8"
+    ]
+  }
+]
