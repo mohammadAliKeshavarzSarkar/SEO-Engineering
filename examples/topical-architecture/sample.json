@@ -1,0 +1,103 @@
+{
+  "description": "Synthetic graph, not a live crawl.",
+  "pages": [
+    {
+      "id": "home",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "hub",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "guide",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "orphan",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "island",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "island2",
+      "state": "public",
+      "index_intent": true,
+      "priority": false
+    },
+    {
+      "id": "private",
+      "state": "private",
+      "index_intent": false,
+      "priority": false
+    },
+    {
+      "id": "planned",
+      "state": "planned",
+      "index_intent": true,
+      "priority": true
+    }
+  ],
+  "entries": [
+    "home"
+  ],
+  "links": [
+    {
+      "from": "home",
+      "to": "hub",
+      "kind": "crawlable"
+    },
+    {
+      "from": "hub",
+      "to": "guide",
+      "kind": "crawlable"
+    },
+    {
+      "from": "hub",
+      "to": "guide",
+      "kind": "crawlable"
+    },
+    {
+      "from": "guide",
+      "to": "hub",
+      "kind": "crawlable"
+    },
+    {
+      "from": "home",
+      "to": "orphan",
+      "kind": "interaction_only"
+    },
+    {
+      "from": "island",
+      "to": "island2",
+      "kind": "crawlable"
+    },
+    {
+      "from": "island2",
+      "to": "island",
+      "kind": "crawlable"
+    },
+    {
+      "from": "home",
+      "to": "planned",
+      "kind": "proposed"
+    },
+    {
+      "from": "private",
+      "to": "orphan",
+      "kind": "crawlable"
+    }
+  ]
+}

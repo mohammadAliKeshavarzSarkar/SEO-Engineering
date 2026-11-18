@@ -14,7 +14,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Keyword normalization and clustering | docs/02-research/r04-keyword-normalization-and-clustering.md; decision-engine/keyword-clustering.md; templates/keyword-cluster-review.csv; scripts/cluster_keywords.py |
 | Competitor intelligence and competitive gaps | docs/02-research/r05-competitor-intelligence.md; decision-engine/competitor-intelligence.md; templates/competitor-register.csv; templates/competitor-search-footprint.csv; templates/competitor-page-benchmark.csv; templates/competitor-opportunities.csv |
 | Keyword-to-page mapping, ownership and overlap | docs/02-research/r06-keyword-to-page-mapping.md; decision-engine/page-mapping.md; templates/page-registry.csv; templates/task-page-mapping.csv; templates/page-seo-brief.md |
-| Topical gaps and architecture | docs/02-research/market-and-keywords.md; docs/02-research/research-roadmap.md; docs/02-research/r05-competitor-intelligence.md; docs/02-research/r06-keyword-to-page-mapping.md; use specialized modules as they become available |
+| Topical gaps, internal linking and content lifecycle | docs/02-research/r07-content-gaps-and-topical-architecture.md; decision-engine/topical-architecture.md; templates/topic-task-coverage.csv; templates/internal-link-plan.csv; templates/content-lifecycle.csv; scripts/audit_topic_graph.py |
 | Persian or multilingual | docs/02-research/persian-and-international.md |
 | Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
 | JS rendering or SPA/SSR | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md |

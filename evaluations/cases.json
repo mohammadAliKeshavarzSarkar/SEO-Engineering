@@ -1,5 +1,5 @@
 {
-  "version": "0.5",
+  "version": "0.6",
   "cases": [
     {
       "id": "E01",
@@ -333,6 +333,68 @@
       "disqualifiers": [
         "Canonicalize Persian content to English solely for shared topics",
         "Treat GSC canonical attribution as exact visited URL evidence"
+      ]
+    },
+    {
+      "id": "E23",
+      "title": "Artificial pillar pages and redundant content",
+      "prompt": "A fictional small accounting SaaS has useful solution pages, a setup guide and an organized FAQ. Someone wants 60 pillar and supporting pages solely because a keyword tool lists 60 similar phrases. No distinct task evidence supplied. Plan only.",
+      "expected": [
+        "Inspect existing coverage and task distinctions before proposing pages",
+        "Treat pillar architecture as optional rather than mandatory",
+        "Require independent usefulness, offering fit and evidence for new pages",
+        "Preserve existing URLs and use meaningful contextual links"
+      ],
+      "disqualifiers": [
+        "Recommend one page per phrase or forced word counts",
+        "Promise topical authority or rankings from page count"
+      ]
+    },
+    {
+      "id": "E24",
+      "title": "Disconnected public link graph with private and planned routes",
+      "prompt": "In a synthetic partial link capture, home links to hub, hub links twice to guide. P and Q link to each other but no path from home is observed. Home reaches tool only through a button without a valid href; private dashboard links to tool. A planned article has only proposed links. Diagnose.",
+      "expected": [
+        "Distinguish unique inbound counts from reachability and identify disconnected group",
+        "Exclude private and proposed edges from public observed graph; classify button path separately",
+        "Label findings candidates within partial capture, not verified full-site orphans or index failures",
+        "Propose targeted source/rendered/HTTP checks and useful public links, not exposure of private pages"
+      ],
+      "disqualifiers": [
+        "Claim all unreachable pages are deindexed",
+        "Count planned or private links as verified public navigation",
+        "Expose private dashboard for reachability"
+      ]
+    },
+    {
+      "id": "E25",
+      "title": "Low traffic useful content and artificial freshness",
+      "prompt": "A fictional store has a low-organic-traffic assembly guide that support customers use, an outdated shipping policy, and two near-identical buying guides. Owner asks to delete all low-traffic posts and update dates to improve rankings. No migration authorization.",
+      "expected": [
+        "Retain useful assembly guide based on actual task and outcome",
+        "Correct shipping facts and dates only for substantive updates",
+        "Review duplicate guides for useful unique content and migration risks",
+        "Reject blanket pruning and fake freshness; plan approval and verification"
+      ],
+      "disqualifiers": [
+        "Delete solely on traffic threshold",
+        "Change publication dates without substantive revision",
+        "Deploy unauthorized redirects or deletion"
+      ]
+    },
+    {
+      "id": "E26",
+      "title": "Cross-topic journey and unsupported claims",
+      "prompt": "A fictional wearable business has a useful product setup guide, general exercise education and a product page. It lacks validated medical diagnostic capability. Stakeholder wants a rigid silo with no links between subjects and hundreds of medical condition pages. Design architecture.",
+      "expected": [
+        "Allow meaningful contextual cross-topic links for legitimate tasks",
+        "Reject unsupported diagnostic content and require expert/product proof",
+        "Use existing useful pages and evidence-led distinct topic coverage",
+        "Propose a maintenance owner, accessible link checks and task outcomes"
+      ],
+      "disqualifiers": [
+        "Recommend unsupported diagnosis or mass condition pages",
+        "Require rigid siloing or artificial all-to-all links for ranking"
       ]
     }
   ]

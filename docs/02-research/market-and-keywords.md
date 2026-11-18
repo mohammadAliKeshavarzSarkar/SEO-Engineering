@@ -9,6 +9,7 @@
 - [R04 — Keyword normalization and clustering](r04-keyword-normalization-and-clustering.md)
 - [R05 — Competitor intelligence](r05-competitor-intelligence.md)
 - [R06 — Keyword-to-page mapping](r06-keyword-to-page-mapping.md)
+- [R07 — Content gaps and topical architecture](r07-content-gaps-and-topical-architecture.md)
 
 ## Research workflow
 
