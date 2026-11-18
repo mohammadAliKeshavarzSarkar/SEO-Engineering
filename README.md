@@ -1,1 +1,38 @@
-# SEO-Engineering
+# SEO Engineering
+
+A reusable, evidence-led SEO engineering system for developers, product teams, content strategists and AI coding agents. Optimize for discoverability, usefulness, performance and measurable business outcomes — not ranking tricks.
+
+**Version:** 0.1.0 · **Status:** initial operational foundation · **Research checkpoint:** 2026-11-18
+
+## Start here
+
+1. Read [operating principles](docs/01-foundations/operating-principles.md) and [evidence and decisions](docs/01-foundations/evidence-and-decisions.md).
+2. Copy the [project brief](templates/project-brief.md), [URL inventory](templates/url-inventory.csv) and [decision record](templates/decision-record.md) into a project-specific workspace.
+3. Establish a baseline and follow the [implementation workflow](docs/06-operations/audit-and-release.md). Fix critical eligibility and measurement defects before growth experiments.
+4. Use the [AI-agent skill](skills/seo-engineering/SKILL.md) and [agent instructions](AGENTS.md) when working in a coding agent. The skill is a portable Markdown definition; install it according to the agent's own supported mechanism.
+5. Run `python3 scripts/check_docs.py` and `python3 -m unittest discover -s tests` from the repository root. No external packages required.
+
+## Documentation map
+
+| Module | Guide |
+|---|---|
+| Foundations | [Principles](docs/01-foundations/operating-principles.md), [Evidence & decisions](docs/01-foundations/evidence-and-decisions.md) |
+| Research | [Strategy, intent & competitors](docs/02-research/market-and-keywords.md), [Persian & multilingual research](docs/02-research/persian-and-international.md) |
+| Technical | [Crawl & index](docs/03-technical/crawl-and-index.md), [Rendering & architecture](docs/03-technical/rendering-and-architecture.md), [URLs & migrations](docs/03-technical/urls-and-migrations.md), [Performance & accessibility](docs/03-technical/performance.md) |
+| Content | [On-page & editorial](docs/04-content/on-page-and-editorial.md), [Entities & schema](docs/04-content/structured-data.md), [Images & video](docs/04-content/media.md), [Authority & distribution](docs/04-content/authority.md) |
+| Measurement | [Search Console & Bing](docs/05-measurement/search-platforms.md), [GA4 & Clarity](docs/05-measurement/analytics.md), [Privacy & measurement QA](docs/05-measurement/privacy-and-qa.md) |
+| Operations | [Audit & release](docs/06-operations/audit-and-release.md), [Troubleshooting](docs/06-operations/troubleshooting.md), [Experiments & monitoring](docs/06-operations/experiments.md) |
+| Specialties | [Local, commerce, SaaS & programmatic](docs/07-specialties/site-types.md), [AI search](docs/07-specialties/ai-search.md) |
+| Learning | [Competency roadmap](docs/08-learning/competencies.md), [Source register](docs/08-learning/sources.md) |
+| Projects | [BeatFit example scope](projects/beatfit/README.md), [New project template](templates/project-brief.md) |
+| Governance | [Contributing](CONTRIBUTING.md), [Changelog](CHANGELOG.md), [Decisions](decisions/README.md) |
+
+## Tools
+
+`python3 scripts/audit_html.py --manifest examples/routes.json --root examples/site` checks local static output against declared route expectations. It is not a crawler, browser rendering engine, HTTP probe or indexing test. See [tools documentation](scripts/README.md). A failing sample is documented there.
+
+## Scope and safety
+
+This repository contains universal guidance and a sanitized project scope. Keep customer data, unpublished audits, source-code findings, credentials, raw logs and private analytics outside Git (or in a separate private repository). `private/` is ignored. Never use `git add -f` for private data. Check the staged diff before pushing. No license has been assigned; the repository owner should choose one before granting reuse rights.
+
+This is a maintained initial edition, not an assertion that every platform policy has been independently verified or that any project has been implemented. Revalidate platform guidance and applicability before release.

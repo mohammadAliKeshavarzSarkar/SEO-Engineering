@@ -1,0 +1,4 @@
+[
+  {"url":"https://example.org/","file":"index.html","canonical":"https://example.org/wrong"},
+  {"url":"https://example.org/missing/","file":"missing/index.html"}
+]

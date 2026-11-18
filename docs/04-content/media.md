@@ -1,0 +1,9 @@
+# Images, video and Discover
+
+Use standard img/picture elements for meaningful images, accessible descriptive alt text (empty for decorative images), width/height or reserved aspect, responsive sizes and formats chosen for quality and bytes. Stable crawlable image URLs and contextual captions matter more than forced keyword filenames. Keep significant information in HTML text; do not hide important copy in graphics. For Article imagery, provide suitable 1:1, 4:3 and 16:9 variants when practicable. For Discover, verify current large-image criteria and use max-image-preview:large when appropriate. Use relevant editorial imagery, not misleading thumbnails; Discover reach is supplemental and volatile.
+
+Video: decide whether decorative or search asset. For search-focused video, use a dedicated useful watch page where video is primary, crawlable thumbnail and video URLs, accessible player, stable metadata, and VideoObject where eligible. A background hero is not a watch page. Avoid performance cost from autoplay or oversized media. Add transcripts/captions for access where appropriate.
+
+Validation: inspect DOM, response/MIME and indexing access, test mobile media load, confirm schema and sharing previews, inspect video indexing if applicable. Use image/video sitemap extension only when justified.
+
+Sources: [Images](https://developers.google.com/search/docs/appearance/google-images), [Video](https://developers.google.com/search/docs/appearance/video), [Discover](https://developers.google.com/search/docs/appearance/google-discover).
