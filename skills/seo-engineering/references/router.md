@@ -19,7 +19,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Persian, multilingual and international SEO | docs/02-research/r09-multilingual-search-engineering.md; decision-engine/localization.md; templates/locale-market-register.csv; templates/locale-page-matrix.csv; templates/localization-qa.md; scripts/audit_locale_manifest.py |
 | Research automation, imports and validation | docs/02-research/r10-research-automation-and-validation.md; workflows/research-pipeline.md; templates/research-run-manifest.md; scripts/validate_research.py |
 | Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
-| JS rendering or SPA/SSR | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md |
+| JS rendering or SPA/SSR | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md; implementation-patterns/route-delivery.md |
 | URL, canonical, redirect, migration | docs/03-technical/urls-and-migrations.md |
 | Content, trust, metadata | docs/04-content/on-page-and-editorial.md |
 | Structured data/social/entity | docs/04-content/structured-data.md |
@@ -33,6 +33,6 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Authority | docs/04-content/authority.md |
 | Experiment/monitoring | docs/06-operations/experiments.md |
 | Implementation and QA | implementation-patterns/README.md; docs/06-operations/audit-and-release.md; templates/release-checklist.md |
-| Skill updates/competence | docs/01-foundations/module-standard.md; docs/08-learning/stabilization.md; templates/skill-release-review.md; evaluations/README.md |
+| Skill updates/competence | docs/01-foundations/module-standard.md; docs/08-learning/stabilization.md; docs/08-learning/distribution-privacy-review.md; templates/skill-release-review.md; evaluations/README.md |
 
 If multiple triggers are relevant, resolve dependencies (privacy/security -> eligibility -> research/intent -> implementation -> measurement; baseline measurement can begin earlier). For narrow tasks do not mandate unrelated modules. If a future specialized document is not present, use the existing foundations and current evidence and report the gap.

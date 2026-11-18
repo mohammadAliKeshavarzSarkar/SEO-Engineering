@@ -35,3 +35,32 @@ class AuditTests(unittest.TestCase):
         result = audit([self.route, {'url':url2, 'file':'second.html'}], self.root)
         self.assertTrue(any('duplicate title' in x for x in result))
         self.assertTrue(any('duplicate description' in x for x in result))
+
+    def test_svg_title_not_document_title(self):
+        self.assertEqual(self.run_html(self.good.replace('</body>', '<svg><title>Icon</title></svg></body>')), [])
+
+    def test_inert_template_metadata(self):
+        html = self.good.replace('</body>', '<template><h1>Draft</h1><link rel="canonical" href="https://example.org/draft"></template></body>')
+        self.assertEqual(self.run_html(html), [])
+
+    def test_body_canonical_rejected(self):
+        html = self.good.replace('</body>', '<link rel="canonical" href="https://example.org/"></body>')
+        self.assertTrue(any('outside explicit head' in x for x in self.run_html(html)))
+
+    def test_body_noindex_still_detected(self):
+        html = self.good.replace('</body>', '<meta name="robots" content="noindex"></body>')
+        self.assertTrue(any('noindex' in x for x in self.run_html(html)))
+
+    def test_indexable_boolean_required(self):
+        for value in ('false', 0, None):
+            with self.assertRaises(ValueError):
+                audit([dict(self.route, indexable=value)], self.root)
+
+    def test_invalid_route_url(self):
+        for url in ('/relative', 'https://user:pass@example.org/', 'https://example.org/#part', 'https://example.org:bad/'):
+            with self.assertRaises(ValueError):
+                audit([dict(self.route, url=url)], self.root)
+
+    def test_invalid_manifest_shape(self):
+        with self.assertRaises(ValueError):
+            audit({'url':self.url, 'file':'index.html'}, self.root)

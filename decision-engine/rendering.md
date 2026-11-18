@@ -9,6 +9,7 @@ Use for public routes where JavaScript delivery, metadata, deep linking or perfo
 | Private/authenticated surface | Keep it protected; do not expose via prerender or sitemap |
 | Public route has correct source HTML, status, metadata and crawlable links | Retain existing strategy unless a demonstrated performance or reliability need exists |
 | Source HTML lacks key content but rendered output is complete | Evaluate bot rendering, indexing evidence, performance, freshness and operational cost. CSR may be acceptable; consider SSG/SSR only with justified benefit |
+| Initial response contains unintended noindex but DOM removes it | Fix the initial directive at its actual source and inspect HTTP headers; do not assume Google renders through initial noindex. Preserve deliberate exclusion and authorization. |
 | Rendered output fails or content requires interaction | Diagnose blocked resources, JS/route error, state/interaction dependency. Repair smallest cause; then consider rendering strategy |
 | Unknown route serves generic 200 shell | Fix server/edge routing and 404 response independent of rendering framework where possible |
 | Few stable marketing/editorial routes | SSG/pre-render is a candidate; test freshness, metadata and deep-link coverage |
@@ -22,3 +23,5 @@ Keep canonical policy, route URLs, user-visible content and functionality stable
 Compare GET status and initial HTML of representative public routes and missing URLs; inspect rendered DOM, navigation/hydration, mobile content and links; validate unique appropriate head metadata and consistency; inspect production and Search Console/Bing as authorized. Compare performance and maintain deployment rollback. If regression appears, revert rendering change or fix affected route without overwriting unrelated work. Indexing may lag; verify processed state separately.
 
 See [rendering guide](../docs/03-technical/rendering-and-architecture.md) and [Google JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics); check current source before production changes.
+
+Use [route delivery](../implementation-patterns/route-delivery.md) for implementation and acceptance; the static checker enforces a project convention, not a universal ranking rule.

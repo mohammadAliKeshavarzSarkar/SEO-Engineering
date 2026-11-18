@@ -13,3 +13,5 @@ Patterns are adaptable starting points, not patches to blindly copy. Select the 
 | Conversion | Accepted event following real business outcome, idempotent | Click counted as successful lead | Accepted/rejected/retried requests, consent, reconciliation |
 
 Before writing code, inspect real project configuration and current dependencies. Use official framework/hosting references for exact API syntax and version. Existing scripts/audit_html.py and scripts/check_docs.py provide narrow offline smoke tests; they are not a live crawler. Document acceptance, failure modes, security/privacy, compatibility and rollback for new patterns. Include synthetic fixtures in examples, tests where deterministic and behavioral evaluation cases where agent judgment matters.
+
+- [Route delivery and metadata](route-delivery.md): stack-neutral source/render/status implementation contract, minimal repair decisions, synthetic HTML and acceptance checks.

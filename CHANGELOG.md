@@ -2,6 +2,8 @@
 
 ## Unreleased — v0.2.0 in development
 
+- S05: selected source and cross-module review; clarified initial noindex, task ownership, migration and AI reporting guidance; added stack-neutral route delivery pattern and content-level privacy review gate. Hardened HTML manifest and explicit-head checks, seven new regression tests (15/15 targeted pass). Full S05 CI, independent behavioral results, actual external activation and comprehensive privacy/source review remain separate release gates.
+
 - S04 benchmark preparation: offline paired-run scorer and prompt preparation, eight passing targeted tests, controlled evaluation and grade schema, CI public-suite plan smoke. Public cases are regression scenarios, not independent held-out results. No real agent runs, grades or model improvement established.
 
 - S03: added exact-source archive verification, SHA-256 receipt and seven regressions (73/73 local tests passed), CI source-matching and relocation smoke steps, portable acceptance and onboarding instructions. External runtime activation and final content-level privacy/accuracy review remain pending.

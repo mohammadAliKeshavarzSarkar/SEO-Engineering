@@ -1,6 +1,6 @@
 # v0.2.0 stabilization and release readiness
 
-Status: development candidate; not released or behaviorally certified. S04 checkpoint: 2026-11-18.
+Status: development candidate; not released or behaviorally certified. S05 checkpoint: 2026-11-18.
 
 ## Roadmap
 
@@ -10,7 +10,7 @@ Status: development candidate; not released or behaviorally certified. S04 check
 | S02 | Full automated testing | Actual complete checkout, unit test and utility fixture outcomes; fix and rerun failures | Corrected-commit CI and 66 original/expanded unit tests passed |
 | S03 | Portable skill validation | Build twice in pinned runtime, compare checksums, inspect archive, run extracted fixtures and reference checks | Exact archive and relocation CI passed; external runtime and content-level review pending |
 | S04 | Agent behavioral benchmarking | Matched baseline and skill runs, independent grading, held-out cases, actual failure records | Scoring infrastructure and protocol prepared; real runs and grading blocked |
-| S05 | Corrections and improvements | Regressions, reviewed source and privacy checks, reruns for affected gates | Pending |
+| S05 | Corrections and improvements | Regressions, reviewed source and privacy checks, reruns for affected gates | Targeted source/semantic review and HTML hardening complete locally; full content/privacy and behavioral reviews pending |
 | S06 | v0.2.0 release | Explicit owner review and release decision, source commit and package checksum, all required checks | Not released |
 
 ## S01 audit scope and results
@@ -60,3 +60,9 @@ Corrected S02 commit ef9e5f32a67646ec1fdf6a8b5e2badd43409bfcc passed [CI run 442
 ## S04 benchmark preparation
 
 S03 exact candidate commit 3a961f1df21d435509aa786156f032cbe6a3558e passed [CI run 44268790545](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44268790545), including exact archive verification and relocated synthetic project check. External model activation still untested. Added offline paired-run preparation/scoring tool and eight targeted local tests, all passed; code/test blob hashes f1ab7c6e24cecfbdbbe3c4ab65c9ddcb3d7806cb and 608db515c3aa3c0cdd6e7aadef4eda3a4695c93f. CI now also prepares the 38 public cases with explicitly placeholder config, three repeats, 228 planned individual run slots. No tool found for independent model sessions in this environment; no baseline or skill run was performed, no grades or performance claim. The 38 public cases are known and bundled, not held-out; independent private held-out cases and blind review remain required. See [benchmark protocol](../../evaluations/benchmark-protocol.md). S04 infrastructure is not competency certification. Hosted S04 CI result must be checked separately.
+
+## S05 targeted corrections
+
+S04 commit efa2c4b06029dc8306a9422f2441b8b9d87152d3 passed [CI run 44269477990](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44269477990). No actual model sessions or independent grades have been added. Reviewed selected technical, content, measurement, authority, privacy, decision, implementation, packaging and execution-contract files; reviewed selected primary sources recorded in [sources](sources.md). Retained correct FAQ and metadata guidance. Clarified initial noindex rendering hazard, strategic task ownership vs canonical selection, migration redirect retention, current AI-search inclusion/reporting and conflict precedence. Added a stack-neutral route delivery pattern with explicit implementation and acceptance examples. No live site or framework-specific deployment performed.
+
+Static HTML audit accepted ambiguous indexable values and counted metadata without explicit head context, including SVG titles and inactive template markup. Added narrow manifest validation and explicit-head policy with subtree exclusions and seven regression cases. Targeted HTML tests 15/15 passed on Python 3.13.5; positive fixture zero findings; negative fixture two expected findings with exit 1. New source and test blobs match local tested hashes 2e8ed47b94bd27f1a2db4e83a438bad3d41913dc and 880ce335b9132fd517d52d2cde9e60ca55e622a3. Full S05 CI must be confirmed separately. The checks do not replace browser parsing, source/render, HTTP or real index verification. Added [content-level privacy review](distribution-privacy-review.md) as an explicit release gate; comprehensive archive content review, external activation, all-source review and behavioral benchmarking remain incomplete. No private project records consulted or copied. No official version release.

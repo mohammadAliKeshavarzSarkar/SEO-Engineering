@@ -4,7 +4,19 @@ import argparse
 import json
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlsplit
+
+
+def absolute_url(value):
+    if not isinstance(value, str) or not value or any(c.isspace() for c in value) or '#' in value:
+        return False
+    try:
+        parts = urlsplit(value)
+        _ = parts.port
+        return parts.scheme in ('http', 'https') and bool(parts.hostname) and not (
+            parts.username is not None or parts.password is not None)
+    except ValueError:
+        return False
 
 
 class Page(HTMLParser):
@@ -13,25 +25,48 @@ class Page(HTMLParser):
         self.titles, self.descriptions, self.canonicals, self.robots, self.h1s = [], [], [], [], []
         self.capture = None
         self.parts = []
+        self.in_head = False
+        self.inert = []
+        self.misplaced = []
 
     def handle_starttag(self, tag, attrs):
+        if tag in ('template', 'svg', 'math', 'noscript'):
+            self.inert.append(tag)
+        if self.inert:
+            return
+        if tag == 'head':
+            self.in_head = True
+        if tag == 'body':
+            self.in_head = False
         attrs = dict(attrs)
-        if tag in ('title', 'h1'):
+        if (tag == 'title' and self.in_head) or (tag == 'h1' and not self.in_head):
             self.capture, self.parts = tag, []
         if tag == 'link' and 'canonical' in (attrs.get('rel') or '').lower().split():
-            self.canonicals.append((attrs.get('href') or '').strip())
+            if self.in_head:
+                self.canonicals.append((attrs.get('href') or '').strip())
+            else:
+                self.misplaced.append('canonical')
         if tag == 'meta':
             name = (attrs.get('name') or '').lower()
             if name == 'description':
-                self.descriptions.append((attrs.get('content') or '').strip())
+                if self.in_head:
+                    self.descriptions.append((attrs.get('content') or '').strip())
+                else:
+                    self.misplaced.append('description')
             if name in ('robots', 'googlebot', 'bingbot'):
                 self.robots.extend((attrs.get('content') or '').lower().replace(',', ' ').split())
 
     def handle_data(self, data):
-        if self.capture:
+        if self.capture and not self.inert:
             self.parts.append(data)
 
     def handle_endtag(self, tag):
+        if self.inert:
+            if tag == self.inert[-1]:
+                self.inert.pop()
+            return
+        if tag == 'head':
+            self.in_head = False
         if tag == self.capture:
             target = self.titles if tag == 'title' else self.h1s
             target.append(''.join(self.parts).strip())
@@ -44,10 +79,16 @@ def audit(routes, root):
     descriptions = {}
     seen_urls = set()
     root = Path(root).resolve()
+    if not isinstance(routes, list):
+        raise ValueError('manifest must be an array')
     if not routes:
         return ['Manifest contains no routes']
     for route in routes:
         url, file = route['url'], route['file']
+        if not absolute_url(url) or not isinstance(file, str) or not file.strip():
+            raise ValueError('route requires absolute HTTP(S) URL and nonempty file path')
+        if type(route.get('indexable', True)) is not bool:
+            raise ValueError('indexable must be a JSON boolean')
         if url in seen_urls:
             errors.append(f'{url}: duplicate manifest URL')
         seen_urls.add(url)
@@ -66,9 +107,10 @@ def audit(routes, root):
         for label, values in [('title', page.titles), ('description', page.descriptions), ('canonical', page.canonicals), ('h1', page.h1s)]:
             if len(values) != 1 or not values[0]:
                 errors.append(f'{url}: expected exactly one nonempty {label}')
+        for label in sorted(set(page.misplaced)):
+            errors.append(f'{url}: {label} outside explicit head')
         expected = route.get('canonical', url)
-        parts = urlparse(expected)
-        if parts.scheme not in ('http', 'https') or not parts.netloc:
+        if not absolute_url(expected):
             errors.append(f'{url}: manifest expected canonical not an absolute HTTP(S) URL')
         if page.canonicals != [expected]:
             errors.append(f'{url}: canonical mismatch (expected {expected})')
@@ -97,7 +139,7 @@ def main():
         return 2
     for item in errors:
         print('FAIL:', item)
-    print(f'{len(routes)} manifest entries; {len(errors)} findings. Nonindexable entries skipped. Local HTML only.')
+    print(f'{len(routes)} manifest entries; {len(errors)} findings. Nonindexable entries skipped. Local explicit-head HTML project-policy checks only.')
     return 1 if errors else 0
 
 

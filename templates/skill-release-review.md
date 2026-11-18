@@ -14,6 +14,7 @@ Candidate commit, version, Python/runtime, reviewer and date:
 | External runtime | Skill loaded, tools and routing checked | | not-run |
 | Benchmark isolation and evidence | Matched environments, actual runs/traces, independent rubric and held-out cases, review and missingness documented | | not-run |
 | Behavioral comparison | Required cases meet agreed rubric against matched baseline | | not-run |
+| Content-level privacy review | Actual archive and public diff reviewed for credentials, PII, private project material; owner acceptance recorded | | not-run |
 | Human review | Accuracy, privacy, source currency, limitations | | not-run |
 
 Record exact commands, output/exit codes, failures and corrective commits. Archive checksum and source commit:

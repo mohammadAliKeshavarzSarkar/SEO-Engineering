@@ -1,0 +1,11 @@
+# Content-level privacy review before sharing
+
+This is a maintainer release gate, not a legal opinion, secret scanner or assertion that a particular package passed. The archive allowlist and integrity receipt establish selected paths and matching bytes, not safe content.
+
+1. Freeze the exact candidate commit and package checksum. Use the archive receipt to enumerate all distributed members; inspect actual included file contents, not only names. Review public repository diffs independently, since files excluded from the ZIP can still be public.
+2. Verify each example, figure, query, URL, configuration, report and test fixture is fictional or explicitly approved for public redistribution. Look inside documentation, JSON, CSV, HTML, code, comments and filenames for copied business data, identifiers, unreleased plans, personal or health data, tokens, credentials, private URLs and source logs. Review contextual combinations that can reidentify a person or project. Use an approved local secret scan as a supplementary check, never as the sole gate.
+3. Keep project research in the authorized private workspace. Publish generalized methods and independently useful synthetic examples only. Avoid raw private query strings, customer exports, internal screenshots, private repository references and personal values in errors/reports. Do not forward a questionable artifact to a third-party validator or model just to determine whether it is safe.
+4. Record reviewed scope, file count, source commit, reviewer, actual method, findings IDs and dispositions. Never copy a suspected secret into an issue, log or public report. For suspected exposure stop distribution, notify the authorized owner, rotate credentials and follow the approved incident procedure; simply deleting a later file does not remove prior history. Do not rewrite repository history without approval.
+5. Rebuild and rerun checks after corrections; review the precise replacement package. Do not mark this gate passed without actual review evidence and owner acceptance. A source review of selected modules is not a content-level privacy review of the whole package.
+
+See [portable acceptance](../01-foundations/portable-skill-acceptance.md) and [release review](../../templates/skill-release-review.md).
