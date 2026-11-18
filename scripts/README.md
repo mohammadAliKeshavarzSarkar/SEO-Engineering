@@ -53,3 +53,7 @@ Maintainer-only tool from the complete trusted checkout: `python3 scripts/verify
 ## S04 benchmark preparation and aggregation
 
 Maintainer-only `scripts/score_benchmark.py` prepares prompt tasks from a frozen suite/config and aggregates independently reviewed paired grades; no model inference or automated judge. See [benchmark protocol](../evaluations/benchmark-protocol.md) and [grade schema](../evaluations/benchmark-grades.md). Public regression cases are not held-out; the scorer never certifies a release. CI plan preparation uses placeholder metadata and creates no real grades.
+
+## T01 architecture evidence summarizer
+
+`python3 scripts/inspect_architecture.py --input examples/architecture/sample.json --output architecture-report.json` processes a reviewed JSON observation envelope with declared dependency hints and 1–500 route records. It separates observed initial content/client completion from declared generation strategy, flags incomplete content, directive discrepancies, status review and supplied unauthorized visibility. It does not crawl, parse HTML, test access, verify real dependencies or generation modes, or establish index status. Unknowns are null or unknown enums; output is not remediation authorization. Use fresh output names. See [T01](../docs/03-technical/t01-architecture-detection.md). Included in portable package and fixture parity checks.

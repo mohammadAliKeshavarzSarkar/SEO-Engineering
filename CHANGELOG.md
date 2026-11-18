@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 0.3.0-dev.1
+
+- Begin advanced technical SEO engineering with T01 architecture and technology detection: route-level evidence and ownership, declared dependency hints vs observed delivery, offline observation summarizer, synthetic fixture and inventory, nine new regression tests, E39–E42 public evaluation scenarios and package/CI integration. No live target audit, actual model benchmark or stable release. Prior 0.2.0-rc.1 remains pinned at 0483ff33d73687adccd11408ec26318c880ceddf.
+
 ## 0.2.0-rc.1 — source release candidate (2026-11-18)
 
 - S06: versioned the source candidate, added bundled machine-readable distribution metadata, candidate notes and versioned build/install procedure. CI checks the exact candidate version in the verified ZIP and receipt. Prior S05 exact-commit CI passed; verify candidate CI separately. No stable release, license grant, downloadable binary asset, external model activation or independent behavioral scores. Content/privacy and source review plus owner acceptance remain required.

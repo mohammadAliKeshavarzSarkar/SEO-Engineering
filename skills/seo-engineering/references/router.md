@@ -19,6 +19,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Persian, multilingual and international SEO | docs/02-research/r09-multilingual-search-engineering.md; decision-engine/localization.md; templates/locale-market-register.csv; templates/locale-page-matrix.csv; templates/localization-qa.md; scripts/audit_locale_manifest.py |
 | Research automation, imports and validation | docs/02-research/r10-research-automation-and-validation.md; workflows/research-pipeline.md; templates/research-run-manifest.md; scripts/validate_research.py |
 | Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
+| Architecture discovery, technology and delivery detection | docs/03-technical/t01-architecture-detection.md; decision-engine/architecture-detection.md; templates/architecture-inventory.csv; scripts/inspect_architecture.py |
 | JS rendering or SPA/SSR | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md; implementation-patterns/route-delivery.md |
 | URL, canonical, redirect, migration | docs/03-technical/urls-and-migrations.md |
 | Content, trust, metadata | docs/04-content/on-page-and-editorial.md |

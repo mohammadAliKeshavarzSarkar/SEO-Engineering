@@ -1,0 +1,5 @@
+# Architecture detection decision protocol
+
+Use [T01](../docs/03-technical/t01-architecture-detection.md) before selecting a technical implementation. Scope to authorized app/route/environment. Inspect code, manifest/lockfile, build and hosting configuration as text; don't execute unknown scripts. Establish intended route access/status. Observe actual GET and source/rendered primary content where authorized. Distinguish declared and detected dependency hints from actual generation mode; no SSR/SSG verdict from HTML alone. If private exposure is suspected, escalate to authorized owner; no public prerender. Preserve unknowns, identify smallest verified defect and owning layer, compare no change and repair before architecture migration. Use [rendering decisions](rendering.md) and [route delivery](../implementation-patterns/route-delivery.md); review and measure changed routes only under authorization. Offline tool output is a scoped observation summary, not proof of deployment or indexability.
+
+Output: [architecture inventory](../templates/architecture-inventory.csv), evidence references, next checks, reviewed decision and acceptance.

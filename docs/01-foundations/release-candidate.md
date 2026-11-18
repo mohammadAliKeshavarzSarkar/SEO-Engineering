@@ -1,4 +1,6 @@
-# SEO Engineering 0.2.0-rc.1 — release candidate
+# SEO Engineering 0.2.0-rc.1 — historical release candidate
+
+Historical record. These instructions refer ONLY to commit 0483ff33d73687adccd11408ec26318c880ceddf. Current main is 0.3.0 development; its version metadata is different. The [candidate validation run](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44270972356) succeeded. No stable release, independent evaluation, external model activation or distribution approval followed.
 
 Candidate checkpoint: 2026-11-18. This is a versioned **source candidate for controlled evaluation**, not a stable v0.2.0 release, certification, public binary distribution or guarantee of agent performance. Read [machine-readable candidate version](distribution-version.json). The version identifies this intended library snapshot; record its exact Git commit and actual archive SHA-256 separately. Do not treat a version string as proof of origin or release approval. If candidate contents change, pin a new commit and increment the candidate version before redistribution.
 

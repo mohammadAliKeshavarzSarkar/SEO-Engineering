@@ -5,13 +5,13 @@ description: Research, audit, plan, implement and validate SEO for any authorize
 
 # SEO engineering
 
-Source candidate: 0.2.0-rc.1. For version and verification status read the library's docs/01-foundations/distribution-version.json and docs/01-foundations/release-candidate.md when reporting installation or release readiness. No stable release or independently measured agent improvement is established.
+Development version: 0.3.0-dev.1. For version and verification status read the library's docs/01-foundations/distribution-version.json (previous candidate notes are historical) when reporting installation or release readiness. No stable release or independently measured agent improvement is established.
 
 Reusable workflow; never assume a particular brand, stack, market or conversion. Do not promise rankings. Read [task router](references/router.md) to select only relevant modules and [execution contract](references/execution-contract.md) for scope and outputs. Both describe how to locate the maintained library in a checkout or bundled installation.
 
 ## Run
 
-1. Identify target, task mode, authorization, site type, business outcome, locale, stack and available tools. Proceed with documented assumptions where safe; mark missing inputs explicitly. Do not access unnamed projects.
+1. Identify target, task mode, authorization, site type, business outcome, locale, stack and available tools. For unfamiliar technical architecture use docs/03-technical/t01-architecture-detection.md before selecting implementation. Proceed with documented assumptions where safe; mark missing inputs explicitly. Do not access unnamed projects.
 2. Load the smallest applicable references selected by the router; for a new site use library workflow workflows/new-website.md. Check time-sensitive platform guidance against current primary sources where possible.
 3. Gather relevant evidence. Keep observations, estimates, hypotheses and unknowns separate. Read-only is the default; inspect existing implementation before proposing changes. Never invent search data, crawl output, authority or tool access.
 4. Choose actions using decision-engine/README.md. Prioritize security/privacy and eligibility regressions first. Compare alternatives, including no-change; give risk, confidence, ownership, acceptance and rollback.

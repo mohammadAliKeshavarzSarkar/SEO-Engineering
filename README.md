@@ -2,11 +2,11 @@
 
 A reusable, evidence-led SEO engineering system for developers, product teams, content strategists and AI coding agents. Optimize for discoverability, usefulness, performance and measurable business outcomes — not ranking tricks.
 
-**Version:** 0.2.0-rc.1 · **Status:** source release candidate — stable release and independent behavioral validation pending · **Research checkpoint:** 2026-11-18
+**Version:** 0.3.0-dev.1 · **Status:** advanced technical SEO development — stable release and behavioral validation pending · **Research checkpoint:** 2026-11-18
 
-## Release candidate
+## Development and previous candidate
 
-See [0.2.0-rc.1 candidate notes](docs/01-foundations/release-candidate.md) and [version metadata](docs/01-foundations/distribution-version.json). This is a source candidate, not a stable release or public binary distribution. Pin the exact candidate commit, verify the archive, and complete the remaining review gates before sharing. No license is assigned.
+See the [advanced technical roadmap](docs/03-technical/technical-roadmap.md) and [current version metadata](docs/01-foundations/distribution-version.json). The previous [0.2.0-rc.1 source candidate](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/tree/0483ff33d73687adccd11408ec26318c880ceddf) remains pinned and historical. Main is development, not a stable release or public binary distribution. Pin the exact revision and complete review gates before sharing. No license is assigned.
 
 ## For AI agents and new websites
 
@@ -35,7 +35,7 @@ For portable use, see the [installation guide](docs/01-foundations/skill-install
 | Agent operations | [Documentation standard](docs/01-foundations/module-standard.md), [implementation patterns](implementation-patterns/README.md), [run record](templates/agent-run-record.md) |
 | Foundations | [Principles](docs/01-foundations/operating-principles.md), [Evidence & decisions](docs/01-foundations/evidence-and-decisions.md) |
 | Research | [Strategy, intent & competitors](docs/02-research/market-and-keywords.md), [Persian & multilingual research](docs/02-research/persian-and-international.md) |
-| Technical | [Crawl & index](docs/03-technical/crawl-and-index.md), [Rendering & architecture](docs/03-technical/rendering-and-architecture.md), [URLs & migrations](docs/03-technical/urls-and-migrations.md), [Performance & accessibility](docs/03-technical/performance.md) |
+| Technical | [Advanced technical roadmap](docs/03-technical/technical-roadmap.md), [T01 architecture detection](docs/03-technical/t01-architecture-detection.md), [Crawl & index](docs/03-technical/crawl-and-index.md), [Rendering & architecture](docs/03-technical/rendering-and-architecture.md), [URLs & migrations](docs/03-technical/urls-and-migrations.md), [Performance & accessibility](docs/03-technical/performance.md) |
 | Content | [On-page & editorial](docs/04-content/on-page-and-editorial.md), [Entities & schema](docs/04-content/structured-data.md), [Images & video](docs/04-content/media.md), [Authority & distribution](docs/04-content/authority.md) |
 | Measurement | [Search Console & Bing](docs/05-measurement/search-platforms.md), [GA4 & Clarity](docs/05-measurement/analytics.md), [Privacy & measurement QA](docs/05-measurement/privacy-and-qa.md) |
 | Operations | [Audit & release](docs/06-operations/audit-and-release.md), [Troubleshooting](docs/06-operations/troubleshooting.md), [Experiments & monitoring](docs/06-operations/experiments.md) |

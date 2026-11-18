@@ -1,8 +1,8 @@
 {
   "schema_version": "1",
   "skill_name": "seo-engineering",
-  "version": "0.2.0-rc.1",
-  "status": "release_candidate",
+  "version": "0.3.0-dev.1",
+  "status": "development",
   "stable_release": false,
   "behavioral_validation": "not_run",
   "external_runtime_activation": "not_run",
@@ -11,5 +11,9 @@
   "license_status": "unassigned",
   "distribution_approval": "pending",
   "minimum_python": "3.10",
-  "compatibility_note": "Declared minimum for utilities; full runtime/version matrix not established."
+  "compatibility_note": "Declared minimum for utilities; full runtime/version matrix not established.",
+  "previous_candidate": {
+    "version": "0.2.0-rc.1",
+    "commit": "0483ff33d73687adccd11408ec26318c880ceddf"
+  }
 }

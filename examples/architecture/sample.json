@@ -1,0 +1,70 @@
+{
+  "schema_version": "1",
+  "scope": "fictional site, one synthetic environment",
+  "declared_dependencies": {
+    "vite": "^7",
+    "react": "^19"
+  },
+  "routes": [
+    {
+      "id": "guide",
+      "expected": "public",
+      "declared_strategy": "unknown",
+      "status": 200,
+      "source_content": "present",
+      "rendered_content": "present",
+      "initial_noindex": false,
+      "rendered_noindex": false,
+      "unauthorized_content_visible": null,
+      "evidence_ref": "synthetic observation"
+    },
+    {
+      "id": "catalog",
+      "expected": "public",
+      "declared_strategy": "csr",
+      "status": 200,
+      "source_content": "absent",
+      "rendered_content": "present",
+      "initial_noindex": false,
+      "rendered_noindex": false,
+      "unauthorized_content_visible": null,
+      "evidence_ref": "synthetic observation"
+    },
+    {
+      "id": "missing",
+      "expected": "missing",
+      "declared_strategy": "unknown",
+      "status": 200,
+      "source_content": "absent",
+      "rendered_content": "absent",
+      "initial_noindex": false,
+      "rendered_noindex": false,
+      "unauthorized_content_visible": null,
+      "evidence_ref": "synthetic observation"
+    },
+    {
+      "id": "dashboard",
+      "expected": "private",
+      "declared_strategy": "unknown",
+      "status": 401,
+      "source_content": "unknown",
+      "rendered_content": "unknown",
+      "initial_noindex": false,
+      "rendered_noindex": false,
+      "unauthorized_content_visible": false,
+      "evidence_ref": "synthetic observation"
+    },
+    {
+      "id": "unknown-page",
+      "expected": "public",
+      "declared_strategy": "unknown",
+      "status": null,
+      "source_content": "unknown",
+      "rendered_content": "unknown",
+      "initial_noindex": null,
+      "rendered_noindex": null,
+      "unauthorized_content_visible": null,
+      "evidence_ref": "synthetic observation"
+    }
+  ]
+}

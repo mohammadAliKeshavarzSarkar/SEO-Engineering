@@ -14,6 +14,7 @@ FIXTURES = (
     ('prioritize_opportunities.py', 'examples/opportunity-prioritization/sample.json'),
     ('audit_locale_manifest.py', 'examples/locale-audit/sample.json'),
     ('validate_research.py', 'examples/research-handoff/sample.json'),
+    ('inspect_architecture.py', 'examples/architecture/sample.json'),
 )
 
 

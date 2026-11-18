@@ -10,7 +10,7 @@ Use for a new or unfamiliar target website, including already-live sites. For a 
 |---|---|---|
 | 0 Scope | Identify actual website, owner, target repo/origin, mode, exclusions, release/control boundaries | Project brief and authority; stop unauthorized writes |
 | 1 Discover | Understand site type, business model, audience, market, language, product proof, conversion | R01 audience/problem map; hypotheses labeled |
-| 2 Baseline | Inspect known site templates, URL inventory, statuses, source/rendered HTML, index and tracking availability | Evidence-backed current-state inventory, severity, unknowns |
+| 2 Baseline | Use [T01 architecture detection](../docs/03-technical/t01-architecture-detection.md); inspect scoped site templates, URL inventory, statuses, source/rendered HTML, index and tracking availability | Evidence-backed current-state inventory, severity, unknowns |
 | 3 Research | Collect actual search observations (R02), intent/competitors and page gaps | Provenance-aware corpus, proposed query-to-page mapping |
 | 4 Decide | Classify rules vs recommendations vs policy vs experiments; choose smallest suitable action | Prioritized decision records with evidence, owners and tests |
 | 5 Implement | Approved work only; preserve valid URLs, unrelated UI/features, privacy | Reviewable changes, backups/rollback for risky changes |

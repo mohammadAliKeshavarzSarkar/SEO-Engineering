@@ -1,5 +1,7 @@
 # Rendering and information architecture
 
+Before selecting or changing a rendering approach, use [T01 architecture detection](t01-architecture-detection.md) and the [technical roadmap](technical-roadmap.md). Framework dependencies do not prove actual delivered rendering strategy.
+
 ## Choose the rendering approach by template
 
 | Approach | Good fit | Tradeoffs |

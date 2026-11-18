@@ -2,7 +2,7 @@
 
 These synthetic cases test agent decisions and behavior, not actual rankings or tool availability. Cases in [cases.json](cases.json) are original fictional scenarios. No model has been scored by publishing this file.
 
-For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 38 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
+For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 42 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
 
 ## Run protocol
 
@@ -17,3 +17,5 @@ Grade scope/authority, evidence fidelity, module choice, decision including no-c
 Capture data in private run records: case ID, versions, evidence, score, critical failures, reviewer, disagreement and candidate fix. Generalize failures into improved instructions and regressions, never mindlessly optimize for known prompts. Repeat after significant skill or model changes; report untested domains.
 
 Source checked 2026-11-18: [OpenAI evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices). Human-reviewed synthetic suite does not establish real-world SEO success.
+
+T01 adds E39–E42 (architecture evidence and deployment boundaries). The S04 38-case plan remains a historical checkpoint; a complete 42-case plan with three repeats has 126 paired tasks / 252 individual runs. No independent behavioral runs have been executed.
