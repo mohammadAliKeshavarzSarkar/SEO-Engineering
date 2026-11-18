@@ -22,6 +22,8 @@ For integrated research use the [R01–R10 pipeline](workflows/research-pipeline
 
 See the [stabilization roadmap and S01 audit](docs/08-learning/stabilization.md) for actual verification status and outstanding release gates.
 
+For portable use, see the [installation guide](docs/01-foundations/skill-installation.md) and [portable acceptance procedure](docs/01-foundations/portable-skill-acceptance.md). Build from a reviewed checkout; validate the archive against that source and record its checksum. Candidate status is not a release or measured agent competence.
+
 ## Documentation map
 
 | Module | Guide |

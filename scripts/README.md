@@ -45,3 +45,7 @@ The package builder fixes member timestamps, permissions and compression level. 
 ## S02 research input integrity and CI
 
 The R10 handoff validator requires calendar dates in YYYY-MM-DD, rejects non-finite/non-serializable evidence, and rejects duplicate JSON object keys on CLI ingestion. Invalid input fails before the output report is opened. This is a structural safeguard, not proof of factual accuracy. Run `python3 -m unittest discover -s tests -v` and `python3 scripts/verify_release.py` from the trusted checkout. The read-only GitHub Actions workflow runs the verifier and full package byte-reproducibility check on pushes to main or manual dispatch. Review actual run conclusions for the specific commit; a configured workflow is not proof of a pass.
+
+## S03 portable package receipt
+
+Maintainer-only tool from the complete trusted checkout: `python3 scripts/verify_package.py --archive seo-engineering-skill.zip --report package-receipt.json`. Requires a fresh output file. Verifies exact selected paths and bytes, one skill entrypoint, simple frontmatter, and safe member types; emits SHA-256, individual file inventory and runtime details. Record reviewed source commit separately. Does not install, run an agent, attest source trust, check all runtime-specific platform rules or scan every allowed file for secrets. CI tests relocated execution separately. See [portable skill acceptance](../docs/01-foundations/portable-skill-acceptance.md).

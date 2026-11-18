@@ -37,3 +37,20 @@ jobs:
           python3 scripts/build_skill.py --out "$RUNNER_TEMP/seo-b.zip"
           cmp "$RUNNER_TEMP/seo-a.zip" "$RUNNER_TEMP/seo-b.zip"
           sha256sum "$RUNNER_TEMP/seo-a.zip"
+      - name: Verify archive contents against exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_package.py --archive "$RUNNER_TEMP/seo-a.zip" --report "$RUNNER_TEMP/seo-receipt.json"
+      - name: Exercise relocated skill in a synthetic project
+        shell: bash
+        run: |
+          set -euo pipefail
+          project="$RUNNER_TEMP/seo installation smoke"
+          mkdir -p "$project/.agents/skills"
+          python3 -m zipfile -e "$RUNNER_TEMP/seo-a.zip" "$project/.agents/skills"
+          cd "$project"
+          lib="$project/.agents/skills/seo-engineering/references/library"
+          python3 "$lib/scripts/check_docs.py"
+          python3 "$lib/scripts/validate_research.py" --input "$lib/examples/research-handoff/sample.json" --output "$RUNNER_TEMP/relocated-handoff.json"
+          test -f "$project/.agents/skills/seo-engineering/SKILL.md"

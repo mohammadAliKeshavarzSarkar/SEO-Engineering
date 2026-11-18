@@ -7,6 +7,8 @@ Candidate commit, version, Python/runtime, reviewer and date:
 | Repository tests | All required pass | | not-run |
 | Internal docs and routing | References resolve | | not-run |
 | Package build and scope | Review archive, no private data | | not-run |
+| Archive receipt | Membership and bytes match reviewed source; checksum and per-file inventory recorded | | not-run |
+| Relocated installation smoke | Packaged references and utility work from separate synthetic project | | not-run |
 | Reproducible archive | Two builds of identical inputs in pinned runtime have identical bytes, checksum recorded | | not-run |
 | Fixture parity | Repository and bundled outputs agree | | not-run |
 | External runtime | Skill loaded, tools and routing checked | | not-run |

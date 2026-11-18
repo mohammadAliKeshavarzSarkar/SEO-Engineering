@@ -1,14 +1,14 @@
 # v0.2.0 stabilization and release readiness
 
-Status: development candidate; not released or behaviorally certified. S02 checkpoint: 2026-11-18.
+Status: development candidate; not released or behaviorally certified. S03 checkpoint: 2026-11-18.
 
 ## Roadmap
 
 | ID | Stage | Exit evidence | State |
 |---|---|---|---|
 | S01 | Repository quality audit | Inventory, reference scan, targeted fixes and regressions, explicit limits | Initial structural audit and targeted fixes complete; wider semantic review remains |
-| S02 | Full automated testing | Actual complete checkout, unit test and utility fixture outcomes; fix and rerun failures | Base full CI passed; four additional regression tests passed locally; corrected-commit CI to be confirmed |
-| S03 | Portable skill validation | Build twice in pinned runtime, compare checksums, inspect archive, run extracted fixtures and reference checks | Base automated package checks passed; final archive/content review and external loading pending |
+| S02 | Full automated testing | Actual complete checkout, unit test and utility fixture outcomes; fix and rerun failures | Corrected-commit CI and 66 original/expanded unit tests passed |
+| S03 | Portable skill validation | Build twice in pinned runtime, compare checksums, inspect archive, run extracted fixtures and reference checks | Base package checks passed; new source-matching receipt and relocation smoke configured; external runtime and content-level review pending |
 | S04 | Agent behavioral benchmarking | Matched baseline and skill runs, independent grading, held-out cases, actual failure records | Pending |
 | S05 | Corrections and improvements | Regressions, reviewed source and privacy checks, reruns for affected gates | Pending |
 | S06 | v0.2.0 release | Explicit owner review and release decision, source commit and package checksum, all required checks | Not released |
@@ -52,3 +52,7 @@ Direct GitHub cloning remained blocked in the local execution environment. Recon
 Added a read-only GitHub Actions workflow scoped to this repository, triggered on main pushes and manual dispatch. [Base CI run](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44266796827) for commit 4360565c0e2291abccf0dd80fe8b7ee26f5ff80c completed successfully. Verified job step conclusions: exact-commit checkout, full offline verification (unit tests, repository and extracted-package smoke checks, archive integrity and fixture output parity), deterministic full package (two builds, byte comparison and checksum command). Connector reports step status, not full logs or archive bytes; no archive checksum value is asserted here. No other repositories or production targets accessed.
 
 Adversarial input review found that the research envelope accepted NaN/Infinity, Python's permissive JSON parser could overwrite duplicate object keys, and alternative ISO date encodings were accepted. Hardened validation to reject non-finite values even nested inside evidence and duplicate keys at CLI parse time, and selected YYYY-MM-DD as the canonical calendar date contract. Four new regression tests cover non-finite values, alternative dates and invalid CLI input without report creation. Expanded local suite: 66/66 passed. The two corrected source/test hashes are ac208f823843e98f980056ed4acad172b55deae4 and fa49cd8f8d62a9aa4f6dff08f351dfd4bf5d5b0a, respectively. Check corrected-commit CI separately before final release. These are deterministic software tests, not proof of review accuracy or agent behavior. Further malformed-input and fixture-semantic coverage can be expanded based on demonstrated failures.
+
+## S03 portable distribution record
+
+Corrected S02 commit ef9e5f32a67646ec1fdf6a8b5e2badd43409bfcc passed [CI run 44267161385](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44267161385). Added standalone maintainer verifier scripts/verify_package.py plus seven regression tests. Local code-only workspace suite: 73/73 tests passed on Python 3.13.5. Test coverage includes source content mismatch, unexpected members, case collisions, additional skill entrypoints, incorrect name, unsafe member type and valid receipt. New code and test Git blob hashes verified: 8bc538d96e2dcfd4b735f4a924dfc29ffc924418 and dff3ec501e69f2ce454e9748e3a8f16c5dc30368. Added exact-membership/digest checks and relocated synthetic project smoke to CI. Hosted result for this change must be checked separately. The receipt is external to the archive and compared with a trusted checkout, not a signature or secret scanner. No actual agent runtime activation or behavioral test executed; final manual content review and distribution remain pending. The direct local clone is still unavailable; hosted CI tests the full checkout. See [portable skill acceptance](../01-foundations/portable-skill-acceptance.md).

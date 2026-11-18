@@ -1,0 +1,29 @@
+# Portable skill acceptance and integrity
+
+The SEO Engineering library is reusable procedural context, not a trained model, an automatically installed connector or an autonomous hosted crawler. The portable skill is a single seo-engineering directory containing SKILL.md and its supporting references/library resources. It can be loaded selectively; the target project remains a separate workspace. This is a development candidate until release gates are satisfied.
+
+## Maintainer acceptance
+
+1. Use a clean, trusted checkout of the reviewed commit. Do not build from a working tree containing private target research. Keep private records outside the library; directory and suffix rules cannot identify sensitive content inside allowed files.
+2. Run repository tests and release smoke checks. Build the ZIP twice using the same Python/zlib runtime and compare bytes.
+3. Run the new verifier against the archive and the trusted checkout:
+```sh
+python3 scripts/build_skill.py --out seo-engineering-skill.zip
+python3 scripts/verify_package.py --archive seo-engineering-skill.zip --report package-receipt.json
+```
+Use fresh paths. The maintainer tool checks exact selected membership and bytes, required entrypoints, simple scalar name/description frontmatter, extra SKILL.md files, duplicate/case-colliding paths, regular unencrypted ZIP members and basic path safety. It records individual file hashes/sizes, whole archive SHA-256, file count, total uncompressed size and runtime versions. The receipt is external to the ZIP and does not include a source commit; record the exact reviewed source commit alongside it. It is not signed authentication, a full YAML/spec validator, malware analysis or content-level privacy review. It cannot prove the checkout is trusted. Review actual contents and any runtime limits before sharing. Do not extract untrusted archives solely because a receipt was provided.
+4. Extract the verified candidate into a fresh synthetic project with a path containing spaces, run the packaged checker and a utility from the target project working directory. This tests filesystem relocation, not model activation. The CI workflow runs this smoke check in addition to prior extracted-package smoke tests, not a live site or an external agent session.
+5. Record actual source commit, archive SHA-256, receipt, tests, privacy review, runtime/version and unresolved limitations in the release review. Do not equate matching bytes with safe or accurate content.
+
+## Loading a reviewed candidate into a new project
+
+For Codex, copy the entire seo-engineering directory into the new project's .agents/skills/ directory, or into the supported user-level skills directory for reuse across projects. For other runtimes use their current documented installation location or explicitly load SKILL.md and its references; not every runtime supports the same automatic discovery. Keep one intended version, preserve the existing installation until the replacement is checked, do not copy the public library over the target source, and keep local evidence in a separate private workspace. Some runtimes also have archive size and count limits. Refer to current documentation rather than assuming a ZIP is compatible with every agent.
+
+Suggested first invocation:
+> Use the seo-engineering skill. Locate its library root and load only the references relevant to this request. The authorized target is the current project only. Start with a read-only SEO assessment; identify the business, intended audience and locale, relevant source files and available tools. Separate observations, hypotheses and unavailable evidence. Return prioritized recommendations, supporting references, acceptance checks and scope limitations. Do not change or publish anything without explicit approval.
+
+External runtime acceptance: start a fresh runtime session; discover the skill name, explicitly invoke it, verify the loaded reference filenames and real tool invocation with a harmless synthetic input, confirm output stays inside the intended private workspace, and test that an unrelated task does not automatically trigger SEO. Record model, runtime and version, prompt, paths, tool permissions and actual observations. Test one missing-capability scenario and one conflicting instruction in retrieved content. Do not mark pass from a simulated response. The skill has not been proven effective simply because these checks pass; S04 evaluates behavior further.
+
+Updates: rebuild from a reviewed commit, validate against that source, compare receipts and preserve the previous package for rollback. Copied installations do not automatically synchronize with GitHub. No credentials, private research or target repository history should be included. State the candidate status and pending evaluation to users.
+
+Sources checked 2026-11-18: [OpenAI skill concepts](https://developers.openai.com/plugins/concepts/skills), [Codex skill testing guidance](https://developers.openai.com/blog/eval-skills), [OpenAI API skill loading and limits](https://developers.openai.com/api/docs/guides/tools-skills), [OpenAI CLI installation example](https://developers.openai.com/api/reference/cli). These document runtime conventions, not a certification of this skill.
