@@ -2,7 +2,13 @@
 
 A reusable, evidence-led SEO engineering system for developers, product teams, content strategists and AI coding agents. Optimize for discoverability, usefulness, performance and measurable business outcomes — not ranking tricks.
 
-**Version:** 0.1.0 · **Status:** initial operational foundation · **Research checkpoint:** 2026-11-18
+**Version:** 0.1.0 · **Status:** v0.2.0 in development — agent-first framework · **Research checkpoint:** 2026-11-18
+
+## For AI agents and new websites
+
+This repository is a reusable **SEO engineering skill system**, not a single website strategy. Use [the master skill](skills/seo-engineering/SKILL.md), [agent architecture](docs/01-foundations/agent-architecture.md), [new website workflow](workflows/new-website.md), [decision protocols](decision-engine/README.md) and [evaluation suite](evaluations/README.md). Only load the relevant references for the task.
+
+To use the entire knowledge base away from this repository, follow [portable skill packaging](docs/01-foundations/skill-installation.md). A skill supplies instructions and resources; it does not train or grant tools to a model, guarantee rankings, or replace project-specific research.
 
 ## Start here
 
@@ -16,6 +22,7 @@ A reusable, evidence-led SEO engineering system for developers, product teams, c
 
 | Module | Guide |
 |---|---|
+| Agent operations | [Documentation standard](docs/01-foundations/module-standard.md), [implementation patterns](implementation-patterns/README.md), [run record](templates/agent-run-record.md) |
 | Foundations | [Principles](docs/01-foundations/operating-principles.md), [Evidence & decisions](docs/01-foundations/evidence-and-decisions.md) |
 | Research | [Strategy, intent & competitors](docs/02-research/market-and-keywords.md), [Persian & multilingual research](docs/02-research/persian-and-international.md) |
 | Technical | [Crawl & index](docs/03-technical/crawl-and-index.md), [Rendering & architecture](docs/03-technical/rendering-and-architecture.md), [URLs & migrations](docs/03-technical/urls-and-migrations.md), [Performance & accessibility](docs/03-technical/performance.md) |

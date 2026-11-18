@@ -2,6 +2,10 @@
 
 ## Unreleased — v0.2.0 in development
 
+- Established an agent-first architecture, module authoring contract, portable skill packaging, explicit task routing and new-site workflow.
+- Added decision and implementation references, reusable run records, and synthetic evaluation cases with safety-critical criteria. These are assessment materials, not evidence that any model has passed them.
+- Added a standard-library skill builder and package unit tests. Project-specific data is excluded by scope; archive contents must still be reviewed before distribution.
+
 - Started the advanced research roadmap, R01 business positioning and R02 evidence-aware keyword discovery.
 - Added audience/problem and keyword-observation CSV templates, preserving raw observations separately from page decisions.
 - Checked primary guidance on search data limits, Trends normalization, paid keyword estimates, regional restrictions, Bing research and autocomplete. No project-specific research data or final positioning decisions published.
