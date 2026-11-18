@@ -16,6 +16,8 @@ The packaged SKILL.md uses references/library as its library root; this is a gen
 
 ## Verify installation
 
+From the full trusted checkout, run `python3 scripts/verify_release.py` and record actual results. Use the [release review](../../templates/skill-release-review.md). A diagnostic pass does not establish external model behavior or privacy review.
+
 - Confirm the runtime recognizes seo-engineering, or explicitly load its SKILL.md.
 - Ask for a read-only audit of a synthetic or authorized project; require relevant reference paths, evidence, scope and limitations.
 - Confirm references resolve from the packaged library. Run check_docs.py from references/library/scripts with Python; it checks file links only, not all external links.

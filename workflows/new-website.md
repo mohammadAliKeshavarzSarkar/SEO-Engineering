@@ -1,5 +1,7 @@
 # New website onboarding and SEO workflow
 
+For connected R01–R10 research stages, use the [integrated research pipeline](research-pipeline.md); select appropriate stages and retain evidence separately from decisions.
+
 ## Applicability
 
 Use for a new or unfamiliar target website, including already-live sites. For a narrow task, select only relevant stages. Requires explicit target and permission; no blanket access across accounts.

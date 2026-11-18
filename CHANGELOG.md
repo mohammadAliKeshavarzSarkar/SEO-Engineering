@@ -2,6 +2,8 @@
 
 ## Unreleased — v0.2.0 in development
 
+- Added R10 integrated research pipeline, handoff validator, seven unit tests, release-check runner, two review templates, synthetic fixture and E35–E38 evaluation cases. All ten initial research modules are written; full release gates remain pending. Added tools README to portable package to support bundled documentation.
+
 - Added R09 Persian and multilingual search engineering: native market research, locale URL strategy, canonical/hreflang review, RTL QA, three templates, offline manifest utility, nine unit test cases and E31–E34 behavioral scenarios. Integrated task routing and portable packaging. Strict manifest results are internal review checks, not live or indexed validation.
 
 - Added R08 opportunity prioritization: incident/repair triage, evidence/fit/risk/dependency gates, impact and effort sensitivity, two templates, offline planning utility, nine unit tests and E27–E30 behavioral cases. Updated skill packaging, routing and source register. Scores are internal planning aids, not forecasts or execution authorization.

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1",
+  "scope": "fictional example.org read-only research",
+  "evidence": [
+    {
+      "id": "E1",
+      "kind": "observed",
+      "value": 0,
+      "source_ref": "synthetic complete sample",
+      "scope": "one defined fictional query cohort",
+      "limitations": "not actual search data",
+      "collected_date": "2026-11-18"
+    },
+    {
+      "id": "E2",
+      "kind": "unknown",
+      "value": null,
+      "source_ref": "unavailable local source",
+      "scope": "fictional regional demand",
+      "limitations": "no permitted local dataset",
+      "collected_date": "2026-11-18"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "status": "reviewed",
+      "reviewer": "fictional reviewer",
+      "evidence_ids": [
+        "E1"
+      ],
+      "rationale": "zero observed in sample only, retain current page",
+      "next_check": "repeat comparable sample"
+    },
+    {
+      "id": "D2",
+      "status": "provisional",
+      "evidence_ids": [
+        "E2"
+      ],
+      "rationale": "local demand unknown",
+      "next_check": "collect permitted localized data"
+    }
+  ]
+}

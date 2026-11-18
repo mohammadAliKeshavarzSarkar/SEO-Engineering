@@ -12,6 +12,8 @@
 - [R07 — Content gaps and topical architecture](r07-content-gaps-and-topical-architecture.md)
 - [R08 — Opportunity scoring and prioritization](r08-opportunity-prioritization.md)
 - [R09 — Persian and multilingual search engineering](r09-multilingual-search-engineering.md)
+- [R10 — Research automation and validation](r10-research-automation-and-validation.md)
+- [Integrated research pipeline](../../workflows/research-pipeline.md)
 
 ## Research workflow
 
