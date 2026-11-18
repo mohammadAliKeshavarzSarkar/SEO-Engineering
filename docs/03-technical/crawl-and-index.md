@@ -2,6 +2,8 @@
 
 For scoped discovery, crawler policy, robots retrieval and sitemap/crawl-budget evidence use [T05](t05-crawling-robots.md). Separate crawler permission, observed response, coverage and intended index policy; do not infer actual search-engine crawl budget from an audit limit.
 
+For eligibility, intended representative, canonical declarations and separately sourced processed search evidence use [T06](t06-indexing-canonicals.md). A live test cannot predict Google's selected canonical; compare indexed last crawl with relevant release/change and preserve unknowns.
+
 ## URL response contract
 
 | URL class | Expected behavior |

@@ -1,5 +1,5 @@
 {
-  "version": "0.14",
+  "version": "0.15",
   "cases": [
     {
       "id": "E01",
@@ -906,6 +906,70 @@
         "Equate audit limit with Google crawl budget",
         "Believe claimed user-agent alone",
         "Block all meaningful parameters or evade rate limits"
+      ]
+    },
+    {
+      "id": "E59",
+      "title": "Live inspection versus old indexed canonical",
+      "prompt": "A fictional intended public guide now has consistent source and rendered self-canonical. Search Console indexed inspection retrieved today reports another selected canonical; last crawl predates yesterday's repair. The owner says the live test success confirms indexing recovery. Review.",
+      "expected": [
+        "Separate live eligibility and processed selected canonical",
+        "Compare last crawl rather than retrieval time with known change",
+        "Record current technical acceptance but deferred processed outcome",
+        "Use authorized subsequent inspection and matched cohort evidence without guarantee"
+      ],
+      "disqualifiers": [
+        "Claim indexed recovery from live test",
+        "Treat old inspection as proof of current failed repair",
+        "Invent Google's updated canonical"
+      ]
+    },
+    {
+      "id": "E60",
+      "title": "Conflicting canonical targets and distinct pages",
+      "prompt": "A fictional catalog has an equivalent print variant with different HTML and HTTP canonical targets, a canonical chain ending at a noindex page, and useful distinct Persian/English and paginated pages. The team proposes homepage canonical everywhere. Review only.",
+      "expected": [
+        "Separate declared targets and selected canonical; review actual target eligibility",
+        "Verify content equivalence and intended representative",
+        "Preserve useful distinct locale/pagination content",
+        "Propose narrow consistent owner repair and target/response verification"
+      ],
+      "disqualifiers": [
+        "Canonicalize unrelated pages to homepage",
+        "Assume declarations prove Google selection",
+        "Destroy valid locale or pagination routes"
+      ]
+    },
+    {
+      "id": "E61",
+      "title": "Expected index exclusions and partial evidence",
+      "prompt": "A fictional property has intended duplicate exclusions, protected account URLs, a removed product with 404 and a public guide whose rendered capture is incomplete. A report lists them all as not indexed; the developer wants every URL indexed and all noindex removed. Assess.",
+      "expected": [
+        "Classify intended versus unintended exclusions",
+        "Maintain real authorization and meaningful missing status",
+        "Defer incomplete source/render assertions and inspect actual representative",
+        "Do not treat report examples as full site census"
+      ],
+      "disqualifiers": [
+        "Expose protected data",
+        "Remove all noindex indiscriminately",
+        "Declare missing rendered content from incomplete sample"
+      ]
+    },
+    {
+      "id": "E62",
+      "title": "Unsupported indexing automation and soft 404",
+      "prompt": "A fictional ordinary article site has 200 shell responses for missing slugs, some crawled-not-indexed guides and no authorized Search Console connection. The owner asks to fabricate JobPosting markup and submit every URL through Google's Indexing API repeatedly. Advise.",
+      "expected": [
+        "Decline unsupported indexing API use and fabricated markup",
+        "Inspect meaningful content and status; distinguish suspected soft 404 from reported classification",
+        "Separate discovery, eligibility and unknown processed state",
+        "Recommend approved sitemap/discovery and selective authorized inspection with no speed promise"
+      ],
+      "disqualifiers": [
+        "Recommend false JobPosting or unsupported bulk API",
+        "Guarantee indexing by repeated submissions",
+        "Claim actual search classification without evidence"
       ]
     }
   ]

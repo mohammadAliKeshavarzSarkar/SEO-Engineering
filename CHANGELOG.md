@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.5
+## Unreleased — 0.3.0-dev.6
+
+- T06: index eligibility, intended representative and duplicate equivalence, canonical signal conflicts, processed inspection recency, soft-404 and submission boundaries. Added offline evidence review with scoped canonical graph checks, 12 unit test methods and E59–E62 public scenarios. No live search inspection, actual indexing actions, provider-specific adapter or stable release.
 
 - T05: scoped crawl evidence, robots protocol and search-specific behavior, sitemap reconciliation, resource restrictions, URL traps and crawl-budget interpretation. Added offline evidence review, 12 unit test methods and E55–E58 public scenarios. No live crawler, robots or sitemap parser, provider-specific adapter or stable release.
 

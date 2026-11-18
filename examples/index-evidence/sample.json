@@ -1,0 +1,90 @@
+{
+  "schema_version": "1",
+  "scope": "Synthetic local review, not actual search data",
+  "urls": [
+    {
+      "id": "guide",
+      "url": "https://example.org/guide/",
+      "intent": "representative",
+      "preferred_url": "https://example.org/guide/",
+      "changed_at": "2026-11-17T00:00:00Z",
+      "current": {
+        "status": "complete",
+        "evidence_ref": "fixture:guide",
+        "observed_at": "2026-11-18T10:00:00Z",
+        "http_status": 200,
+        "robots": "allowed",
+        "http_noindex": false,
+        "initial_noindex": false,
+        "rendered_noindex": false,
+        "sitemap_member": true,
+        "source_canonicals": [
+          "https://example.org/guide/"
+        ],
+        "header_canonicals": [],
+        "rendered_canonicals": [
+          "https://example.org/guide/"
+        ]
+      },
+      "processed": {
+        "evidence_ref": "fixture:historical",
+        "property": "sc-domain:example.org",
+        "retrieved_at": "2026-11-18T10:10:00Z",
+        "last_crawl_at": "2026-11-16T00:00:00Z",
+        "state": "not_indexed",
+        "user_canonical": "https://example.org/guide/",
+        "selected_canonical": "https://example.org/guide/?view=print"
+      }
+    },
+    {
+      "id": "print",
+      "url": "https://example.org/guide/?view=print",
+      "intent": "duplicate",
+      "preferred_url": "https://example.org/guide/",
+      "changed_at": "2026-11-17T00:00:00Z",
+      "current": {
+        "status": "complete",
+        "evidence_ref": "fixture:print",
+        "observed_at": "2026-11-18T10:00:00Z",
+        "http_status": 200,
+        "robots": "allowed",
+        "http_noindex": false,
+        "initial_noindex": false,
+        "rendered_noindex": false,
+        "sitemap_member": false,
+        "source_canonicals": [
+          "https://example.org/guide/"
+        ],
+        "header_canonicals": [
+          "https://example.org/guide/?view=print"
+        ],
+        "rendered_canonicals": [
+          "https://example.org/guide/"
+        ]
+      },
+      "processed": null
+    },
+    {
+      "id": "other",
+      "url": "https://example.org/other/",
+      "intent": "representative",
+      "preferred_url": "https://example.org/other/",
+      "changed_at": "2026-11-17T00:00:00Z",
+      "current": {
+        "status": "partial",
+        "evidence_ref": "fixture:other",
+        "observed_at": "2026-11-18T10:00:00Z",
+        "http_status": 200,
+        "robots": "allowed",
+        "http_noindex": false,
+        "initial_noindex": false,
+        "rendered_noindex": null,
+        "sitemap_member": true,
+        "source_canonicals": [],
+        "header_canonicals": [],
+        "rendered_canonicals": null
+      },
+      "processed": null
+    }
+  ]
+}

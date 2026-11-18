@@ -23,3 +23,5 @@ Before writing code, inspect real project configuration and current dependencies
 - [Next.js delivery and cache validation](nextjs-delivery.md): version-aware App/Pages models, metadata ownership and reviewed freshness samples. Framework snippets are illustrative, not compiled or deployed.
 
 - [Crawl discovery and robots patterns](crawl-discovery.md): narrow policy, evaluator acceptance fixtures, sitemap reconciliation and scoped evidence review. No network crawler or parser included.
+
+- [Index and canonical patterns](index-canonical.md): equivalent variants, intended exclusions and distinct current/processed evidence timelines. No live modification or search API.

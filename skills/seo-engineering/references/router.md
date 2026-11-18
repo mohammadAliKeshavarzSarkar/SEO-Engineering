@@ -25,6 +25,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | React, Vite, SPA routing, prerender or static deployment | docs/03-technical/t03-react-vite-spa.md; decision-engine/spa-delivery.md; implementation-patterns/react-vite-spa.md; templates/spa-route-build-plan.csv; scripts/audit_spa_build.py |
 | Next.js, App/Pages Router, ISR, Cache Components or hybrid delivery | docs/03-technical/t04-nextjs-hybrid.md; decision-engine/next-delivery.md; implementation-patterns/nextjs-delivery.md; templates/next-route-cache-inventory.csv; scripts/audit_next_delivery.py |
 | Rendering strategy or SPA/SSR architecture | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md; implementation-patterns/route-delivery.md |
+| Index eligibility, canonical conflicts or Search Console indexing evidence | docs/03-technical/t06-indexing-canonicals.md; decision-engine/index-canonical.md; implementation-patterns/index-canonical.md; templates/index-canonical-inventory.csv; scripts/audit_index_evidence.py |
 | URL, canonical, redirect, migration | docs/03-technical/urls-and-migrations.md |
 | Content, trust, metadata | docs/04-content/on-page-and-editorial.md |
 | Structured data/social/entity | docs/04-content/structured-data.md |

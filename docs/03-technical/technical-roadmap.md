@@ -9,7 +9,7 @@ Status: development; v0.2.0-rc.1 remains pinned at 0483ff33d73687adccd11408ec263
 | T03 | [React, Vite and SPA SEO](t03-react-vite-spa.md) | Concrete route registry, metadata, build/host patterns and local artifact QA | Initial methodology |
 | T04 | [Next.js and SSR/SSG/hybrid](t04-nextjs-hybrid.md) | Router/cache model, runtime/export compatibility, streaming and freshness QA | Initial methodology |
 | T05 | [Crawling and robots](t05-crawling-robots.md) | Robots interpretation, discovery and sitemap review, crawl-budget evidence and scoped offline QA | Initial methodology |
-| T06 | Indexing and canonical engineering | Eligibility, canonical signals, processed-state checks | Planned |
+| T06 | [Indexing and canonical engineering](t06-indexing-canonicals.md) | Eligibility, canonical conflicts, historical processed evidence and scoped offline QA | Initial methodology |
 | T07 | URLs, redirects and migrations | Mapping, status/chain QA and rollback | Planned |
 | T08 | Metadata and structured data | Typed generation and validation | Planned |
 | T09 | Core Web Vitals and performance | Field/lab evidence and targeted improvements | Planned |

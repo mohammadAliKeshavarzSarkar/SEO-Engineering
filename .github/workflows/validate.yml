@@ -59,7 +59,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/score_benchmark.py prepare --suite evaluations/cases.json --config evaluations/benchmark-config.example.json --out "$RUNNER_TEMP/benchmark-plan.json"
-          python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); assert len(p["tasks"]) == 174; assert all(set(t)=={"case_id","repeat","prompt"} for t in p["tasks"])' "$RUNNER_TEMP/benchmark-plan.json"
+          python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); assert len(p["tasks"]) == 186; assert all(set(t)=={"case_id","repeat","prompt"} for t in p["tasks"])' "$RUNNER_TEMP/benchmark-plan.json"
       - name: Verify development version in source and archive
         shell: bash
         run: |
@@ -69,12 +69,12 @@ jobs:
           source = pathlib.Path("docs/01-foundations/distribution-version.json").read_bytes()
           meta = json.loads(source)
           assert meta["skill_name"] == "seo-engineering"
-          assert meta["version"] == "0.3.0-dev.5"
+          assert meta["version"] == "0.3.0-dev.6"
           assert meta["status"] == "development" and meta["stable_release"] is False
           archive, receipt = map(pathlib.Path, sys.argv[1:])
           with zipfile.ZipFile(archive) as z:
               assert z.read("seo-engineering/references/library/docs/01-foundations/distribution-version.json") == source
-              assert b"0.3.0-dev.5" in z.read("seo-engineering/SKILL.md")
+              assert b"0.3.0-dev.6" in z.read("seo-engineering/SKILL.md")
           report = json.loads(receipt.read_bytes())
           assert report["archive_sha256"] == hashlib.sha256(archive.read_bytes()).hexdigest()
           print("Verified development snapshot:", meta["version"], report["archive_sha256"], report["file_count"], "files")
