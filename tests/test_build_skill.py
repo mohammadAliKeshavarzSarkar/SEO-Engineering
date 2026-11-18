@@ -30,6 +30,7 @@ class BuildSkillTests(unittest.TestCase):
         self.write('scripts/audit_index_evidence.py', '# index evidence')
         self.write('scripts/audit_migration.py', '# migration')
         self.write('scripts/audit_metadata.py', '# metadata')
+        self.write('scripts/audit_performance.py', '# performance')
 
     def write(self, name, content):
         p = self.root / name
@@ -61,6 +62,7 @@ class BuildSkillTests(unittest.TestCase):
             self.assertIn('seo-engineering/references/library/scripts/audit_index_evidence.py', names)
             self.assertIn('seo-engineering/references/library/scripts/audit_migration.py', names)
             self.assertIn('seo-engineering/references/library/scripts/audit_metadata.py', names)
+            self.assertIn('seo-engineering/references/library/scripts/audit_performance.py', names)
             self.assertIn('seo-engineering/references/library/docs/demo.md', names)
             self.assertFalse(any(b'not for distribution' in z.read(n) for n in names))
             self.assertIsNone(z.testzip())

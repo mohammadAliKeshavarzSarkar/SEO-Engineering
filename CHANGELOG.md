@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.8
+## Unreleased — 0.3.0-dev.9
+
+- T09: field CWV and controlled lab evidence, LCP/INP/CLS attribution, targeted performance techniques preserving motion, accessibility and localized typography, offline matched-cohort QA, 14 unit test methods and E71–E74 public scenarios. No actual performance measurement, instrumentation, deployment, provider adapter or stable release.
 
 - T08: route-specific localized metadata, reviewed entity facts and feature selection, safe JSON-LD serialization, narrow Article/BlogPosting draft and literal observation QA, 15 unit test methods and E67–E70 public scenarios. No actual rich-results validation, deployed build, provider adapter or stable release.
 

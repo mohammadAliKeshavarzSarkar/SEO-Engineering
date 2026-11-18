@@ -1,0 +1,146 @@
+{
+  "schema_version": "1",
+  "scope": "Hand-authored synthetic evidence, no actual performance measurements",
+  "field": [
+    {
+      "id": "field-origin",
+      "source": "crux",
+      "level": "origin",
+      "subject": "https://example.org",
+      "device": "mobile",
+      "start": "2026-10-21",
+      "end": "2026-11-17",
+      "method": "synthetic p75",
+      "evidence_ref": "fixture:origin",
+      "p75": {
+        "lcp_ms": 3200,
+        "inp_ms": null,
+        "cls": 0.08
+      }
+    }
+  ],
+  "lab": [
+    {
+      "id": "guide-lcp",
+      "metric": "lcp_ms",
+      "expected_profile": "fixed-mobile-cold-navigation",
+      "baseline_revision": "old",
+      "candidate_revision": "new",
+      "minimum_runs": 3,
+      "allowed_regression": 100,
+      "baseline": [
+        {
+          "id": "old0",
+          "revision": "old",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 3100,
+          "evidence_ref": "fixture:old0"
+        },
+        {
+          "id": "old1",
+          "revision": "old",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 3200,
+          "evidence_ref": "fixture:old1"
+        },
+        {
+          "id": "old2",
+          "revision": "old",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 3300,
+          "evidence_ref": "fixture:old2"
+        }
+      ],
+      "candidate": [
+        {
+          "id": "new0",
+          "revision": "new",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 2200,
+          "evidence_ref": "fixture:new0"
+        },
+        {
+          "id": "new1",
+          "revision": "new",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 2300,
+          "evidence_ref": "fixture:new1"
+        },
+        {
+          "id": "new2",
+          "revision": "new",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 2400,
+          "evidence_ref": "fixture:new2"
+        }
+      ]
+    },
+    {
+      "id": "mismatched",
+      "metric": "lcp_ms",
+      "expected_profile": "fixed-mobile-cold-navigation",
+      "baseline_revision": "old",
+      "candidate_revision": "new",
+      "minimum_runs": 3,
+      "allowed_regression": 100,
+      "baseline": [
+        {
+          "id": "old0",
+          "revision": "old",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 3100,
+          "evidence_ref": "fixture:old0"
+        },
+        {
+          "id": "old1",
+          "revision": "old",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 3200,
+          "evidence_ref": "fixture:old1"
+        },
+        {
+          "id": "old2",
+          "revision": "old",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 3300,
+          "evidence_ref": "fixture:old2"
+        }
+      ],
+      "candidate": [
+        {
+          "id": "new0",
+          "revision": "new",
+          "profile": "other",
+          "status": "complete",
+          "value": 2200,
+          "evidence_ref": "fixture:new0"
+        },
+        {
+          "id": "new1",
+          "revision": "new",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 2300,
+          "evidence_ref": "fixture:new1"
+        },
+        {
+          "id": "new2",
+          "revision": "new",
+          "profile": "fixed-mobile-cold-navigation",
+          "status": "complete",
+          "value": 2400,
+          "evidence_ref": "fixture:new2"
+        }
+      ]
+    }
+  ]
+}

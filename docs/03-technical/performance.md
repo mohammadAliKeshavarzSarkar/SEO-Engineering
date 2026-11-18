@@ -13,3 +13,5 @@ Use route-level bundles, responsive images, deliberate font preloading and font-
 Acceptance: record baseline and after lab tests with same settings; monitor field distributions across representative traffic after release; test accessibility and real journeys. Do not remove valuable content solely to chase Lighthouse 100.
 
 Sources: [web.dev vitals](https://web.dev/articles/vitals), [mobile-first indexing](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing), [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/).
+
+For detailed field/lab provenance, bottleneck attribution, retained motion and matched regression comparisons see [T09](t09-performance.md). No field values are created from lab observations. Preserve explicit origin/URL scope, missing INP and actual provider assessment separately. Local three-metric completeness is not PSI's assessment rule.

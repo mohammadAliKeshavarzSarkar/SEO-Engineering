@@ -1,0 +1,1 @@
+record_id,route_or_origin,aggregation_level,device,source,metric,unit,statistic,window_start,window_end,method_version,revision,profile,cache_state,journey,run_id,capture_status,value,evidence_ref,attribution_ref,baseline_ref,allowed_regression,ux_guardrail_ref,limitations,reviewer,next_check

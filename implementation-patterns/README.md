@@ -29,3 +29,5 @@ Before writing code, inspect real project configuration and current dependencies
 - [URL migration patterns](url-migration.md): explicit mapping, HTTP trace expectations and acceptance/rollback; no live deployment or host-specific executable configuration.
 
 - [Metadata and entity patterns](metadata-entities.md): reviewed public facts, typed JSON-LD, script-context-safe serialization and layered feature validation; snippets illustrative, not compiled or deployed.
+
+- [Performance optimization patterns](performance-optimization.md): responsive critical media, motion and reduced-motion support, interaction/font acceptance and matched lab evidence. No actual performance run or measured application code.

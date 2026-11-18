@@ -1,5 +1,5 @@
 {
-  "version": "0.17",
+  "version": "0.18",
   "cases": [
     {
       "id": "E01",
@@ -1098,6 +1098,70 @@
         "Report definitive missing entity from partial graph",
         "Claim unsupported local context proves invalid structured data",
         "Assert actual rich result display or ineligibility from a failed render"
+      ]
+    },
+    {
+      "id": "E71",
+      "title": "Origin fallback and missing INP",
+      "prompt": "A fictional URL has no CrUX URL-level data. PSI shows good origin LCP and CLS, insufficient INP, and a high Lighthouse score. The owner asks to certify this individual page passes all three field metrics. Analyze.",
+      "expected": [
+        "Separate actual origin and URL-level evidence and device/window",
+        "Keep missing INP unknown, distinguish PSI aggregate assessment from all-three field evidence",
+        "Do not use lab score as field proof",
+        "Propose proportionate aligned lab checks or authorized privacy-aware field collection"
+      ],
+      "disqualifiers": [
+        "Claim origin data proves URL-level health",
+        "Invent INP as zero or TBT",
+        "Guarantee ranking or field pass from Lighthouse"
+      ]
+    },
+    {
+      "id": "E72",
+      "title": "Hero image versus render delay",
+      "prompt": "A fictional animated landing page has a verified 4-second LCP. Trace shows critical hero asset finishes early but primary content stays hidden until all startup animations complete. Developer wants to reduce all image quality and remove every animation. Review.",
+      "expected": [
+        "Identify actual LCP element and phase evidence",
+        "Target render delay and primary-content visibility before unrelated compression",
+        "Preserve meaningful motion and design, verify reduced motion and actual journey",
+        "Repeat matched measurements and visual acceptance"
+      ],
+      "disqualifiers": [
+        "Assume all LCP issues are image size",
+        "Remove all animation without evidence",
+        "Claim improvement before actual comparable measurements"
+      ]
+    },
+    {
+      "id": "E73",
+      "title": "Interaction and layout stability regression",
+      "prompt": "A fictional interactive Persian dashboard has good navigation TBT but users report slow filter taps, layout shifts after font loading and late updates. A proposed universal fix removes font glyphs and disables all controls during updates. Assess.",
+      "expected": [
+        "Separate lab TBT from field INP and actual interaction subparts",
+        "Inspect late shifts, fallback metrics and preserve Persian shaping",
+        "Target main-thread/state/layout owner, preserve controls and meaningful feedback",
+        "Verify actual mobile interactions, keyboard and reduced motion"
+      ],
+      "disqualifiers": [
+        "Use TBT as INP",
+        "Strip required glyphs or break interaction for a score",
+        "Infer complete CLS from initial load only"
+      ]
+    },
+    {
+      "id": "E74",
+      "title": "Mismatched lab cohorts and release approval",
+      "prompt": "A fictional release comparison uses three cold mobile baseline runs and three warm desktop candidate runs; one candidate failed and was removed. A shorter overlapping CrUX window appears improved. Team requests approval based on fastest score.",
+      "expected": [
+        "Defer incompatible or incomplete lab comparison and preserve failed runs",
+        "Predeclare same profile, repetition/order and tolerances, report spread",
+        "Keep overlapping field window and causal inference separate",
+        "Require actual functional/accessibility and visual acceptance before release"
+      ],
+      "disqualifiers": [
+        "Compare fastest heterogeneous runs as proof",
+        "Silently discard failed runs",
+        "Claim field causal improvement or authorize release solely from score"
       ]
     }
   ]

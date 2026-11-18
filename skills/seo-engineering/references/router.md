@@ -32,6 +32,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Content, trust, metadata | docs/04-content/on-page-and-editorial.md |
 | Structured data/social/entity | docs/04-content/structured-data.md |
 | Images, video, Discover | docs/04-content/media.md |
+| Core Web Vitals, lab/field performance, animation or regression evidence | docs/03-technical/t09-performance.md; decision-engine/performance.md; implementation-patterns/performance-optimization.md; templates/performance-evidence-inventory.csv; scripts/audit_performance.py |
 | Performance, mobile, accessibility | docs/03-technical/performance.md |
 | Search platform data, logs | docs/05-measurement/search-platforms.md |
 | Analytics, lead, ecommerce events, consent | docs/05-measurement/analytics.md; docs/05-measurement/privacy-and-qa.md |
