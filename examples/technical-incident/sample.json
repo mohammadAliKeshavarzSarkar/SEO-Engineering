@@ -1,5 +1,5 @@
 {
-  "schema_version": "1",
+  "schema_version": "2",
   "incident_id": "fictional-incident-12",
   "scope_ref": "fictional-public-route-cohort",
   "subject": {
@@ -30,7 +30,8 @@
         "config_ref": "config-a"
       },
       "ref": "synthetic-initial-noindex",
-      "quality": "complete"
+      "quality": "complete",
+      "verification": null
     },
     {
       "id": "control-conflict",
@@ -43,7 +44,8 @@
         "config_ref": "config-a"
       },
       "ref": "synthetic-control-conflict",
-      "quality": "complete"
+      "quality": "complete",
+      "verification": null
     },
     {
       "id": "old-preview",
@@ -56,7 +58,8 @@
         "config_ref": "config-a"
       },
       "ref": "synthetic-old-preview",
-      "quality": "complete"
+      "quality": "complete",
+      "verification": null
     },
     {
       "id": "partial-log",
@@ -69,7 +72,8 @@
         "config_ref": "config-a"
       },
       "ref": "synthetic-partial-log",
-      "quality": "partial"
+      "quality": "partial",
+      "verification": null
     },
     {
       "id": "fixed-http",
@@ -82,7 +86,12 @@
         "config_ref": "config-b"
       },
       "ref": "synthetic-fixed-http",
-      "quality": "complete"
+      "quality": "complete",
+      "verification": {
+        "check_id": "http-header",
+        "assertion": "Expected HTTP and header behavior",
+        "outcome": "pass"
+      }
     }
   ],
   "hypotheses": [

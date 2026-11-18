@@ -44,6 +44,29 @@ class ReleaseGateTests(unittest.TestCase):
                 self.assertEqual(report["gates"][0]["state"], "stale")
                 self.assertEqual(report["disposition"], "hold")
 
+    def test_changed_policy_assertion_or_gate(self):
+        for field in ("policy_ref", "assertion", "gate_id"):
+            with self.subTest(field=field):
+                data = copy.deepcopy(self.data)
+                if field == "policy_ref":
+                    data["policy_ref"] = "changed-policy"
+                elif field == "assertion":
+                    data["gates"][0]["assertion"] = "different assertion"
+                else:
+                    data["gates"][0]["id"] = "different-gate"
+                report = module.review(data)
+                self.assertEqual(report["gates"][0]["state"], "stale")
+                self.assertEqual(report["disposition"], "hold")
+
+    def test_cross_gate_evidence_not_reusable(self):
+        self.data["gates"][1]["evidence"] = copy.deepcopy(self.data["gates"][0]["evidence"])
+        self.assertEqual(module.review(self.data)["blockers"], ["private-access"])
+
+    def test_legacy_schema_requires_review(self):
+        self.data["schema_version"] = "1"
+        with self.assertRaises(ValueError):
+            module.review(self.data)
+
     def test_exposure_current_and_stale(self):
         for ref_subject in (self.data["subject"], {**self.data["subject"], "artifact": "older"}):
             self.data["exposure"] = {"subject": ref_subject, "ref": "synthetic-exposure"}

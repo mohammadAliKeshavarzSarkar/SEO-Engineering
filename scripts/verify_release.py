@@ -46,10 +46,33 @@ def main():
         for script, fixture in FIXTURES:
             run(label + ': ' + script, root, ['scripts/' + script,'--input',fixture,'--output',str(out / (label + '-' + script + '.json'))])
 
+    def semantic_smoke(label, work):
+        # Parity is not correctness: assert expected meaning in both layouts.
+        cases = (
+            ('audit_technical.py', lambda r: r['coverage']['module_counts']['processed'] == 9
+             and r['review_required'] is True and r['authorization_required'] is True),
+            ('review_release_gates.py', lambda r: r['method'] == 'T11-v2'
+             and r['disposition'] == 'review_optional' and r['deployment_authorized'] is False
+             and r['optional_review'] == ['field-performance']),
+            ('review_incident.py', lambda r: r['method'] == 'T12-v2'
+             and r['hypotheses'][0]['state'] == 'conflicting'
+             and r['required_blockers'] == ['rendered-directive']
+             and r['disposition'] == 'investigate' and r['incident_closed'] is False
+             and r['search_recovery_established'] is False),
+        )
+        for name, expectation in cases:
+            try:
+                report = json.loads((work / (label + '-' + name + '.json')).read_bytes())
+                ok = bool(expectation(report))
+            except (OSError, ValueError, TypeError, KeyError, IndexError):
+                ok = False
+            results.append({'check': label + ': fixture semantics: ' + name, 'pass': ok})
+
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp)
         run('repository unit tests', ROOT, ['-m','unittest','discover','-s','tests','-v'])
         smoke(ROOT, 'repo', work)
+        semantic_smoke('repo', work)
         archive = work / 'skill.zip'
         if run('build portable skill', ROOT, ['scripts/build_skill.py','--out',str(archive)]):
             try:
@@ -70,6 +93,7 @@ def main():
                     raise ValueError('missing entrypoint or routing files')
                 results.append({'check':'archive structure','pass':True})
                 smoke(library, 'package', work)
+                semantic_smoke('package', work)
                 for script in [name for name, _ in FIXTURES] + ['audit_spa_build.py', 'audit_technical.py']:
                     left, right = [work / (label + '-' + script + '.json') for label in ('repo','package')]
                     equal = left.is_file() and right.is_file() and left.read_bytes() == right.read_bytes()

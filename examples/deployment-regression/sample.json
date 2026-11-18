@@ -1,5 +1,5 @@
 {
-  "schema_version": "1",
+  "schema_version": "2",
   "release_id": "fictional-release-02",
   "policy_ref": "fictional-reviewed-policy-1",
   "subject": {
@@ -8,7 +8,8 @@
     "artifact": "fictional-build-b",
     "environment": "preview.example.invalid",
     "profile": "anonymous-mobile-v1",
-    "config_ref": "fictional-config-2"
+    "config_ref": "fictional-config-2",
+    "scope_ref": "fictional-reviewed-release-cohort"
   },
   "gates": [
     {
@@ -22,11 +23,16 @@
           "artifact": "fictional-build-b",
           "environment": "preview.example.invalid",
           "profile": "anonymous-mobile-v1",
-          "config_ref": "fictional-config-2"
+          "config_ref": "fictional-config-2",
+          "scope_ref": "fictional-reviewed-release-cohort"
         },
         "outcome": "pass",
-        "ref": "synthetic-preview-observation-1"
-      }
+        "ref": "synthetic-preview-observation-1",
+        "policy_ref": "fictional-reviewed-policy-1",
+        "gate_id": "public-delivery",
+        "assertion": "Expected public delivery status and content"
+      },
+      "assertion": "Expected public delivery status and content"
     },
     {
       "id": "private-access",
@@ -39,17 +45,23 @@
           "artifact": "fictional-build-b",
           "environment": "preview.example.invalid",
           "profile": "anonymous-mobile-v1",
-          "config_ref": "fictional-config-2"
+          "config_ref": "fictional-config-2",
+          "scope_ref": "fictional-reviewed-release-cohort"
         },
         "outcome": "pass",
-        "ref": "synthetic-access-check-1"
-      }
+        "ref": "synthetic-access-check-1",
+        "policy_ref": "fictional-reviewed-policy-1",
+        "gate_id": "private-access",
+        "assertion": "Private route denies unauthorized access"
+      },
+      "assertion": "Private route denies unauthorized access"
     },
     {
       "id": "field-performance",
       "required": false,
       "rationale": "Delayed field evidence is separately monitored",
-      "evidence": null
+      "evidence": null,
+      "assertion": "Compare delayed field cohort"
     }
   ],
   "exposure": null

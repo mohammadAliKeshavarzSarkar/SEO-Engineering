@@ -26,3 +26,5 @@ Technical modules specify evidence needs independently of a vendor. WebsiteBotSc
 ## Technical development exit and stabilization
 
 All twelve initial modules are authored as of dev.12. This is a development milestone, not certification. Before a technical release candidate, review cross-module terminology and failure semantics, test adversarial inputs and combined cases, run exact-revision repository/package checks, inspect sources and actual package contents, and record unresolved external/behavioral gates. See [technical stabilization plan](technical-stabilization.md). Do not replace the pinned historical candidate or assume external compatibility.
+
+TS01 introduces [technical handoff semantics](technical-handoffs.md) and local T11/T12 schema v2 bindings; consult the stabilization record for scope and pending tests. The exact Git revision remains authoritative for development snapshots.

@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-SUBJECT = {"stage", "revision", "artifact", "environment", "profile", "config_ref"}
+SUBJECT = {"stage", "scope_ref", "revision", "artifact", "environment", "profile", "config_ref"}
 
 
 def exact(value, keys):
@@ -40,7 +40,7 @@ def reject_constant(_):
 
 def review(data):
     exact(data, {"schema_version", "release_id", "policy_ref", "subject", "gates", "exposure"})
-    if data["schema_version"] != "1":
+    if data["schema_version"] != "2":
         raise ValueError("unsupported schema")
     for key in ("release_id", "policy_ref"):
         string(data[key])
@@ -52,9 +52,10 @@ def review(data):
     seen, results, blockers, optional = set(), [], [], []
     required_count = 0
     for gate in gates:
-        exact(gate, {"id", "required", "rationale", "evidence"})
+        exact(gate, {"id", "required", "rationale", "assertion", "evidence"})
         string(gate["id"])
         string(gate["rationale"])
+        string(gate["assertion"])
         if gate["id"] in seen or type(gate["required"]) is not bool:
             raise ValueError("duplicate gate or invalid required flag")
         seen.add(gate["id"])
@@ -62,12 +63,15 @@ def review(data):
         evidence = gate["evidence"]
         state = "missing"
         if evidence is not None:
-            exact(evidence, {"subject", "outcome", "ref"})
+            exact(evidence, {"subject", "outcome", "ref", "policy_ref", "gate_id", "assertion"})
             subject(evidence["subject"])
-            string(evidence["ref"])
+            for field in ("ref", "policy_ref", "gate_id", "assertion"):
+                string(evidence[field])
             if evidence["outcome"] not in ("pass", "fail", "incomplete"):
                 raise ValueError("invalid evidence outcome")
-            state = evidence["outcome"] if evidence["subject"] == current else "stale"
+            matched = (evidence["subject"] == current and evidence["policy_ref"] == data["policy_ref"]
+                       and evidence["gate_id"] == gate["id"] and evidence["assertion"] == gate["assertion"])
+            state = evidence["outcome"] if matched else "stale"
         results.append({**gate, "state": state})
         if state != "pass":
             (blockers if gate["required"] else optional).append(gate["id"])
@@ -88,7 +92,7 @@ def review(data):
         disposition = "review_optional"
     else:
         disposition = "ready_for_owner_review"
-    return {"schema_version": "1", "method": "T11-v1", "release_id": data["release_id"],
+    return {"schema_version": "2", "method": "T11-v2", "release_id": data["release_id"],
             "policy_ref": data["policy_ref"], "subject": current, "gates": results,
             "blockers": blockers, "optional_review": optional, "exposure": exposure,
             "exposure_state": exposure_state, "disposition": disposition,

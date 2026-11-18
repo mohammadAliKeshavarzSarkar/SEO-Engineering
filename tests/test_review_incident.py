@@ -18,7 +18,11 @@ class IncidentTests(unittest.TestCase):
         self.data = json.loads((ROOT / "examples/technical-incident/sample.json").read_text())
 
     def finish_checks(self):
-        self.data["checks"][1].update(evidence_id="fixed-http", outcome="pass")
+        c = self.data["checks"][1]
+        self.data["evidence"].append({"id": "fixed-rendered", "subject": self.data["recovery_subject"],
+            "ref": "synthetic-rendered-observation", "quality": "complete",
+            "verification": {"check_id": c["id"], "assertion": c["assertion"], "outcome": "pass"}})
+        c.update(evidence_id="fixed-rendered", outcome="pass")
 
     def test_conflicts_and_exclusions(self):
         r = module.review(self.data)
@@ -49,6 +53,23 @@ class IncidentTests(unittest.TestCase):
         for ident in ("initial-noindex", "partial-log"):
             self.data["checks"][1].update(evidence_id=ident, outcome="pass")
             self.assertEqual(module.review(self.data)["checks"][1]["state"], "unmatched_or_partial")
+
+    def test_http_evidence_cannot_pass_rendered_check(self):
+        self.data["checks"][1].update(evidence_id="fixed-http", outcome="pass")
+        r = module.review(self.data)
+        self.assertEqual(r["checks"][1]["state"], "unmatched_assertion")
+        self.assertEqual(r["disposition"], "investigate")
+
+    def test_changed_recovery_assertion_or_outcome(self):
+        for field, value in (("assertion", "new requirement"), ("outcome", "fail"), ("id", "another-check")):
+            data = copy.deepcopy(self.data)
+            data["checks"][0][field] = value
+            self.assertEqual(module.review(data)["checks"][0]["state"], "unmatched_assertion")
+
+    def test_legacy_schema_requires_review(self):
+        self.data["schema_version"] = "1"
+        with self.assertRaises(ValueError):
+            module.review(self.data)
 
     def test_unknown_ref(self):
         self.data["hypotheses"][0]["assessments"][0]["evidence_id"] = "unknown"

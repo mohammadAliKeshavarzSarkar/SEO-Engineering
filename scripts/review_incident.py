@@ -53,7 +53,7 @@ def reject_constant(_):
 def review(data):
     exact(data, {"schema_version", "incident_id", "scope_ref", "subject", "recovery_subject",
                  "evidence", "hypotheses", "checks", "exposure_ref", "search_follow_up"})
-    if data["schema_version"] != "1":
+    if data["schema_version"] != "2":
         raise ValueError("unsupported schema")
     scope = data["scope_ref"]
     string(scope)
@@ -73,12 +73,19 @@ def review(data):
     evidence = {}
     seen = set()
     for item in data["evidence"]:
-        exact(item, {"id", "subject", "ref", "quality"})
+        exact(item, {"id", "subject", "ref", "quality", "verification"})
         unique_id(item["id"], seen)
         subject(item["subject"], scope)
         string(item["ref"])
         if item["quality"] not in ("complete", "partial"):
             raise ValueError("invalid evidence quality")
+        v = item["verification"]
+        if v is not None:
+            exact(v, {"check_id", "assertion", "outcome"})
+            string(v["check_id"])
+            string(v["assertion"])
+            if v["outcome"] not in ("pass", "fail", "incomplete"):
+                raise ValueError("invalid verification outcome")
         evidence[item["id"]] = item
 
     def lookup(ref):
@@ -136,8 +143,12 @@ def review(data):
             item = lookup(ident)
             if outcome not in ("pass", "fail", "incomplete"):
                 raise ValueError("invalid check outcome")
-            state = (outcome if item["subject"] == recovery and item["quality"] == "complete"
-                     else "unmatched_or_partial")
+            if item["subject"] != recovery or item["quality"] != "complete":
+                state = "unmatched_or_partial"
+            elif item["verification"] != {"check_id": c["id"], "assertion": c["assertion"], "outcome": outcome}:
+                state = "unmatched_assertion"
+            else:
+                state = outcome
         checks.append({**c, "state": state})
         if state != "pass":
             (blockers if c["required"] else optional).append(c["id"])
@@ -151,7 +162,7 @@ def review(data):
         disposition = "review_optional"
     else:
         disposition = "technical_recovery_review"
-    return {**data, "method": "T12-v1", "hypotheses": hypotheses, "checks": checks,
+    return {**data, "method": "T12-v2", "hypotheses": hypotheses, "checks": checks,
             "required_blockers": blockers, "optional_review": optional,
             "disposition": disposition, "root_cause_confirmed": False,
             "evidence_independently_verified": False, "incident_closed": False,

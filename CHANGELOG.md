@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- TS01 targeted technical architecture review: T11/T12 local schemas v2 bind scope/policy/gate/assertion or recovery assertion/outcome, prevent cross-gate/HTTP-to-rendered evidence reuse, reject v1 pending reviewed migration; six new regression methods and semantic repository/package smoke checks. Added cross-module handoff contract and documented remaining TS02 risks. Base T12 hosted CI passed; changed-commit CI separate. No stable release or external integration.
+
 - T12: incident scoping, competing hypotheses and falsification, symptom-specific playbooks, independent exposure escalation, recovery verification distinct from search outcomes, offline incident ledger, synthetic fixture, regression tests and E83–E86 public cases. All twelve technical modules have initial development; stabilization, independent behavioral validation, provider integration and stable release remain pending. T11 exact-commit hosted CI passed.
 
 - T11: version- and environment-bound, reviewed release gate evidence; separate candidate and production checks, explicit missing/stale evidence, independent access-exposure escalation, offline gate utility, synthetic fixtures, regression tests and E79–E82 public cases. No live deployment, monitoring, rollback execution, external provider adapter or stable release.
