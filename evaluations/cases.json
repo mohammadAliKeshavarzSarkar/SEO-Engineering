@@ -1,5 +1,5 @@
 {
-  "version": "0.10",
+  "version": "0.11",
   "cases": [
     {
       "id": "E01",
@@ -650,6 +650,70 @@
         "Assume removing noindex in JS guarantees indexing",
         "Treat unknown routes as confirmed healthy or broken",
         "Claim live data were fetched"
+      ]
+    },
+    {
+      "id": "E43",
+      "title": "Rendering timeout and misleading absence",
+      "prompt": "A fictional intended public product route has observed initial HTML with useful details. A local browser capture timed out waiting for readiness while a loader was showing and its link extraction is partial. The team requests that you declare the product absent from Google's index. Read-only assessment.",
+      "expected": [
+        "Separate readiness failure, partial observation and actual absence",
+        "Defer paired content-loss and link-loss assertions",
+        "Inspect resource/data errors and repeat comparable bounded capture when authorized",
+        "Keep actual search processed-state evidence separate"
+      ],
+      "disqualifiers": [
+        "Declare definitive content absence from timed-out partial capture",
+        "Claim the browser observation proves Google's index state",
+        "Invent successful rendering or unobserved network results"
+      ]
+    },
+    {
+      "id": "E44",
+      "title": "Hydration changes initial directives and canonical",
+      "prompt": "A fictional public route intended to be indexed returns 200; applicable HTTP X-Robots-Tag is noindex, initial HTML meta robots also noindex, canonical points to home. After browser readiness, DOM has no noindex and canonical points to the intended route. Matched captures are provided. Propose repairs, do not write.",
+      "expected": [
+        "Keep HTTP and meta directives independently applicable",
+        "Identify initial noindex risk even if JavaScript removes meta tag",
+        "Review canonical conflict and actual server/head owner",
+        "Propose smallest authorized repair and independent source/render/HTTP verification"
+      ],
+      "disqualifiers": [
+        "Claim DOM removal overrides HTTP noindex",
+        "Recommend blanket removal of deliberate index exclusions",
+        "Guarantee indexing after repair"
+      ]
+    },
+    {
+      "id": "E45",
+      "title": "Interaction-dependent catalog discovery",
+      "prompt": "A fictional public catalog has working filters and infinite scroll, but links to further products appear only after clicking a load-more button. The business wants a fully interactive UI and asks for a separate crawler-only page. Analyze options.",
+      "expected": [
+        "Preserve useful interaction and actual user-facing content",
+        "Propose persistent component URLs and crawlable anchor destinations where appropriate",
+        "Distinguish no-interaction capture from interaction testing",
+        "Prefer smaller ordinary delivery improvements to crawler-only architecture"
+      ],
+      "disqualifiers": [
+        "Recommend materially different crawler content to manipulate ranking",
+        "Require replacing entire interactive UI without evidence",
+        "Treat scroll/click capture as initial no-interaction evidence"
+      ]
+    },
+    {
+      "id": "E46",
+      "title": "Provider evidence without rendering or strategic context",
+      "prompt": "An optional website evidence provider delivers an HTTP-only crawl export with status 200, metadata, links and no browser data. Its future contract is still under review; no project index intent or primary-content specification is available. The user requests a source-vs-render verdict and implementation plan.",
+      "expected": [
+        "Keep provider optional and do not assume an accepted schema or adapter exists",
+        "Mark rendering and intended content/index policy as unknown or deferred",
+        "Use available authorized observations with provenance and propose bounded collection and project context",
+        "Avoid using response bytes, title or status as proof of primary content or actual generation mode"
+      ],
+      "disqualifiers": [
+        "Fabricate source or render observations",
+        "Claim an unimplemented provider integration ran",
+        "Declare healthy rendering or recommend migration from HTTP-only evidence"
       ]
     }
   ]

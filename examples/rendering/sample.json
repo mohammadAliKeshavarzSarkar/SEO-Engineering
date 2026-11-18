@@ -1,0 +1,178 @@
+{
+  "schema_version": "1",
+  "scope": "Synthetic local rendering QA, not a live crawl",
+  "routes": [
+    {
+      "id": "guide",
+      "index_intent": true,
+      "http_status": 200,
+      "http_noindex": false,
+      "comparability": "matched",
+      "readiness": "met",
+      "required_link_targets": [
+        "catalog"
+      ],
+      "source": {
+        "status": "complete",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": "S1",
+        "primary_content": "present",
+        "titles": [
+          "Example guide"
+        ],
+        "canonicals": [
+          "https://example.org/guide/"
+        ],
+        "meta_noindex": false,
+        "link_targets": [
+          "catalog",
+          "home"
+        ]
+      },
+      "rendered": {
+        "status": "complete",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": "R1",
+        "primary_content": "present",
+        "titles": [
+          "Example guide"
+        ],
+        "canonicals": [
+          "https://example.org/guide/"
+        ],
+        "meta_noindex": false,
+        "link_targets": [
+          "catalog",
+          "home"
+        ]
+      }
+    },
+    {
+      "id": "client-completed",
+      "index_intent": true,
+      "http_status": 200,
+      "http_noindex": false,
+      "comparability": "matched",
+      "readiness": "met",
+      "required_link_targets": [
+        "catalog"
+      ],
+      "source": {
+        "status": "complete",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": "S2",
+        "primary_content": "absent",
+        "titles": [
+          "Example guide"
+        ],
+        "canonicals": [
+          "https://example.org/guide/"
+        ],
+        "meta_noindex": false,
+        "link_targets": [
+          "catalog",
+          "home"
+        ]
+      },
+      "rendered": {
+        "status": "complete",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": "R2",
+        "primary_content": "present",
+        "titles": [
+          "Example guide"
+        ],
+        "canonicals": [
+          "https://example.org/guide/"
+        ],
+        "meta_noindex": false,
+        "link_targets": [
+          "catalog",
+          "home"
+        ]
+      }
+    },
+    {
+      "id": "regression",
+      "index_intent": true,
+      "http_status": 200,
+      "http_noindex": false,
+      "comparability": "matched",
+      "readiness": "met",
+      "required_link_targets": [
+        "catalog"
+      ],
+      "source": {
+        "status": "complete",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": "S3",
+        "primary_content": "present",
+        "titles": [
+          "Example guide"
+        ],
+        "canonicals": [
+          "https://example.org/guide/"
+        ],
+        "meta_noindex": true,
+        "link_targets": [
+          "catalog",
+          "home"
+        ]
+      },
+      "rendered": {
+        "status": "complete",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": "R3",
+        "primary_content": "partial",
+        "titles": [
+          "Example guide"
+        ],
+        "canonicals": [
+          "https://example.org/"
+        ],
+        "meta_noindex": false,
+        "link_targets": [
+          "home"
+        ]
+      }
+    },
+    {
+      "id": "not-rendered",
+      "index_intent": true,
+      "http_status": 200,
+      "http_noindex": false,
+      "comparability": "matched",
+      "readiness": "unknown",
+      "required_link_targets": [
+        "catalog"
+      ],
+      "source": {
+        "status": "complete",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": "S4",
+        "primary_content": "present",
+        "titles": [
+          "Example guide"
+        ],
+        "canonicals": [
+          "https://example.org/guide/"
+        ],
+        "meta_noindex": false,
+        "link_targets": [
+          "catalog",
+          "home"
+        ]
+      },
+      "rendered": {
+        "status": "not_collected",
+        "context_id": "synthetic-deployment-mobile-en",
+        "evidence_ref": null,
+        "primary_content": "unknown",
+        "titles": null,
+        "canonicals": null,
+        "meta_noindex": null,
+        "link_targets": null
+      }
+    }
+  ]
+}

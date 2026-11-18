@@ -2,6 +2,8 @@
 
 Before selecting or changing a rendering approach, use [T01 architecture detection](t01-architecture-detection.md) and the [technical roadmap](technical-roadmap.md). Framework dependencies do not prove actual delivered rendering strategy.
 
+For source/render discrepancies and browser readiness use [T02](t02-javascript-rendering.md). Do not equate an incomplete or missing capture with absent primary content.
+
 ## Choose the rendering approach by template
 
 | Approach | Good fit | Tradeoffs |

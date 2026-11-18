@@ -5,7 +5,7 @@ Status: development; v0.2.0-rc.1 remains pinned at 0483ff33d73687adccd11408ec263
 | ID | Module | Deliverable | State |
 |---|---|---|---|
 | T01 | [Architecture and technology detection](t01-architecture-detection.md) | Route evidence, ownership, offline observation tool | Initial methodology |
-| T02 | JavaScript rendering engineering | Source/render parity, readiness, failure diagnosis | Planned |
+| T02 | [JavaScript rendering engineering](t02-javascript-rendering.md) | Matched source/render observations, readiness, repair patterns and offline QA | Initial methodology |
 | T03 | React, Vite and SPA SEO | Routing and build/host patterns | Planned |
 | T04 | Next.js and SSR/SSG/hybrid | Version-specific architecture and cache-aware validation | Planned |
 | T05 | Crawling and robots | Scoped crawl rules and diagnostics | Planned |
@@ -18,3 +18,7 @@ Status: development; v0.2.0-rc.1 remains pinned at 0483ff33d73687adccd11408ec263
 | T12 | Technical troubleshooting | Evidence-driven incident playbooks | Planned |
 
 Use the [module standard](../01-foundations/module-standard.md). Verify framework and platform versions before implementation. Begin with existing useful architecture; no automatic migration. Keep all examples synthetic and private data outside library. Unit/CI success does not establish actual index or agent outcomes.
+
+## Optional external evidence providers
+
+Technical modules specify evidence needs independently of a vendor. WebsiteBotScroll may become an optional source through a jointly reviewed versioned contract. The exact 0.1.0 schema and fixtures are pending; do not create provider mappings or assume operational capabilities. Preserve standalone tools, project context and evidence limitations. REST/MCP and actual integrations remain deferred.

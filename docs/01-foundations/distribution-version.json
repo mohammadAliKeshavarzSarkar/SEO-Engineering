@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "skill_name": "seo-engineering",
-  "version": "0.3.0-dev.1",
+  "version": "0.3.0-dev.2",
   "status": "development",
   "stable_release": false,
   "behavioral_validation": "not_run",

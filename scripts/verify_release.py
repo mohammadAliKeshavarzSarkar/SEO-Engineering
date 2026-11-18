@@ -15,6 +15,7 @@ FIXTURES = (
     ('audit_locale_manifest.py', 'examples/locale-audit/sample.json'),
     ('validate_research.py', 'examples/research-handoff/sample.json'),
     ('inspect_architecture.py', 'examples/architecture/sample.json'),
+    ('audit_rendering.py', 'examples/rendering/sample.json'),
 )
 
 
