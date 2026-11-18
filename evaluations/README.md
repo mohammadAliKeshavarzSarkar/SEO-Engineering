@@ -2,7 +2,7 @@
 
 These synthetic cases test agent decisions and behavior, not actual rankings or tool availability. Cases in [cases.json](cases.json) are original fictional scenarios. No model has been scored by publishing this file.
 
-For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 62 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
+For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 66 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
 
 ## Run protocol
 
@@ -29,3 +29,5 @@ T04 adds E51–E54 (export/runtime, Cache Components, streaming/status and fresh
 T05 adds E55–E58 (robots retrieval and permission, directive visibility, partial discovery and crawl budget). Current 58-case suite at three repeats plans 174 matched pairs / 348 individual runs; none independently executed.
 
 T06 adds E59–E62 (processed recency, canonical conflicts, intended exclusions, unsupported indexing requests). Current 62-case suite at three repeats plans 186 matched pairs / 372 individual runs; none independently executed.
+
+T07 adds E63–E66 (URL preservation, Unicode and parameter semantics, partial redirect traces, domain migration and rollback). Current 66-case suite at three repeats plans 198 matched pairs / 396 individual runs; none independently executed.

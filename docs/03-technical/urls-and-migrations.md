@@ -2,6 +2,8 @@
 
 Choose one canonical HTTPS origin and explicit policies for hostname, case, trailing slash, parameters, encodings, locale and pagination. Redirect variants directly to final intended URL where feasible, preserving allowed campaign params and meaningful query values. Do not redirect arbitrary missing URLs to home. Use canonical hints for equivalent duplicate URLs; canonicals are not directives or replacements for redirects. Align internal links, sitemap, metadata, structured data and response redirects. Every intended indexable page should have a consistent preferred URL; self-canonical is a useful project policy, not a universal technical requirement.
 
+Use [T07](t07-url-migrations.md) for explicit old/new mappings, trace evidence, scope-aware redirect QA, query/Unicode policy and rollback. Change of Address also does not apply to www/non-www changes on the same domain or hosting-only moves. Retain existing useful URLs when feasible.
+
 ## Migration runbook
 
 Before: inventory old URLs from crawl, sitemap, logs, backlinks and search exports; map to equivalent new URLs; mark no-replacement URLs 404/410; check domain ownership, certificates, routing, content parity, analytics, robots and capacity. Preserve URLs when a redesign does not require changes. Test staging with access protection. Prepare rollback, backups and owner sign-off.

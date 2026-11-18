@@ -1,0 +1,120 @@
+{
+  "schema_version": "1",
+  "scope": "Synthetic reviewed migration map and traces, not live requests",
+  "policy_version": "fixture-1",
+  "allowed_origins": [
+    "https://old.example.org",
+    "https://new.example.org"
+  ],
+  "routes": [
+    {
+      "id": "guide",
+      "old_url": "https://old.example.org/guide/",
+      "target_url": "https://new.example.org/guide/",
+      "action": "permanent_redirect",
+      "plan_ref": "fixture:plan-guide",
+      "replacement_reviewed": true,
+      "terminal_statuses": [
+        200
+      ],
+      "trace": {
+        "status": "complete",
+        "context_matched": true,
+        "evidence_ref": "fixture:trace-guide",
+        "transactions": [
+          {
+            "url": "https://old.example.org/guide/",
+            "status": 301,
+            "resolved_location": "https://new.example.org/guide/",
+            "evidence_ref": "fixture:https://old.example.org/guide/"
+          },
+          {
+            "url": "https://new.example.org/guide/",
+            "status": 200,
+            "resolved_location": null,
+            "evidence_ref": "fixture:https://new.example.org/guide/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "catalog",
+      "old_url": "https://old.example.org/catalog/?size=large",
+      "target_url": "https://new.example.org/catalog/?size=large",
+      "action": "permanent_redirect",
+      "plan_ref": "fixture:plan-catalog",
+      "replacement_reviewed": true,
+      "terminal_statuses": [
+        200
+      ],
+      "trace": {
+        "status": "complete",
+        "context_matched": true,
+        "evidence_ref": "fixture:trace-catalog",
+        "transactions": [
+          {
+            "url": "https://old.example.org/catalog/?size=large",
+            "status": 301,
+            "resolved_location": "https://new.example.org/catalog/",
+            "evidence_ref": "fixture:https://old.example.org/catalog/?size=large"
+          },
+          {
+            "url": "https://new.example.org/catalog/",
+            "status": 200,
+            "resolved_location": null,
+            "evidence_ref": "fixture:https://new.example.org/catalog/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial",
+      "old_url": "https://old.example.org/article/",
+      "target_url": "https://new.example.org/article/",
+      "action": "permanent_redirect",
+      "plan_ref": "fixture:plan-partial",
+      "replacement_reviewed": true,
+      "terminal_statuses": [
+        200
+      ],
+      "trace": {
+        "status": "partial",
+        "context_matched": true,
+        "evidence_ref": "fixture:partial",
+        "transactions": [
+          {
+            "url": "https://old.example.org/article/",
+            "status": 301,
+            "resolved_location": "https://new.example.org/article/",
+            "evidence_ref": "fixture:https://old.example.org/article/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "retired",
+      "old_url": "https://old.example.org/retired/",
+      "target_url": null,
+      "action": "remove",
+      "plan_ref": "fixture:plan-retired",
+      "replacement_reviewed": null,
+      "terminal_statuses": [
+        404,
+        410
+      ],
+      "trace": {
+        "status": "complete",
+        "context_matched": true,
+        "evidence_ref": "fixture:trace-retired",
+        "transactions": [
+          {
+            "url": "https://old.example.org/retired/",
+            "status": 410,
+            "resolved_location": null,
+            "evidence_ref": "fixture:https://old.example.org/retired/"
+          }
+        ]
+      }
+    }
+  ]
+}

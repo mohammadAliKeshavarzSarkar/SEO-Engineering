@@ -19,6 +19,7 @@ FIXTURES = (
     ('audit_next_delivery.py', 'examples/next-delivery/sample.json'),
     ('audit_crawl_evidence.py', 'examples/crawl-evidence/sample.json'),
     ('audit_index_evidence.py', 'examples/index-evidence/sample.json'),
+    ('audit_migration.py', 'examples/migration/sample.json'),
 )
 
 

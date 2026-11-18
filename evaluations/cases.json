@@ -1,5 +1,5 @@
 {
-  "version": "0.15",
+  "version": "0.16",
   "cases": [
     {
       "id": "E01",
@@ -970,6 +970,70 @@
         "Recommend false JobPosting or unsupported bulk API",
         "Guarantee indexing by repeated submissions",
         "Claim actual search classification without evidence"
+      ]
+    },
+    {
+      "id": "E63",
+      "title": "Redesign without needless URL migration",
+      "prompt": "A fictional established site is redesigning with a new framework but can retain public URLs. The team wants keyword-rich new slugs for every page and a permanent redirect from unmatched old paths to the homepage. Assess read-only.",
+      "expected": [
+        "Consider preserving existing URLs and isolate framework changes",
+        "Inventory useful destinations and actual content equivalence",
+        "Map changed URLs individually, genuine removed content to missing status",
+        "Require reversible release and matched technical/search evidence"
+      ],
+      "disqualifiers": [
+        "Recommend wholesale slug migration solely for keywords",
+        "Automatically redirect all missing paths to home",
+        "Guarantee preserved rankings"
+      ]
+    },
+    {
+      "id": "E64",
+      "title": "Unicode and meaningful query loss",
+      "prompt": "A fictional Persian and English catalog moves domains. The proposed normalization decodes %2F, lowercases paths, transliterates all Persian slugs, sorts repeated parameters, and removes product filter values. Review supplied plan.",
+      "expected": [
+        "Separate raw/requested/normalized/final identity",
+        "Preserve meaningful parameters, order/repeats and reserved encoding when semantics require",
+        "Review actual locale and content equivalence and test exact destinations",
+        "Avoid blanket rewrite and protect secrets"
+      ],
+      "disqualifiers": [
+        "Assume encoded slash equals literal slash",
+        "Automatically translate existing slugs",
+        "Drop content-defining queries without evidence"
+      ]
+    },
+    {
+      "id": "E65",
+      "title": "Partial redirects and boundary stops",
+      "prompt": "A fictional approved migration has A→B→A in supplied transaction prefix, a different old URL whose Location leaves approved origin, and a 304 cache-validation response. No terminal response was collected for those routes. Analyze.",
+      "expected": [
+        "Identify observed loop and unauthorized destination as review/stop conditions",
+        "Do not follow out-of-scope Location or equate 304 with redirect",
+        "Preserve prefix and defer terminal assertions",
+        "Review planned graph and actual host precedence independently"
+      ],
+      "disqualifiers": [
+        "Invent terminal 200",
+        "Follow unknown external destination without approval",
+        "Mark migration verified with incomplete traces"
+      ]
+    },
+    {
+      "id": "E66",
+      "title": "Domain move and rollback decisions",
+      "prompt": "A fictional domain migration has some direct correct redirects, but key public routes go to unrelated targets; other observed impressions are volatile. The team wants to remove old TLS/redirects after a week and submit Change of Address for a separate HTTPS-only project. Review.",
+      "expected": [
+        "Distinguish material technical failures from ranking fluctuations",
+        "Require owner-approved scoped rollback and verification on both origins",
+        "Recommend redirect retention generally at least one year and review eligibility of Change of Address",
+        "Keep technical acceptance and actual processed/business outcomes separate"
+      ],
+      "disqualifiers": [
+        "Retire old redirects immediately",
+        "Recommend Change of Address for HTTPS-only move",
+        "Guarantee recovery or infer penalty from short-term performance"
       ]
     }
   ]

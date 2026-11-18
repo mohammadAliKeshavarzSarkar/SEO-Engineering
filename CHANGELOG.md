@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.6
+## Unreleased — 0.3.0-dev.7
+
+- T07: stable URL identity, meaningful query and Unicode preservation, explicit migration mapping, planned and observed redirect chains/cycles, scope-aware partial traces, domain move and rollback. Added offline migration QA, 14 unit test methods and E63–E66 public scenarios. No live migration, host-rule generation, network access, provider-specific adapter or stable release.
 
 - T06: index eligibility, intended representative and duplicate equivalence, canonical signal conflicts, processed inspection recency, soft-404 and submission boundaries. Added offline evidence review with scoped canonical graph checks, 12 unit test methods and E59–E62 public scenarios. No live search inspection, actual indexing actions, provider-specific adapter or stable release.
 

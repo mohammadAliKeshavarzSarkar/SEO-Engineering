@@ -25,3 +25,5 @@ Before writing code, inspect real project configuration and current dependencies
 - [Crawl discovery and robots patterns](crawl-discovery.md): narrow policy, evaluator acceptance fixtures, sitemap reconciliation and scoped evidence review. No network crawler or parser included.
 
 - [Index and canonical patterns](index-canonical.md): equivalent variants, intended exclusions and distinct current/processed evidence timelines. No live modification or search API.
+
+- [URL migration patterns](url-migration.md): explicit mapping, HTTP trace expectations and acceptance/rollback; no live deployment or host-specific executable configuration.
