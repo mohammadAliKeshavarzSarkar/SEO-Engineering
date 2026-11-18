@@ -1,0 +1,39 @@
+name: SEO Engineering validation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact public repository revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering.git
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Run full offline verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 --version
+          python3 -c 'import zlib; print("zlib", zlib.ZLIB_RUNTIME_VERSION)'
+          python3 scripts/verify_release.py
+      - name: Verify deterministic full package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_skill.py --out "$RUNNER_TEMP/seo-a.zip"
+          python3 scripts/build_skill.py --out "$RUNNER_TEMP/seo-b.zip"
+          cmp "$RUNNER_TEMP/seo-a.zip" "$RUNNER_TEMP/seo-b.zip"
+          sha256sum "$RUNNER_TEMP/seo-a.zip"
