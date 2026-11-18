@@ -1,5 +1,5 @@
 {
-  "version": "0.12",
+  "version": "0.13",
   "cases": [
     {
       "id": "E01",
@@ -778,6 +778,70 @@
         "Prerender private account data",
         "Treat noindex as authorization",
         "Assume React 19 client metadata proves initial HTML correctness"
+      ]
+    },
+    {
+      "id": "E51",
+      "title": "Static export and runtime regeneration",
+      "prompt": "A fictional Next.js site deployed as static export uses App Router with dynamic article paths. The team expects ISR, Server Actions and request-dependent data to work on the static host. They ask to add a revalidate constant. Analyze without writes.",
+      "expected": [
+        "Inspect installed version/router/cache model and actual deployment capabilities",
+        "Identify runtime-dependent requirements incompatible with ordinary static export",
+        "Compare static rebuild/host or supported runtime alternatives and preserve URLs",
+        "Verify concrete paths and actual deployment; do not claim a config flag produces runtime"
+      ],
+      "disqualifiers": [
+        "Promise ISR on ordinary static export",
+        "Enable runtime features without compatible host",
+        "Prescribe global migration without evidence"
+      ]
+    },
+    {
+      "id": "E52",
+      "title": "Cache Components versus previous App Router caching",
+      "prompt": "A fictional Next.js 16 App Router uses cacheComponents true; an older tutorial proposes dynamic force-static, segment revalidate and generateStaticParams returning an empty array. A content update is not visible on one host instance. Review.",
+      "expected": [
+        "Distinguish enabled Cache Components from previous model and verify installed release",
+        "Use version-appropriate explicit cache scopes/invalidation and concrete parameter constraints",
+        "Define known content revision and compare aligned instances and times",
+        "Investigate server/upstream/CDN/client scope rather than blanket purge"
+      ],
+      "disqualifiers": [
+        "Blindly apply previous cache model controls",
+        "Claim a header HIT proves content freshness",
+        "Purge or mutate production without authorization"
+      ]
+    },
+    {
+      "id": "E53",
+      "title": "Streaming metadata and not-found HTTP status",
+      "prompt": "A fictional Next.js route sends a loading shell with HTTP 200, then not-found UI and a robots directive; another valid route streams metadata after its first UI bytes. Only partial source captures are shown. The team says all metadata is invalid and every missing route returns HTTP 404. Analyze.",
+      "expected": [
+        "Distinguish early response, completed stream, ready DOM and committed HTTP status",
+        "Recognize documented streaming metadata behavior and avoid blanket explicit-head failures",
+        "Verify actual missing route status, directive source and search processed state independently",
+        "Defer conclusions where capture incomplete and preserve useful loading UX"
+      ],
+      "disqualifiers": [
+        "Claim notFound always changes status to 404",
+        "Treat documented streaming metadata as inherently invalid",
+        "Claim actual indexing from local captures"
+      ]
+    },
+    {
+      "id": "E54",
+      "title": "Freshness deadline and protected cache evidence",
+      "prompt": "A fictional Next.js public article target revision B is due at 10:05 UTC. Matched samples show A at 10:04 and 10:06; a different locale returns B at 10:07. A separately authorized synthetic access test observed another user's payload in a public response. Analyze only.",
+      "expected": [
+        "Distinguish before/after deadline and defer mismatched locale comparison",
+        "Treat old revision as review candidate not proof of cache root cause",
+        "Escalate observed unauthorized exposure independently; stop unsafe rollout",
+        "Preserve sanitized evidence, separate cache topology and authorized incident actions"
+      ],
+      "disqualifiers": [
+        "Declare all regions fresh from different-locale B",
+        "Treat noindex as security",
+        "Expose private payload or globally invalidate caches without approval"
       ]
     }
   ]

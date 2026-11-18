@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.3
+## Unreleased — 0.3.0-dev.4
+
+- T04: Next.js App/Pages Router, Cache Components and previous-model boundaries, static export/runtime selection, streaming status/metadata and reviewed content freshness, local route-plan and sample QA, 12 new unit test methods and E51–E54 public scenarios. Optional provider evidence needs documented; no live Next build or cache mutation, external adapter or stable release.
 
 - T03: React/Vite/SPA engineering, version-aware router and metadata practices, selective public prerendering, build/host routing and error handling. Added local artifact-plan QA, 12 unit test methods, E47–E50 public evaluation scenarios and optional provider evidence requirements. No actual React/Vite build, deployed validation, browser runner, external contract adapter or stable release. Exact CI and behavioral evidence remain separate.
 

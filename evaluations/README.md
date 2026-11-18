@@ -2,7 +2,7 @@
 
 These synthetic cases test agent decisions and behavior, not actual rankings or tool availability. Cases in [cases.json](cases.json) are original fictional scenarios. No model has been scored by publishing this file.
 
-For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 50 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
+For the controlled S04 comparison and offline scorer, use [benchmark protocol](benchmark-protocol.md) and [grade schema](benchmark-grades.md). The 54 published cases are public regression scenarios, not held-out evidence; maintain independent held-out cases outside the skill. No benchmark has been executed.
 
 ## Run protocol
 
@@ -23,3 +23,5 @@ T01 adds E39–E42 (architecture evidence and deployment boundaries). The S04 38
 T02 adds E43–E46 (failed readiness, source/header directives, interaction-dependent discovery and optional provider gaps). The prior 42-case plan is historical; the current 46-case suite at three repeats has 138 pairs / 276 individual runs planned, none executed independently.
 
 T03 adds E47–E50 (router mode, omitted dynamic paths, fallback/asset errors and protected output/metadata). Current 50-case suite at three repeats plans 150 matched pairs / 300 individual runs; prior counts are historical. No independent behavioral runs performed.
+
+T04 adds E51–E54 (export/runtime, Cache Components, streaming/status and freshness/security). Current 54-case suite at three repeats plans 162 matched pairs / 324 individual runs; prior counts historical. None independently run.

@@ -16,6 +16,7 @@ FIXTURES = (
     ('validate_research.py', 'examples/research-handoff/sample.json'),
     ('inspect_architecture.py', 'examples/architecture/sample.json'),
     ('audit_rendering.py', 'examples/rendering/sample.json'),
+    ('audit_next_delivery.py', 'examples/next-delivery/sample.json'),
 )
 
 

@@ -19,3 +19,5 @@ Before writing code, inspect real project configuration and current dependencies
 - [JavaScript rendering repair and validation](rendering-validation.md): navigation semantics, initial/DOM consistency, readiness-aware local browser acceptance and failure cases. Browser code is illustrative, not executed.
 
 - [React, Vite and SPA route delivery](react-vite-spa.md): version-aware metadata and prerender patterns, hosting/base routing, artifact and browser acceptance. Illustrative framework examples, not executed deployments.
+
+- [Next.js delivery and cache validation](nextjs-delivery.md): version-aware App/Pages models, metadata ownership and reviewed freshness samples. Framework snippets are illustrative, not compiled or deployed.

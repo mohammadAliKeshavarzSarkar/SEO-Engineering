@@ -6,6 +6,8 @@ For source/render discrepancies and browser readiness use [T02](t02-javascript-r
 
 For React/Vite and browser routing, use [T03](t03-react-vite-spa.md); keep concrete build artifacts separate from deployed status and routing evidence.
 
+For Next.js, use [T04](t04-nextjs-hybrid.md): inspect router, version, cache model and deployment separately; full streamed response and ready DOM are not early stream prefix.
+
 ## Choose the rendering approach by template
 
 | Approach | Good fit | Tradeoffs |

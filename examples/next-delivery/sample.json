@@ -1,0 +1,105 @@
+{
+  "schema_version": "1",
+  "scope": "Synthetic reviewed Next.js plan and samples only",
+  "routes": [
+    {
+      "id": "guide",
+      "plan_ref": "fixture:plan-guide",
+      "next_major": 16,
+      "router": "app",
+      "cache_model": "app_cache_components",
+      "deployment": "runtime",
+      "strategy": "hybrid",
+      "purpose": "public",
+      "expected_context": "synthetic-public-en-release",
+      "required_features": [],
+      "expected_statuses": [
+        200
+      ],
+      "expected_content_revision": "content-v2",
+      "fresh_by": "2026-11-18T10:05:00Z",
+      "samples": [
+        {
+          "id": "S1",
+          "context_id": "synthetic-public-en-release",
+          "capture_status": "complete",
+          "evidence_ref": "fixture:S1",
+          "observed_at": "2026-11-18T10:04:00Z",
+          "http_status": 200,
+          "content_revision": "content-v1",
+          "private_payload_visible": null
+        },
+        {
+          "id": "S2",
+          "context_id": "synthetic-public-en-release",
+          "capture_status": "complete",
+          "evidence_ref": "fixture:S2",
+          "observed_at": "2026-11-18T10:06:00Z",
+          "http_status": 200,
+          "content_revision": "content-v1",
+          "private_payload_visible": null
+        },
+        {
+          "id": "S3",
+          "context_id": "synthetic-public-en-release",
+          "capture_status": "complete",
+          "evidence_ref": "fixture:S3",
+          "observed_at": "2026-11-18T10:07:00Z",
+          "http_status": 200,
+          "content_revision": "content-v2",
+          "private_payload_visible": null
+        }
+      ]
+    },
+    {
+      "id": "export",
+      "plan_ref": "fixture:plan-export",
+      "next_major": 16,
+      "router": "app",
+      "cache_model": "app_cache_components",
+      "deployment": "static_export",
+      "strategy": "isr",
+      "purpose": "public",
+      "expected_context": "synthetic-public-en-release",
+      "required_features": [
+        "isr",
+        "runtime_dynamic_paths"
+      ],
+      "expected_statuses": [
+        200
+      ],
+      "expected_content_revision": null,
+      "fresh_by": null,
+      "samples": []
+    },
+    {
+      "id": "uncertain",
+      "plan_ref": "fixture:plan-uncertain",
+      "next_major": 16,
+      "router": "app",
+      "cache_model": "app_cache_components",
+      "deployment": "runtime",
+      "strategy": "hybrid",
+      "purpose": "public",
+      "expected_context": "synthetic-public-en-release",
+      "required_features": [],
+      "expected_statuses": [
+        200
+      ],
+      "expected_content_revision": "content-v2",
+      "fresh_by": "2026-11-18T10:05:00Z",
+      "samples": [
+        {
+          "id": "S4",
+          "context_id": "different-release",
+          "capture_status": "complete",
+          "evidence_ref": "fixture:S4",
+          "observed_at": "2026-11-18T10:04:00Z",
+          "http_status": 200,
+          "content_revision": "content-v1",
+          "private_payload_visible": null
+        }
+      ]
+    }
+  ]
+}
