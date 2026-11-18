@@ -2,6 +2,8 @@
 
 ## Unreleased — v0.2.0 in development
 
+- Added R09 Persian and multilingual search engineering: native market research, locale URL strategy, canonical/hreflang review, RTL QA, three templates, offline manifest utility, nine unit test cases and E31–E34 behavioral scenarios. Integrated task routing and portable packaging. Strict manifest results are internal review checks, not live or indexed validation.
+
 - Added R08 opportunity prioritization: incident/repair triage, evidence/fit/risk/dependency gates, impact and effort sensitivity, two templates, offline planning utility, nine unit tests and E27–E30 behavioral cases. Updated skill packaging, routing and source register. Scores are internal planning aids, not forecasts or execution authorization.
 
 - Added R07 content gaps and topical architecture: evidence-based task coverage, internal-link planning, lifecycle decisions and offline supplied-graph diagnostics. Added three templates, synthetic graph fixture, eight graph unit tests and E23–E26 behavioral cases. Extended portable package allowlist and task router. No live crawl or behavioral evaluation claimed.

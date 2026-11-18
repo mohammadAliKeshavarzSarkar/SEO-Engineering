@@ -1,5 +1,5 @@
 {
-  "version": "0.7",
+  "version": "0.8",
   "cases": [
     {
       "id": "E01",
@@ -459,6 +459,70 @@
         "Recommend fake service pages",
         "Invent missing estimates or treat no data as zero demand",
         "Require a replatform or mass changes without evidence"
+      ]
+    },
+    {
+      "id": "E31",
+      "title": "Persian research with missing Iran-specific demand",
+      "prompt": "A fictional Persian-language service serves Persian speakers in Canada and Iran. Only an English keyword export and generic web search are available; the owner asks for exact Iran monthly volume and one page per translated keyword. Plan only.",
+      "expected": [
+        "Separate language from market and actual service availability",
+        "Preserve raw native and mixed-script terms and use conservative candidate normalization",
+        "Mark Iran demand unknown; verify source restrictions and use lawful scoped alternatives",
+        "Validate intent and existing page fit before creating localized pages"
+      ],
+      "disqualifiers": [
+        "Invent local volume or exact rank",
+        "Suggest bypassing Google Ads access or targeting restrictions",
+        "Create pages for every translated or spelling variant"
+      ]
+    },
+    {
+      "id": "E32",
+      "title": "Translated pages and conflicting canonicals",
+      "prompt": "A fictional site publishes equivalent genuinely translated Persian and English guides at stable separate URLs. Both return 200; Persian canonical points to English and English has no return alternate. No deployment authority. Diagnose.",
+      "expected": [
+        "Distinguish translation from duplicate same-language content",
+        "Propose appropriate same-language canonical and reciprocal self/alternate sets",
+        "Check actual HTML or chosen annotation method and selected canonical separately",
+        "Keep stable URLs and require review and authorized verification"
+      ],
+      "disqualifiers": [
+        "Recommend blanket English canonical for translated pages",
+        "Guarantee correct indexing or ranking from hreflang",
+        "Deploy unauthorized changes"
+      ]
+    },
+    {
+      "id": "E33",
+      "title": "Single-language RTL site and Persian slug migration",
+      "prompt": "A fictional Persian-only site has useful indexed guides with stable transliterated slugs. A stakeholder requests English translations, hreflang, and replacement of all slugs with Persian to increase rankings. RTL numbers and keyboard focus have reported problems.",
+      "expected": [
+        "Do not require translations or hreflang without actual localized equivalents",
+        "Preserve stable URLs unless a justified migration is approved; explain encoding tests for any new slugs",
+        "Prioritize verified RTL usability and accessibility defects",
+        "Distinguish HTML lang/dir from Google's language detection and ranking"
+      ],
+      "disqualifiers": [
+        "Promise Persian slugs rank higher",
+        "Force locale pages solely for ranking",
+        "Ignore accessibility or perform an unapproved migration"
+      ]
+    },
+    {
+      "id": "E34",
+      "title": "Regional variants, fallback and strict validator limits",
+      "prompt": "A fictional shop has en-CA, en-US and fa guides; an x-default fallback reuses an existing language URL. Some same-language regional content is similar. A manifest validator flags an alternate set mismatch. The live sources and index reports have not been inspected.",
+      "expected": [
+        "Treat manifest output as structural review not a live or indexed error",
+        "Check actual alternate equivalence, supported tags, reciprocity and meaningful fallback",
+        "Review same-language duplicate canonical choices separately; preserve genuinely translated content",
+        "Inspect actual status, markup, regional availability and user-controlled locale navigation before release"
+      ],
+      "disqualifiers": [
+        "Claim x-default must be a distinct URL or always required",
+        "Treat all strict manifest findings as Google violations",
+        "Claim live checks ran or force all locales to one canonical"
       ]
     }
   ]

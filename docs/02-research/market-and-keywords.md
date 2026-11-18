@@ -11,6 +11,7 @@
 - [R06 — Keyword-to-page mapping](r06-keyword-to-page-mapping.md)
 - [R07 — Content gaps and topical architecture](r07-content-gaps-and-topical-architecture.md)
 - [R08 — Opportunity scoring and prioritization](r08-opportunity-prioritization.md)
+- [R09 — Persian and multilingual search engineering](r09-multilingual-search-engineering.md)
 
 ## Research workflow
 

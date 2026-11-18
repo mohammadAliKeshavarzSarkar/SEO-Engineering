@@ -1,0 +1,44 @@
+{
+  "allowed_tags": [
+    "fa",
+    "en"
+  ],
+  "pages": [
+    {
+      "url": "https://example.org/fa/guide/",
+      "group": "guide",
+      "locale": "fa",
+      "status": 200,
+      "index_intent": true,
+      "canonical": "https://example.org/fa/guide/",
+      "alternates": [
+        {
+          "tag": "fa",
+          "url": "https://example.org/fa/guide/"
+        },
+        {
+          "tag": "en",
+          "url": "https://example.org/en/guide/"
+        }
+      ]
+    },
+    {
+      "url": "https://example.org/en/guide/",
+      "group": "guide",
+      "locale": "en",
+      "status": 200,
+      "index_intent": true,
+      "canonical": "https://example.org/en/guide/",
+      "alternates": [
+        {
+          "tag": "fa",
+          "url": "https://example.org/fa/guide/"
+        },
+        {
+          "tag": "en",
+          "url": "https://example.org/en/guide/"
+        }
+      ]
+    }
+  ]
+}

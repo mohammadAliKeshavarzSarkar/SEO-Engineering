@@ -19,6 +19,7 @@ class BuildSkillTests(unittest.TestCase):
         self.write('scripts/cluster_keywords.py', '# cluster')
         self.write('scripts/audit_topic_graph.py', '# graph')
         self.write('scripts/prioritize_opportunities.py', '# prioritize')
+        self.write('scripts/audit_locale_manifest.py', '# locale')
 
     def write(self, name, content):
         p = self.root / name
@@ -39,6 +40,7 @@ class BuildSkillTests(unittest.TestCase):
             self.assertIn('seo-engineering/references/library/scripts/cluster_keywords.py', names)
             self.assertIn('seo-engineering/references/library/scripts/audit_topic_graph.py', names)
             self.assertIn('seo-engineering/references/library/scripts/prioritize_opportunities.py', names)
+            self.assertIn('seo-engineering/references/library/scripts/audit_locale_manifest.py', names)
             self.assertIn('seo-engineering/references/library/docs/demo.md', names)
             self.assertFalse(any(b'not for distribution' in z.read(n) for n in names))
             self.assertIsNone(z.testzip())

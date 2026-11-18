@@ -39,7 +39,7 @@ def collect(root):
     folder('skills/seo-engineering/references', 'seo-engineering/references')
     for relative in LIBRARY_DIRS:
         folder(relative, f'seo-engineering/references/library/{relative}')
-    for relative in ('scripts/audit_html.py', 'scripts/check_docs.py', 'scripts/cluster_keywords.py', 'scripts/audit_topic_graph.py', 'scripts/prioritize_opportunities.py'):
+    for relative in ('scripts/audit_html.py', 'scripts/check_docs.py', 'scripts/cluster_keywords.py', 'scripts/audit_topic_graph.py', 'scripts/prioritize_opportunities.py', 'scripts/audit_locale_manifest.py'):
         include(root / relative, f'seo-engineering/references/library/{relative}')
     return entries
 

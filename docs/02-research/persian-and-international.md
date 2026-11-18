@@ -1,5 +1,7 @@
 # Persian, multilingual and international SEO
 
+For the detailed agent workflow, evidence limitations, decision gates, offline checks and QA templates, see [R09 — Persian and multilingual search engineering](r09-multilingual-search-engineering.md). This page is the concise overview.
+
 ## Persian research procedure
 
 Collect real Persian variants with and without ZWNJ (e.g. ضربان‌سنج / ضربان سنج), Arabic and Persian forms of ی/ي and ک/ك, digits ۰–۹ / 0–9, transliteration, spacing, informal terms and English loanwords. Normalize for analysis while retaining original queries and editorially correct spelling. Verify whether variants share intent through actual SERPs rather than generating duplicate pages. Preserve descriptive natural Persian anchors and titles; no mechanical repetition.
