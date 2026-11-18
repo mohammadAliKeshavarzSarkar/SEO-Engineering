@@ -2,6 +2,8 @@
 
 ## Unreleased — v0.2.0 in development
 
+- Added R05 competitor intelligence: scoped search footprint, comparative page assessment, evidence-to-opportunity protocol, four templates, synthetic exercise and E15–E18 behavioral cases. Updated routing and source register. No actual competitor measurements, automated collection or behavioral success claimed.
+
 - Added R04 keyword normalization and clustering, review protocol, synthetic example and an offline candidate utility with nine unit tests. Included the utility in portable package allowlist. Added E12–E14 behavioral cases; evaluations remain pending. No live demand or ranking claims.
 
 - Added R03 search intent and SERP intelligence, including source/market limitations, mixed intent, permissioned collection, page-level decision protocol and synthetic worked cases.

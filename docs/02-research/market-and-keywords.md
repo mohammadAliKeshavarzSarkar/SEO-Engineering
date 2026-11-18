@@ -7,6 +7,7 @@
 - [R02 — Keyword discovery and evidence collection](r02-keyword-discovery.md)
 - [R03 — Search intent and SERP intelligence](r03-search-intent-and-serp.md)
 - [R04 — Keyword normalization and clustering](r04-keyword-normalization-and-clustering.md)
+- [R05 — Competitor intelligence](r05-competitor-intelligence.md)
 
 ## Research workflow
 

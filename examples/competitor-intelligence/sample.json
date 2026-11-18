@@ -1,0 +1,59 @@
+{
+  "description": "Synthetic data; not real search observations.",
+  "snapshots": [
+    {
+      "id": "s1",
+      "query": "q1",
+      "complete": true,
+      "scope": "synthetic-CA-en-mobile-web",
+      "domains": [
+        "publisher.example",
+        "vendor.example",
+        "marketplace.example",
+        "marketplace.example"
+      ]
+    },
+    {
+      "id": "s2",
+      "query": "q2",
+      "complete": true,
+      "scope": "synthetic-CA-en-mobile-web",
+      "domains": [
+        "publisher.example",
+        "marketplace.example",
+        "vendor.example"
+      ]
+    },
+    {
+      "id": "s3",
+      "query": "q3",
+      "complete": true,
+      "scope": "synthetic-CA-en-mobile-web",
+      "domains": [
+        "publisher.example",
+        "marketplace.example"
+      ]
+    },
+    {
+      "id": "s4",
+      "query": "q4",
+      "complete": true,
+      "scope": "synthetic-CA-en-mobile-web",
+      "domains": [
+        "publisher.example"
+      ]
+    },
+    {
+      "id": "s5",
+      "query": "q5",
+      "complete": false,
+      "scope": "synthetic-CA-en-mobile-web",
+      "domains": [
+        "vendor.example"
+      ]
+    }
+  ],
+  "businessComparators": [
+    "direct.example"
+  ]
+}

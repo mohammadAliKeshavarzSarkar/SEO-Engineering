@@ -1,0 +1,1 @@
+footprint_id,competitor_id,cluster_id,snapshot_ids,engine,market,language,device,surface,window_start,window_end,aggregation_rule,eligible_query_count,observed_query_count,coverage_ratio,excluded_query_count,result_urls,evidence_refs,limitations,status

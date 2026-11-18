@@ -12,7 +12,8 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Keyword discovery | docs/02-research/r01-business-and-positioning.md; docs/02-research/r02-keyword-discovery.md; docs/02-research/research-roadmap.md |
 | Search intent, SERP analysis | docs/02-research/r03-search-intent-and-serp.md; decision-engine/search-intent.md; templates/serp-snapshots.csv; templates/serp-results-v2.csv; templates/intent-assessments.csv |
 | Keyword normalization and clustering | docs/02-research/r04-keyword-normalization-and-clustering.md; decision-engine/keyword-clustering.md; templates/keyword-cluster-review.csv; scripts/cluster_keywords.py |
-| Competitor and gaps | docs/02-research/market-and-keywords.md; docs/02-research/research-roadmap.md; docs/02-research/r03-search-intent-and-serp.md; use specialized modules as they become available |
+| Competitor intelligence and competitive gaps | docs/02-research/r05-competitor-intelligence.md; decision-engine/competitor-intelligence.md; templates/competitor-register.csv; templates/competitor-search-footprint.csv; templates/competitor-page-benchmark.csv; templates/competitor-opportunities.csv |
+| Page mapping and topical gaps | docs/02-research/market-and-keywords.md; docs/02-research/research-roadmap.md; docs/02-research/r05-competitor-intelligence.md; use specialized modules as they become available |
 | Persian or multilingual | docs/02-research/persian-and-international.md |
 | Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
 | JS rendering or SPA/SSR | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md |
