@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.4
+## Unreleased — 0.3.0-dev.5
+
+- T05: scoped crawl evidence, robots protocol and search-specific behavior, sitemap reconciliation, resource restrictions, URL traps and crawl-budget interpretation. Added offline evidence review, 12 unit test methods and E55–E58 public scenarios. No live crawler, robots or sitemap parser, provider-specific adapter or stable release.
 
 - T04: Next.js App/Pages Router, Cache Components and previous-model boundaries, static export/runtime selection, streaming status/metadata and reviewed content freshness, local route-plan and sample QA, 12 new unit test methods and E51–E54 public scenarios. Optional provider evidence needs documented; no live Next build or cache mutation, external adapter or stable release.
 

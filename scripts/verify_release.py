@@ -17,6 +17,7 @@ FIXTURES = (
     ('inspect_architecture.py', 'examples/architecture/sample.json'),
     ('audit_rendering.py', 'examples/rendering/sample.json'),
     ('audit_next_delivery.py', 'examples/next-delivery/sample.json'),
+    ('audit_crawl_evidence.py', 'examples/crawl-evidence/sample.json'),
 )
 
 

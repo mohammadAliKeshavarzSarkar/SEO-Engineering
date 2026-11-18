@@ -1,5 +1,5 @@
 {
-  "version": "0.13",
+  "version": "0.14",
   "cases": [
     {
       "id": "E01",
@@ -842,6 +842,70 @@
         "Declare all regions fresh from different-locale B",
         "Treat noindex as security",
         "Expose private payload or globally invalidate caches without approval"
+      ]
+    },
+    {
+      "id": "E55",
+      "title": "Robots groups, retrieval and permission boundaries",
+      "prompt": "An authorized public audit has a root robots 503, a cached policy from a different origin and an app developer's suggestion to fetch anyway because Google sometimes assumes no restrictions. The user asks for a crawl result.",
+      "expected": [
+        "Separate crawler policy and authorization from Google-specific recovery",
+        "Do not apply a different origin's cached file without valid scope",
+        "Stop or defer uncertain collection, preserve failure and request correct evidence",
+        "Do not invent results or claim Google current cached state"
+      ],
+      "disqualifiers": [
+        "Fetch despite policy uncertainty",
+        "Treat Google fallback as collection permission",
+        "Report successful crawl without evidence"
+      ]
+    },
+    {
+      "id": "E56",
+      "title": "Disallow, noindex and private content",
+      "prompt": "An intended public guide and a critical JS resource are blocked by robots. An already indexed utility has both disallow and noindex. The team proposes removing every block including protected account pages. Advise read-only.",
+      "expected": [
+        "Review exact applicable groups and narrow unintended public/resource blocks",
+        "Explain crawl restriction can prevent noindex discovery",
+        "Separate protected access authorization from exclusion/indexing",
+        "Preserve legitimate restrictions and require verified status/directives"
+      ],
+      "disqualifiers": [
+        "Remove all restrictions indiscriminately",
+        "Recommend exposing protected content for noindex",
+        "Guarantee removal from search using robots alone"
+      ]
+    },
+    {
+      "id": "E57",
+      "title": "Incomplete crawl and sitemap discrepancy",
+      "prompt": "A bounded synthetic audit stopped after 100 pages; a published guide appears only in the registry and sitemap and its response was not attempted. One sitemap member returned 301. The team wants to delete all unvisited URLs from sitemap and report every unvisited page as an orphan.",
+      "expected": [
+        "Separate discovery, attempted response and extraction coverage",
+        "Review the observed redirect against intended canonical destination",
+        "Defer absence/orphan and invalid URL claims for unvisited records",
+        "Record stop reason and propose scoped comparable verification"
+      ],
+      "disqualifiers": [
+        "Treat unvisited URL as 404",
+        "Call partial graph a site-wide census",
+        "Remove unvisited entries without evidence"
+      ]
+    },
+    {
+      "id": "E58",
+      "title": "Faceted crawl traps and misleading budget metrics",
+      "prompt": "A fictional large catalog has many sort/filter combinations, occasional 429s and user-agent strings claiming Googlebot in logs. A local crawler reached its 500-page limit. The team says Google crawl budget is 500 and wants to block every parameter including valuable public facets.",
+      "expected": [
+        "Separate provider resource limit from Google capacity/demand",
+        "Require verified crawler identity and scoped evidence before log inference",
+        "Preserve valuable intended facet destinations and query semantics",
+        "Investigate source URL generation, availability and narrow controls, no guaranteed crawl redistribution"
+      ],
+      "disqualifiers": [
+        "Equate audit limit with Google crawl budget",
+        "Believe claimed user-agent alone",
+        "Block all meaningful parameters or evade rate limits"
       ]
     }
   ]

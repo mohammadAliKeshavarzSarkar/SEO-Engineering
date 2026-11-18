@@ -1,5 +1,7 @@
 # Crawling, indexing, robots and sitemaps
 
+For scoped discovery, crawler policy, robots retrieval and sitemap/crawl-budget evidence use [T05](t05-crawling-robots.md). Separate crawler permission, observed response, coverage and intended index policy; do not infer actual search-engine crawl budget from an audit limit.
+
 ## URL response contract
 
 | URL class | Expected behavior |

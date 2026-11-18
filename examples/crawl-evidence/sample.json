@@ -1,0 +1,107 @@
+{
+  "schema_version": "1",
+  "scope": "Synthetic bounded inventory, not an actual crawl",
+  "crawler_policy": "Reviewed synthetic Googlebot decision labels, not a matcher",
+  "coverage": "partial",
+  "stop_reason": "sample limit",
+  "urls": [
+    {
+      "id": "guide",
+      "purpose": "acquisition",
+      "index_intent": true,
+      "sitemap_member": true,
+      "canonical_self": true,
+      "noindex": false,
+      "critical_resource": false,
+      "inbound_link_observed": true,
+      "collection": "observed",
+      "http_status": 200,
+      "robots": "allowed",
+      "robots_ref": "fixture:rules",
+      "robots_agent": "Googlebot",
+      "evidence_ref": "fixture:guide",
+      "discovery": [
+        "sitemap",
+        "link"
+      ]
+    },
+    {
+      "id": "blocked",
+      "purpose": "acquisition",
+      "index_intent": true,
+      "sitemap_member": true,
+      "canonical_self": true,
+      "noindex": true,
+      "critical_resource": false,
+      "inbound_link_observed": true,
+      "collection": "observed",
+      "http_status": 200,
+      "robots": "disallowed",
+      "robots_ref": "fixture:rules",
+      "robots_agent": "Googlebot",
+      "evidence_ref": "fixture:separate-authorized-source",
+      "discovery": [
+        "sitemap",
+        "link"
+      ]
+    },
+    {
+      "id": "redirect",
+      "purpose": "redirect",
+      "index_intent": false,
+      "sitemap_member": true,
+      "canonical_self": null,
+      "noindex": null,
+      "critical_resource": false,
+      "inbound_link_observed": true,
+      "collection": "observed",
+      "http_status": 301,
+      "robots": "allowed",
+      "robots_ref": "fixture:rules",
+      "robots_agent": "Googlebot",
+      "evidence_ref": "fixture:redirect",
+      "discovery": [
+        "sitemap",
+        "link"
+      ]
+    },
+    {
+      "id": "undiscovered",
+      "purpose": "acquisition",
+      "index_intent": true,
+      "sitemap_member": true,
+      "canonical_self": null,
+      "noindex": null,
+      "critical_resource": false,
+      "inbound_link_observed": false,
+      "collection": "not_attempted",
+      "http_status": null,
+      "robots": "unknown",
+      "robots_ref": null,
+      "robots_agent": null,
+      "evidence_ref": "fixture:registry",
+      "discovery": [
+        "registry"
+      ]
+    },
+    {
+      "id": "resource",
+      "purpose": "utility",
+      "index_intent": false,
+      "sitemap_member": false,
+      "canonical_self": null,
+      "noindex": null,
+      "critical_resource": true,
+      "inbound_link_observed": true,
+      "collection": "excluded",
+      "http_status": null,
+      "robots": "disallowed",
+      "robots_ref": "fixture:rules",
+      "robots_agent": "Googlebot",
+      "evidence_ref": "fixture:resource-dependency",
+      "discovery": [
+        "other"
+      ]
+    }
+  ]
+}

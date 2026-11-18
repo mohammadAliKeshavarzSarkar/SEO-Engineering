@@ -26,6 +26,7 @@ class BuildSkillTests(unittest.TestCase):
         self.write('scripts/audit_rendering.py', '# rendering')
         self.write('scripts/audit_spa_build.py', '# SPA artifact plan')
         self.write('scripts/audit_next_delivery.py', '# Next delivery')
+        self.write('scripts/audit_crawl_evidence.py', '# crawl evidence')
 
     def write(self, name, content):
         p = self.root / name
@@ -53,6 +54,7 @@ class BuildSkillTests(unittest.TestCase):
             self.assertIn('seo-engineering/references/library/scripts/audit_rendering.py', names)
             self.assertIn('seo-engineering/references/library/scripts/audit_spa_build.py', names)
             self.assertIn('seo-engineering/references/library/scripts/audit_next_delivery.py', names)
+            self.assertIn('seo-engineering/references/library/scripts/audit_crawl_evidence.py', names)
             self.assertIn('seo-engineering/references/library/docs/demo.md', names)
             self.assertFalse(any(b'not for distribution' in z.read(n) for n in names))
             self.assertIsNone(z.testzip())
