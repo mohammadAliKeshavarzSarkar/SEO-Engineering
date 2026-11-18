@@ -1,0 +1,1 @@
+observation_id,query_id,raw_query,normalized_query,source,source_ref,metric_name,metric_value,metric_unit,value_min,value_max,value_status,market,language,device,search_type,period_start,period_end,collected_date,aggregation,filters,confidence,notes

@@ -1,5 +1,11 @@
 # Strategy, market, keywords and competitors
 
+## Advanced research series (v0.2.0 in development)
+
+- [Research roadmap](research-roadmap.md)
+- [R01 — Business objectives and search positioning](r01-business-and-positioning.md)
+- [R02 — Keyword discovery and evidence collection](r02-keyword-discovery.md)
+
 ## Research workflow
 
 1. Define product, audiences, market, business objectives, funnel and primary conversion. Identify whether search demand is informational, navigational, comparison, transactional or local; mixed intent is possible.
