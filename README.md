@@ -2,7 +2,7 @@
 
 A reusable, evidence-led SEO engineering system for developers, product teams, content strategists and AI coding agents. Optimize for discoverability, usefulness, performance and measurable business outcomes — not ranking tricks.
 
-**Version:** 0.1.0 · **Status:** v0.2.0 in development — initial R01–R10 modules written; release validation pending · **Research checkpoint:** 2026-11-18
+**Version:** 0.1.0 · **Status:** v0.2.0 in development — initial R01–R10 modules written; stabilization in progress · **Research checkpoint:** 2026-11-18
 
 ## For AI agents and new websites
 
@@ -19,6 +19,8 @@ To use the entire knowledge base away from this repository, follow [portable ski
 5. Run `python3 scripts/check_docs.py` and `python3 -m unittest discover -s tests` from the repository root. No external packages required.
 
 For integrated research use the [R01–R10 pipeline](workflows/research-pipeline.md). Run `python3 scripts/verify_release.py` from a trusted checkout for repository and portable-package checks; review the [release gates](templates/skill-release-review.md) separately.
+
+See the [stabilization roadmap and S01 audit](docs/08-learning/stabilization.md) for actual verification status and outstanding release gates.
 
 ## Documentation map
 

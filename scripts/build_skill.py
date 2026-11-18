@@ -2,7 +2,7 @@
 """Build a portable SEO skill ZIP from public, allowlisted repository resources."""
 import argparse
 from pathlib import Path
-from zipfile import ZIP_DEFLATED, ZipFile
+from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 LIBRARY_DIRS = ('docs', 'templates', 'decision-engine', 'workflows',
@@ -50,7 +50,11 @@ def build(root, output):
     payload = [(name, path.read_bytes()) for name, path in sorted(entries.items())]
     with ZipFile(output, 'x', compression=ZIP_DEFLATED) as archive:
         for name, data in payload:
-            archive.writestr(name, data)
+            # Fixed timestamps and permissions; reproducible within a pinned Python/zlib runtime.
+            info = ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            info.create_system = 3
+            info.external_attr = 0o100644 << 16
+            archive.writestr(info, data, compress_type=ZIP_DEFLATED, compresslevel=9)
     return len(entries)
 
 

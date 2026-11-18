@@ -65,3 +65,12 @@ class BuildSkillTests(unittest.TestCase):
         (self.root / 'skills/seo-engineering/SKILL.md').unlink()
         with self.assertRaises(ValueError):
             collect(self.root)
+
+    def test_reproducible_bytes(self):
+        first, second = self.root / 'first.zip', self.root / 'second.zip'
+        build(self.root, first)
+        (self.root / 'docs/demo.md').touch()
+        build(self.root, second)
+        self.assertEqual(first.read_bytes(), second.read_bytes())
+        with ZipFile(first) as z:
+            self.assertTrue(all(i.date_time == (1980, 1, 1, 0, 0, 0) for i in z.infolist()))

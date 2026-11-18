@@ -19,3 +19,5 @@ Follow [R01](r01-business-and-positioning.md), [R02](r02-keyword-discovery.md), 
 Progress each module from research to reviewed methodology, practical exercise, verification and revisions. Critical technical or privacy issues need not wait for this sequence. Keep live project observations and sensitive business decisions in an approved private workspace. Only generic methods and synthetic examples belong in the public repository unless publication is approved.
 
 All ten initial research modules are written. This does not certify v0.2.0: run the repository and package checks, external installation, content/privacy review and behavioral evaluations before release.
+
+See [stabilization and release readiness](../08-learning/stabilization.md) for the structural audit, targeted fixes and remaining S02–S06 gates.

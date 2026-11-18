@@ -33,6 +33,6 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Authority | docs/04-content/authority.md |
 | Experiment/monitoring | docs/06-operations/experiments.md |
 | Implementation and QA | implementation-patterns/README.md; docs/06-operations/audit-and-release.md; templates/release-checklist.md |
-| Skill updates/competence | docs/01-foundations/module-standard.md; evaluations/README.md |
+| Skill updates/competence | docs/01-foundations/module-standard.md; docs/08-learning/stabilization.md; templates/skill-release-review.md; evaluations/README.md |
 
 If multiple triggers are relevant, resolve dependencies (privacy/security -> eligibility -> research/intent -> implementation -> measurement; baseline measurement can begin earlier). For narrow tasks do not mandate unrelated modules. If a future specialized document is not present, use the existing foundations and current evidence and report the gap.
