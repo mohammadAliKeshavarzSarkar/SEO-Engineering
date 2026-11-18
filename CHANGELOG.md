@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.2
+## Unreleased — 0.3.0-dev.3
+
+- T03: React/Vite/SPA engineering, version-aware router and metadata practices, selective public prerendering, build/host routing and error handling. Added local artifact-plan QA, 12 unit test methods, E47–E50 public evaluation scenarios and optional provider evidence requirements. No actual React/Vite build, deployed validation, browser runner, external contract adapter or stable release. Exact CI and behavioral evidence remain separate.
 
 - T02: matched source/render observation methodology, readiness and error handling, initial/header directive review, practical navigation and hydration repair patterns, local paired QA utility, 12 new unit test methods and E43–E46 public evaluation scenarios. Provider evidence requirements documented independently; no external evidence schema or WebsiteBotScroll adapter, network crawler or browser runner implemented. Exact CI and external validation are separate evidence.
 

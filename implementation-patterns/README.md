@@ -17,3 +17,5 @@ Before writing code, inspect real project configuration and current dependencies
 - [Route delivery and metadata](route-delivery.md): stack-neutral source/render/status implementation contract, minimal repair decisions, synthetic HTML and acceptance checks.
 
 - [JavaScript rendering repair and validation](rendering-validation.md): navigation semantics, initial/DOM consistency, readiness-aware local browser acceptance and failure cases. Browser code is illustrative, not executed.
+
+- [React, Vite and SPA route delivery](react-vite-spa.md): version-aware metadata and prerender patterns, hosting/base routing, artifact and browser acceptance. Illustrative framework examples, not executed deployments.

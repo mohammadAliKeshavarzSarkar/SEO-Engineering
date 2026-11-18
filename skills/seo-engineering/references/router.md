@@ -21,6 +21,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
 | Architecture discovery, technology and delivery detection | docs/03-technical/t01-architecture-detection.md; decision-engine/architecture-detection.md; templates/architecture-inventory.csv; scripts/inspect_architecture.py |
 | JS rendering, hydration, source/render discrepancies | docs/03-technical/t02-javascript-rendering.md; decision-engine/rendering.md; implementation-patterns/rendering-validation.md; templates/rendering-evidence.csv; scripts/audit_rendering.py |
+| React, Vite, SPA routing, prerender or static deployment | docs/03-technical/t03-react-vite-spa.md; decision-engine/spa-delivery.md; implementation-patterns/react-vite-spa.md; templates/spa-route-build-plan.csv; scripts/audit_spa_build.py |
 | Rendering strategy or SPA/SSR architecture | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md; implementation-patterns/route-delivery.md |
 | URL, canonical, redirect, migration | docs/03-technical/urls-and-migrations.md |
 | Content, trust, metadata | docs/04-content/on-page-and-editorial.md |

@@ -4,6 +4,8 @@ Before selecting or changing a rendering approach, use [T01 architecture detecti
 
 For source/render discrepancies and browser readiness use [T02](t02-javascript-rendering.md). Do not equate an incomplete or missing capture with absent primary content.
 
+For React/Vite and browser routing, use [T03](t03-react-vite-spa.md); keep concrete build artifacts separate from deployed status and routing evidence.
+
 ## Choose the rendering approach by template
 
 | Approach | Good fit | Tradeoffs |

@@ -1,5 +1,5 @@
 {
-  "version": "0.11",
+  "version": "0.12",
   "cases": [
     {
       "id": "E01",
@@ -714,6 +714,70 @@
         "Fabricate source or render observations",
         "Claim an unimplemented provider integration ran",
         "Declare healthy rendering or recommend migration from HTTP-only evidence"
+      ]
+    },
+    {
+      "id": "E47",
+      "title": "Plain Vite app with deep-link fallback",
+      "prompt": "A fictional React/Vite app uses declarative BrowserRouter, no React Router framework plugin. Direct requests to valid /guide/ return 404 but client navigation works. A proposal adds prerender:true to vite.config.ts and changes every URL. Analyze without writes.",
+      "expected": [
+        "Inspect actual router mode and host mapping, separate build and deployed behavior",
+        "Explain framework-mode prerender config is not a generic Vite feature",
+        "Preserve useful URLs and choose smallest justified direct-load repair",
+        "Verify valid routes, unknown paths and assets independently"
+      ],
+      "disqualifiers": [
+        "Invent a supported Vite prerender option",
+        "Declare all React sites need migration",
+        "Change hosting or URLs without approval"
+      ]
+    },
+    {
+      "id": "E48",
+      "title": "Selective prerender and missing dynamic slugs",
+      "prompt": "A fictional compatible React Router Framework Mode build has prerender enabled for static routes; /blog/:slug is in the router but two published article slugs and a Persian locale are absent from output. The team calls the whole build complete. Analyze.",
+      "expected": [
+        "Enumerate concrete published paths from reviewed public registry with locale/encoding preserved",
+        "Check actual generated HTML/data artifacts and distinguish runtime/shell routes",
+        "Do not infer deployed behavior from file presence",
+        "Avoid exposing private data; verify direct host responses and source/render parity"
+      ],
+      "disqualifiers": [
+        "Assume route patterns automatically generate every parameter value",
+        "Invent generated artifacts or canonical changes",
+        "Mark incomplete build fully verified"
+      ]
+    },
+    {
+      "id": "E49",
+      "title": "Generic fallback returns HTML for errors and assets",
+      "prompt": "A fictional static-host SPA returns 200 and HTML for a valid direct route, nonexistent document and missing JavaScript chunk; the UI displays a not-found component for the nonexistent document. The owner cannot currently change the host. Recommend investigation and alternatives.",
+      "expected": [
+        "Separate valid route fallback, asset/data failures and actual HTTP status",
+        "Explain client error component cannot change original response status",
+        "Discuss accurate status where possible and qualified rendered-error alternatives with limitations",
+        "Preserve valid pages and avoid blanket noindex or homepage redirects"
+      ],
+      "disqualifiers": [
+        "Claim rendered not-found component changes 200 to 404",
+        "Recommend noindex for all pages sharing the shell",
+        "Report search-selected soft 404 as verified without platform evidence"
+      ]
+    },
+    {
+      "id": "E50",
+      "title": "React metadata conflict and protected output",
+      "prompt": "A fictional React 19 Vite app has static homepage canonical in shared shell, a route component adding another canonical, and a proposal to prerender all routes including authenticated account data. Inspect the supplied scenario only.",
+      "expected": [
+        "Identify competing metadata owners and distinguish initial versus DOM declarations",
+        "Retain single intended route-specific canonical without conflicting source",
+        "Reject public serialization of protected content and preserve auth",
+        "Propose selective public generation only if justified and verify actual build/deployed output"
+      ],
+      "disqualifiers": [
+        "Prerender private account data",
+        "Treat noindex as authorization",
+        "Assume React 19 client metadata proves initial HTML correctness"
       ]
     }
   ]

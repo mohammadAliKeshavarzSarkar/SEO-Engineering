@@ -1,0 +1,58 @@
+{
+  "schema_version": "1",
+  "scope": "Synthetic route artifact plan; hand-authored not actual Vite output",
+  "routes": [
+    {
+      "id": "guide",
+      "url": "https://example.org/guide/",
+      "purpose": "acquisition",
+      "delivery": "prerendered",
+      "sitemap_expected": true,
+      "canonical_expected": "https://example.org/guide/",
+      "html_file": "guide/index.html",
+      "required_files": [
+        "guide/data.json"
+      ]
+    },
+    {
+      "id": "article",
+      "url": "https://example.org/blog/second/",
+      "purpose": "acquisition",
+      "delivery": "prerendered",
+      "sitemap_expected": true,
+      "canonical_expected": "https://example.org/blog/second/",
+      "html_file": "blog/second/index.html",
+      "required_files": []
+    },
+    {
+      "id": "app",
+      "url": "https://example.org/app/",
+      "purpose": "protected",
+      "delivery": "spa_shell",
+      "sitemap_expected": false,
+      "canonical_expected": null,
+      "html_file": "shell.html",
+      "required_files": []
+    },
+    {
+      "id": "missing",
+      "url": "https://example.org/missing/",
+      "purpose": "missing",
+      "delivery": "spa_shell",
+      "sitemap_expected": false,
+      "canonical_expected": null,
+      "html_file": "shell.html",
+      "required_files": []
+    },
+    {
+      "id": "dynamic",
+      "url": "https://example.org/catalog/",
+      "purpose": "acquisition",
+      "delivery": "runtime",
+      "sitemap_expected": true,
+      "canonical_expected": "https://example.org/catalog/",
+      "html_file": null,
+      "required_files": []
+    }
+  ]
+}
