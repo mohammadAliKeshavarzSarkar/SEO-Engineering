@@ -1,0 +1,11 @@
+{
+  "model": "REPLACE with exact model/version and inference settings",
+  "runtime": "REPLACE with runtime/version",
+  "tool_config": "REPLACE with matched tool access and execution budget",
+  "permission_mode": "read-only synthetic fixtures",
+  "skill_commit": "REPLACE with reviewed candidate commit and package checksum",
+  "launch_protocol": "REPLACE with frozen isolation, launch order, session and context policy",
+  "review_protocol": "REPLACE with blind reviewers, evidence and adjudication",
+  "suite_kind": "public_regression",
+  "repeats": 3
+}

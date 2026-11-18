@@ -12,6 +12,7 @@ Candidate commit, version, Python/runtime, reviewer and date:
 | Reproducible archive | Two builds of identical inputs in pinned runtime have identical bytes, checksum recorded | | not-run |
 | Fixture parity | Repository and bundled outputs agree | | not-run |
 | External runtime | Skill loaded, tools and routing checked | | not-run |
+| Benchmark isolation and evidence | Matched environments, actual runs/traces, independent rubric and held-out cases, review and missingness documented | | not-run |
 | Behavioral comparison | Required cases meet agreed rubric against matched baseline | | not-run |
 | Human review | Accuracy, privacy, source currency, limitations | | not-run |
 

@@ -49,3 +49,7 @@ The R10 handoff validator requires calendar dates in YYYY-MM-DD, rejects non-fin
 ## S03 portable package receipt
 
 Maintainer-only tool from the complete trusted checkout: `python3 scripts/verify_package.py --archive seo-engineering-skill.zip --report package-receipt.json`. Requires a fresh output file. Verifies exact selected paths and bytes, one skill entrypoint, simple frontmatter, and safe member types; emits SHA-256, individual file inventory and runtime details. Record reviewed source commit separately. Does not install, run an agent, attest source trust, check all runtime-specific platform rules or scan every allowed file for secrets. CI tests relocated execution separately. See [portable skill acceptance](../docs/01-foundations/portable-skill-acceptance.md).
+
+## S04 benchmark preparation and aggregation
+
+Maintainer-only `scripts/score_benchmark.py` prepares prompt tasks from a frozen suite/config and aggregates independently reviewed paired grades; no model inference or automated judge. See [benchmark protocol](../evaluations/benchmark-protocol.md) and [grade schema](../evaluations/benchmark-grades.md). Public regression cases are not held-out; the scorer never certifies a release. CI plan preparation uses placeholder metadata and creates no real grades.

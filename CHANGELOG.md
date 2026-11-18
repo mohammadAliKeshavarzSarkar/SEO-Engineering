@@ -2,6 +2,8 @@
 
 ## Unreleased — v0.2.0 in development
 
+- S04 benchmark preparation: offline paired-run scorer and prompt preparation, eight passing targeted tests, controlled evaluation and grade schema, CI public-suite plan smoke. Public cases are regression scenarios, not independent held-out results. No real agent runs, grades or model improvement established.
+
 - S03: added exact-source archive verification, SHA-256 receipt and seven regressions (73/73 local tests passed), CI source-matching and relocation smoke steps, portable acceptance and onboarding instructions. External runtime activation and final content-level privacy/accuracy review remain pending.
 
 - S02: added read-only main-branch CI; base exact-commit full verification and deterministic package steps succeeded. Executed 62 existing unit tests locally using hash-matched code, hardened R10 handoff validation for non-finite numbers, duplicate JSON keys and canonical dates, and reran 66/66 tests successfully. Corrected-commit CI, final distribution review and behavioral gates remain separate.

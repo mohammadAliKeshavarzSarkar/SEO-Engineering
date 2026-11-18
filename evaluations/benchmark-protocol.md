@@ -1,0 +1,43 @@
+# S04 — Controlled behavioral benchmark
+
+Status: benchmark infrastructure prepared; no independent agent runs or human grading completed. The public 38-case suite is a development regression set, not a held-out test. All outcomes are unmeasured until actual execution and review. Source guidance reviewed 2026-11-18.
+
+## Objective and design
+
+Measure the incremental contribution of the SEO Engineering procedural skill to a specific agent/runtime, not underlying model intelligence, ranking outcomes or universal superiority. Compare a matched no-skill baseline and skill-enabled arm on identical case prompts and fixtures. Pin model/version and inference settings, runtime, system instructions apart from skill activation, allowed tools, permissions, budget/time limits, data snapshots, candidate commit and actual archive checksum. Specify whether comparing instruction-only or complete toolkit; for an instruction-only evaluation tools must be equally available to both arms, and if comparing complete toolkit openly state treatment includes added resources/utilities. Do not compare different models or mix settings in one report.
+
+Start fresh sessions and isolated synthetic target directories for each run; disable unrelated memories/connectors, network or unnecessary writes. Neither arm has access to private projects. Randomize/counterbalance launch and response presentation order outside the scorer, record actual execution and failures without replacement cherry-picking. Record wall time, tool calls, token/cost when actually available; compare under disclosed equal budgets. Missing or timed-out outputs are tracked as missing or incomplete until reviewed, never silently dropped. Pin a fixed repeat count before running (initial suggestion three per case per arm). For 38 public cases this is 114 matched pairs / 228 individual runs. A one-repeat pilot is 38 pairs / 76 runs if all cases are attempted. Start with a small clearly labeled pilot if resources are limited, then complete the preregistered cohort. Counts are planned, not executed.
+
+## Prevent rubric leakage and overfitting
+
+The public cases.json is currently distributed with the skill for development. Its expected behaviors and disqualifiers are public and already known to the authors. Even prompt-only export cannot make these cases genuinely unseen. For public regressions, prevent direct answer lookup using a restricted evaluation workspace or a documented benchmark-only copy with rubric-bearing files unavailable; record any deviations from the release package and treat this as development evidence. Prefer independently authored held-out scenarios maintained outside the public repository/package; review against task coverage, freeze before testing and do not reveal rubric or final cases during tuning. Run the held-out suite against the actual unmodified candidate package, with the held-out answer keys unavailable to the agent. Public regression results and held-out results are separate, never pooled as independent evidence. Do not commit private grade records or holdout material here.
+
+## Run and grade
+
+Use [cases](cases.json) as maintainer-only input during scoring. Prepare a private experiment configuration using [example](benchmark-config.example.json); replace all placeholder fields, select a fixed case cohort and repetitions, preserve the exact suite and plan. The scorer exports tasks with case ID, repetition and prompt, but the complete plan also contains configuration; give the agent only its assigned prompt and common task context, not the plan, answer keys or other outputs. The controller separately assigns both arms to every task. No automatic model calls or service credentials are included.
+
+Keep raw sanitized responses, trace references, loaded resource filenames, run identity and environment evidence under restricted access. Blind human reviewers to arm labels and randomize response presentation; a response may reveal its arm, so record imperfect blinding. Use the same fixed criteria for both arms. Independently score each expected item pass/fail/not_observable, and each disqualifier absent/observed/not_observable. Cite actual response or trace and rationale for every criterion; a claimed test without trace is not proof. Missing evidence isn't success. Resolve disagreements through an independent second reviewer or adjudicator; preserve original ratings privately. Model graders may assist only with calibrated human agreement and separate reporting; no self-grading by the tested conversation.
+
+## Aggregation and gates
+
+For a graded run, one point per expected pass; zero for fail or not observable. The denominator is every expected criterion. A case passes when at least 80% of expected items pass, no disqualifier is observed, and no item or disqualifier is unobservable. This initial conservative rule treats all existing criteria as essential; modify only with documented preregistration and a new frozen plan. A four-criterion case thus requires all four expected passes. Any observed disqualifier overrides a numeric case score. The scorer compares item-weighted rates and paired case outcomes only on matched case/repetition pairs; missing pairs remain visible and the internal gate cannot pass with incomplete coverage. Report critical failures and unobservable runs across ALL graded runs, even unmatched. The delta is descriptive percentage points, not a statistical significance test. Report case-level distribution, counterexamples, paired outcomes and uncertainty; repeated runs on the same case are correlated, not independent new scenarios. Avoid claiming improvement merely from a positive average, incomplete comparisons or public cases.
+
+Proposed initial release evidence: complete required public and separate held-out cohorts, no skill-arm critical failures, full internal case gate on required cases, independently reviewed comparison with baseline and no unexplained important regressions. Predeclare what constitutes practical improvement for the actual target tasks; no universal numerical improvement threshold. If baseline already passes, show whether skill preserves quality or improves traceability/efficiency rather than forcing an uplift. Owner reviews costs, limitations, held-out results and failure severity. Passing this gate is not certification; actual runtime activation, privacy and accuracy review remain required.
+
+## Offline commands
+
+From trusted full checkout, copy the example config outside the repository and fill real settings. Use fresh output names and a private workspace. For public regressions:
+```sh
+python3 scripts/score_benchmark.py prepare --suite evaluations/cases.json --config /path/to/private-config.json --out /path/to/plan.json
+```
+The command prints the canonical JSON SHA-256 of the plan. Preserve it in the adjudicated grades record. For held-out work use a private suite of the same schema. Actual inference and review are performed externally; this script never invokes a model. Once reviewed grades exist:
+```sh
+python3 scripts/score_benchmark.py score --suite evaluations/cases.json --plan /path/to/plan.json --grades /path/to/grades.json --out /path/to/report.json
+```
+See [grade schema](benchmark-grades.md). The scorer validates the suite and plan digest, run identity, criterion coverage and references, then aggregates supplied grades. It cannot verify the truth of the grades, model identity, permissions, actual traces, held-out status or blinding. It emits release_certified false even with perfect grades. CI runs synthetic regression tests and prepares a public suite plan with explicitly placeholder configuration; this is only plumbing validation, not an agent experiment.
+
+## Evidence and recovery
+
+Record the experiment ID, frozen suite and plan hashes, candidate checksum, environments, run status, sanitized outputs, reviewer judgments, disagreements, missingness, critical outcomes, costs and reasons for any deviations. Diagnose errors by knowledge, routing, evidence, judgment, execution, verification or scope (use more than one if needed); fix general procedures, not memorize public expected answers. Freeze an independent new held-out set when training against failures. Retain negative outcomes. No private project data, arbitrary external tool calls or production writes are needed for the synthetic benchmark.
+
+Source: [OpenAI evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices) supports task-specific evaluation, comparison, blinded human review and calibration. The local scorer and proposed gates are internal conventions and do not depend on a hosted eval service.

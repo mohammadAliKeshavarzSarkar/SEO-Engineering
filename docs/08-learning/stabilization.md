@@ -1,6 +1,6 @@
 # v0.2.0 stabilization and release readiness
 
-Status: development candidate; not released or behaviorally certified. S03 checkpoint: 2026-11-18.
+Status: development candidate; not released or behaviorally certified. S04 checkpoint: 2026-11-18.
 
 ## Roadmap
 
@@ -8,8 +8,8 @@ Status: development candidate; not released or behaviorally certified. S03 check
 |---|---|---|---|
 | S01 | Repository quality audit | Inventory, reference scan, targeted fixes and regressions, explicit limits | Initial structural audit and targeted fixes complete; wider semantic review remains |
 | S02 | Full automated testing | Actual complete checkout, unit test and utility fixture outcomes; fix and rerun failures | Corrected-commit CI and 66 original/expanded unit tests passed |
-| S03 | Portable skill validation | Build twice in pinned runtime, compare checksums, inspect archive, run extracted fixtures and reference checks | Base package checks passed; new source-matching receipt and relocation smoke configured; external runtime and content-level review pending |
-| S04 | Agent behavioral benchmarking | Matched baseline and skill runs, independent grading, held-out cases, actual failure records | Pending |
+| S03 | Portable skill validation | Build twice in pinned runtime, compare checksums, inspect archive, run extracted fixtures and reference checks | Exact archive and relocation CI passed; external runtime and content-level review pending |
+| S04 | Agent behavioral benchmarking | Matched baseline and skill runs, independent grading, held-out cases, actual failure records | Scoring infrastructure and protocol prepared; real runs and grading blocked |
 | S05 | Corrections and improvements | Regressions, reviewed source and privacy checks, reruns for affected gates | Pending |
 | S06 | v0.2.0 release | Explicit owner review and release decision, source commit and package checksum, all required checks | Not released |
 
@@ -56,3 +56,7 @@ Adversarial input review found that the research envelope accepted NaN/Infinity,
 ## S03 portable distribution record
 
 Corrected S02 commit ef9e5f32a67646ec1fdf6a8b5e2badd43409bfcc passed [CI run 44267161385](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44267161385). Added standalone maintainer verifier scripts/verify_package.py plus seven regression tests. Local code-only workspace suite: 73/73 tests passed on Python 3.13.5. Test coverage includes source content mismatch, unexpected members, case collisions, additional skill entrypoints, incorrect name, unsafe member type and valid receipt. New code and test Git blob hashes verified: 8bc538d96e2dcfd4b735f4a924dfc29ffc924418 and dff3ec501e69f2ce454e9748e3a8f16c5dc30368. Added exact-membership/digest checks and relocated synthetic project smoke to CI. Hosted result for this change must be checked separately. The receipt is external to the archive and compared with a trusted checkout, not a signature or secret scanner. No actual agent runtime activation or behavioral test executed; final manual content review and distribution remain pending. The direct local clone is still unavailable; hosted CI tests the full checkout. See [portable skill acceptance](../01-foundations/portable-skill-acceptance.md).
+
+## S04 benchmark preparation
+
+S03 exact candidate commit 3a961f1df21d435509aa786156f032cbe6a3558e passed [CI run 44268790545](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44268790545), including exact archive verification and relocated synthetic project check. External model activation still untested. Added offline paired-run preparation/scoring tool and eight targeted local tests, all passed; code/test blob hashes f1ab7c6e24cecfbdbbe3c4ab65c9ddcb3d7806cb and 608db515c3aa3c0cdd6e7aadef4eda3a4695c93f. CI now also prepares the 38 public cases with explicitly placeholder config, three repeats, 228 planned individual run slots. No tool found for independent model sessions in this environment; no baseline or skill run was performed, no grades or performance claim. The 38 public cases are known and bundled, not held-out; independent private held-out cases and blind review remain required. See [benchmark protocol](../../evaluations/benchmark-protocol.md). S04 infrastructure is not competency certification. Hosted S04 CI result must be checked separately.

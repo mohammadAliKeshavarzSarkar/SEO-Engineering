@@ -54,3 +54,9 @@ jobs:
           python3 "$lib/scripts/check_docs.py"
           python3 "$lib/scripts/validate_research.py" --input "$lib/examples/research-handoff/sample.json" --output "$RUNNER_TEMP/relocated-handoff.json"
           test -f "$project/.agents/skills/seo-engineering/SKILL.md"
+      - name: Prepare public benchmark plan (no model calls)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/score_benchmark.py prepare --suite evaluations/cases.json --config evaluations/benchmark-config.example.json --out "$RUNNER_TEMP/benchmark-plan.json"
+          python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); assert len(p["tasks"]) == 114; assert all(set(t)=={"case_id","repeat","prompt"} for t in p["tasks"])' "$RUNNER_TEMP/benchmark-plan.json"
