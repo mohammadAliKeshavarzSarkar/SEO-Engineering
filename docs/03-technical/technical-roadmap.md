@@ -13,7 +13,7 @@ Status: development; v0.2.0-rc.1 remains pinned at 0483ff33d73687adccd11408ec263
 | T07 | [URLs, redirects and migrations](t07-url-migrations.md) | Identity policy, reviewed map, GET trace/graph QA and rollback | Initial methodology |
 | T08 | [Metadata and structured data](t08-metadata-structured-data.md) | Reviewed typed drafts, safe serialization, literal capture and layered feature QA | Initial methodology |
 | T09 | [Core Web Vitals and performance](t09-performance.md) | Separate field p75, matched lab QA, bottleneck attribution and UX preservation | Initial methodology |
-| T10 | Technical audit automation | Bounded observations, reproducible reports | Planned |
+| T10 | [Technical audit automation](t10-audit-automation.md) | Fixed offline T01–T09 runner, native evidence, scoped review groups and R08 triage | Initial methodology |
 | T11 | Deployment and regression prevention | CI gates, pre/post-release checks | Planned |
 | T12 | Technical troubleshooting | Evidence-driven incident playbooks | Planned |
 

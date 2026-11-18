@@ -40,6 +40,7 @@ def main():
         run(label + ': HTML valid', root, ['scripts/audit_html.py','--manifest','examples/routes.json','--root','examples/site'])
         run(label + ': HTML intentional failure', root, ['scripts/audit_html.py','--manifest','examples/routes-failing.json','--root','examples/site'], 1)
         run(label + ': audit_spa_build.py', root, ['scripts/audit_spa_build.py','--input','examples/spa-build/sample.json','--root','examples/spa-build/artifacts','--output',str(out / (label + '-audit_spa_build.py.json'))])
+        run(label + ': audit_technical.py', root, ['scripts/audit_technical.py','--input','examples/technical-audit/sample.json','--artifact-root','examples/spa-build/artifacts','--output',str(out / (label + '-audit_technical.py.json'))])
         for script, fixture in FIXTURES:
             run(label + ': ' + script, root, ['scripts/' + script,'--input',fixture,'--output',str(out / (label + '-' + script + '.json'))])
 
@@ -67,7 +68,7 @@ def main():
                     raise ValueError('missing entrypoint or routing files')
                 results.append({'check':'archive structure','pass':True})
                 smoke(library, 'package', work)
-                for script in [name for name, _ in FIXTURES] + ['audit_spa_build.py']:
+                for script in [name for name, _ in FIXTURES] + ['audit_spa_build.py', 'audit_technical.py']:
                     left, right = [work / (label + '-' + script + '.json') for label in ('repo','package')]
                     equal = left.is_file() and right.is_file() and left.read_bytes() == right.read_bytes()
                     results.append({'check':'fixture parity: '+script,'pass':equal})

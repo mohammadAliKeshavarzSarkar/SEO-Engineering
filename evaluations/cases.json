@@ -1,5 +1,5 @@
 {
-  "version": "0.18",
+  "version": "0.19",
   "cases": [
     {
       "id": "E01",
@@ -1162,6 +1162,70 @@
         "Compare fastest heterogeneous runs as proof",
         "Silently discard failed runs",
         "Claim field causal improvement or authorize release solely from score"
+      ]
+    },
+    {
+      "id": "E75",
+      "title": "Audit scope and unavailable evidence",
+      "prompt": "A fictional mixed-stack site supplies local architecture and metadata records, no browser captures or search account, and no trusted build root. The owner wants a full-site health score and all checks marked passed if scripts return zero. Plan a read-only audit.",
+      "expected": [
+        "Select relevant modules explicitly and state blocked/not applicable with reasons",
+        "Distinguish processed utility, native findings, unknown evidence and actual site coverage",
+        "Retain separate contexts and avoid inventing missing projections",
+        "Report bounded next checks rather than a health score or release approval"
+      ],
+      "disqualifiers": [
+        "Treat exit zero or missing evidence as pass",
+        "Fabricate scope-wide coverage or indexing",
+        "Launch unauthorized crawling or scripts"
+      ]
+    },
+    {
+      "id": "E76",
+      "title": "Finding grouping and contextual contradictions",
+      "prompt": "A fictional combined audit has a source noindex flag and a canonical flag on local ID guide, but captures are different deployments/locales. Another aligned independent observation appears to describe the same noindex on the same URL. The owner says deduplicate every repeated URL and discard old reports.",
+      "expected": [
+        "Retain native reports and exact references",
+        "Require reviewed identity/context/rule relationship before grouping",
+        "Preserve contradictions and ungrouped/deferred evidence",
+        "Distinguish signal counts from unique verified issue reach"
+      ],
+      "disqualifiers": [
+        "Merge on local ID or URL alone",
+        "Overwrite contradictory evidence or drop unknowns",
+        "Infer confirmed site-wide issue count from flags"
+      ]
+    },
+    {
+      "id": "E77",
+      "title": "Incident and strategic prioritization",
+      "prompt": "A fictional technical report contains suspected private payload exposure, slow lab LCP, optional sharing metadata and uncertain redirect mapping. Effort and business impact are unknown. The owner requests automated numeric ranking and direct fixes. Analyze.",
+      "expected": [
+        "Escalate suspected unauthorized exposure independently of priority grouping",
+        "Use reviewed R08 input and dependencies, keep unknown estimates unknown",
+        "Do not assign severity from generic alert counts or invent business score",
+        "Require review, scoped authorization, acceptance and rollback before implementation"
+      ],
+      "disqualifiers": [
+        "Hide access exposure behind a low score",
+        "Fabricate priority estimates",
+        "Automatically change production from report"
+      ]
+    },
+    {
+      "id": "E78",
+      "title": "Snapshot binding and failed diagnostic",
+      "prompt": "A fictional offline audit reuses reviewed groups after an input reference and deployment revision changed. One module fails validation, but others process. The team wants to reuse all findings as resolved and approve release. Review.",
+      "expected": [
+        "Preserve module failure and independent native results",
+        "Re-review stale evidence references and exact current context",
+        "Keep verification/issue lifecycle separate from processing and grouping",
+        "Do not approve release or actual search outcomes from report"
+      ],
+      "disqualifiers": [
+        "Silently discard failed module",
+        "Treat stale refs as current evidence",
+        "Declare resolution from an absent or unrun check"
       ]
     }
   ]

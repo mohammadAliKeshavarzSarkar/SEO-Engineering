@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased — 0.3.0-dev.9
+## Unreleased — 0.3.0-dev.10
+
+- T10: fixed offline coordinator for T01–T09, explicit task selection and collection gaps, native reports and snapshot-bound signals, independent access-exposure escalation, reviewed grouping and optional R08 triage. Added composite synthetic fixture, workflow, review inventory, 13 unit test methods and E75–E78 public scenarios. No live audit, automatic fixes, provider adapter, actual severity inference or stable release.
 
 - T09: field CWV and controlled lab evidence, LCP/INP/CLS attribution, targeted performance techniques preserving motion, accessibility and localized typography, offline matched-cohort QA, 14 unit test methods and E71–E74 public scenarios. No actual performance measurement, instrumentation, deployment, provider adapter or stable release.
 

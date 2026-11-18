@@ -1,0 +1,1 @@
+group_id,audit_id,signal_ids,artifact_hash_refs,scope,evidence_refs,expected_behavior,observed_behavior,rationale,requirement_class,reviewer,owner,severity,confidence,fit,risk,impact,effort_low_days,effort_high_days,depends_on,acceptance,rollback,next_check,limitations

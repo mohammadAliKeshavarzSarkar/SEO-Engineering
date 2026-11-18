@@ -5,7 +5,7 @@ description: Research, audit, plan, implement and validate SEO for any authorize
 
 # SEO engineering
 
-Development version: 0.3.0-dev.9. For version and verification status read the library's docs/01-foundations/distribution-version.json (previous candidate notes are historical) when reporting installation or release readiness. No stable release or independently measured agent improvement is established.
+Development version: 0.3.0-dev.10. For version and verification status read the library's docs/01-foundations/distribution-version.json (previous candidate notes are historical) when reporting installation or release readiness. No stable release or independently measured agent improvement is established.
 
 Reusable workflow; never assume a particular brand, stack, market or conversion. Do not promise rankings. Read [task router](references/router.md) to select only relevant modules and [execution contract](references/execution-contract.md) for scope and outputs. Both describe how to locate the maintained library in a checkout or bundled installation.
 
