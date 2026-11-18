@@ -10,7 +10,8 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 |---|---|
 | New website, broad strategy | workflows/new-website.md; docs/02-research/r01-business-and-positioning.md; docs/06-operations/audit-and-release.md |
 | Keyword discovery | docs/02-research/r01-business-and-positioning.md; docs/02-research/r02-keyword-discovery.md; docs/02-research/research-roadmap.md |
-| Search intent, competitor, gaps | docs/02-research/market-and-keywords.md; research-roadmap.md in same directory; use specialized modules as they become available |
+| Search intent, SERP analysis | docs/02-research/r03-search-intent-and-serp.md; decision-engine/search-intent.md; templates/serp-snapshots.csv; templates/serp-results-v2.csv; templates/intent-assessments.csv |
+| Competitor, gaps and clustering | docs/02-research/market-and-keywords.md; docs/02-research/research-roadmap.md; docs/02-research/r03-search-intent-and-serp.md; use specialized modules as they become available |
 | Persian or multilingual | docs/02-research/persian-and-international.md |
 | Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
 | JS rendering or SPA/SSR | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md |

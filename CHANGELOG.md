@@ -2,6 +2,9 @@
 
 ## Unreleased — v0.2.0 in development
 
+- Added R03 search intent and SERP intelligence, including source/market limitations, mixed intent, permissioned collection, page-level decision protocol and synthetic worked cases.
+- Added versioned SERP snapshot/result/assessment data contracts; preserved the legacy SERP observations template for compatibility. Routed agent tasks to R03 and added E09–E11 behavioral evaluations. No live keyword or ranking evidence collected; evaluation execution pending.
+
 - Established an agent-first architecture, module authoring contract, portable skill packaging, explicit task routing and new-site workflow.
 - Added decision and implementation references, reusable run records, and synthetic evaluation cases with safety-critical criteria. These are assessment materials, not evidence that any model has passed them.
 - Added a standard-library skill builder and package unit tests. Project-specific data is excluded by scope; archive contents must still be reviewed before distribution.

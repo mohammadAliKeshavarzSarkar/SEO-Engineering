@@ -1,0 +1,1 @@
+snapshot_id,query_id,raw_query,captured_at_iso8601,engine,search_surface,requested_market,observed_market,requested_language,observed_language,requested_device,observed_device,personalization_context,collection_method,source_ref,position_basis,sample_target,comparable_sample_count,completeness,limitations

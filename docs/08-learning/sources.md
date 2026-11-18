@@ -20,3 +20,16 @@ Research checkpoint: 2026-11-18. Selected corrections/clarifications below were 
 ## Source record format
 
 ID; claim; exact URL and section; publication/update date if known; checked date; platform/market; supporting observation; limitations; reviewer; next review; decisions affected. Do not assume every linked source was independently read. Avoid claims about future or newly released reports/API fields unless actual documentation and availability have been confirmed.
+
+## R03 checkpoint — 2026-11-18
+
+| Claim scope | Primary source |
+|---|---|
+| Query meaning and context | [Google ranking results](https://www.google.com/intl/en_us/search/howsearchworks/how-search-works/ranking-results/) |
+| Search context and language differences | [Results differences](https://support.google.com/websearch/answer/12412910), [Language of results](https://support.google.com/websearch/answer/13511324) |
+| Result types and visual features | [Visual elements gallery](https://developers.google.com/search/docs/appearance/visual-elements-gallery) |
+| Position semantics, query/page reporting | [Metrics definitions](https://support.google.com/webmasters/answer/7042828), [Common tasks](https://support.google.com/webmasters/answer/17010961) |
+| Unauthorized automated queries and low-value scale | [Spam policies](https://developers.google.com/search/docs/essentials/spam-policies) |
+| Original audience-focused content, AI features | [People-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [AI features](https://developers.google.com/search/docs/appearance/ai-features) |
+
+Checked above for R03. Sampling defaults and taxonomy are internal conventions. Recheck feature and tool availability when applying to a target market.
