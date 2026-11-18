@@ -1,0 +1,86 @@
+{
+  "description": "Fictional R06 mapping fixture, not live data.",
+  "pages": [
+    {
+      "id": "P1",
+      "url": "https://example.org/chairs/",
+      "lifecycle": "existing",
+      "indexIntent": true
+    },
+    {
+      "id": "P2",
+      "url": "https://example.org/guides/choose-chair/",
+      "lifecycle": "existing",
+      "indexIntent": true
+    },
+    {
+      "id": "P3",
+      "url": "https://example.org/tools/chair-fit/",
+      "lifecycle": "proposed",
+      "indexIntent": true
+    },
+    {
+      "id": "P4",
+      "url": "https://example.org/office-chairs/",
+      "lifecycle": "existing",
+      "indexIntent": false,
+      "duplicateOf": "P1"
+    },
+    {
+      "id": "P5",
+      "url": "https://example.org/checkout/",
+      "lifecycle": "existing",
+      "indexIntent": false
+    }
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "status": "resolved",
+      "primary": "P1",
+      "supporting": [
+        "P2"
+      ],
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "status": "resolved",
+      "primary": "P1",
+      "supporting": [],
+      "action": "improve"
+    },
+    {
+      "id": "U3",
+      "status": "resolved",
+      "primary": "P2",
+      "supporting": [
+        "P1"
+      ],
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "status": "resolved",
+      "primary": "P3",
+      "supporting": [],
+      "action": "propose_new"
+    },
+    {
+      "id": "U5",
+      "status": "unresolved",
+      "primary": null,
+      "candidates": [
+        "P1",
+        "P2"
+      ],
+      "action": "investigate"
+    },
+    {
+      "id": "U6",
+      "status": "excluded",
+      "primary": null,
+      "action": "exclude"
+    }
+  ]
+}

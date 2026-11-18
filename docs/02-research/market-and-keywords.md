@@ -8,13 +8,14 @@
 - [R03 — Search intent and SERP intelligence](r03-search-intent-and-serp.md)
 - [R04 — Keyword normalization and clustering](r04-keyword-normalization-and-clustering.md)
 - [R05 — Competitor intelligence](r05-competitor-intelligence.md)
+- [R06 — Keyword-to-page mapping](r06-keyword-to-page-mapping.md)
 
 ## Research workflow
 
 1. Define product, audiences, market, business objectives, funnel and primary conversion. Identify whether search demand is informational, navigational, comparison, transactional or local; mixed intent is possible.
 2. Collect seed terms from customer interviews, support/sales questions, product terminology, Search Console, Bing, Trends, keyword tools and manually observed autocomplete. Record source, date, locale, device and metric type. No-data does not mean zero demand; third-party estimates are not observed volume.
 3. Normalize variants without deleting meaningful language distinctions. Group queries by task and inspect representative SERPs. Record page types, dominant intent, freshness, SERP features, real competitors and evidence gaps. Search-result competitors can differ from business competitors.
-4. Map each cluster to an existing or proposed canonical page. Do not force one page per wording. Split only when audiences/tasks or SERP evidence support distinct useful content. Note overlapping pages and evaluate results before merging.
+4. Map reviewed cluster/task units to intended existing or proposed destinations; leave uncertain or unsuitable units unassigned. Strategic assignment is distinct from technical canonicalization. Do not force one page per wording or cluster. Note overlapping pages and evaluate their actual tasks and evidence before consolidation.
 5. Compare competitors by answer quality, user journey, original proof, topical coverage, technical access, brand trust and relevant citations. Do not copy competitor text or infer their revenue/traffic without evidence.
 6. Prioritize clusters by business relevance, unmet need, intent fit, feasible evidence and estimated effort; volume is a secondary signal. Define success by qualified discovery and outcomes.
 

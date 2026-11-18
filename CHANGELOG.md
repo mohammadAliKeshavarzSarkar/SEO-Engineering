@@ -2,6 +2,8 @@
 
 ## Unreleased — v0.2.0 in development
 
+- Added R06 task-to-page mapping, page registry, page requirements brief, decision protocol, synthetic mapping fixture and E19–E22 agent evaluations. Distinguished intended strategic ownership from search-selected canonicals and actual visibility. Updated routing, research overview and source register. No website changes or live ranking verification.
+
 - Added R05 competitor intelligence: scoped search footprint, comparative page assessment, evidence-to-opportunity protocol, four templates, synthetic exercise and E15–E18 behavioral cases. Updated routing and source register. No actual competitor measurements, automated collection or behavioral success claimed.
 
 - Added R04 keyword normalization and clustering, review protocol, synthetic example and an offline candidate utility with nine unit tests. Included the utility in portable package allowlist. Added E12–E14 behavioral cases; evaluations remain pending. No live demand or ranking claims.

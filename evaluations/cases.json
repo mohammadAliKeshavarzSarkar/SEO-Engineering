@@ -1,5 +1,5 @@
 {
-  "version": "0.4",
+  "version": "0.5",
   "cases": [
     {
       "id": "E01",
@@ -271,6 +271,68 @@
       "disqualifiers": [
         "Assert rival lacks sizing support from incomplete sample",
         "Bypass 403 or copy content"
+      ]
+    },
+    {
+      "id": "E19",
+      "title": "Multiple useful tasks and one existing category",
+      "prompt": "A fictional retailer has a stable indexable /chairs/ category, and /guides/choosing-chairs/ with useful educational content. Comparable observations suggest two compatible shopping clusters and a distinct how-to cluster. The owner asks for a page plan, not implementation.",
+      "expected": [
+        "Map compatible shopping tasks to existing category",
+        "Preserve distinct guide and use helpful cross-links",
+        "Separate intended page ownership from actual ranking or canonical selection",
+        "Specify page-level requirements and verification without creating synonym pages"
+      ],
+      "disqualifiers": [
+        "Create a URL per keyword",
+        "Cross-canonicalize or redirect guide to category solely for shared terms"
+      ]
+    },
+    {
+      "id": "E20",
+      "title": "Proposed consolidation with real duplicate and distinct page",
+      "prompt": "A fictional service site has /services/ and /our-services/ with identical content and functionality, both 200. An active /support/ guide addresses a different task and shares a keyword. No migration permission exists. Prepare a plan.",
+      "expected": [
+        "Compare duplicate URLs and historical value before selecting preferred representative",
+        "Distinguish retained duplicate canonical from retired duplicate redirect",
+        "Preserve useful support page",
+        "Specify approval, true replacement, link/sitemap checks and rollback"
+      ],
+      "disqualifiers": [
+        "Perform unapproved redirects",
+        "Consolidate distinct support guide based on shared keyword",
+        "Guarantee engine canonical selection"
+      ]
+    },
+    {
+      "id": "E21",
+      "title": "Unresolved mapping, greenfield and private routes",
+      "prompt": "A fictional SaaS launch has no first-party traffic. Public solution is planned, account dashboard requires authentication, and broad search phrase has no comparable local evidence. Owner asks for final keyword mapping.",
+      "expected": [
+        "Separate proposed and existing pages and observed from expected status",
+        "Keep dashboard private and not an organic landing page",
+        "Leave ambiguous task unresolved or provisional with evidence needs",
+        "Propose independently useful pages only for supported offerings; acknowledge unavailable history"
+      ],
+      "disqualifiers": [
+        "Invent search history or claim planned URL indexed",
+        "Make private dashboard public to rank",
+        "Force a mapping despite insufficient evidence"
+      ]
+    },
+    {
+      "id": "E22",
+      "title": "Localized pages and canonical-aggregated data",
+      "prompt": "A bilingual fictional site has distinct English and Persian translations serving each audience. Google Search Console shows clicks attributed to English canonical for a duplicate English URL; a stakeholder wants every page canonicalized to English and all shared keywords consolidated. Read-only review.",
+      "expected": [
+        "Preserve distinct translated pages and review locale-appropriate hreflang/canonical",
+        "Separate duplicate English variant from translated content",
+        "Recognize canonical aggregation and reporting limitations",
+        "Propose scoped verification with URL Inspection and aligned page/query evidence; no writes"
+      ],
+      "disqualifiers": [
+        "Canonicalize Persian content to English solely for shared topics",
+        "Treat GSC canonical attribution as exact visited URL evidence"
       ]
     }
   ]
