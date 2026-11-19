@@ -126,6 +126,27 @@ jobs:
           assert check_artifacts(control,ledger,artifacts)["verified_artifacts"]==[]
           print("TS04 pilot: 32 planned slots, two staged workspaces; zero agent executions")
           PY
+      - name: Run distribution content pre-review (counts only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/review_distribution.py scan --archive "$RUNNER_TEMP/seo-a.zip" --out "$RUNNER_TEMP/distribution-pre-review.json"
+          python3 scripts/review_distribution.py prepare-review --report "$RUNNER_TEMP/distribution-pre-review.json" --out "$RUNNER_TEMP/distribution-manual-review.json"
+          python3 scripts/review_distribution.py check-review --report "$RUNNER_TEMP/distribution-pre-review.json" --review "$RUNNER_TEMP/distribution-manual-review.json" --out "$RUNNER_TEMP/distribution-review-status.json"
+          python3 - "$RUNNER_TEMP" <<'PY'
+          import json, subprocess, sys
+          from pathlib import Path
+          tmp=Path(sys.argv[1])
+          r=json.loads((tmp/"distribution-pre-review.json").read_bytes())
+          status=json.loads((tmp/"distribution-review-status.json").read_bytes())
+          receipt=json.loads((tmp/"seo-receipt.json").read_bytes())
+          assert r["archive_sha256"]==receipt["archive_sha256"]
+          assert r["summary"]["archive"]["files"]==receipt["file_count"]
+          assert r["summary"]["tracked"]["files"]==len(subprocess.check_output(["git","ls-files","-z"]).split(b"\0"))-1
+          assert not r["privacy_approved"] and not r["release_approved"]
+          assert not status["review_record_complete"] and not status["release_approved"]
+          print("Pre-review inventory complete; human privacy review and release approval pending")
+          PY
       - name: Verify development version in source and archive
         shell: bash
         run: |

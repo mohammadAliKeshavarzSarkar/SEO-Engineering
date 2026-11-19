@@ -53,3 +53,5 @@ For portable use, see the [installation guide](docs/01-foundations/skill-install
 This repository contains universal guidance and a sanitized project scope. Keep customer data, unpublished audits, source-code findings, credentials, raw logs and private analytics outside Git (or in a separate private repository). `private/` is ignored. Never use `git add -f` for private data. Check the staged diff before pushing. No license has been assigned; the repository owner should choose one before granting reuse rights.
 
 This is a maintained initial edition, not an assertion that every platform policy has been independently verified or that any project has been implemented. Revalidate platform guidance and applicability before release.
+
+Maintainers: use the [distribution privacy pre-review](operations/ts05-distribution-review.md) to review both the source-matched package and current public tracked content. The pre-review is not approval. See the [runtime pilot launch guide](operations/ts04-runtime-launch.md) for the separate actual agent evaluation.
