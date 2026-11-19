@@ -26,7 +26,7 @@ The approved provider records each transaction, timestamp, raw Location and revi
 ## C. Acceptance and rollback
 1. Baseline old/new route registry, content, links, assets, metrics, permissions and host config; review mapping and backups.
 2. Test staged target content/status and actual host rules in authorized environment, including UTF-8/encoded reserved characters and repeated/ordered params. Protect staging from unauthorized access.
-3. With approval, cut over, verify all important old/new direct GET routes, actual redirects, canonical/hreflang, sitemap, resources, UI and forms (separate method-sensitive checks). For eligible domain changes review ownership and authorized Change of Address; retain old origin and redirects.
+3. With approval, cut over, verify all important old/new direct GET routes, actual redirects, canonical/hreflang, sitemap, resources, UI and forms (separate method-sensitive checks). For eligible domain changes review ownership, all old-domain variants and authorized Change of Address per T07; retain old origin and redirects.
 4. Monitor exact mapped cohorts, technical failures and search/business outcomes separately. Stop on material confirmed wrong destinations, failures or exposure. Coordinate smallest approved rollback, cache and DNS effects, and reverify. Retention and retirement require reviewed evidence.
 
 Run offline fixture:

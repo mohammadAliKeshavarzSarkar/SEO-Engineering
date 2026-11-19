@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- TS05.2: targeted primary-source review, clarified all-variant domain migration coverage, Cache Components runtime branches and Search Console anomaly checks; content changes create a distinct development archive, not a new stable release. Existing pilot stays pinned to its original candidate if already preregistered.
+
 - TS04.2: local source-matched trial stager, evaluation-subtree omission, fixed-path artifact-byte checks, all-slot initial ledger, reviewer agreement report and ten synthetic regression methods; offline paired workspace smoke. No actual independent sessions or grades.
 
 - TS04: maintainer-only controlled pilot scheduler, complete execution ledger, blind review packet and hash-declaration-bound grading, 16-case public pilot and ten synthetic controller tests. No actual model sessions or independent grades; held-out gate remains open.
