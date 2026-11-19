@@ -1,0 +1,52 @@
+{
+  "schema_version": "2",
+  "release_id": "P02-p02-b",
+  "policy_ref": "P02-educational-policy",
+  "subject": {
+    "stage": "candidate",
+    "revision": "p02-b",
+    "artifact": "p02-b-declared-only",
+    "environment": "offline-fixture",
+    "profile": "anonymous-mobile-en",
+    "config_ref": "p02-b-mock-config",
+    "scope_ref": "P02-five-route-registry"
+  },
+  "gates": [
+    {
+      "id": "product-freshness",
+      "assertion": "Product content revision meets reviewed freshness deadline in actual candidate runtime",
+      "rationale": "Real candidate runtime evidence required",
+      "required": true,
+      "evidence": null
+    },
+    {
+      "id": "runtime-delivery",
+      "assertion": "Actual runtime supports catalogue dynamic paths and revalidation",
+      "rationale": "Plan changes are not runtime verification",
+      "required": true,
+      "evidence": null
+    },
+    {
+      "id": "metadata",
+      "assertion": "Actual matched product metadata corresponds to reviewed public facts",
+      "rationale": "No real capture",
+      "required": true,
+      "evidence": null
+    },
+    {
+      "id": "product-lab",
+      "assertion": "Matched product lab LCP comparison meets approved 100 ms regression tolerance",
+      "rationale": "Actual candidate performance required",
+      "required": true,
+      "evidence": null
+    },
+    {
+      "id": "private-access",
+      "assertion": "Actual account route denies unauthorized access at host and data layer",
+      "rationale": "No real access check",
+      "required": true,
+      "evidence": null
+    }
+  ],
+  "exposure": null
+}

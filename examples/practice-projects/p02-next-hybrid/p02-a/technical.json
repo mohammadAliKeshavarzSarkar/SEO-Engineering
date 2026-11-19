@@ -1,0 +1,601 @@
+{
+  "schema_version": "1",
+  "scope": "P02/p02-a: hand-authored hypothetical candidate evidence, not real Next.js or measurements",
+  "audit_id": "P02-p02-a",
+  "context_ref": "P02/p02-a/offline",
+  "reviewed_revision": "p02-a",
+  "tasks": {
+    "T01": {
+      "state": "ready",
+      "reason": "Synthetic scoped native input",
+      "input": {
+        "schema_version": "1",
+        "scope": "P02/p02-a: hand-authored hypothetical candidate evidence, not real Next.js or measurements",
+        "declared_dependencies": {
+          "next": "^16",
+          "react": "^19"
+        },
+        "routes": [
+          {
+            "id": "home",
+            "expected": "public",
+            "declared_strategy": "ssg",
+            "status": 200,
+            "source_content": "present",
+            "rendered_content": "present",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P02/p02-a/home/MOCK-architecture"
+          },
+          {
+            "id": "catalogue",
+            "expected": "public",
+            "declared_strategy": "hybrid",
+            "status": null,
+            "source_content": "unknown",
+            "rendered_content": "unknown",
+            "initial_noindex": null,
+            "rendered_noindex": null,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P02/p02-a/catalogue/MOCK-architecture"
+          },
+          {
+            "id": "product",
+            "expected": "public",
+            "declared_strategy": "hybrid",
+            "status": 200,
+            "source_content": "present",
+            "rendered_content": "present",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P02/p02-a/product/MOCK-architecture"
+          },
+          {
+            "id": "account",
+            "expected": "private",
+            "declared_strategy": "unknown",
+            "status": null,
+            "source_content": "unknown",
+            "rendered_content": "unknown",
+            "initial_noindex": null,
+            "rendered_noindex": null,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P02/p02-a/account/MOCK-architecture"
+          },
+          {
+            "id": "missing",
+            "expected": "missing",
+            "declared_strategy": "unknown",
+            "status": 404,
+            "source_content": "absent",
+            "rendered_content": "absent",
+            "initial_noindex": null,
+            "rendered_noindex": null,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P02/p02-a/missing/MOCK-architecture"
+          }
+        ]
+      },
+      "input_ref": "P02/p02-a/cohort/T01"
+    },
+    "T02": {
+      "state": "blocked",
+      "reason": "Dedicated evidence not supplied",
+      "input": null,
+      "input_ref": null
+    },
+    "T03": {
+      "state": "not_applicable",
+      "reason": "Not React/Vite artifact plan",
+      "input": null,
+      "input_ref": null
+    },
+    "T04": {
+      "state": "ready",
+      "reason": "Synthetic scoped native input",
+      "input": {
+        "schema_version": "1",
+        "scope": "P02/p02-a: hand-authored hypothetical candidate evidence, not real Next.js or measurements",
+        "routes": [
+          {
+            "id": "home",
+            "plan_ref": "P02/p02-a/home/MOCK-plan",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "runtime",
+            "strategy": "static",
+            "purpose": "public",
+            "expected_context": "P02/p02-a/home/anonymous-mobile-en",
+            "required_features": [],
+            "expected_statuses": [
+              200
+            ],
+            "expected_content_revision": null,
+            "fresh_by": null,
+            "samples": [
+              {
+                "id": "p02-a-home-home",
+                "context_id": "P02/p02-a/home/anonymous-mobile-en",
+                "capture_status": "complete",
+                "evidence_ref": "P02/p02-a/home/MOCK-home",
+                "observed_at": "2026-10-03T10:07:00Z",
+                "http_status": 200,
+                "content_revision": "home-content-1",
+                "private_payload_visible": null
+              }
+            ]
+          },
+          {
+            "id": "catalogue",
+            "plan_ref": "P02/p02-a/catalogue/MOCK-plan",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "static_export",
+            "strategy": "isr",
+            "purpose": "public",
+            "expected_context": "P02/p02-a/catalogue/anonymous-mobile-en",
+            "required_features": [
+              "isr",
+              "runtime_dynamic_paths"
+            ],
+            "expected_statuses": [
+              200
+            ],
+            "expected_content_revision": null,
+            "fresh_by": null,
+            "samples": []
+          },
+          {
+            "id": "product",
+            "plan_ref": "P02/p02-a/product/MOCK-plan",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "runtime",
+            "strategy": "hybrid",
+            "purpose": "public",
+            "expected_context": "P02/p02-a/product/anonymous-mobile-en",
+            "required_features": [
+              "runtime_dynamic_paths"
+            ],
+            "expected_statuses": [
+              200
+            ],
+            "expected_content_revision": "arc-content-2",
+            "fresh_by": "2026-10-03T10:05:00Z",
+            "samples": [
+              {
+                "id": "p02-a-product-before",
+                "context_id": "P02/p02-a/product/anonymous-mobile-en",
+                "capture_status": "complete",
+                "evidence_ref": "P02/p02-a/product/MOCK-before",
+                "observed_at": "2026-10-03T10:04:00Z",
+                "http_status": 200,
+                "content_revision": "arc-content-1",
+                "private_payload_visible": null
+              },
+              {
+                "id": "p02-a-product-late",
+                "context_id": "P02/p02-a/product/anonymous-mobile-en",
+                "capture_status": "complete",
+                "evidence_ref": "P02/p02-a/product/MOCK-late",
+                "observed_at": "2026-10-03T10:07:00Z",
+                "http_status": 200,
+                "content_revision": "arc-content-1",
+                "private_payload_visible": null
+              }
+            ]
+          },
+          {
+            "id": "account",
+            "plan_ref": "P02/p02-a/account/MOCK-plan",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "runtime",
+            "strategy": "request_time",
+            "purpose": "protected",
+            "expected_context": "P02/p02-a/account/anonymous-mobile-en",
+            "required_features": [
+              "request_time_data"
+            ],
+            "expected_statuses": [
+              401,
+              403
+            ],
+            "expected_content_revision": null,
+            "fresh_by": null,
+            "samples": []
+          },
+          {
+            "id": "missing",
+            "plan_ref": "P02/p02-a/missing/MOCK-plan",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "runtime",
+            "strategy": "static",
+            "purpose": "missing",
+            "expected_context": "P02/p02-a/missing/anonymous-mobile-en",
+            "required_features": [],
+            "expected_statuses": [
+              404
+            ],
+            "expected_content_revision": null,
+            "fresh_by": null,
+            "samples": [
+              {
+                "id": "p02-a-missing-missing",
+                "context_id": "P02/p02-a/missing/anonymous-mobile-en",
+                "capture_status": "complete",
+                "evidence_ref": "P02/p02-a/missing/MOCK-missing",
+                "observed_at": "2026-10-03T10:07:00Z",
+                "http_status": 404,
+                "content_revision": null,
+                "private_payload_visible": null
+              }
+            ]
+          }
+        ]
+      },
+      "input_ref": "P02/p02-a/cohort/T04"
+    },
+    "T05": {
+      "state": "blocked",
+      "reason": "Dedicated evidence not supplied",
+      "input": null,
+      "input_ref": null
+    },
+    "T06": {
+      "state": "ready",
+      "reason": "Synthetic scoped native input",
+      "input": {
+        "schema_version": "1",
+        "scope": "P02/p02-a: hand-authored hypothetical candidate evidence, not real Next.js or measurements",
+        "urls": [
+          {
+            "id": "home",
+            "url": "https://catalogue.example/",
+            "intent": "representative",
+            "preferred_url": "https://catalogue.example/",
+            "changed_at": "2026-10-03T10:00:00Z",
+            "current": {
+              "status": "complete",
+              "evidence_ref": "P02/p02-a/home/MOCK-current",
+              "observed_at": "2026-10-03T10:07:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": false,
+              "sitemap_member": true,
+              "source_canonicals": [
+                "https://catalogue.example/"
+              ],
+              "header_canonicals": [],
+              "rendered_canonicals": [
+                "https://catalogue.example/"
+              ]
+            },
+            "processed": null
+          },
+          {
+            "id": "catalogue",
+            "url": "https://catalogue.example/chairs/",
+            "intent": "representative",
+            "preferred_url": "https://catalogue.example/chairs/",
+            "changed_at": "2026-10-03T10:00:00Z",
+            "current": {
+              "status": "not_collected",
+              "evidence_ref": null,
+              "observed_at": null,
+              "http_status": null,
+              "robots": "unknown",
+              "http_noindex": null,
+              "initial_noindex": null,
+              "rendered_noindex": null,
+              "sitemap_member": null,
+              "source_canonicals": null,
+              "header_canonicals": null,
+              "rendered_canonicals": null
+            },
+            "processed": null
+          },
+          {
+            "id": "product",
+            "url": "https://catalogue.example/chairs/arc/",
+            "intent": "representative",
+            "preferred_url": "https://catalogue.example/chairs/arc/",
+            "changed_at": "2026-10-03T10:00:00Z",
+            "current": {
+              "status": "complete",
+              "evidence_ref": "P02/p02-a/product/MOCK-current",
+              "observed_at": "2026-10-03T10:07:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": false,
+              "sitemap_member": true,
+              "source_canonicals": [
+                "https://catalogue.example/chairs/"
+              ],
+              "header_canonicals": [],
+              "rendered_canonicals": [
+                "https://catalogue.example/chairs/"
+              ]
+            },
+            "processed": {
+              "evidence_ref": "P02/mock-search/arc-old",
+              "property": "sc-domain:catalogue.example",
+              "retrieved_at": "2026-10-03T09:00:00Z",
+              "last_crawl_at": "2026-10-02T09:00:00Z",
+              "state": "not_indexed",
+              "user_canonical": "https://catalogue.example/chairs/",
+              "selected_canonical": "https://catalogue.example/chairs/"
+            }
+          }
+        ]
+      },
+      "input_ref": "P02/p02-a/cohort/T06"
+    },
+    "T07": {
+      "state": "not_applicable",
+      "reason": "No URL migration",
+      "input": null,
+      "input_ref": null
+    },
+    "T08": {
+      "state": "ready",
+      "reason": "Synthetic scoped native input",
+      "input": {
+        "schema_version": "1",
+        "scope": "P02/p02-a: hand-authored hypothetical candidate evidence, not real Next.js or measurements",
+        "pages": [
+          {
+            "id": "home",
+            "expected_context": "P02/p02-a/home/anonymous-mobile-en",
+            "plan": {
+              "reviewed": true,
+              "facts_ref": "P02/p02-a/home/MOCK-public-facts",
+              "title": "Studio furniture",
+              "description": "Explore the fictional studio furniture catalogue.",
+              "share_title": "Studio furniture",
+              "share_description": "Explore the fictional studio furniture catalogue.",
+              "locale": "en",
+              "canonical": "https://catalogue.example/",
+              "share_image": "https://catalogue.example/images/catalogue.jpg",
+              "article": null
+            },
+            "source": {
+              "status": "complete",
+              "context_id": "P02/p02-a/home/anonymous-mobile-en",
+              "evidence_ref": "P02/p02-a/home/MOCK-source-metadata",
+              "metadata": {
+                "title": [
+                  "Studio furniture"
+                ],
+                "description": [
+                  "Explore the fictional studio furniture catalogue."
+                ],
+                "canonical": [
+                  "https://catalogue.example/"
+                ],
+                "og:title": [
+                  "Studio furniture"
+                ],
+                "og:description": [
+                  "Explore the fictional studio furniture catalogue."
+                ],
+                "og:type": [
+                  "website"
+                ],
+                "og:url": [
+                  "https://catalogue.example/"
+                ],
+                "og:image": [
+                  "https://catalogue.example/images/catalogue.jpg"
+                ]
+              },
+              "jsonld_blocks": []
+            },
+            "rendered": {
+              "status": "complete",
+              "context_id": "P02/p02-a/home/anonymous-mobile-en",
+              "evidence_ref": "P02/p02-a/home/MOCK-render-metadata",
+              "metadata": {
+                "title": [
+                  "Studio furniture"
+                ],
+                "description": [
+                  "Explore the fictional studio furniture catalogue."
+                ],
+                "canonical": [
+                  "https://catalogue.example/"
+                ],
+                "og:title": [
+                  "Studio furniture"
+                ],
+                "og:description": [
+                  "Explore the fictional studio furniture catalogue."
+                ],
+                "og:type": [
+                  "website"
+                ],
+                "og:url": [
+                  "https://catalogue.example/"
+                ],
+                "og:image": [
+                  "https://catalogue.example/images/catalogue.jpg"
+                ]
+              },
+              "jsonld_blocks": []
+            }
+          },
+          {
+            "id": "catalogue",
+            "expected_context": "P02/p02-a/catalogue/anonymous-mobile-en",
+            "plan": {
+              "reviewed": true,
+              "facts_ref": "P02/p02-a/catalogue/MOCK-public-facts",
+              "title": "Studio chairs",
+              "description": "Browse the fictional chair collection.",
+              "share_title": "Studio chairs",
+              "share_description": "Browse the fictional chair collection.",
+              "locale": "en",
+              "canonical": "https://catalogue.example/chairs/",
+              "share_image": "https://catalogue.example/images/catalogue.jpg",
+              "article": null
+            },
+            "source": {
+              "status": "not_collected",
+              "context_id": "P02/p02-a/catalogue/anonymous-mobile-en",
+              "evidence_ref": null,
+              "metadata": {
+                "title": null,
+                "description": null,
+                "canonical": null,
+                "og:title": null,
+                "og:description": null,
+                "og:type": null,
+                "og:url": null,
+                "og:image": null
+              },
+              "jsonld_blocks": null
+            },
+            "rendered": {
+              "status": "not_collected",
+              "context_id": "P02/p02-a/catalogue/anonymous-mobile-en",
+              "evidence_ref": null,
+              "metadata": {
+                "title": null,
+                "description": null,
+                "canonical": null,
+                "og:title": null,
+                "og:description": null,
+                "og:type": null,
+                "og:url": null,
+                "og:image": null
+              },
+              "jsonld_blocks": null
+            }
+          },
+          {
+            "id": "product",
+            "expected_context": "P02/p02-a/product/anonymous-mobile-en",
+            "plan": {
+              "reviewed": true,
+              "facts_ref": "P02/p02-a/product/MOCK-public-facts",
+              "title": "Arc chair – updated dimensions",
+              "description": "Review the revised fictional Arc chair dimensions.",
+              "share_title": "Arc chair – updated dimensions",
+              "share_description": "Review the revised fictional Arc chair dimensions.",
+              "locale": "en",
+              "canonical": "https://catalogue.example/chairs/arc/",
+              "share_image": "https://catalogue.example/images/catalogue.jpg",
+              "article": null
+            },
+            "source": {
+              "status": "complete",
+              "context_id": "P02/p02-a/product/anonymous-mobile-en",
+              "evidence_ref": "P02/p02-a/product/MOCK-source-metadata",
+              "metadata": {
+                "title": [
+                  "Arc chair – previous dimensions"
+                ],
+                "description": [
+                  "Review the revised fictional Arc chair dimensions."
+                ],
+                "canonical": [
+                  "https://catalogue.example/chairs/"
+                ],
+                "og:title": [
+                  "Arc chair – previous dimensions"
+                ],
+                "og:description": [
+                  "Review the revised fictional Arc chair dimensions."
+                ],
+                "og:type": [
+                  "website"
+                ],
+                "og:url": [
+                  "https://catalogue.example/chairs/"
+                ],
+                "og:image": [
+                  "https://catalogue.example/images/catalogue.jpg"
+                ]
+              },
+              "jsonld_blocks": []
+            },
+            "rendered": {
+              "status": "complete",
+              "context_id": "P02/p02-a/product/anonymous-mobile-en",
+              "evidence_ref": "P02/p02-a/product/MOCK-render-metadata",
+              "metadata": {
+                "title": [
+                  "Arc chair – previous dimensions"
+                ],
+                "description": [
+                  "Review the revised fictional Arc chair dimensions."
+                ],
+                "canonical": [
+                  "https://catalogue.example/chairs/"
+                ],
+                "og:title": [
+                  "Arc chair – previous dimensions"
+                ],
+                "og:description": [
+                  "Review the revised fictional Arc chair dimensions."
+                ],
+                "og:type": [
+                  "website"
+                ],
+                "og:url": [
+                  "https://catalogue.example/chairs/"
+                ],
+                "og:image": [
+                  "https://catalogue.example/images/catalogue.jpg"
+                ]
+              },
+              "jsonld_blocks": []
+            }
+          }
+        ]
+      },
+      "input_ref": "P02/p02-a/cohort/T08"
+    },
+    "T09": {
+      "state": "ready",
+      "reason": "Synthetic scoped native input",
+      "input": {
+        "schema_version": "1",
+        "scope": "P02/p02-a: hand-authored hypothetical candidate evidence, not real Next.js or measurements",
+        "field": [
+          {
+            "id": "field-origin",
+            "source": "crux",
+            "level": "origin",
+            "subject": "https://catalogue.example",
+            "device": "mobile",
+            "start": "2026-09-05",
+            "end": "2026-10-02",
+            "method": "fictional origin p75, not actual CrUX",
+            "evidence_ref": "P02/MOCK-origin-window",
+            "p75": {
+              "lcp_ms": 3100,
+              "inp_ms": null,
+              "cls": 0.08
+            }
+          }
+        ],
+        "lab": []
+      },
+      "input_ref": "P02/p02-a/cohort/T09"
+    }
+  },
+  "groups": []
+}

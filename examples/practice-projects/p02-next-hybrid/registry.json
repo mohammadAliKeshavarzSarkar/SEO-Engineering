@@ -1,0 +1,82 @@
+{
+  "project_id": "P02",
+  "origin": "https://catalogue.example",
+  "scope": "Fictional studio furniture catalogue, offline educational records",
+  "revisions": [
+    "p02-a",
+    "p02-b"
+  ],
+  "target_content_revision": "arc-content-2",
+  "routes": [
+    {
+      "id": "home",
+      "path": "/",
+      "purpose": "public",
+      "title": "Studio furniture",
+      "desc": "Explore the fictional studio furniture catalogue.",
+      "url": "https://catalogue.example/",
+      "index_intent": true
+    },
+    {
+      "id": "catalogue",
+      "path": "/chairs/",
+      "purpose": "public",
+      "title": "Studio chairs",
+      "desc": "Browse the fictional chair collection.",
+      "url": "https://catalogue.example/chairs/",
+      "index_intent": true
+    },
+    {
+      "id": "product",
+      "path": "/chairs/arc/",
+      "purpose": "public",
+      "title": "Arc chair – updated dimensions",
+      "desc": "Review the revised fictional Arc chair dimensions.",
+      "url": "https://catalogue.example/chairs/arc/",
+      "index_intent": true
+    },
+    {
+      "id": "account",
+      "path": "/account/",
+      "purpose": "protected",
+      "title": "Account",
+      "desc": "Protected account area.",
+      "url": "https://catalogue.example/account/",
+      "index_intent": false
+    },
+    {
+      "id": "missing",
+      "path": "/chairs/unknown/",
+      "purpose": "missing",
+      "title": "Not found",
+      "desc": "An intentionally missing item.",
+      "url": "https://catalogue.example/chairs/unknown/",
+      "index_intent": false
+    }
+  ],
+  "performance_crosswalk": [
+    {
+      "record_id": "product-lcp",
+      "level": "url",
+      "route_id": "product",
+      "subject": "https://catalogue.example/chairs/arc/"
+    },
+    {
+      "record_id": "catalogue-lcp",
+      "level": "url",
+      "route_id": "catalogue",
+      "subject": "https://catalogue.example/chairs/"
+    },
+    {
+      "record_id": "field-origin",
+      "level": "origin",
+      "route_id": null,
+      "subject": "https://catalogue.example"
+    }
+  ],
+  "limitations": [
+    "Declared Next 16 App Router / Cache Components; no installed dependencies or build",
+    "All response, metadata, field and lab observations fictional",
+    "No real cache access, invalidation, provider data or runtime"
+  ]
+}

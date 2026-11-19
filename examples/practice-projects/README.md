@@ -7,12 +7,12 @@ TS08 — educational project plan and implemented offline examples, not real web
 | ID | Planned exercise | Principal gap to address |
 |---|---|---|
 | P01 | [React/Vite marketing and protected routes (TS08.2)](p01-react-vite/README.md) — offline fixture implemented | Same site/route identity across architecture, static/source/render observations, host fallback, missing paths and candidate gates |
-| P02 | Next.js hybrid catalogue (TS08.3) | Revision-bound freshness, static/runtime delivery, metadata and field/lab boundaries |
+| P02 | [Next.js hybrid catalogue (TS08.3)](p02-next-hybrid/README.md) — offline fixture implemented | Revision-bound freshness, static/runtime delivery, metadata and field/lab boundaries |
 | P03 | Persian service business (TS08.4) | Native query evidence through page ownership, stable locale URLs, RTL and measurement/claim safeguards |
 | P04 | Traffic-loss incident (TS08.5) | Shared deployment/report timeline, competing causes, escalation and assertion-specific recovery |
 | P05 | Integrated research-to-implementation capstone (TS08.6) | Evidence-to-decision-to-local-patch-to-verification handoff using an existing completed practice project |
 
-P01 is an implemented offline fixture; P02–P05 are planned, not yet implemented. The scope is selected for teaching handoffs, not every possible industry or stack. Do not use this list as an actual evaluation cohort. No rights to an external project, source, model or data are implied.
+P01 and P02 are implemented offline fixtures; P03–P05 are planned, not yet implemented. The scope is selected for teaching handoffs, not every possible industry or stack. Do not use this list as an actual evaluation cohort. No rights to an external project, source, model or data are implied.
 
 ## Reuse the existing fixtures
 
