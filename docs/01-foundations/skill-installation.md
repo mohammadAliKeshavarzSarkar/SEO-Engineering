@@ -6,7 +6,7 @@ Current development version: 0.3.0-dev.12. See [version metadata](distribution-v
 
 ## Repository mode
 
-Clone or otherwise grant the agent read access to the complete SEO Engineering library, ideally pinned to a reviewed commit. Open the new website separately and provide exact authorized target and task. Read the master file at skills/seo-engineering/SKILL.md and the linked router. The library and website are different workspaces; never edit the library to store private target data.
+Clone or otherwise grant the agent read access to the complete SEO Engineering library, ideally pinned to a reviewed commit. Open the new website separately and provide exact authorized target and task. Read the master file at skills/seo-engineering/SKILL.md and the linked execution contract and router. The library and website are different workspaces; never edit the library to store private target data.
 
 ## Portable package mode
 
@@ -26,7 +26,7 @@ From the full trusted checkout, run `python3 scripts/verify_release.py` and reco
 - Ask for a read-only audit of a synthetic or authorized project; require relevant reference paths, evidence, scope and limitations.
 - Confirm references resolve from the packaged library. Run check_docs.py from references/library/scripts with Python; it checks relative file links, explicit skill routing paths and packaged entry points; it does not check external links, anchors or semantic accuracy.
 - Confirm the agent has the necessary tools and permissions for the intended task. Skills do not provide connectors, credentials, scheduled monitoring or automatic execution.
-- Evaluate against the cases in evaluations/README.md (relative to the library root); compare model, tools, prompt and source commit. Report results, not assumptions.
+- For separate maintainer/operator evaluation, use evaluations/README.md (relative to the library root); compare model, tools, prompt and source commit. Give trial agents only authorized task inputs, not expected answers. Ordinary target work does not require loading evaluation rubrics. Report results, not assumptions.
 
 For updates, replace the installed package with a reviewed newer version; do not expect remote GitHub edits to synchronize a copied ZIP automatically. Preserve target project evidence separately.
 

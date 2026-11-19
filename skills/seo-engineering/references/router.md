@@ -4,7 +4,7 @@
 
 In a portable installation, use the references/library directory inside this skill if its docs/01-foundations/operating-principles.md exists. Otherwise, for a full SEO-Engineering checkout, use the repository root two levels above the skill directory. Confirm expected docs/, templates/ and decision-engine/ exist. If neither is present, report missing resources; do not pretend the skill is complete. Paths in the table are relative to L, not the target website.
 
-Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidence-and-decisions.md for material decisions. Do not load the entire library by default.
+Apply the execution contract before selecting tools. Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidence-and-decisions.md for material decisions. Select only relevant rows and necessary dependencies, not every keyword match. Templates and utilities are optional deliverable aids; inspect an applicable module before using its utility. Do not load evaluation rubrics for ordinary target tasks.
 
 | Task or trigger | Load relative to L |
 |---|---|
@@ -44,6 +44,6 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Coordinated technical audit, evidence consolidation and reviewed triage | docs/03-technical/t10-audit-automation.md; workflows/technical-audit.md; decision-engine/technical-audit.md; templates/technical-audit-review.csv; scripts/audit_technical.py |
 | Release regression prevention, deployment review, pre/post-release gate evidence | docs/03-technical/t11-deployment-regression.md; workflows/deployment-regression.md; templates/deployment-gate-inventory.csv; scripts/review_release_gates.py |
 | Implementation and QA | implementation-patterns/README.md; docs/06-operations/audit-and-release.md; templates/release-checklist.md |
-| Skill updates/competence | docs/01-foundations/module-standard.md; docs/08-learning/stabilization.md; docs/08-learning/distribution-privacy-review.md; templates/skill-release-review.md; evaluations/README.md |
+| Maintainer-only: skill updates, competence and evaluation | docs/01-foundations/module-standard.md; docs/08-learning/stabilization.md; docs/08-learning/distribution-privacy-review.md; templates/skill-release-review.md; evaluations/README.md |
 
-If multiple triggers are relevant, resolve dependencies (privacy/security -> eligibility -> research/intent -> implementation -> measurement; baseline measurement can begin earlier). For narrow tasks do not mandate unrelated modules. If a future specialized document is not present, use the existing foundations and current evidence and report the gap.
+If multiple triggers are relevant, resolve dependencies (privacy/security -> eligibility -> research/intent -> implementation -> measurement; baseline measurement can begin earlier). For narrow tasks do not mandate unrelated modules. The maintainer-only row is for explicitly authorized library work or operator evaluation preparation, not an ordinary target audit or a model sitting a trial. When an evaluator restricts access to evaluation materials, honor that restriction; do not seek expected answers. If a specialized resource is missing, use safe remaining foundations and current evidence, identify the missing resource and mark dependent work blocked where material.

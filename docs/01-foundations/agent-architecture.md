@@ -31,3 +31,9 @@ One canonical library and master skill; use on-demand reference loading. A gener
 This follows the Agent Skills file format and progressive-loading approach; compatible runtimes determine how to discover and execute skills. It is not an autonomous bot server, a fine-tuned model or a promise of SEO success.
 
 Sources checked 2026-11-18: [Agent Skills format](https://github.com/agentskills/agentskills), [Codex skill creation guidance](https://learn.chatgpt.com/docs/build-skills), [task-specific evaluation guidance](https://developers.openai.com/api/docs/guides/evaluation-best-practices).
+
+## Instruction responsibilities (TS07.1)
+
+The master skill is the compact invocation and workflow entry point; the execution contract is the shared authority/evidence/stop contract; the router selects references relative to the actual library root. Specialized modules and their reviewed protocols describe task-level decisions within those boundaries. Repository AGENTS.md adds maintainer rules for this source checkout, not a requirement to edit or access the library during target tasks. The normal runtime path is separate from operator evaluation and release review. Do not load rubric material as guidance for an agent being evaluated. Installed copies still depend on the real runtime's discovery and tool permissions; this text does not implement an enforcement sandbox.
+
+The TS07.1 maintainer size guard is a local editorial budget for the entry file (450 whitespace-delimited words including frontmatter), not a model context limit, tokenizer measurement or performance target. Actual skill activation, loaded context and behavior will require independently observed trial evidence.

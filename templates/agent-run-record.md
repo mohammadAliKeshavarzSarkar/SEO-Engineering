@@ -22,3 +22,11 @@ Baseline, outcome/guardrail, window/comparison, limitations, next action/owner, 
 
 ## Privacy and learning
 Private evidence location (no credentials or data values); sensitive-data checks; candidate universal lesson, source/tests and review status. Do not update the skill with private records.
+
+## Execution boundaries
+
+Mode transitions / explicit authority for any write, high-risk action or external submission:
+
+Selected modules and material omitted dependencies (only where relevant); conflicts or profile exceptions:
+
+Stopped or narrowed work / condition / affected decisions / independent safe work completed / owner or next check:
