@@ -1,0 +1,250 @@
+{
+  "schema_version": "1",
+  "purpose": "authored static route expectations; not executed agent evaluations or held-out cases",
+  "cases": [
+    {
+      "id": "Q01",
+      "prompt": "Explain what a canonical URL is without inspecting a site.",
+      "mode": "learn",
+      "primary": [
+        "URL_OVERVIEW"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T10",
+        "T11",
+        "MAINTAIN"
+      ],
+      "rationale": "General explanation only, no target access."
+    },
+    {
+      "id": "Q02",
+      "prompt": "Audit a known Vite SPA: direct deep links incorrectly return homepage HTML.",
+      "mode": "audit",
+      "primary": [
+        "T03"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T04",
+        "T11",
+        "MAINTAIN"
+      ],
+      "rationale": "Known architecture; inspect fallback/status; add T02 only if a matched-render decision is needed."
+    },
+    {
+      "id": "Q03",
+      "prompt": "Plan SEO delivery changes for an unfamiliar framework with no inventory.",
+      "mode": "plan",
+      "primary": [
+        "T01"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T03",
+        "T04",
+        "T11"
+      ],
+      "rationale": "Determine architecture first; conditional stack selection, not a forced migration."
+    },
+    {
+      "id": "Q04",
+      "prompt": "Compare current HTML canonical against indexed inspection evidence; no writes.",
+      "mode": "audit",
+      "primary": [
+        "T06"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T07",
+        "R06",
+        "T11"
+      ],
+      "rationale": "Index and canonical decision, not URL migration."
+    },
+    {
+      "id": "Q05",
+      "prompt": "Interpret discrepancies between Search Console exports and aggregated totals.",
+      "mode": "learn",
+      "primary": [
+        "SEARCH_DATA"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T06",
+        "T10",
+        "ANALYTICS"
+      ],
+      "rationale": "Reporting semantics; no index intervention implied."
+    },
+    {
+      "id": "Q06",
+      "prompt": "Review a sudden broad traffic loss after a release with unknown cause.",
+      "mode": "audit",
+      "primary": [
+        "T12"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "R02",
+        "R08",
+        "MAINTAIN"
+      ],
+      "rationale": "Incident first; conditionally add SEARCH_DATA/T05/T06/T11/ANALYTICS according to observations."
+    },
+    {
+      "id": "Q07",
+      "prompt": "Research Persian query variants and group them using existing observations.",
+      "mode": "research",
+      "primary": [
+        "R04"
+      ],
+      "dependencies": [
+        "R09"
+      ],
+      "exclude": [
+        "T07",
+        "T08",
+        "MAINTAIN"
+      ],
+      "rationale": "Language-specific mapping; preserve raw queries; R03 only if intent needs review."
+    },
+    {
+      "id": "Q08",
+      "prompt": "Map reviewed keyword tasks to existing useful pages without altering URLs.",
+      "mode": "plan",
+      "primary": [
+        "R06"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T07",
+        "T11",
+        "R02"
+      ],
+      "rationale": "Strategic ownership is not canonical or migration approval."
+    },
+    {
+      "id": "Q09",
+      "prompt": "Assess whether product review markup is eligible for a Google feature.",
+      "mode": "audit",
+      "primary": [
+        "SCHEMA_FEATURE"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T08",
+        "T10",
+        "T11"
+      ],
+      "rationale": "Feature interpretation first; T08 conditional on actual markup generation or declaration QA."
+    },
+    {
+      "id": "Q10",
+      "prompt": "Audit duplicate SPA lead events and consent handling.",
+      "mode": "audit",
+      "primary": [
+        "ANALYTICS"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T03",
+        "T10",
+        "MAINTAIN"
+      ],
+      "rationale": "Tracking, collection and outcome ownership; SPA architecture mentioned but not changed."
+    },
+    {
+      "id": "Q11",
+      "prompt": "Verify exact-revision website deployment gate evidence, with no deployment authorized.",
+      "mode": "verify",
+      "primary": [
+        "T11"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "MAINTAIN",
+        "T12",
+        "EXPERIMENT"
+      ],
+      "rationale": "Revision-bound website assertions; no release authorization."
+    },
+    {
+      "id": "Q12",
+      "prompt": "Plan a controlled title change experiment using a stable approved baseline.",
+      "mode": "plan",
+      "primary": [
+        "EXPERIMENT"
+      ],
+      "dependencies": [
+        "EDITORIAL"
+      ],
+      "exclude": [
+        "T07",
+        "T11",
+        "MAINTAIN"
+      ],
+      "rationale": "Experiment design with substantive title quality; no implementation requested."
+    },
+    {
+      "id": "Q13",
+      "prompt": "Maintain the reusable library and prepare an independent benchmark as operator.",
+      "mode": "implement",
+      "primary": [
+        "MAINTAIN"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "T10",
+        "T11",
+        "ONBOARD"
+      ],
+      "rationale": "Only authorized operator mode; no actual model run implied."
+    },
+    {
+      "id": "Q14",
+      "prompt": "Write a generic birthday message.",
+      "mode": "out_of_scope",
+      "primary": [],
+      "dependencies": [],
+      "exclude": [
+        "ONBOARD",
+        "EDITORIAL",
+        "MAINTAIN"
+      ],
+      "rationale": "No SEO activation."
+    },
+    {
+      "id": "Q15",
+      "prompt": "Run an authorized broad technical audit and consolidate existing module evidence.",
+      "mode": "audit",
+      "primary": [
+        "T10"
+      ],
+      "dependencies": [],
+      "exclude": [
+        "ONBOARD",
+        "T11",
+        "MAINTAIN"
+      ],
+      "rationale": "Select native modules only for actual evidence coverage; no deployment."
+    },
+    {
+      "id": "Q16",
+      "prompt": "Rewrite canonical tags and redirect old pages for an approved domain move.",
+      "mode": "implement",
+      "primary": [
+        "T07"
+      ],
+      "dependencies": [
+        "T06"
+      ],
+      "exclude": [
+        "R04",
+        "MAINTAIN",
+        "ONBOARD"
+      ],
+      "rationale": "Migration-specific mapping and index assertions; actual deployment separately authorized."
+    }
+  ]
+}

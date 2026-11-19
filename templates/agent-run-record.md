@@ -30,3 +30,5 @@ Mode transitions / explicit authority for any write, high-risk action or externa
 Selected modules and material omitted dependencies (only where relevant); conflicts or profile exceptions:
 
 Stopped or narrowed work / condition / affected decisions / independent safe work completed / owner or next check:
+
+Route selection (primary route IDs / necessary dependencies with reasons / conditional routes / material exclusions / actual references read; not required as a formal matrix for a short explanation):
