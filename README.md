@@ -59,3 +59,5 @@ Maintainers: use the [distribution privacy pre-review](operations/ts05-distribut
 Maintainers: see the [TS05 ownership and distribution decision framework](operations/ts05-governance.md) for the pending rights inventory, owner decision and proposed release channels. No new license, distribution permission or stable readiness is asserted.
 
 Maintainer checkpoint: [consolidated TS05 candidate acceptance](operations/ts05-candidate-acceptance.md) records the exact tested development snapshot and remaining mandatory gates. This is a held review checkpoint, not a release approval or a new distribution version.
+
+TS07.6 development: [instruction evaluation and incomplete-run review](operations/ts07-instruction-evaluation.md). Normal completed grades and separate partial-run safety review must both inform pilot continuation; neither establishes actual behavioral efficacy without independent execution and assessment.
