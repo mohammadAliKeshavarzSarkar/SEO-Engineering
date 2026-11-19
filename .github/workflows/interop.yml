@@ -1,0 +1,59 @@
+name: Optional crawl evidence compatibility
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'interop/**'
+      - '.github/workflows/interop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compatibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact consumer and producer revisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering.git
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          producer="$RUNNER_TEMP/websitebotscroll-pinned"
+          git init "$producer"
+          git -C "$producer" remote add origin https://github.com/mohammadAliKeshavarzSarkar/WebsiteBotScroll.git
+          git -C "$producer" fetch --depth=1 origin bd45aa69c141deffed50c8d2ea57e28cea552cb8
+          git -C "$producer" checkout --detach FETCH_HEAD
+          test "$(git -C "$producer" rev-parse HEAD)" = bd45aa69c141deffed50c8d2ea57e28cea552cb8
+      - name: Install optional dependencies and exercise independent consumer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/interop-venv"
+          py="$RUNNER_TEMP/interop-venv/bin/python"
+          "$py" -m pip install -r interop/requirements.txt
+          "$py" --version
+          "$py" -m pip freeze
+          WBS_FIXTURE_ROOT="$RUNNER_TEMP/websitebotscroll-pinned" "$py" -m unittest interop.test_crawl_evidence -v
+      - name: Verify local CLI receipt and no-overwrite contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          py="$RUNNER_TEMP/interop-venv/bin/python"
+          contract="$RUNNER_TEMP/websitebotscroll-pinned/packages/evidence-contract"
+          "$py" interop/validate_crawl_evidence.py --schema "$contract/schema/seo-crawl-evidence/0.1.0/schema.json" --input "$contract/fixtures/valid/complete-page.json" --output "$RUNNER_TEMP/valid-receipt.json"
+          status=0
+          "$py" interop/validate_crawl_evidence.py --schema "$contract/schema/seo-crawl-evidence/0.1.0/schema.json" --input "$contract/fixtures/invalid/duplicate-structural-property.json" --output "$RUNNER_TEMP/invalid-receipt.json" || status=$?
+          test "$status" = 2
+          "$py" -c 'import json,sys; a,b=map(lambda p:json.load(open(p)),sys.argv[1:]); assert a["status"]=="valid" and not a["actual_exchange_verified"]; assert b["status"]=="invalid" and b["issues"][0]["code"]=="json.duplicate_key"' "$RUNNER_TEMP/valid-receipt.json" "$RUNNER_TEMP/invalid-receipt.json"
+          cp "$RUNNER_TEMP/valid-receipt.json" "$RUNNER_TEMP/before.json"
+          status=0
+          "$py" interop/validate_crawl_evidence.py --schema "$contract/schema/seo-crawl-evidence/0.1.0/schema.json" --input "$contract/fixtures/valid/complete-page.json" --output "$RUNNER_TEMP/valid-receipt.json" || status=$?
+          test "$status" = 1
+          cmp "$RUNNER_TEMP/valid-receipt.json" "$RUNNER_TEMP/before.json"
