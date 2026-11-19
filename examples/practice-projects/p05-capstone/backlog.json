@@ -1,0 +1,100 @@
+[
+  {
+    "id": "repair-guide",
+    "severity": "P1",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "low",
+    "confidence": "high",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "repair-link",
+    "severity": "P1",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "low",
+    "confidence": "high",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "repair-alternates",
+    "severity": "P1",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "low",
+    "confidence": "high",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "review-guide-copy",
+    "severity": "P2",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "low",
+    "confidence": "medium",
+    "impact": 3,
+    "effort_days": [
+      1,
+      2
+    ],
+    "depends_on": [
+      "repair-guide",
+      "repair-link"
+    ]
+  },
+  {
+    "id": "pricing-research",
+    "severity": "P3",
+    "status": "pending",
+    "fit": "unknown",
+    "risk": "low",
+    "confidence": "unknown",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "unsupported-hours",
+    "severity": "P3",
+    "status": "pending",
+    "fit": "excluded",
+    "risk": "low",
+    "confidence": "high",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  },
+  {
+    "id": "actual-browser-qa",
+    "severity": "P2",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "unknown",
+    "confidence": "high",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": [
+      "repair-guide",
+      "repair-link",
+      "repair-alternates"
+    ]
+  },
+  {
+    "id": "outcome-review",
+    "severity": "P2",
+    "status": "pending",
+    "fit": "eligible",
+    "risk": "unknown",
+    "confidence": "unknown",
+    "impact": null,
+    "effort_days": null,
+    "depends_on": []
+  }
+]
