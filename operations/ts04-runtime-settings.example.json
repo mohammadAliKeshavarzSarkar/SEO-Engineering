@@ -1,0 +1,16 @@
+{
+  "model": "REPLACE exact model identifier/version",
+  "runtime": "REPLACE actual Cursor or Codex CLI version",
+  "inference_settings": "REPLACE actual inference settings",
+  "tool_config": "REPLACE reviewed matched tools and isolation",
+  "permission_mode": "read-only synthetic task",
+  "launch_protocol": "REPLACE actual fresh-session and activation procedure",
+  "review_protocol": "REPLACE actual independent reviewer and calibration procedure",
+  "suite_kind": "public_regression",
+  "repeats": 1,
+  "treatment": "complete_toolkit",
+  "seed": 41926,
+  "budget": "REPLACE equal approved time and tool/token limits",
+  "rubric_access_policy": "REPLACE actual read isolation and restricted candidate controls",
+  "candidate_variant": "rubric_restricted"
+}
