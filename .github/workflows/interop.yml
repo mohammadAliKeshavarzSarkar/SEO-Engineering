@@ -37,7 +37,7 @@ jobs:
           set -euo pipefail
           python3 -m venv "$RUNNER_TEMP/interop-venv"
           py="$RUNNER_TEMP/interop-venv/bin/python"
-          "$py" -m pip install -r interop/requirements.txt
+          "$py" -m pip install -r interop/requirements-compatibility.txt
           "$py" --version
           "$py" -m pip freeze
           WBS_FIXTURE_ROOT="$RUNNER_TEMP/websitebotscroll-pinned" "$py" -m unittest interop.test_crawl_evidence -v
@@ -57,3 +57,35 @@ jobs:
           "$py" interop/validate_crawl_evidence.py --schema "$contract/schema/seo-crawl-evidence/0.1.0/schema.json" --input "$contract/fixtures/valid/complete-page.json" --output "$RUNNER_TEMP/valid-receipt.json" || status=$?
           test "$status" = 1
           cmp "$RUNNER_TEMP/valid-receipt.json" "$RUNNER_TEMP/before.json"
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26.13.0
+      - name: Run actual pinned TypeScript validator on identical synthetic bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          py="$RUNNER_TEMP/interop-venv/bin/python"
+          producer="$RUNNER_TEMP/websitebotscroll-pinned"
+          "$py" -m interop.differential prepare --producer-root "$producer" --work "$RUNNER_TEMP/diff-inputs"
+          cd "$producer"
+          pnpm install --frozen-lockfile
+          cp "$GITHUB_WORKSPACE/interop/differential-producer.test.ts" packages/evidence-contract/test/seo-consumer-differential.test.ts
+          WBS_DIFF_WORK="$RUNNER_TEMP/diff-inputs" WBS_DIFF_TS_OUTPUT="$RUNNER_TEMP/typescript-results.json" pnpm --filter @website-bot-scroll/evidence-contract exec vitest run test/seo-consumer-differential.test.ts
+      - name: Compare actual producer and consumer results
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/interop-venv/bin/python" -m interop.differential compare --producer-root "$RUNNER_TEMP/websitebotscroll-pinned" --work "$RUNNER_TEMP/diff-inputs" --typescript-results "$RUNNER_TEMP/typescript-results.json" --output "$RUNNER_TEMP/differential-report.json"
+      - name: Retain synthetic comparison receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-differential-report
+          path: ${{ runner.temp }}/differential-report.json
+          if-no-files-found: warn
+          retention-days: 14

@@ -32,3 +32,9 @@ The first mappings remain architecture, internal linking, international SEO; des
 ## Independent SEO Engineering progression
 
 TS03 package verifier correction remains open on the pre-existing main revision; not part of A.1 acceptance. TS04 behavior benchmark and TS05 candidate readiness remain separate gates. This interoperability record is outside the portable skill allowlist pending implementation review and approval. No external runtime activation, consumer execution, or new distribution candidate is claimed.
+
+## A.2.2 execution checkpoint
+
+Consumer revision c259f0abd1627d9a020e32a32ad538e78502902c: [core CI](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44465690999) and [optional consumer CI](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44465690916) passed. Logs show 10 consumer test methods, including all 20 authoritative fixture outcomes (9 valid, 11 invalid), preserved parsed values, CLI receipt and overwrite rejection. Corrected TS03 [CI](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44465554357) passed, 264 core unit tests and installed-tree relocation checks; external activation remains untested.
+
+A.2.3: authored shared-byte differential harness and locked observed optional dependency versions. Required comparisons and explicit exploratory edge probes are separate. Exact-revision outcomes and any divergences must be reviewed before joint parity acceptance. No real export or new contract version is implied.
