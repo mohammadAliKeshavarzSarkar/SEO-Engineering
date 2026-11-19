@@ -1,0 +1,36 @@
+# Coherent synthetic practice projects
+
+TS08.1 — design and coverage plan, not completed practice projects, real websites, actual deployment or independent agent evaluations. This directory will contain only fictional, educational material that can be used offline. Start with the existing native examples and utilities; do not duplicate an entire module or write a second crawler.
+
+## Select a practice project
+
+| ID | Planned exercise | Principal gap to address |
+|---|---|---|
+| P01 | React/Vite marketing and protected routes (TS08.2) | Same site/route identity across architecture, static/source/render observations, host fallback, missing paths and candidate gates |
+| P02 | Next.js hybrid catalogue (TS08.3) | Revision-bound freshness, static/runtime delivery, metadata and field/lab boundaries |
+| P03 | Persian service business (TS08.4) | Native query evidence through page ownership, stable locale URLs, RTL and measurement/claim safeguards |
+| P04 | Traffic-loss incident (TS08.5) | Shared deployment/report timeline, competing causes, escalation and assertion-specific recovery |
+| P05 | Integrated research-to-implementation capstone (TS08.6) | Evidence-to-decision-to-local-patch-to-verification handoff using an existing completed practice project |
+
+Each exercise is planned, not yet implemented. The scope is selected for teaching handoffs, not every possible industry or stack. Do not use this list as an actual evaluation cohort. No rights to an external project, source, model or data are implied.
+
+## Reuse the existing fixtures
+
+- [Architecture](../architecture/README.md), [SPA artifacts](../spa-build/README.md), [rendering](../rendering/README.md), [crawl](../crawl-evidence/README.md), [index evidence](../index-evidence/README.md), [Next delivery](../next-delivery/README.md), [metadata](../metadata/README.md) and [performance](../performance/README.md) demonstrate their native contracts separately.
+- [Technical audit](../technical-audit/README.md) already exercises the T10 coordinator and adverse grouping. Its inputs describe unrelated fictional observations, not one unified site. [Release gates](../deployment-regression/README.md) and [incident ledger](../technical-incident/README.md) test distinct assertion contracts.
+- [SERP intent](../serp-intent/README.md), [clustering](../keyword-clustering/README.md), [competitors](../competitor-intelligence/README.md), [page mapping](../page-mapping/README.md), [topical architecture](../topical-architecture/README.md), [prioritization](../opportunity-prioritization/README.md), [locale](../locale-audit/README.md) and [research handoff](../research-handoff/README.md) illustrate research and strategic decisions. [Cross-module review](../cross-module-review/README.md) and [deliverable quality](../deliverable-quality/README.md) illustrate reasoning and communication. Do not copy their expected outcomes into a new benchmark.
+
+## Project design contract (human-readable, not a shared provider schema)
+
+1. Brief: invented offering, audience, scope/mode, constraints, deliverable, explicit excluded actions. Use reserved example domains or local-only paths; never make requests to the example hosts. No real customer data, accounts, credentials, identifiable users, medical claims or production access. Name the boundary between source library and simulated target.
+2. Stable registry: practice project ID, route IDs, intended URL/location, audience/access/index intent, expected behavior, stage and revision labels. Include meaningful public routes, intentional non-acquisition routes, missing/retired variants where relevant, and unknowns. A route ID is not itself a verified observation. Preserve declared identity across native fixtures via an explicit reviewed reference table, including native observation IDs and subject/assertion/scope. Do not assume all native schemas share IDs or use a new wrapper as a universal converter.
+3. Evidence stages: distinguish hand-authored fixture input, actual local artifact inspection, mock HTTP/browser/search observations, and actual external verification (out of scope unless separately authorized). Declare actual vs simulated, collected time or invented timeline, expected vs observed, coverage and freshness. Keep a bad initial state and revised state separately labeled. Do not present a hand-authored directory as a real framework build. A corrected fixture is not evidence that a target was deployed or recovered.
+4. Decision sequence: use existing native utilities and selected modules, retain actual generated reports privately, review signals, compare no-change and justified correction, record dependencies and held actions. Do not fabricate verified evidence to make a gate pass. When actual local changes are part of the exercise, use an isolated disposable copy, not the source examples in place. No network, external submit, production writes, customer access or paid model inference needed by an offline lab.
+5. Acceptance: include a healthy assertion, a known adverse assertion and at least one absent, stale, conflicting or scope-mismatched observation. Review what each native utility can check and what remains unobservable; distinguish intentionally invalid input and findings from processing failure. Commands must use standard-library-compatible existing utilities, trusted artifact roots and fresh output names. For each implemented exercise include exact commands and expected narrow results; offline automated tests must compare actual report fields/exit behavior with those expectations, not just existence of a report. Preserve uncertainty and independent escalation. Never infer actual indexing, performance or business impact from alternate fixture revisions.
+6. Handoff: provide a short [decision record](../../templates/decision-record.md) and [delivery summary](../../templates/delivery-summary.md) where useful, with actual local tests, held decisions, necessary verification and owner/rollback. Educational expected results must be labeled separately from actual test receipts. Use [technical handoffs](../../docs/03-technical/technical-handoffs.md) and [cross-module review](../../decision-engine/cross-module-review.md) when necessary.
+
+## Packaging and verification
+
+Portable examples must use currently supported public resource types (Markdown, CSV, JSON, HTML, Python) and the existing library layout. Keep unneeded generated files, dependency trees, private logs and evaluation answer keys outside the package. Do not introduce executable JS-framework source or dependencies until a separate design and actual build/packaging checks justify them; a package snapshot is not a runnable React/Vite or Next.js project. Future exercises can use local HTML and synthetic native inputs without claiming actual framework behavior. Follow the existing [tool documentation](../../scripts/README.md) and run offline tests in the trusted checkout. Validate path references and packaged resource bytes; no enlargement of builder allowlist for TS08.1.
+
+Practice examples support learning. Independent held-out tasks, actual agent activation, runtime isolation, benchmark scoring and release approval remain separate. See the [instruction evaluation boundaries](../../docs/08-learning/instruction-evaluation.md).

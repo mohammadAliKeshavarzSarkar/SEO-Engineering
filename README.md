@@ -61,3 +61,5 @@ Maintainers: see the [TS05 ownership and distribution decision framework](operat
 Maintainer checkpoint: [consolidated TS05 candidate acceptance](operations/ts05-candidate-acceptance.md) records the exact tested development snapshot and remaining mandatory gates. This is a held review checkpoint, not a release approval or a new distribution version.
 
 TS07.6 development: [instruction evaluation and incomplete-run review](operations/ts07-instruction-evaluation.md). Normal completed grades and separate partial-run safety review must both inform pilot continuation; neither establishes actual behavioral efficacy without independent execution and assessment.
+
+TS08 practice development: [synthetic project architecture and planned exercises](examples/practice-projects/README.md). Existing module fixtures and composite checks remain available; new coherent projects are planned, not yet executed or independently evaluated. See [coverage review](operations/ts08-practice-architecture.md) for baseline inventory and gaps.

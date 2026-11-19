@@ -1,0 +1,375 @@
+{
+  "schema_version": "1",
+  "record_kind": "historical_example_coverage_review",
+  "base_commit": "a80d021f791828a4dcfb5595ddb02f715f7be4e9",
+  "examples_file_count": 49,
+  "families": [
+    {
+      "id": "architecture",
+      "module": "T01",
+      "kind": "native_fixture",
+      "files": [
+        "examples/architecture/README.md",
+        "examples/architecture/sample.json"
+      ],
+      "scope": "Declared stack hints and route observations; not deployed architecture"
+    },
+    {
+      "id": "competitor-intelligence",
+      "module": "R05",
+      "kind": "worked_data",
+      "files": [
+        "examples/competitor-intelligence/README.md",
+        "examples/competitor-intelligence/sample.json"
+      ],
+      "scope": "Comparator denominator and gap review; no live search"
+    },
+    {
+      "id": "crawl-evidence",
+      "module": "T05",
+      "kind": "native_fixture",
+      "files": [
+        "examples/crawl-evidence/README.md",
+        "examples/crawl-evidence/sample.json"
+      ],
+      "scope": "Supplied access/discovery and resource evidence; no crawl"
+    },
+    {
+      "id": "cross-module-review",
+      "module": "TS07.4",
+      "kind": "narrative",
+      "files": [
+        "examples/cross-module-review/README.md"
+      ],
+      "scope": "Five reasoning scenarios, no executable coherent history"
+    },
+    {
+      "id": "deliverable-quality",
+      "module": "TS07.5",
+      "kind": "narrative",
+      "files": [
+        "examples/deliverable-quality/README.md"
+      ],
+      "scope": "Four reporting formats, not graded outputs"
+    },
+    {
+      "id": "deployment-regression",
+      "module": "T11",
+      "kind": "native_fixture",
+      "files": [
+        "examples/deployment-regression/README.md",
+        "examples/deployment-regression/sample.json"
+      ],
+      "scope": "Assertion-bound gate and optional gap; no release"
+    },
+    {
+      "id": "index-evidence",
+      "module": "T06",
+      "kind": "native_fixture",
+      "files": [
+        "examples/index-evidence/README.md",
+        "examples/index-evidence/sample.json"
+      ],
+      "scope": "Current/processed declarations and stale evidence; no index inspection"
+    },
+    {
+      "id": "keyword-clustering",
+      "module": "R04",
+      "kind": "native_fixture",
+      "files": [
+        "examples/keyword-clustering/README.md",
+        "examples/keyword-clustering/input.json"
+      ],
+      "scope": "Synthetic SERP overlap and candidate grouping"
+    },
+    {
+      "id": "locale-audit",
+      "module": "R09",
+      "kind": "native_fixture",
+      "files": [
+        "examples/locale-audit/README.md",
+        "examples/locale-audit/sample.json"
+      ],
+      "scope": "Strict manifest and valid-profile exceptions; no HTML/fetch check"
+    },
+    {
+      "id": "metadata",
+      "module": "T08",
+      "kind": "native_fixture",
+      "files": [
+        "examples/metadata/README.md",
+        "examples/metadata/sample.json"
+      ],
+      "scope": "Draft graph and supplied literals, no live feature test"
+    },
+    {
+      "id": "migration",
+      "module": "T07",
+      "kind": "native_fixture",
+      "files": [
+        "examples/migration/README.md",
+        "examples/migration/sample.json"
+      ],
+      "scope": "Reviewed map and synthetic HTTP traces"
+    },
+    {
+      "id": "next-delivery",
+      "module": "T04",
+      "kind": "native_fixture",
+      "files": [
+        "examples/next-delivery/README.md",
+        "examples/next-delivery/sample.json"
+      ],
+      "scope": "Synthetic freshness and incompatible export/ISR; no Next build"
+    },
+    {
+      "id": "opportunity-prioritization",
+      "module": "R08",
+      "kind": "native_fixture",
+      "files": [
+        "examples/opportunity-prioritization/README.md",
+        "examples/opportunity-prioritization/sample.json"
+      ],
+      "scope": "Backlog lanes and reviewed dependencies"
+    },
+    {
+      "id": "page-mapping",
+      "module": "R06",
+      "kind": "worked_data",
+      "files": [
+        "examples/page-mapping/README.md",
+        "examples/page-mapping/sample.json"
+      ],
+      "scope": "Strategic task ownership, not canonical proof"
+    },
+    {
+      "id": "performance",
+      "module": "T09",
+      "kind": "native_fixture",
+      "files": [
+        "examples/performance/README.md",
+        "examples/performance/sample.json"
+      ],
+      "scope": "Supplied lab/field cohorts and mismatch"
+    },
+    {
+      "id": "rendering",
+      "module": "T02",
+      "kind": "native_fixture",
+      "files": [
+        "examples/rendering/README.md",
+        "examples/rendering/sample.json"
+      ],
+      "scope": "Synthetic matched source/render observations"
+    },
+    {
+      "id": "research-handoff",
+      "module": "R10",
+      "kind": "native_fixture",
+      "files": [
+        "examples/research-handoff/README.md",
+        "examples/research-handoff/sample.json"
+      ],
+      "scope": "Provenance references, null vs zero, reviewed/provisional decisions"
+    },
+    {
+      "id": "serp-intent",
+      "module": "R03",
+      "kind": "narrative",
+      "files": [
+        "examples/serp-intent/README.md"
+      ],
+      "scope": "Synthetic result composition and mixed intent"
+    },
+    {
+      "id": "site",
+      "module": "STATIC_HTML",
+      "kind": "native_fixture",
+      "files": [
+        "examples/routes-failing.json",
+        "examples/routes.json",
+        "examples/site/about/index.html",
+        "examples/site/index.html"
+      ],
+      "scope": "Handwritten HTML and positive/adverse route manifests"
+    },
+    {
+      "id": "spa-build",
+      "module": "T03",
+      "kind": "native_fixture",
+      "files": [
+        "examples/spa-build/README.md",
+        "examples/spa-build/artifacts/guide/data.json",
+        "examples/spa-build/artifacts/guide/index.html",
+        "examples/spa-build/artifacts/shell.html",
+        "examples/spa-build/sample.json"
+      ],
+      "scope": "Hand-authored local artifacts, not a Vite build"
+    },
+    {
+      "id": "technical-audit",
+      "module": "T10",
+      "kind": "composite_fixture",
+      "files": [
+        "examples/technical-audit/README.md",
+        "examples/technical-audit/adverse.json",
+        "examples/technical-audit/sample.json"
+      ],
+      "scope": "Unrelated native inputs, rejected grouping/exposure adverse fixture"
+    },
+    {
+      "id": "technical-incident",
+      "module": "T12",
+      "kind": "native_fixture",
+      "files": [
+        "examples/technical-incident/README.md",
+        "examples/technical-incident/sample.json"
+      ],
+      "scope": "Conflicting/incomplete recovery evidence; no actual incident"
+    },
+    {
+      "id": "topical-architecture",
+      "module": "R07",
+      "kind": "native_fixture",
+      "files": [
+        "examples/topical-architecture/README.md",
+        "examples/topical-architecture/sample.json"
+      ],
+      "scope": "Public/private/planned link graph and reachability"
+    }
+  ],
+  "projects": [
+    {
+      "id": "P01",
+      "phase": "TS08.2",
+      "title": "Public React/Vite marketing site and protected app boundary",
+      "routes": [
+        "T01",
+        "T02",
+        "T03",
+        "T05",
+        "T06",
+        "T10",
+        "T11"
+      ],
+      "reuse": [
+        "architecture",
+        "spa-build",
+        "rendering",
+        "crawl-evidence",
+        "index-evidence",
+        "technical-audit",
+        "deployment-regression",
+        "site"
+      ],
+      "objective": "Same route registry through bad candidate, scoped fix proposal and revised candidate verification; explicit missing paths, protected routes and host/deploy evidence gaps",
+      "state": "planned"
+    },
+    {
+      "id": "P02",
+      "phase": "TS08.3",
+      "title": "Next.js hybrid catalogue and content freshness",
+      "routes": [
+        "T01",
+        "T04",
+        "T06",
+        "T08",
+        "T09",
+        "T11"
+      ],
+      "reuse": [
+        "architecture",
+        "next-delivery",
+        "index-evidence",
+        "metadata",
+        "performance",
+        "deployment-regression"
+      ],
+      "objective": "Shared revision and route identity for static/runtime delivery, expiry, inconsistent cache scope and metadata; independent verification of local vs delivered state",
+      "state": "planned"
+    },
+    {
+      "id": "P03",
+      "phase": "TS08.4",
+      "title": "Persian-language service business",
+      "routes": [
+        "R02",
+        "R03",
+        "R04",
+        "R06",
+        "R07",
+        "R09",
+        "T06",
+        "EDITORIAL",
+        "ANALYTICS"
+      ],
+      "reuse": [
+        "serp-intent",
+        "keyword-clustering",
+        "page-mapping",
+        "topical-architecture",
+        "locale-audit",
+        "index-evidence",
+        "metadata",
+        "research-handoff"
+      ],
+      "objective": "Native search evidence and distinct task ownership, stable localized slugs, ZWNJ/RTL and valid alternate exceptions, reviewed claims and measured-vs-accepted outcomes",
+      "state": "planned"
+    },
+    {
+      "id": "P04",
+      "phase": "TS08.5",
+      "title": "Traffic-loss and release incident",
+      "routes": [
+        "T12",
+        "T11",
+        "T06",
+        "SEARCH_DATA",
+        "ANALYTICS",
+        "T10"
+      ],
+      "reuse": [
+        "technical-incident",
+        "deployment-regression",
+        "index-evidence",
+        "technical-audit",
+        "cross-module-review",
+        "deliverable-quality"
+      ],
+      "objective": "Aligned synthetic release timeline, competing hypotheses, partial/conflicting data and independent recovery assertions; no causal overclaim or closure",
+      "state": "planned"
+    },
+    {
+      "id": "P05",
+      "phase": "TS08.6",
+      "title": "Integrated research-to-implementation decision package",
+      "routes": [
+        "ONBOARD",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R10",
+        "T10",
+        "T11",
+        "EXPERIMENT"
+      ],
+      "reuse": [
+        "competitor-intelligence",
+        "keyword-clustering",
+        "page-mapping",
+        "topical-architecture",
+        "opportunity-prioritization",
+        "research-handoff",
+        "technical-audit",
+        "deployment-regression",
+        "cross-module-review",
+        "deliverable-quality"
+      ],
+      "objective": "Reuse a completed synthetic project's route registry and evidence instead of stand-alone new fake site; linked decisions, blockers, scoped implementation and distinct verification/outcome stages",
+      "state": "planned"
+    }
+  ]
+}
