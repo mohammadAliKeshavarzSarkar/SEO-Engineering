@@ -78,7 +78,7 @@ def verify(root, archive):
         entry = bundle.read(PREFIX + 'SKILL.md').decode('utf-8')
         # Check this project's simple scalar frontmatter contract, not arbitrary YAML.
         head = re.match(r'\A---\r?\n(.*?)\r?\n---\r?\n', entry, re.S)
-        if not head or re.findall(r'^name: ([^\r\n]+)
+        if not head or re.findall(r'^name: ([^\r\n]+)$', head[1], re.M) != ['seo-engineering']:
             raise ValueError('invalid skill name or frontmatter')
         descriptions = re.findall(r'^description: ([^\r\n]+)$', head[1], re.M)
         if len(descriptions) != 1 or not 1 <= len(descriptions[0].strip()) <= 1024:
@@ -144,38 +144,6 @@ def main():
         report = verify(ROOT, args.archive)
         if args.installed is not None:
             report['installation'] = verify_installed(args.installed, report)
-        with args.report.open('x', encoding='utf-8') as f:
-            json.dump(report, f, indent=2, ensure_ascii=False)
-            f.write('\n')
-    except (OSError, ValueError, BadZipFile, RuntimeError, NotImplementedError) as exc:
-        print(f'Package verification failed: {exc}')
-        return 1
-    print(f"Verified {report['file_count']} source-matched files; SHA-256 {report['archive_sha256']}")
-    return 0
-
-
-if __name__ == '__main__':
-    raise SystemExit(main())
-, head[1], re.M) != ['seo-engineering']:
-            raise ValueError('invalid skill name or frontmatter')
-        descriptions = re.findall(r'^description: ([^\r\n]+)$', head[1], re.M)
-        if len(descriptions) != 1 or not 1 <= len(descriptions[0].strip()) <= 1024:
-            raise ValueError('invalid skill description')
-    return {'schema_version':'1', 'scope':'archive_vs_trusted_checkout',
-            'archive_sha256':digest(Path(archive).read_bytes()),
-            'archive_bytes':Path(archive).stat().st_size, 'file_count':len(records),
-            'uncompressed_bytes':sum(r['bytes'] for r in records),
-            'python':sys.version.split()[0], 'zlib':zlib.ZLIB_RUNTIME_VERSION,
-            'files':records, 'privacy_review':'required', 'runtime_activation':'not_tested'}
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--archive', required=True, type=Path)
-    parser.add_argument('--report', required=True, type=Path, help='New JSON receipt path')
-    args = parser.parse_args()
-    try:
-        report = verify(ROOT, args.archive)
         with args.report.open('x', encoding='utf-8') as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
             f.write('\n')
