@@ -41,3 +41,7 @@ The TS07.1 maintainer size guard is a local editorial budget for the entry file 
 ## Route selection (TS07.2)
 
 Stable route IDs in the skill router identify a reference family, not an automated classifier or tool permission. Determine the requested decision and mode first; select primary routes and add only required dependencies. Multi-step work may record why a route was added, postponed or excluded. Distinguish ordinary target tasks from maintainer evaluation. A route can be selected even when its evidence is unavailable; dependent conclusions then remain blocked. Static route coverage checks do not establish that a model chooses or reads the right resources.
+
+## Progressive loading (TS07.3)
+
+The router distinguishes initial context, necessary decision dependencies, optional implementation/QA and operator-only resources. Its 48/80 KiB initial soft budgets count unique full-file raw bytes, not runtime tokens. They are local editorial planning guides; evidence and safety override them. A route's first document plus designated workflow/privacy support is a starting point, not evidence that subsequent references are unnecessary. Measure actual runtime context, retrieval, truncation, duplicate reads and behavior independently; static loading estimates do not model these effects.

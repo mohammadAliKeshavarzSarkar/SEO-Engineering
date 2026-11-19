@@ -32,3 +32,5 @@ Selected modules and material omitted dependencies (only where relevant); confli
 Stopped or narrowed work / condition / affected decisions / independent safe work completed / owner or next check:
 
 Route selection (primary route IDs / necessary dependencies with reasons / conditional routes / material exclusions / actual references read; not required as a formal matrix for a short explanation):
+
+Reference-loading record (only as useful): initial resources, later full/section reads and decision reasons, blocked dependencies, repeated reads if observed, budget deviations and actual measured usage if available. Separate static byte estimate from runtime-reported tokens; do not reconstruct unobserved tool traces.
