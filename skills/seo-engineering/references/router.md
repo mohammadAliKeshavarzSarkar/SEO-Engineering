@@ -65,6 +65,8 @@ If multiple triggers are relevant, resolve dependencies (privacy/security -> eli
 - Planning guide: 48 KiB of unique full-file content for single-route initial loading, 80 KiB for multiple initial routes. These are soft editorial budgets for source bytes, not model limits or token counts. A larger required load is permitted with a reason; split a broad task into decision stages and keep unresolved dependencies visible. Do not truncate mandatory safeguards, omit a dependency or redefine task scope to hit a number.
 - Keep a small working record of references actually read (full or sections), what decision they support, material unresolved dependencies, and any budget exception. Reuse verified findings instead of repeatedly loading the same document unless currency or scope requires rereading. Do not claim a file was read just because it was listed. Evaluation-only resources remain separate. No agent must access maintainer profiling scripts or scenario answers to perform ordinary work.
 
+For material cross-route contradictions or prerequisite relationships, read decision-engine/cross-module-review.md when needed. Record decision-level dependencies and isolate blocked actions; do not add whole modules merely because their output is mentioned. This is conditional support, not another required initial read.
+
 ## Resolve overlapping triggers
 
 - Indexing problem vs performance data: T06 for index eligibility or selected canonical evidence; SEARCH_DATA for report extraction, aggregation and metric interpretation. Add T05 when crawl/discovery evidence matters. T12 coordinates a material incident; T10 coordinates an explicitly broad technical audit, not every isolated issue.

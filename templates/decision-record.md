@@ -24,3 +24,13 @@ Commit/release, actual tests/results, blockers, unknowns, production verificatio
 
 ## Measurement and rollback
 Metric, baseline, evaluation conditions, rollback trigger/owner, next review.
+
+## Dependency and conflict review (where material)
+
+Decision-level prerequisite IDs / hard, conditional or advisory / required assertion and scope / observed status and evidence:
+
+Conflicting or noncomparable observations / comparison rationale / discriminating next check / excluded alternatives:
+
+Held dependent actions and independently available safe work / reopening triggers / explicit authorization and owner:
+
+Use [dependency review](decision-dependency-review.csv) for multiple relationships. No completed field alone establishes that an assertion passed.

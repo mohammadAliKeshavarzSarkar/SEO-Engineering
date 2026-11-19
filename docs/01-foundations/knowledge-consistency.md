@@ -40,3 +40,5 @@ Use [bundled distribution metadata](distribution-version.json) for the version o
 ## Remaining checks
 
 A broader semantic audit of every module, example and schema plus actual runtime evaluation remains necessary. Maintain private review and explicit owner decisions; do not use unreviewed benchmark or held-out material as operating instructions. The updated templates are human-readable record contracts, not executable configuration validators. Legacy data remains readable; the event dictionary v2 is a separate template, not a breaking migration of existing records.
+
+For a concrete conflict or multi-step dependency graph use [cross-module review](../../decision-engine/cross-module-review.md); it distinguishes stage/scope differences from comparable contradictions, specifies hard/conditional/advisory edges and limits propagation to dependent decisions. The guide does not replace native status contracts or establish approval.
