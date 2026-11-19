@@ -1,0 +1,77 @@
+{
+  "description": "Fictional supplied graph, no crawl",
+  "pages": [
+    {
+      "id": "home",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "service",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "guide",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "service-en",
+      "state": "public",
+      "index_intent": true,
+      "priority": true
+    },
+    {
+      "id": "account",
+      "state": "private",
+      "index_intent": false,
+      "priority": false
+    },
+    {
+      "id": "planned",
+      "state": "planned",
+      "index_intent": true,
+      "priority": true
+    }
+  ],
+  "entries": [
+    "home",
+    "service-en"
+  ],
+  "links": [
+    {
+      "from": "home",
+      "to": "service",
+      "kind": "crawlable"
+    },
+    {
+      "from": "service",
+      "to": "home",
+      "kind": "crawlable"
+    },
+    {
+      "from": "service",
+      "to": "guide",
+      "kind": "crawlable"
+    },
+    {
+      "from": "guide",
+      "to": "service",
+      "kind": "crawlable"
+    },
+    {
+      "from": "account",
+      "to": "guide",
+      "kind": "crawlable"
+    },
+    {
+      "from": "service",
+      "to": "planned",
+      "kind": "proposed"
+    }
+  ]
+}

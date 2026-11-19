@@ -1,0 +1,42 @@
+{
+  "scope": "Fictional equal-window aggregate counts; no real analytics, user or CRM evidence",
+  "cohort": "P03 service page, declared comparable hypothetical windows; actual comparability unverified",
+  "route_id": "service",
+  "before": {
+    "search_clicks": 200,
+    "organic_sessions": 150,
+    "lead_events": 10,
+    "accepted_leads": 10
+  },
+  "after": {
+    "search_clicks": 200,
+    "organic_sessions": 150,
+    "lead_events": 15,
+    "accepted_leads": 10
+  },
+  "consent_network_verification": null,
+  "provider_receipt_verification": null,
+  "claims": [
+    {
+      "id": "CL1",
+      "page_id": "service",
+      "proposed_claim": "تعمیر دوچرخه به‌صورت ۲۴ ساعته",
+      "evidence_ref": "E4",
+      "disposition": "defer",
+      "approved_wording": null
+    },
+    {
+      "id": "CL2",
+      "page_id": "service",
+      "proposed_claim": "درخواست بررسی دوچرخه",
+      "evidence_ref": "P03-fictional-brief",
+      "disposition": "reviewed_for_exercise_only",
+      "approved_wording": "درخواست بررسی دوچرخه"
+    }
+  ],
+  "limitations": [
+    "Event counts are not accepted leads; no cause established",
+    "No lawful collection or actual consent established",
+    "No test lead submissions or actual publication"
+  ]
+}

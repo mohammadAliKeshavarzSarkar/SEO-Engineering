@@ -1,0 +1,88 @@
+{
+  "project_id": "P03",
+  "scope": "Fictional bilingual bicycle repair service, no actual market or customer evidence",
+  "origin": "https://cyclecare.example",
+  "revisions": [
+    "p03-a",
+    "p03-b"
+  ],
+  "routes": [
+    {
+      "id": "home",
+      "path": "/fa/",
+      "locale": "fa",
+      "state": "public",
+      "group": "home",
+      "title": "خدمات دوچرخه",
+      "desc": "با خدمات فرضی نگهداری و تعمیر دوچرخه آشنا شوید.",
+      "file": "fa/index.html",
+      "url": "https://cyclecare.example/fa/",
+      "index_intent": true
+    },
+    {
+      "id": "service",
+      "path": "/fa/تعمیر-دوچرخه/",
+      "locale": "fa",
+      "state": "public",
+      "group": "repair",
+      "title": "تعمیر دوچرخه",
+      "desc": "مراحل بررسی و درخواست تعمیر دوچرخه را ببینید.",
+      "file": "fa/service/index.html",
+      "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/",
+      "index_intent": true
+    },
+    {
+      "id": "guide",
+      "path": "/fa/راهنمای-نگهداری/",
+      "locale": "fa",
+      "state": "public",
+      "group": "guide",
+      "title": "راهنمای نگهداری دوچرخه",
+      "desc": "نکات عمومی نگهداری و بررسی اولیه دوچرخه را بخوانید.",
+      "file": "fa/guide/index.html",
+      "url": "https://cyclecare.example/fa/راهنمای-نگهداری/",
+      "index_intent": true
+    },
+    {
+      "id": "service-en",
+      "path": "/en/bicycle-repair/",
+      "locale": "en",
+      "state": "public",
+      "group": "repair",
+      "title": "Bicycle repair",
+      "desc": "Explore the fictional repair enquiry process.",
+      "file": "en/service/index.html",
+      "url": "https://cyclecare.example/en/bicycle-repair/",
+      "index_intent": true
+    },
+    {
+      "id": "account",
+      "path": "/fa/حساب/",
+      "locale": "fa",
+      "state": "private",
+      "group": null,
+      "title": null,
+      "desc": null,
+      "file": null,
+      "url": "https://cyclecare.example/fa/حساب/",
+      "index_intent": false
+    },
+    {
+      "id": "planned",
+      "path": "/fa/هزینه-تعمیر/",
+      "locale": "fa",
+      "state": "planned",
+      "group": null,
+      "title": null,
+      "desc": null,
+      "file": null,
+      "url": "https://cyclecare.example/fa/هزینه-تعمیر/",
+      "index_intent": true
+    }
+  ],
+  "limitations": [
+    "Persian strings preserved exactly; local artifact filenames are a separate mapping, not URL routing",
+    "All search observations and business counts invented",
+    "No actual HTML serving, language detection or browser/accessibility testing"
+  ]
+}

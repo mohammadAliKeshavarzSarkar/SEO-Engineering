@@ -1,0 +1,114 @@
+{
+  "schema_version": "1",
+  "scope": "P03 fictional evidence and strategic decisions, no real approval",
+  "evidence": [
+    {
+      "id": "E1",
+      "kind": "observed",
+      "value": {
+        "query_ids": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4"
+        ],
+        "record_count": 4
+      },
+      "source_ref": "queries.json:Q1-Q4",
+      "scope": "P03 invented educational input",
+      "limitations": "Fictional matched IR/fa/mobile web sample; observations in exercise only",
+      "collected_date": "2026-10-06"
+    },
+    {
+      "id": "E2",
+      "kind": "unknown",
+      "value": null,
+      "source_ref": "No permitted regional volume dataset",
+      "scope": "P03 invented educational input",
+      "limitations": "Actual demand and competitor traffic unavailable",
+      "collected_date": "2026-10-06"
+    },
+    {
+      "id": "E3",
+      "kind": "observed",
+      "value": 0,
+      "source_ref": "Fictional bounded sample of Q5 accepted leads",
+      "scope": "P03 invented educational input",
+      "limitations": "Zero in invented sample only; not market demand",
+      "collected_date": "2026-10-06"
+    },
+    {
+      "id": "E4",
+      "kind": "unknown",
+      "value": null,
+      "source_ref": "No approved business-hours substantiation",
+      "scope": "P03 invented educational input",
+      "limitations": "24-hour claim and service availability unverified",
+      "collected_date": "2026-10-06"
+    },
+    {
+      "id": "E5",
+      "kind": "observed",
+      "value": {
+        "query_ids": [
+          "Q6"
+        ],
+        "device": "desktop"
+      },
+      "source_ref": "queries.json:Q6",
+      "scope": "P03 invented educational input",
+      "limitations": "Fictional different-device sample, not mergeable with mobile",
+      "collected_date": "2026-10-06"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "U1",
+      "status": "reviewed",
+      "reviewer": "fictional exercise reviewer",
+      "evidence_ids": [
+        "E1"
+      ],
+      "rationale": "Keep service task owner; matching keys alone not sufficient",
+      "next_check": "Review actual task and market evidence if authorized"
+    },
+    {
+      "id": "U2",
+      "status": "reviewed",
+      "reviewer": "fictional exercise reviewer",
+      "evidence_ids": [
+        "E1"
+      ],
+      "rationale": "Keep distinct useful guide",
+      "next_check": "Verify useful native copy and links"
+    },
+    {
+      "id": "U3",
+      "status": "provisional",
+      "evidence_ids": [
+        "E2",
+        "E3"
+      ],
+      "rationale": "No real demand or new-page justification",
+      "next_check": "Collect permitted scope-matched evidence"
+    },
+    {
+      "id": "U4",
+      "status": "provisional",
+      "evidence_ids": [
+        "E5"
+      ],
+      "rationale": "Device mismatch requires separate review",
+      "next_check": "Comparable desktop cohort"
+    },
+    {
+      "id": "U5",
+      "status": "excluded",
+      "evidence_ids": [
+        "E4"
+      ],
+      "rationale": "24-hour availability not substantiated",
+      "next_check": "Obtain verified service terms before reconsideration"
+    }
+  ]
+}

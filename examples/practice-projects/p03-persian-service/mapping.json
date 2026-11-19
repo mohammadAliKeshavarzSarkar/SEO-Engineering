@@ -1,0 +1,103 @@
+{
+  "description": "Authored strategic decisions, not search engine clustering or approval",
+  "pages": [
+    {
+      "id": "home",
+      "url": "https://cyclecare.example/fa/",
+      "lifecycle": "existing",
+      "indexIntent": true
+    },
+    {
+      "id": "service",
+      "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/",
+      "lifecycle": "existing",
+      "indexIntent": true
+    },
+    {
+      "id": "guide",
+      "url": "https://cyclecare.example/fa/راهنمای-نگهداری/",
+      "lifecycle": "existing",
+      "indexIntent": true
+    },
+    {
+      "id": "service-en",
+      "url": "https://cyclecare.example/en/bicycle-repair/",
+      "lifecycle": "existing",
+      "indexIntent": true
+    },
+    {
+      "id": "account",
+      "url": "https://cyclecare.example/fa/حساب/",
+      "lifecycle": "existing",
+      "indexIntent": false
+    },
+    {
+      "id": "planned",
+      "url": "https://cyclecare.example/fa/هزینه-تعمیر/",
+      "lifecycle": "proposed",
+      "indexIntent": true
+    }
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "query_ids": [
+        "Q1",
+        "Q2"
+      ],
+      "status": "resolved",
+      "primary": "service",
+      "supporting": [
+        "guide"
+      ],
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "query_ids": [
+        "Q3",
+        "Q4"
+      ],
+      "status": "resolved",
+      "primary": "guide",
+      "supporting": [
+        "service"
+      ],
+      "action": "improve"
+    },
+    {
+      "id": "U3",
+      "query_ids": [
+        "Q5"
+      ],
+      "status": "unresolved",
+      "primary": null,
+      "candidates": [
+        "service",
+        "planned"
+      ],
+      "action": "investigate"
+    },
+    {
+      "id": "U4",
+      "query_ids": [
+        "Q6"
+      ],
+      "status": "unresolved",
+      "primary": null,
+      "candidates": [
+        "service"
+      ],
+      "action": "investigate"
+    },
+    {
+      "id": "U5",
+      "query_ids": [
+        "Q7"
+      ],
+      "status": "excluded",
+      "primary": null,
+      "action": "exclude"
+    }
+  ]
+}

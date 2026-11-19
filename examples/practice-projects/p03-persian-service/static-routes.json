@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://cyclecare.example/fa/",
+    "file": "fa/index.html"
+  },
+  {
+    "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/",
+    "file": "fa/service/index.html"
+  },
+  {
+    "url": "https://cyclecare.example/fa/راهنمای-نگهداری/",
+    "file": "fa/guide/index.html"
+  },
+  {
+    "url": "https://cyclecare.example/en/bicycle-repair/",
+    "file": "en/service/index.html"
+  }
+]

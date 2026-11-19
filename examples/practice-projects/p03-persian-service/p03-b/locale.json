@@ -1,0 +1,70 @@
+{
+  "allowed_tags": [
+    "fa",
+    "en"
+  ],
+  "pages": [
+    {
+      "url": "https://cyclecare.example/fa/",
+      "group": "home",
+      "locale": "fa",
+      "status": 200,
+      "index_intent": true,
+      "canonical": "https://cyclecare.example/fa/",
+      "alternates": []
+    },
+    {
+      "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/",
+      "group": "repair",
+      "locale": "fa",
+      "status": 200,
+      "index_intent": true,
+      "canonical": "https://cyclecare.example/fa/تعمیر-دوچرخه/",
+      "alternates": [
+        {
+          "tag": "fa",
+          "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/"
+        },
+        {
+          "tag": "en",
+          "url": "https://cyclecare.example/en/bicycle-repair/"
+        },
+        {
+          "tag": "x-default",
+          "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/"
+        }
+      ]
+    },
+    {
+      "url": "https://cyclecare.example/fa/راهنمای-نگهداری/",
+      "group": "guide",
+      "locale": "fa",
+      "status": 200,
+      "index_intent": true,
+      "canonical": "https://cyclecare.example/fa/راهنمای-نگهداری/",
+      "alternates": []
+    },
+    {
+      "url": "https://cyclecare.example/en/bicycle-repair/",
+      "group": "repair",
+      "locale": "en",
+      "status": 200,
+      "index_intent": true,
+      "canonical": "https://cyclecare.example/en/bicycle-repair/",
+      "alternates": [
+        {
+          "tag": "fa",
+          "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/"
+        },
+        {
+          "tag": "en",
+          "url": "https://cyclecare.example/en/bicycle-repair/"
+        },
+        {
+          "tag": "x-default",
+          "url": "https://cyclecare.example/fa/تعمیر-دوچرخه/"
+        }
+      ]
+    }
+  ]
+}
