@@ -1,0 +1,88 @@
+{
+  "schema_version": "1",
+  "scope": "P04 p04-b hypothetical supplied projection, no search API",
+  "urls": [
+    {
+      "id": "home",
+      "url": "https://workspace.example/",
+      "intent": "representative",
+      "preferred_url": "https://workspace.example/",
+      "changed_at": "2026-10-19T09:00:00Z",
+      "current": {
+        "status": "complete",
+        "evidence_ref": "P04/MOCK/p04-b/home",
+        "observed_at": "2026-10-19T10:00:00Z",
+        "http_status": 200,
+        "robots": "allowed",
+        "http_noindex": false,
+        "initial_noindex": false,
+        "rendered_noindex": false,
+        "sitemap_member": true,
+        "source_canonicals": [
+          "https://workspace.example/"
+        ],
+        "header_canonicals": [],
+        "rendered_canonicals": [
+          "https://workspace.example/"
+        ]
+      },
+      "processed": null
+    },
+    {
+      "id": "guide",
+      "url": "https://workspace.example/guides/getting-started/",
+      "intent": "representative",
+      "preferred_url": "https://workspace.example/guides/getting-started/",
+      "changed_at": "2026-10-19T09:00:00Z",
+      "current": {
+        "status": "complete",
+        "evidence_ref": "P04/MOCK/guide-render-b",
+        "observed_at": "2026-10-19T10:00:00Z",
+        "http_status": 200,
+        "robots": "allowed",
+        "http_noindex": false,
+        "initial_noindex": false,
+        "rendered_noindex": false,
+        "sitemap_member": true,
+        "source_canonicals": [
+          "https://workspace.example/guides/getting-started/"
+        ],
+        "header_canonicals": [],
+        "rendered_canonicals": [
+          "https://workspace.example/guides/getting-started/"
+        ]
+      },
+      "processed": {
+        "evidence_ref": "P04/MOCK/processed-guide-oct12",
+        "property": "sc-domain:workspace.example",
+        "retrieved_at": "2026-10-12T12:00:00Z",
+        "last_crawl_at": "2026-10-10T09:00:00Z",
+        "state": "not_indexed",
+        "user_canonical": "https://workspace.example/guides/getting-started/",
+        "selected_canonical": "https://workspace.example/guides/getting-started/"
+      }
+    },
+    {
+      "id": "dashboard",
+      "url": "https://workspace.example/app/dashboard/",
+      "intent": "protected",
+      "preferred_url": null,
+      "changed_at": "2026-10-19T09:00:00Z",
+      "current": {
+        "status": "not_collected",
+        "evidence_ref": null,
+        "observed_at": null,
+        "http_status": null,
+        "robots": "unknown",
+        "http_noindex": null,
+        "initial_noindex": null,
+        "rendered_noindex": null,
+        "sitemap_member": false,
+        "source_canonicals": null,
+        "header_canonicals": null,
+        "rendered_canonicals": null
+      },
+      "processed": null
+    }
+  ]
+}

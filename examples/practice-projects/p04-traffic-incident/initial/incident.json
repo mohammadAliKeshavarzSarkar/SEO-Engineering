@@ -1,0 +1,136 @@
+{
+  "schema_version": "2",
+  "incident_id": "P04-fictional-traffic-loss",
+  "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+  "subject": {
+    "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+    "revision": "p04-a",
+    "artifact": "p04-a-mock-artifact",
+    "environment": "fictional-production",
+    "profile": "anonymous-mobile-en-v1",
+    "config_ref": "p04-a-mock-gateway"
+  },
+  "recovery_subject": null,
+  "evidence": [
+    {
+      "id": "guide-header-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/guide-header-a",
+      "quality": "complete",
+      "verification": null
+    },
+    {
+      "id": "guide-control-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/guide-control-a",
+      "quality": "complete",
+      "verification": null
+    },
+    {
+      "id": "preview-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-preview",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/preview-a",
+      "quality": "complete",
+      "verification": null
+    },
+    {
+      "id": "collection-gap-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/collection-gap-a",
+      "quality": "partial",
+      "verification": null
+    },
+    {
+      "id": "search-loss-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/search-loss-a",
+      "quality": "complete",
+      "verification": null
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "gateway",
+      "claim": "A gateway configuration produces unintended noindex consistently across the reviewed guide cohort",
+      "falsifier": "Comparable requests with controlled configuration show expected directives or inconsistent behavior",
+      "assessments": [
+        {
+          "evidence_id": "guide-header-a",
+          "relation": "supports"
+        },
+        {
+          "evidence_id": "guide-control-a",
+          "relation": "refutes"
+        },
+        {
+          "evidence_id": "preview-a",
+          "relation": "supports"
+        },
+        {
+          "evidence_id": "search-loss-a",
+          "relation": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "measurement",
+      "claim": "A collection regression contributes to the recorded session/lead-event decrease",
+      "falsifier": "Complete matched consent and network checks plus backend reconciliation show stable collection",
+      "assessments": [
+        {
+          "evidence_id": "collection-gap-a",
+          "relation": "supports"
+        }
+      ]
+    },
+    {
+      "id": "demand",
+      "claim": "Changed search demand or presentation contributes to click loss",
+      "falsifier": "Comparable query/device/market report and independent demand evidence isolate another explanation",
+      "assessments": [
+        {
+          "evidence_id": "search-loss-a",
+          "relation": "inconclusive"
+        }
+      ]
+    }
+  ],
+  "checks": [],
+  "exposure_ref": null,
+  "search_follow_up": "pending"
+}

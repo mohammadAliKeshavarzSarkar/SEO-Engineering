@@ -1,0 +1,78 @@
+{
+  "scope": "Authored educational aggregates for public home+guide cohort only; no real report or comparable-population proof",
+  "timezone": "UTC",
+  "report_filters": {
+    "routes": [
+      "home",
+      "guide"
+    ],
+    "market": "fictional fixed market",
+    "device": "mobile",
+    "search_type": "web"
+  },
+  "events": [
+    {
+      "at": "2026-10-05T09:00:00Z",
+      "event": "Hypothetical release p04-a"
+    },
+    {
+      "at": "2026-10-12T12:00:00Z",
+      "event": "Incident review observes completed fictional periods"
+    },
+    {
+      "at": "2026-10-19T09:00:00Z",
+      "event": "Hypothetical recovery p04-b"
+    },
+    {
+      "at": "2026-10-19T10:05:00Z",
+      "event": "Later mock technical assertions available"
+    }
+  ],
+  "periods": [
+    {
+      "id": "baseline",
+      "start": "2026-09-28",
+      "end": "2026-10-04",
+      "days": 7,
+      "search_status": "finalized_mock",
+      "clicks": 1000,
+      "impressions": 20000,
+      "organic_sessions": 800,
+      "lead_events": 40,
+      "accepted_leads": 40,
+      "scope": "home+guide"
+    },
+    {
+      "id": "incident",
+      "start": "2026-10-05",
+      "end": "2026-10-11",
+      "days": 7,
+      "search_status": "finalized_mock",
+      "clicks": 600,
+      "impressions": 16000,
+      "organic_sessions": 300,
+      "lead_events": 15,
+      "accepted_leads": 25,
+      "scope": "home+guide"
+    },
+    {
+      "id": "recovery",
+      "start": "2026-10-19",
+      "end": "2026-10-19",
+      "days": 1,
+      "search_status": "partial_mock",
+      "clicks": null,
+      "impressions": null,
+      "organic_sessions": null,
+      "lead_events": null,
+      "accepted_leads": null,
+      "scope": "home+guide"
+    }
+  ],
+  "limits": [
+    "No actual finalized exports or consent/collection reconciliation.",
+    "Provider measures use different denominators and attribution; do not subtract clicks from sessions to infer lost events.",
+    "Recovery period incomplete and not comparable.",
+    "Release timing alone is not causality or verified recovery."
+  ]
+}

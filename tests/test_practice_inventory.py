@@ -54,7 +54,7 @@ class PracticeInventoryTests(unittest.TestCase):
         ref = "examples/practice-projects/README.md"
         self.assertIn("seo-engineering/references/library/" + ref, collect(ROOT))
         text = (ROOT / ref).read_text(encoding="utf-8")
-        self.assertIn("P04–P05 are planned, not yet implemented", text)
+        self.assertIn("P05 is planned, not yet implemented", text)
         self.assertIn("not a shared provider schema", text)
         self.assertIn("not just existence of a report", text)
 

@@ -1,0 +1,199 @@
+{
+  "scope": "Authored fictional observations; 'complete' refers only to exercise record scope",
+  "assertions": {
+    "http-guide": "Guide GET returns 200 and no unintended HTTP noindex in the reviewed cohort",
+    "render-guide": "Matched guide render contains expected primary content and no unintended noindex",
+    "access-dashboard": "Anonymous dashboard request and associated data access are denied under reviewed profile"
+  },
+  "observations": [
+    {
+      "id": "guide-header-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/guide-header-a",
+      "quality": "complete",
+      "observed_at": "2026-10-12T10:00:00Z",
+      "route_ids": [
+        "guide"
+      ],
+      "description": "Mock GET 200 with unintended HTTP noindex; source title and canonical otherwise aligned.",
+      "verification": null
+    },
+    {
+      "id": "guide-control-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/guide-control-a",
+      "quality": "complete",
+      "observed_at": "2026-10-12T10:05:00Z",
+      "route_ids": [
+        "guide"
+      ],
+      "description": "Same declared subject/profile, repeat mock GET 200 without noindex; inconsistent headers, actual cause unknown.",
+      "verification": null
+    },
+    {
+      "id": "preview-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-preview",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/preview-a",
+      "quality": "complete",
+      "observed_at": "2026-10-12T09:55:00Z",
+      "route_ids": [
+        "guide"
+      ],
+      "description": "Mock preview contains noindex; not comparable to fictional production subject.",
+      "verification": null
+    },
+    {
+      "id": "collection-gap-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/collection-gap-a",
+      "quality": "partial",
+      "observed_at": "2026-10-12T11:00:00Z",
+      "route_ids": [
+        "home",
+        "guide"
+      ],
+      "description": "Incomplete mock collection trace hints event loss; cannot establish telemetry cause.",
+      "verification": null
+    },
+    {
+      "id": "search-loss-a",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-a",
+        "artifact": "p04-a-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-a-mock-gateway"
+      },
+      "ref": "P04/MOCK/search-loss-a",
+      "quality": "complete",
+      "observed_at": "2026-10-12T12:00:00Z",
+      "route_ids": [
+        "home",
+        "guide"
+      ],
+      "description": "Finalized fictional comparable click windows decrease; no cause or contribution quantified.",
+      "verification": null
+    },
+    {
+      "id": "guide-http-b",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-b",
+        "artifact": "p04-b-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-b-mock-gateway"
+      },
+      "ref": "P04/MOCK/guide-http-b",
+      "quality": "complete",
+      "observed_at": "2026-10-19T09:05:00Z",
+      "route_ids": [
+        "guide"
+      ],
+      "description": "Mock GET 200 and desired header behavior for stated cohort.",
+      "verification": {
+        "check_id": "http-guide",
+        "assertion": "Guide GET returns 200 and no unintended HTTP noindex in the reviewed cohort",
+        "outcome": "pass"
+      }
+    },
+    {
+      "id": "guide-render-partial-b",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-b",
+        "artifact": "p04-b-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-b-mock-gateway"
+      },
+      "ref": "P04/MOCK/guide-render-partial-b",
+      "quality": "partial",
+      "observed_at": "2026-10-19T09:10:00Z",
+      "route_ids": [
+        "guide"
+      ],
+      "description": "Mock capture incomplete; intended assertion not established.",
+      "verification": {
+        "check_id": "render-guide",
+        "assertion": "Matched guide render contains expected primary content and no unintended noindex",
+        "outcome": "incomplete"
+      }
+    },
+    {
+      "id": "guide-render-b",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-b",
+        "artifact": "p04-b-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-b-mock-gateway"
+      },
+      "ref": "P04/MOCK/guide-render-b",
+      "quality": "complete",
+      "observed_at": "2026-10-19T10:00:00Z",
+      "route_ids": [
+        "guide"
+      ],
+      "description": "Later mock matched browser sample meets specified assertion.",
+      "verification": {
+        "check_id": "render-guide",
+        "assertion": "Matched guide render contains expected primary content and no unintended noindex",
+        "outcome": "pass"
+      }
+    },
+    {
+      "id": "dashboard-access-b",
+      "subject": {
+        "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+        "revision": "p04-b",
+        "artifact": "p04-b-mock-artifact",
+        "environment": "fictional-production",
+        "profile": "anonymous-mobile-en-v1",
+        "config_ref": "p04-b-mock-gateway"
+      },
+      "ref": "P04/MOCK/dashboard-access-b",
+      "quality": "complete",
+      "observed_at": "2026-10-19T10:05:00Z",
+      "route_ids": [
+        "dashboard"
+      ],
+      "description": "Mock reviewed anonymous access and associated data denial checks meet exact assertion; not real security evidence.",
+      "verification": {
+        "check_id": "access-dashboard",
+        "assertion": "Anonymous dashboard request and associated data access are denied under reviewed profile",
+        "outcome": "pass"
+      }
+    }
+  ]
+}

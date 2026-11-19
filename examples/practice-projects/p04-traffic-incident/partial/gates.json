@@ -1,0 +1,68 @@
+{
+  "schema_version": "2",
+  "release_id": "P04-fictional-recovery-b",
+  "policy_ref": "P04-fictional-policy-v1",
+  "subject": {
+    "stage": "production",
+    "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+    "revision": "p04-b",
+    "artifact": "p04-b-mock-artifact",
+    "environment": "fictional-production",
+    "profile": "anonymous-mobile-en-v1",
+    "config_ref": "p04-b-mock-gateway"
+  },
+  "gates": [
+    {
+      "id": "http-guide",
+      "required": true,
+      "rationale": "Review exact mock recovery assertion independently",
+      "assertion": "Guide GET returns 200 and no unintended HTTP noindex in the reviewed cohort",
+      "evidence": {
+        "subject": {
+          "stage": "production",
+          "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+          "revision": "p04-b",
+          "artifact": "p04-b-mock-artifact",
+          "environment": "fictional-production",
+          "profile": "anonymous-mobile-en-v1",
+          "config_ref": "p04-b-mock-gateway"
+        },
+        "outcome": "pass",
+        "ref": "P04/MOCK/guide-http-b",
+        "policy_ref": "P04-fictional-policy-v1",
+        "gate_id": "http-guide",
+        "assertion": "Guide GET returns 200 and no unintended HTTP noindex in the reviewed cohort"
+      }
+    },
+    {
+      "id": "render-guide",
+      "required": true,
+      "rationale": "Review exact mock recovery assertion independently",
+      "assertion": "Matched guide render contains expected primary content and no unintended noindex",
+      "evidence": {
+        "subject": {
+          "stage": "production",
+          "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+          "revision": "p04-b",
+          "artifact": "p04-b-mock-artifact",
+          "environment": "fictional-production",
+          "profile": "anonymous-mobile-en-v1",
+          "config_ref": "p04-b-mock-gateway"
+        },
+        "outcome": "pass",
+        "ref": "P04/MOCK/guide-http-b",
+        "policy_ref": "P04-fictional-policy-v1",
+        "gate_id": "http-guide",
+        "assertion": "Guide GET returns 200 and no unintended HTTP noindex in the reviewed cohort"
+      }
+    },
+    {
+      "id": "access-dashboard",
+      "required": true,
+      "rationale": "Review exact mock recovery assertion independently",
+      "assertion": "Anonymous dashboard request and associated data access are denied under reviewed profile",
+      "evidence": null
+    }
+  ],
+  "exposure": null
+}

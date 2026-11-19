@@ -1,0 +1,50 @@
+{
+  "project_id": "P04",
+  "origin": "https://workspace.example",
+  "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+  "policy_ref": "P04-fictional-policy-v1",
+  "relationship": "Reuses three route identities from P01 in a separate hypothetical deployment history; no P01 actual or mock outcome is imported.",
+  "routes": [
+    {
+      "id": "home",
+      "path": "/",
+      "intent": "representative",
+      "url": "https://workspace.example/"
+    },
+    {
+      "id": "guide",
+      "path": "/guides/getting-started/",
+      "intent": "representative",
+      "url": "https://workspace.example/guides/getting-started/"
+    },
+    {
+      "id": "dashboard",
+      "path": "/app/dashboard/",
+      "intent": "protected",
+      "url": "https://workspace.example/app/dashboard/"
+    }
+  ],
+  "subjects": [
+    {
+      "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+      "revision": "p04-a",
+      "artifact": "p04-a-mock-artifact",
+      "environment": "fictional-production",
+      "profile": "anonymous-mobile-en-v1",
+      "config_ref": "p04-a-mock-gateway"
+    },
+    {
+      "scope_ref": "P04-reviewed-landing-guide-and-access-scope",
+      "revision": "p04-b",
+      "artifact": "p04-b-mock-artifact",
+      "environment": "fictional-production",
+      "profile": "anonymous-mobile-en-v1",
+      "config_ref": "p04-b-mock-gateway"
+    }
+  ],
+  "limits": [
+    "All traffic, HTTP, rendering, search and access evidence is fictional.",
+    "No live target, provider, deployment or incident.",
+    "Scope comprises selected routes, not whole property."
+  ]
+}
