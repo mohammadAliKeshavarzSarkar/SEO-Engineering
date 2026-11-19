@@ -18,6 +18,10 @@ For appearance reports, first discover actual categories through the searchAppea
 
 Sources: [Getting performance data](https://developers.google.com/webmaster-tools/v1/how-tos/all-your-data), [Search Analytics query reference](https://developers.google.com/webmaster-tools/v1/searchanalytics/query), [URL Inspection API](https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect).
 
+## Search-to-business reconciliation
+
+Use matched period, landing-page cohort, geography/device where comparable, search type, canonical attribution, Search Console date basis and GA4 property timezone. Report Search Console clicks, recorded organic sessions, key-event counts and independently verified business outcomes as different measures. CTR uses impressions as denominator, recorded session key-event rate uses sessions with an applicable key event as numerator, and a backend lead acceptance rate uses its own reviewed cohort and denominator. Do not divide total business leads by search clicks and call the result an attributable journey without matching evidence. Preserve scope/consent/reporting differences and separately identify data collection changes. See [analytics](analytics.md) for event and attribution semantics. No user-level query-to-identity reconstruction.
+
 IndexNow: notify participating engines of real added, updated and deleted URLs per current protocol; include preferred URLs and formerly valid deleted/moved URLs as appropriate. Do not submit unchanged pages per build or treat notification as indexation. Keep sitemaps and links.
 
 Server logs: verify bot identities using supported methods, sample URL/status/time/bytes, check errors and wasted variants. Protect logs as potentially sensitive; limit access and retention. Bot requests do not prove use in AI answers.
