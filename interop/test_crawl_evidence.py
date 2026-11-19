@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import unittest
 
+from interop.exchange_profile import profile, preflight
 from interop.validate_crawl_evidence import (
     BoundaryError, digest, load_pin, load_validator, read_local, validate, receipt,
 )
@@ -108,6 +109,54 @@ class CompatibilityTests(unittest.TestCase):
         self.assertEqual(result["status"],"blocked")
         result,_=validate(b'{"s":"\\ud800"}',self.validator)
         self.assertEqual(result["status"],"blocked")
+
+    def test_exchange_profile_all_valid_fixtures(self):
+        for item in self.pin["fixtures"]:
+            if item["expected"]=="valid":
+                raw=read_local(self.root/item["path"])
+                r=preflight(raw,self.validator)
+                self.assertEqual(r["disposition"],"candidate_for_joint_review",r)
+                self.assertEqual(r["profile_agreement"],"pending_producer_review")
+                self.assertFalse(r["actual_exchange_verified"])
+
+    def test_exchange_profile_five_known_differences(self):
+        base=json.loads(self.raw("complete-page.json"))
+        cases=[]
+        d=copy.deepcopy(base)
+        d["run"]["started_at"]="2026-11-18T10:00:00.000900Z"
+        d["run"]["finished_at"]="2026-11-18T10:00:00.000100Z"
+        cases.append((d,"timestamp_precision_exceeds_milliseconds"))
+        d=copy.deepcopy(base)
+        d["run"]["limits"]["max_pages"]=9007199254740993
+        cases.append((d,"numeric_range"))
+        d=copy.deepcopy(base)
+        d["pages"][0]["observations"]["metadata"]["value"]["title"]=chr(0xd800)
+        cases.append((d,"unpaired_unicode_surrogate"))
+        d=copy.deepcopy(base)
+        d["pages"][0]["observations"]["http"]["value"]["transactions"][-1]["headers"].append(
+            {"name":"location","values":["https://example.com\\path"]})
+        cases.append((d,"ambiguous_url_representation"))
+        d=copy.deepcopy(base)
+        d["run"]["finished_at"]="2026-12-31T23:59:60Z"
+        cases.append((d,"leap_second"))
+        for doc,reason in cases:
+            raw=json.dumps(doc,ensure_ascii=True).encode()
+            r=preflight(raw,self.validator)
+            self.assertEqual(r["disposition"],"hold",r)
+            self.assertIn(reason,r["profile"]["reasons"])
+            self.assertEqual(r["consumer_validation"],validate(raw,self.validator)[0]["status"])
+
+    def test_profile_is_not_canonical_validation(self):
+        raw=self.raw("complete-page.json")
+        altered=json.loads(raw)
+        altered["run"]["limits"]["max_pages"]=10.0
+        raw=json.dumps(altered).encode()
+        self.assertEqual(validate(raw,self.validator)[0]["status"],"valid")
+        r=preflight(raw,self.validator)
+        self.assertEqual(r["disposition"],"hold")
+        self.assertIn("non_integer_number_spelling",r["profile"]["reasons"])
+        self.assertEqual(profile(b'{"x":1,"x":2}')["status"],"not_assessed")
+        self.assertEqual(preflight(b'{}',self.validator)["disposition"],"hold")
 
 
 if __name__=="__main__":

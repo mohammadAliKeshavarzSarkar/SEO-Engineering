@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 from interop.validate_crawl_evidence import digest, load_pin, load_validator, read_local, validate
+from interop.exchange_profile import PROFILE_ID, profile
 
 
 def write_json(path, data):
@@ -133,13 +134,23 @@ def compare(root, work, ts_path, out):
             status="pass" if matched and py["status"]==case["expected"] else "fail"
         else:
             status="review_match" if matched else "review_difference"
+        p = profile(raw)
+        candidate = both_valid and preserved is True and p["status"] == "within_profile"
+        expected_candidate = case["mode"] == "required" and case["expected"] == "valid"
+        profile_ok = candidate == expected_candidate
         rows.append({"id":case["id"],"mode":case["mode"],"expected":case["expected"],
+                     "profile":p,"joint_candidate":candidate,"profile_expected":expected_candidate,
+                     "profile_gate_pass":profile_ok,
                      "input_sha256":case["sha256"],"typescript":t["status"],"python":py["status"],
                      "preservation":preserved,"result":status,
                      "typescript_codes":t.get("codes",[]),
                      "python_codes":[x["code"] for x in py["issues"]]})
     summary={k:sum(row["result"]==k for row in rows) for k in ("pass","fail","review_match","review_difference")}
-    report={"producer_commit":pin["producer_commit"],"schema_sha256":pin["contract"]["schema_sha256"],
+    summary["profile_pass"] = sum(row["profile_gate_pass"] for row in rows)
+    summary["profile_fail"] = len(rows)-summary["profile_pass"]
+    summary["joint_candidates"] = sum(row["joint_candidate"] for row in rows)
+    report={"profile_id":PROFILE_ID,"profile_agreement":"pending_producer_review",
+            "producer_commit":pin["producer_commit"],"schema_sha256":pin["contract"]["schema_sha256"],
             "node":ts["node"],"python":sys.version.split()[0],"summary":summary,"cases":rows,
             "actual_exchange_verified":False,"operational_integration_approved":False,
             "edge_review_required":True}
@@ -147,7 +158,7 @@ def compare(root, work, ts_path, out):
     for row in rows:
         print(row["id"],row["typescript"],row["python"],row["result"],"preservation="+str(row["preservation"]))
     print("DIFFERENTIAL_SUMMARY",json.dumps(summary,sort_keys=True))
-    return 1 if summary["fail"] else 0
+    return 1 if summary["fail"] or summary["profile_fail"] else 0
 
 
 def main():
