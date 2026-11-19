@@ -28,6 +28,8 @@ Define subject boundaries from real offering, purpose, expertise and audience. L
 
 Map each task to existing independently useful destinations, based on R06. Inspect actual content rather than titles alone. Record adequate, partial, absent-in-verified-scope, not assessed, blocked, out-of-scope and uncertain. When inventory is incomplete, say 'not found in observed sample', not 'missing from website'. Record unique value and required evidence (product proof, source, reviewer, original examples, accurate tools). Keep useful low-search-volume support and conversion content where justified.
 
+Review whether the proposed task can be completed through actual working functionality, media, accurate explanation or useful resource rather than assume it demands an article. Use the [editorial evidence and acceptance guidance](../04-content/on-page-and-editorial.md) to review material claims, originality and lifecycle decisions before scaling. Keep distinct useful pages even when demand is small; no content-count or topical-authority target substitutes for user value.
+
 ### 2. Choose the smallest suitable action
 
 | Observed situation | Proposal |

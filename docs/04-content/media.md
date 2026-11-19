@@ -4,6 +4,16 @@ Use standard img/picture elements for meaningful images, accessible descriptive 
 
 Video: decide whether decorative or search asset. For search-focused video, use a dedicated useful watch page where video is primary, crawlable thumbnail and video URLs, accessible player, stable metadata, and VideoObject where eligible. A background hero is not a watch page. Avoid performance cost from autoplay or oversized media. Add transcripts/captions for access where appropriate.
 
+## Media discovery and feature scope
+
+Google documents discovery of image resources from an img element's src (including the img inside picture), rather than CSS background imagery. Keep decorative backgrounds where design requires them; only change representation when image discovery or accessibility matters. Verify actual resolved source URL, responsive candidates, MIME, crawl/index policy and the rendered image; do not remove design motion or substitute an inaccessible visual solely for SEO. CDN image URLs may appear in image sitemaps; review actual origin authorization and availability and verify the CDN property where feasible. Test meaningful alt alternatives and preserve decorative empty alt; no keyword stuffing.
+
+Discover eligibility comes from indexing plus applicable content policies rather than special markup. Its current large-image recommendations include width at least 1200 pixels, over 300,000 total pixels, landscape 16:9 and large preview permission (or AMP). These are presentation recommendations, not universal indexing requirements. Choose a relevant, well-cropped image through appropriate metadata/markup; avoid generic logos, text-heavy visuals and misleading previews. Older useful content may appear, so do not refresh dates merely for Discover. Track its reporting separately and treat reach as supplemental, not predictable.
+
+Video checks have separate levels: accessible watch page, indexed page, discoverable embedded video, stable crawlable thumbnail, video indexing and individual feature eligibility. For previews/key moments, Google documents needing access to actual video bytes; a reachable player alone is insufficient. Stable URLs matter, but do not expose private media or weaken authorization to achieve discovery. Real expiration dates must match availability; past expiration can exclude the video while the page remains eligible for text results. A decorative hero or incidental video does not automatically justify a watch page or search feature. Check video-specific reports and required properties where applicable, not merely ordinary page index status.
+
+Source checkpoint 2026-11-19: [image SEO](https://developers.google.com/search/docs/appearance/google-images), [Discover](https://developers.google.com/search/docs/appearance/google-discover), [video SEO](https://developers.google.com/search/docs/appearance/video).
+
 Validation: inspect DOM, response/MIME and indexing access, test mobile media load, confirm schema and sharing previews, inspect video indexing if applicable. Use image/video sitemap extension only when justified.
 
 Sources: [Images](https://developers.google.com/search/docs/appearance/google-images), [Video](https://developers.google.com/search/docs/appearance/video), [Discover](https://developers.google.com/search/docs/appearance/google-discover).
