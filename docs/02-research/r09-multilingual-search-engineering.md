@@ -24,6 +24,8 @@ R01 audience and real offerings, explicit target languages/scripts/regions, nati
 
 Record language, script, direction, actual geographic audience, regional offering, terms, currency, support, proof, accessibility, available search/measurement sources, authority and maintenance separately. Use fa for broad Persian-language equivalents, fa-IR only where Iran-specific targeting is genuinely intended. A Persian/English site may have Persian-speaking Canadian users; a country/language combination is not proof of residence. Country-only codes are not valid hreflang language identifiers. Google documents supported language, region and script forms; check valid codes and platform support rather than assuming all BCP 47 tags are supported. Do not assume an HTML application locale automatically qualifies for Google hreflang.
 
+Keep a separate mapping for HTML language tags (BCP 47 / IANA registry), document direction, framework locale keys, search-specific hreflang values and analytics geography. Google uses a supported subset of language/region/script combinations; use the current guide rather than an arbitrary BCP 47 parser. For example, fa and fa-IR may be meaningful for different audience scopes; fa-CA can describe a genuinely localized Persian-language version serving Canada, not every Persian-speaking user there. IR alone lacks a language component. Google does not support es-419 and ignores reserved region components such as UK, EU and UN; use GB where the intended region is the United Kingdom. Language tags are case-insensitive, with conventional casing for readability. Google also supports documented script forms such as zh-Hant and zh-Hans-US. Never infer a user's residence or a language code solely from script. Validate the actual audience and offering before proposing any new alternate.
+
 ### 2. Research native search behavior
 
 Start with actual user tasks and local terminology, not automatic translation of a foreign keyword list. Collect native phrases, formal and informal variants, spelling, transliteration, loanwords and mixed-script product names. Record raw text, locale and requested versus observed search context. Use authorized Search Console data, permitted local observations and available research tools; preserve metric definitions and time windows. GSC country dimension is a reported geography, not language. Trends values are relative, not absolute monthly demand. Google Ads officially restricts Iran availability/targeting; verify provider and regional access and do not bypass restrictions. Do not fabricate local volume, rankings or tool availability. If only generic or foreign search evidence exists, classify as provisional and request suitable evidence; preserve null values.
@@ -34,9 +36,28 @@ Example synthetic Persian seed variants: ضربان‌سنج, ضربان سنج,
 
 Reuse R04 cluster_keywords.py to preserve original queries and generate conservative candidate keys. For explicitly Persian text only, NFC, Arabic yeh/kaf to Persian forms, digit normalization and ZWNJ-to-space matching are useful for candidate retrieval. Retain original ZWNJ, punctuation, digits, English codes and transliterations. NFC does not itself equate Arabic and Persian letter variants. Joined and separated forms may need additional reviewed aliases, not global whitespace removal. Do not collapse Arabic or other languages under Persian rules; protect numbers, negation, product model and task differences. Never use keyword match keys as automatic URL rewrites or as editorial spelling. Validate false merges with a native reviewer and R03/R04 evidence.
 
+Unicode normalization and language-specific match rules are separate operations. NFC combines canonically equivalent sequences; it does not equate Persian yeh (U+06CC) with Arabic yeh (U+064A), or Persian kaf (U+06A9) with Arabic kaf (U+0643). ZWNJ (U+200C, often called نیم‌فاصله) deliberately controls letter joining and must survive in correct editorial text. It is not ordinary whitespace, ZWJ (U+200D), or disposable formatting noise. Do not strip all invisible characters: inspect unexpected bidi overrides or other controls separately for display/security issues, and preserve the original evidence. NFC does not establish semantic or query equivalence. Compatibility folding may erase distinctions, e.g. superscripts or presentation forms; do not apply it blindly to product identifiers, codes or quantities.
+
+Fictional review cases (no demand assertions):
+
+| Raw input distinction | Candidate review | Preserve |
+|---|---|---|
+| ضربان‌سنج / ضربان سنج | May share the lossy Persian match key | Raw strings and correct native spelling |
+| ضربانسنج / ضربان‌سنج | Review a possible alias, not automatic equality | Word boundary and separate observations |
+| كیف / کیف | Language-scoped letter mapping if actually Persian | Original code points; do not transform Arabic data globally |
+| مدل ۲ / مدل ۲۰ | Different numbers | Exact model/quantity identity |
+| خرید حسگر / تعمیر حسگر | Different tasks | Purchase vs repair |
+| fa vs fa-IR | Separate market evidence where applicable | Real language, region and source scope |
+
+Store normalization version and actual runtime Unicode database version; Unicode 18.0.0 UAX #15 is the reviewed reference, not a claim that the local Python runtime uses that database.
+
 ### 4. Select a stable URL strategy
 
 Compare subdirectories, subdomains and country domains using actual locale scope, current URL value, maintenance, infrastructure, eligible domain registration and migration risks. A language subdirectory on a generic domain often simplifies maintenance, but is not mandatory. Google recommends distinct URLs for localized versions instead of relying on cookies or browser language; locale-adaptive delivery can hide variants from crawlers. Use descriptive audience-language words or transliterations, UTF-8 and percent-encoding where necessary in hrefs. Persian slugs are valid; do not claim they necessarily outperform English slugs. Preserve useful current URLs. Test direct entry, copy/paste, UTF-8 roundtrips, route matching, canonical/sitemap consistency, percent-encoding exactly once, trailing slash/case, historical aliases and server redirects. Do not decode reserved separators or apply query normalization blindly to paths. New URL mapping requires R06 migration approval.
+
+For newly authored URLs use a reviewed stable slug registry and component-aware UTF-8 serialization. Google recommends localized readable words, percent encoding non-ASCII in hrefs and hyphens between words where feasible. Keep display slug separate from serialized href and request evidence; a browser may display the decoded form. Under RFC 3986 percent-escape hex case can normalize, but reserved delimiters must not be decoded indiscriminately (e.g. %2F is not generally interchangeable with /). Do not encode an already percent-encoded URL again or force path case changes without actual route policy. For internationalized hosts, retain reviewed host identity and validate IDN handling separately. Test actual browser/router/server behavior, source anchors, canonical, sitemap XML escaping, alternate URLs and redirects. A matching normalized label or Unicode appearance is not proof two request URLs serve the same resource.
+
+For locale-adaptive delivery, Google documents that its default crawler IPs appear US-based and requests do not set Accept-Language, although geo-distributed crawling exists. Do not rely on this distribution to discover every variant. No special locale crawler UA should be inferred; verify identity using approved methods and treat a verified crawler consistently with ordinary visitors from the same location. Test authorized direct entry with no locale cookie or Accept-Language, user-selected locale transitions, and real regional access where permitted. Never bypass geographic/access restrictions. Country domains are a potential geographic signal, but some vanity ccTLDs are treated as generic; inspect actual platform guidance. Hosting location alone is not decisive, and neither ccTLD nor target language determines where users live.
 
 ### 5. Localize the task and the experience
 
@@ -44,11 +65,29 @@ Translate main content, not just chrome. Adapt wording, product applicability, a
 
 For Persian HTML use lang="fa" and dir="rtl" at document level where appropriate; use bdi or direction markup for embedded mixed-script names and identifiers. CSS logical properties can simplify RTL layout. Inspect numerals, phone numbers, form fields, charts, punctuation, dates, text truncation, localized title/description, font loading, focus and keyboard navigation, mobile parity and accessible control labels. Do not mirror meaningful icons or number order blindly. Verify actual page language in visible content and ensure browser/assistive technology can identify language and direction. This is usability/accessibility validation, not an asserted ranking factor.
 
+For RTL content, set base direction in HTML markup (root document dir="rtl" and the appropriate lang), not only CSS. Use CSS logical spacing/alignment properties for layout; do not reverse strings, digits or identifiers in storage. For known opposite-direction phrases use tightly scoped dir="ltr" or dir="rtl" markup; for unknown direction of runtime text use bdi or a tightly scoped dir="auto" element. Form free-text inputs may use dir="auto"; known-direction emails, serial numbers and URLs need appropriate field-specific handling. Check copy/paste, caret movement, punctuation adjacent to product codes, mixed-language accessible names, focus order, numeric units, dates, and correct font shaping. Test on actual browsers and assistive technologies, not by visually mirroring the entire UI. The W3C Arabic & Persian Layout Requirements source is a Group Draft Note (work in progress); use it for layout context alongside W3C direction guidance, not as a normative SEO requirement.
+
+Illustrative markup (not executed browser tests):
+~~~html
+<html lang="fa" dir="rtl">
+  <!-- Document head and body omitted -->
+  <p>مدل <bdi dir="ltr">HR-20</bdi>، مناسب تمرین</p>
+  <p>نظر کاربر: <bdi>Sample name</bdi></p>
+  <label for="question">سؤال شما</label>
+  <input id="question" name="question" dir="auto">
+</html>
+~~~
+In the actual document keep main-language markup, meaningful labels, and valid document structure. Isolate dynamic values and escape them for their actual HTML context. Direction controls solve text display, not search ranking.
+
 ### 6. Canonicals and hreflang
 
 Build equivalent-page groups with real corresponding main content and stable preferred URLs. Distinct translated content should generally have its own same-language representative. Similar same-language regional duplicates may require a separate preferred representative decision; use canonical and hreflang consistently with Google guidance and verify rather than blanket-cross-canonicalizing all locales. Declared and engine-selected canonical are distinct evidence fields.
 
 Use one maintained annotation method (HTML head, HTTP Link header for appropriate resources, or sitemap). Google treats these methods equivalently; multiple methods are unnecessary and can drift. Use fully qualified URLs and supported language/script/region codes, each member listing itself and its equivalents, with reciprocal links. x-default is optional for meaningful fallback, not a language code or requirement. A partial set with reciprocal pairs can be processed according to Google guidance; the utility below deliberately enforces a stricter full-set project contract for representative groups. Do not annotate unavailable, unrelated, private, redirected or erroneous destinations as if they were equivalent live representatives. For same-language canonical exceptions and fallback combinations, review manually and document reason.
+
+Google recommends a generic language catchall when multiple regional variants of that language exist; one existing regional URL can also serve that language-level tag where genuinely suitable. This differs from x-default for unmatched language preferences. A fallback can reuse an existing URL; do not create a redundant locale page just to satisfy the local validator's one-tag-per-URL model. Cross-domain alternates are supported, subject to real correspondence and authorization. Missing reciprocal pairs are ignored or not interpreted correctly; maintain the full set where feasible but distinguish valid partial reciprocal configurations from broken return links. Google documents alternate annotations even for some pages that share untranslated main content and localize only template chrome; that does not establish independently useful acquisition pages or justify mass creation. A genuinely translated main body is not a duplicate solely because its meaning is equivalent. Review same-language duplicates using actual content and canonical policy.
+
+The strict local manifest intentionally reports review findings for valid configurations outside its profile, including catchall aliases, x-default aliases, partial reciprocal sets, and non-self representatives. Do not “repair” such findings by adding thin pages or changing established canonical preferences. Retain source evidence and handle documented exceptions manually; no blanket compliance claim from a zero-finding report.
 
 Illustrative paired HTML (each page uses its own canonical; alternate lines identical on both):
 ```html

@@ -59,3 +59,35 @@ class LocaleTests(unittest.TestCase):
         data['allowed_tags'] = ['fa', 'IR-123']
         with self.assertRaises(ValueError):
             audit(data)
+
+    def test_language_and_default_alias_require_profile_review(self):
+        data = fixture()
+        data['allowed_tags'].append('fa-IR')
+        data['pages'][0]['locale'] = 'fa-IR'
+        for page in data['pages']:
+            page['alternates'][0]['tag'] = 'fa-IR'
+            page['alternates'].append(dict(tag='fa', url=data['pages'][0]['url']))
+            page['alternates'].append(dict(tag='x-default', url=data['pages'][1]['url']))
+        findings = audit(data)['findings']
+        self.assertEqual({f['reason'] for f in findings}, {'alternate_set_differs_from_group'})
+        self.assertEqual(len(findings), 2)
+
+    def test_partial_reciprocal_set_is_strict_profile_finding(self):
+        data = fixture()
+        data['allowed_tags'].append('de')
+        url = 'https://example.org/de/guide/'
+        fa, en = data['pages']
+        fa['alternates'].append(dict(tag='de', url=url))
+        data['pages'].append(dict(url=url, group='guide', locale='de', status=200,
+             index_intent=True, canonical=url, alternates=[dict(tag='fa',url=fa['url']),dict(tag='de',url=url)]))
+        findings = audit(data)['findings']
+        self.assertEqual({f['reason'] for f in findings}, {'alternate_set_differs_from_group'})
+        self.assertEqual({f['url'] for f in findings}, {en['url'],url})
+
+    def test_tag_shape_does_not_validate_official_codes(self):
+        data = fixture()
+        data['allowed_tags'] = ['fa','zz-UK']
+        data['pages'][1]['locale'] = 'zz-UK'
+        for page in data['pages']:
+            page['alternates'][1]['tag'] = 'zz-UK'
+        self.assertEqual(audit(data)['findings'], [])

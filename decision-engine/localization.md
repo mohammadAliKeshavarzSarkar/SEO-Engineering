@@ -8,4 +8,6 @@ Use [R09](../docs/02-research/r09-multilingual-search-engineering.md).
 5. If regional evidence or tool access is missing, mark unknown and use authorized alternatives. Do not bypass restrictions or pretend generic web retrieval is localized ranking data.
 6. Validate real HTTP, source/rendered markup, index signals, actual content language, native terminology, RTL/accessibility and conversion paths. Offline manifest findings are candidates for review, not live evidence. Record approval, rollout, rollback, and measured outcomes separately.
 
+Exception routing: a single-language page needs no alternates solely for country targeting. A multilingual group may legitimately reuse one URL for a generic language or x-default fallback, and a partially maintained group may still have valid reciprocal pairs. Review against actual platform guidance and document exceptions rather than force strict local full-set/self-canonical findings to become page changes. Preserve approved URL identity and access. Use R09's source-backed code selection, Unicode and bidi QA before declaring a localized page ready.
+
 See [locale register](../templates/locale-market-register.csv), [page matrix](../templates/locale-page-matrix.csv) and [QA checklist](../templates/localization-qa.md).

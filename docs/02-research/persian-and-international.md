@@ -17,3 +17,7 @@ Use stable separate locale URLs when offering genuinely localized content. Use r
 Validate every hreflang target returns 200 and reciprocal annotations resolve; check mobile and locale fallback. A one-language website does not need hreflang solely because it targets a country.
 
 Sources: [International sites](https://developers.google.com/search/docs/specialty/international/), [localized versions](https://developers.google.com/search/docs/specialty/international/localized-versions), [URL structure](https://developers.google.com/search/docs/crawling-indexing/url-structure).
+
+## Additional QA boundary (2026-11-19)
+
+R09 now distinguishes language tag registries, Google-specific supported values, geographic scope, meaningful ZWNJ, NFC and project-only candidate-key transformations. Keep URL generation separate from keyword normalization. Use HTML base direction and bidi isolation for dynamic text; test actual forms, numerals and mixed-script labels. For genuinely regional variants, review generic-language and x-default fallback aliases separately. The offline full-set validator is a strict project profile, not a general Google hreflang compliance checker. Do not create extra URLs to silence its findings.
