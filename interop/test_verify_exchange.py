@@ -56,7 +56,12 @@ class ExchangeTests(unittest.TestCase):
         self.assertEqual(r["consumer_validation"],"valid")
 
     def test_checksum_checked_before_parsing(self):
-        with patch("interop.verify_exchange.validate",side_effect=AssertionError("must not parse")):
+        from interop.validate_crawl_evidence import parse
+        def manifest_only(raw):
+            if raw==self.raw or raw==self.raw+b" ":
+                raise AssertionError("must not parse evidence")
+            return parse(raw)
+        with patch("interop.verify_exchange.parse",side_effect=manifest_only), patch("interop.verify_exchange.validate",side_effect=AssertionError("must not validate")):
             self.assertEqual(self.check(self.raw+b" ")["consumer_validation"],"not_run")
             self.m["evidence_sha256"]="0"*64
             self.assertFalse(self.check()["checksum_verified"])
@@ -108,6 +113,66 @@ class ExchangeTests(unittest.TestCase):
         self.assertEqual(r["consumer_validation"],"not_run")
         self.m["unexpected"]=True
         self.assertFalse(self.check()["checksum_verified"])
+
+    def test_bom_and_invalid_utf8_with_correct_checksum(self):
+        for raw,code in ((b"\xef\xbb\xbf"+self.raw,"evidence.utf8_bom_forbidden"),
+                         (b"\xff"+self.raw,"evidence.invalid_utf8")):
+            self.m.update(evidence_sha256=digest(raw),evidence_bytes=len(raw))
+            r=self.check(raw)
+            self.assertTrue(r["checksum_verified"])
+            self.assertFalse(r["evidence_json_parsed"])
+            self.assertIn(code,r["issues"])
+            self.assertEqual(r["consumer_validation"],"not_run")
+
+    def test_length_before_checksum_and_exact_bytes(self):
+        self.m["evidence_bytes"]=0
+        r=self.check()
+        self.assertFalse(r["byte_length_verified"])
+        self.assertFalse(r["checksum_verified"])
+        self.m["evidence_bytes"]=len(self.raw)
+        r=self.check(self.raw+b"\n")
+        self.assertFalse(r["byte_length_verified"])
+        altered=bytes([self.raw[0]])+self.raw[1:-1]+b" "
+        r=self.check(altered)
+        self.assertTrue(r["byte_length_verified"])
+        self.assertFalse(r["checksum_verified"])
+        self.assertFalse(r["evidence_json_parsed"])
+
+    def test_invalid_declaration_never_candidate(self):
+        for v in ("PASS",True,{},None):
+            self.m["producer_validation"]=v
+            r=self.check()
+            self.assertIn("manifest.invalid_producer_declaration",r["issues"])
+            self.assertEqual(r["disposition"],"hold")
+
+    def test_binding_precedes_canonical_validation(self):
+        self.m["run_id"]="different"
+        with patch("interop.verify_exchange.validate",side_effect=AssertionError("wrong stage")):
+            r=self.check()
+        self.assertTrue(r["evidence_json_parsed"])
+        self.assertFalse(r["manifest_binding_verified"])
+        self.assertEqual(r["consumer_validation"],"not_run")
+
+    def test_unvalidated_shape_and_type_exact_equality(self):
+        from interop.verify_exchange import same_json
+        self.assertFalse(same_json({"count":True},{"count":1}))
+        self.assertFalse(same_json([1,2],[2,1]))
+        self.rebind({"run":[],"producer":None})
+        r=self.check()
+        self.assertTrue(r["evidence_json_parsed"])
+        self.assertFalse(r["manifest_binding_verified"])
+
+    def test_negative_zero_held_without_rewrite(self):
+        # Insert -0 into an existing integer field without introducing an extra member.
+        import re
+        raw=re.sub(rb'("max_pages"\s*:\s*)[0-9]+',rb'\g<1>-0',self.raw,count=1)
+        self.assertNotEqual(raw,self.raw)
+        self.m.update(evidence_sha256=digest(raw),evidence_bytes=len(raw))
+        r=self.check(raw)
+        self.assertTrue(r["checksum_verified"])
+        self.assertTrue(r["manifest_binding_verified"])
+        self.assertIn("negative_zero_spelling",r["consumer_preflight"]["reasons"])
+        self.assertEqual(r["disposition"],"hold")
 
 
 if __name__=="__main__":

@@ -172,6 +172,14 @@ class CompatibilityTests(unittest.TestCase):
         d["run"]["started_at"]="2026-11-18"
         self.assertIn("timestamp_not_supported_rfc3339",profile(json.dumps(d).encode())["reasons"])
 
+    def test_profile_integer_lexical_forms_and_bom(self):
+        for token in (b"-0",b"1.0",b"1e3",b"1E+3"):
+            r=profile(b'{"n":'+token+b'}')
+            self.assertEqual(r["status"],"outside_profile",r)
+        for token in (b"0",b"42",b"-42",b"9007199254740991",b"-9007199254740991"):
+            self.assertEqual(profile(b'{"n":'+token+b'}')["status"],"within_profile")
+        self.assertIn("utf8_bom_forbidden",profile(b"\xef\xbb\xbf{}")["reasons"])
+
 
 if __name__=="__main__":
     unittest.main()

@@ -24,6 +24,8 @@ LEAP_SECOND = re.compile(r"[Tt][0-9]{2}:[0-9]{2}:60(?:[.Zz+-])")
 def profile(raw):
     """Measure conservative representation restrictions without a canonical verdict."""
     reasons = set()
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return {"status":"outside_profile","reasons":["utf8_bom_forbidden"]}
     try:
         doc = parse(raw)
     except InvalidJson:
@@ -36,8 +38,12 @@ def profile(raw):
     def decimal_token(token):
         reasons.add("non_integer_number_spelling")
         return None
+    def integer_token(token):
+        if token == "-0":
+            reasons.add("negative_zero_spelling")
+        return None
     json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
-               parse_float=decimal_token, parse_constant=constant)
+               parse_int=integer_token, parse_float=decimal_token, parse_constant=constant)
 
     def check_url(value):
         if isinstance(value, str) and ("\\" in value or any(ord(c) < 32 or ord(c) == 127 for c in value)):

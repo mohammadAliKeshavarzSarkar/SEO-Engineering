@@ -3,6 +3,7 @@
 import argparse
 import copy
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -103,6 +104,8 @@ def prepare(root, work):
     mutate("del-in-link-header",lambda d:headers(d).append({"name":"link","values":["</fa>; title="+chr(127)]}),None,mode="review")
     mutate("control-in-link-parameter",lambda d:headers(d).append({"name":"link","values":["</fa>; title="+chr(9)]}),None,mode="review")
     mutate("fractional-integer-spelling",lambda d:d["run"]["limits"].update(max_pages=10.0),None,mode="review")
+    add("negative-zero-spelling",re.sub(rb'("max_pages"\s*:\s*)[0-9]+',rb'\g<1>-0',raw,count=1),None,mode="review")
+    add("utf8-bom",b"\xef\xbb\xbf"+raw,None,mode="review")
     write_json(work/"manifest.json", {"producer_commit":pin["producer_commit"], "cases":cases})
     print("Prepared",len(cases),"immutable synthetic input files")
 
