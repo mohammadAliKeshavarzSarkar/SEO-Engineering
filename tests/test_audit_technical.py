@@ -158,8 +158,8 @@ class TechnicalAuditTests(unittest.TestCase):
 
     def test_invalid_shared_envelope_is_rejected(self):
         for data in (None,[],{},dict(fixture(), unexpected='not allowed')):
-            with self.assertRaises(ValueError):
-                self.run_audit(data)
+            with self.subTest(data_type=type(data).__name__), self.assertRaises(ValueError):
+                audit(data,ROOT/'examples/spa-build/artifacts')
         d=fixture(); d['tasks']['T01']['extra']='not allowed'
         with self.assertRaises(ValueError):
             self.run_audit(d)
