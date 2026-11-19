@@ -1,17 +1,21 @@
 # SEO release checklist
 
-Project / commit / environment / owner / date:
+Project / candidate revision / environment / reviewed route scope / owner / date:
 
-- [ ] Intent and approved route inventory unchanged or migration approved.
-- [ ] Direct GET for canonical, redirect, missing, private and variant routes tested.
-- [ ] Source HTML and rendered DOM checked; canonical, robots, metadata and primary content consistent.
-- [ ] Important links crawlable; sitemap canonical-only and dates meaningful; robots and required resources accessible.
-- [ ] Mobile parity, deep links, hydration/interaction, keyboard and reduced motion tested.
-- [ ] Structured data valid and visible facts match; feature eligibility rechecked.
-- [ ] Media and performance baseline checked; no critical regressions.
-- [ ] Forms work: accepted outcomes and failed/retry cases verified.
-- [ ] Consent and analytics deduplication/privacy tests pass when in scope.
-- [ ] Private data, secrets and unpublished evidence excluded from Git.
-- [ ] Production sample, search inspection, monitoring and rollback owner recorded.
+This is a target-website checklist, not a skill distribution approval or blanket requirement to run every test. Select applicable tests before release. Use T11's exact subject/assertion binding where a deployment gate is required. Record separate pre-release and post-release observations; no production access, deployment or external submission is authorized by this checklist.
 
-Record exceptions, evidence, outstanding checks and approver. A checked local box does not establish live or indexed state.
+| Test area | Expected assertion (adapt to scope) | Actual evidence / stage | Status |
+|---|---|---|---|
+| Page intent and URL policy | Approved inventory preserved or migration separately approved | | not-run |
+| Delivery | Intended canonical, redirect, missing, private and variant routes return expected status/access; private access asserted separately | | not-run |
+| Rendering and declarations | Matched source and render checked where applicable; intended content, canonical, robots and metadata consistent | | not-run |
+| Discovery | Relevant links, sitemap policy, meaningful lastmod and required resource access verified | | not-run |
+| Experience | Applicable mobile, deep links, hydration, keyboard and reduced-motion checks | | not-run |
+| Structured data | Accurate visible facts, appropriate vocabulary and feature eligibility checked separately | | not-run |
+| Media/performance | Applicable baseline and regression guardrails | | not-run |
+| Business functionality | Approved synthetic success, rejection and retry cases; accepted outcome distinct from event receipt | | not-run |
+| Consent/analytics | Approved consent and actual collection, deduplication, data minimization verified when relevant | | not-run |
+| Data and security | Scope, access, public artifact/log review; no private data exposure | | not-run |
+| Post-release | Authorized production sample; separate processed search observation and outcome monitoring where available | | not-run |
+
+Statuses: pass, fail, blocked, not-run, N/A (explain why genuinely inapplicable). Missing tooling or permission is blocked, not N/A; never turn pending post-release checks into pre-release passes. Record test ID and exact subject, evidence, exceptions, material unresolved risk, rollback owner and independent release decision. A local check cannot establish live, indexed or business outcome status. Use [deployment regression](../workflows/deployment-regression.md) for structured gates and [agent run record](agent-run-record.md) for actual observations. Do not promote an unsafe release because a majority of checks pass.

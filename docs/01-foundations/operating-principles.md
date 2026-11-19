@@ -1,6 +1,6 @@
 # Operating principles
 
-**Goal:** match useful, trustworthy public pages to real search demand and business outcomes. Search is a pipeline: discovery → crawling → rendering → indexing → canonical selection → retrieval/ranking → presentation → visit → outcome. Diagnose earlier stages first. Search engines do not guarantee any stage.
+**Goal:** match useful, trustworthy public pages to real search demand and business outcomes. Search can be investigated through discovery, crawling, rendering, indexing/canonical selection, retrieval/ranking, presentation, visit and outcome. This is a diagnostic model, not an asserted universal ordered search-engine implementation; revisit earlier evidence as needed. Search engines do not guarantee any stage.
 
 ## Classify recommendations
 
@@ -15,7 +15,7 @@ SEO is not a checklist of universal ranking factors. E-E-A-T is a quality framew
 
 ## Priority
 
-P0: widespread loss of access/indexability, security or privacy risk. P1: important templates fail eligibility or business outcomes cannot be measured. P2: relevance, internal architecture, performance and trust gaps. P3: optional enhancements and experiments. Assign owner, confidence, affected URLs and dependency to each issue. Stop unsafe releases; do not delay a critical fix for an experiment.
+P0: widespread loss of access/indexability, security or privacy risk. P1: important templates fail eligibility or business outcomes cannot be measured. P2: relevance, internal architecture, performance and trust gaps. P3: optional enhancements and experiments. Assign owner, confidence, affected URLs and dependency to each issue. Escalate credible serious harm despite incomplete evidence; do not invent a confirmed cause. Stop unsafe releases; do not delay a critical fix for an experiment. Apply R08's actual fit, evidence, risk and dependency gates to discretionary work; no growth score for P0/P1.
 
 ## Sources
 

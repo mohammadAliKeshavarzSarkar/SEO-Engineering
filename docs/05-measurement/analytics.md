@@ -47,3 +47,7 @@ Sources: [GA4 events](https://support.google.com/analytics/answer/9267735), [cam
 | Verified accepted leads (same approved cohort) | 40 | 40 | No verified lead growth |
 
 In this synthetic example the 50% event-count increase does not prove SEO or conversion improvement. Review duplicate emitters, changed key-event/counting settings, attribution and consent; verify actual trigger traces and aggregate backend reconciliation. Do not invent a discrepancy's cause from these counts alone. Keep measurement repairs separate from acquisition experiments.
+
+## Measurement handoff
+
+For new measurement plans use [event dictionary v2](../../templates/event-dictionary-v2.csv). The [original event dictionary](../../templates/event-dictionary.csv) remains available for historical records; neither is a machine-validated analytics configuration. Review emitter ownership, trigger identity, consent, deduplication and the distinct business/analytics outcome fields before implementation. Unknown provider receipt or configuration is not a successful event. Do not put real transaction IDs, user identifiers or payloads in the template; reference approved private evidence instead.

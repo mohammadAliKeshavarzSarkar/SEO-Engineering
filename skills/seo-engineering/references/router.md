@@ -19,7 +19,7 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Persian, multilingual and international SEO | docs/02-research/r09-multilingual-search-engineering.md; decision-engine/localization.md; templates/locale-market-register.csv; templates/locale-page-matrix.csv; templates/localization-qa.md; scripts/audit_locale_manifest.py |
 | Research automation, imports and validation | docs/02-research/r10-research-automation-and-validation.md; workflows/research-pipeline.md; templates/research-run-manifest.md; scripts/validate_research.py |
 | Crawl accessibility, robots, sitemap discovery and crawl-budget evidence | docs/03-technical/t05-crawling-robots.md; decision-engine/crawl-discovery.md; implementation-patterns/crawl-discovery.md; templates/crawl-evidence-inventory.csv; scripts/audit_crawl_evidence.py |
-| Crawl/index/status/robots/sitemap | docs/03-technical/crawl-and-index.md; docs/06-operations/troubleshooting.md |
+| General crawl/index orientation (use T05/T06 above/below for actual diagnosis) | docs/03-technical/crawl-and-index.md |
 | Architecture discovery, technology and delivery detection | docs/03-technical/t01-architecture-detection.md; decision-engine/architecture-detection.md; templates/architecture-inventory.csv; scripts/inspect_architecture.py |
 | JS rendering, hydration, source/render discrepancies | docs/03-technical/t02-javascript-rendering.md; decision-engine/rendering.md; implementation-patterns/rendering-validation.md; templates/rendering-evidence.csv; scripts/audit_rendering.py |
 | React, Vite, SPA routing, prerender or static deployment | docs/03-technical/t03-react-vite-spa.md; decision-engine/spa-delivery.md; implementation-patterns/react-vite-spa.md; templates/spa-route-build-plan.csv; scripts/audit_spa_build.py |
@@ -27,20 +27,20 @@ Read docs/01-foundations/operating-principles.md and docs/01-foundations/evidenc
 | Rendering strategy or SPA/SSR architecture | decision-engine/rendering.md; docs/03-technical/rendering-and-architecture.md; implementation-patterns/route-delivery.md |
 | Index eligibility, canonical conflicts or Search Console indexing evidence | docs/03-technical/t06-indexing-canonicals.md; decision-engine/index-canonical.md; implementation-patterns/index-canonical.md; templates/index-canonical-inventory.csv; scripts/audit_index_evidence.py |
 | URL architecture, redirect chains, domain moves or migration validation | docs/03-technical/t07-url-migrations.md; decision-engine/url-migration.md; implementation-patterns/url-migration.md; templates/migration-url-map.csv; scripts/audit_migration.py |
-| URL, canonical, redirect, migration | docs/03-technical/urls-and-migrations.md |
+| General URL/migration orientation (use T06/T07 for actual decisions) | docs/03-technical/urls-and-migrations.md |
 | Metadata generation, JSON-LD, entity claims and rich-result QA | docs/03-technical/t08-metadata-structured-data.md; decision-engine/metadata-entities.md; implementation-patterns/metadata-entities.md; templates/metadata-entity-inventory.csv; scripts/audit_metadata.py |
-| Content, trust, metadata | docs/04-content/on-page-and-editorial.md |
+| Editorial content, claim quality and trust | docs/04-content/on-page-and-editorial.md; templates/content-brief.md; templates/editorial-claim-review.csv |
 | Structured data/social/entity | docs/04-content/structured-data.md |
 | Images, video, Discover | docs/04-content/media.md |
 | Core Web Vitals, lab/field performance, animation or regression evidence | docs/03-technical/t09-performance.md; decision-engine/performance.md; implementation-patterns/performance-optimization.md; templates/performance-evidence-inventory.csv; scripts/audit_performance.py |
 | Performance, mobile, accessibility | docs/03-technical/performance.md |
 | Search platform data, logs | docs/05-measurement/search-platforms.md |
-| Analytics, lead, ecommerce events, consent | docs/05-measurement/analytics.md; docs/05-measurement/privacy-and-qa.md |
+| Analytics, lead, ecommerce events, consent | docs/05-measurement/analytics.md; docs/05-measurement/privacy-and-qa.md; templates/event-dictionary-v2.csv |
 | Local, ecommerce, SaaS or programmatic | docs/07-specialties/site-types.md |
 | AI search | docs/07-specialties/ai-search.md |
 | Traffic loss, technical incidents, root cause or recovery | docs/03-technical/t12-technical-troubleshooting.md; workflows/technical-incident.md; decision-engine/technical-incident.md; templates/incident-record.md; scripts/review_incident.py; docs/06-operations/troubleshooting.md; relevant evidence guides |
 | Authority | docs/04-content/authority.md |
-| Experiment/monitoring | docs/06-operations/experiments.md |
+| Experiment/monitoring | docs/06-operations/experiments.md; templates/experiment.md |
 | Coordinated technical audit, evidence consolidation and reviewed triage | docs/03-technical/t10-audit-automation.md; workflows/technical-audit.md; decision-engine/technical-audit.md; templates/technical-audit-review.csv; scripts/audit_technical.py |
 | Release regression prevention, deployment review, pre/post-release gate evidence | docs/03-technical/t11-deployment-regression.md; workflows/deployment-regression.md; templates/deployment-gate-inventory.csv; scripts/review_release_gates.py |
 | Implementation and QA | implementation-patterns/README.md; docs/06-operations/audit-and-release.md; templates/release-checklist.md |

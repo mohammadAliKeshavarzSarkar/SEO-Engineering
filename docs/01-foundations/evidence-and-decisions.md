@@ -6,6 +6,8 @@ Evidence tiers: official specs and platform documentation for rules; reproducibl
 
 Decision lifecycle: proposed → reviewed → approved → implemented → verified → superseded. Record alternatives (including doing nothing), costs, risk, affected templates, evidence, validation, owner and rollback. Separate decisions from test results. A decision can be approved but not implemented. A static check can pass while production fails.
 
-Prioritize using severity, business reach, confidence and effort. For optional work, compare impact × confidence / effort on a consistent internal scale, not a claimed SEO score. Do not use numerical scoring to delay privacy/security or indexing incidents.
+Prioritize using severity, business relevance, confidence and effort. Apply [R08](../02-research/r08-opportunity-prioritization.md) before comparing optional work: scope/fit, evidence, risk and dependency gates first; its impact rubric combines reach and importance, so do not multiply reach or volume again. The score is a heuristic, not a claimed SEO score or forecast. Keep P0/P1 visible regardless of missing estimates. Do not use numerical scoring to delay privacy/security or eligibility incidents.
 
 Maintain project inventory, decision log, release annotations, experiment registry and source register. Review change-sensitive claims before implementation and quarterly. Use [decision record](../../templates/decision-record.md) and [source register](../08-learning/sources.md).
+
+For observation records, separate metric/evidence kind (observed, estimate, hypothesis, unknown), review/decision lifecycle, collection status and actual verification result. An approved decision or structurally valid record is not measured success. See the [knowledge consistency guide](knowledge-consistency.md) for cross-module application and exception boundaries.

@@ -1,6 +1,6 @@
 # Strategy, market, keywords and competitors
 
-## Advanced research series (v0.2.0 in development)
+## Advanced research series (introduced during v0.2.0 development)
 
 - [Research roadmap](research-roadmap.md)
 - [R01 — Business objectives and search positioning](r01-business-and-positioning.md)
@@ -28,7 +28,7 @@ For demand and competitive evidence, apply [R02](r02-keyword-discovery.md) and [
 
 ## Deliverables
 
-Use [keyword map](../../templates/keyword-map.csv), [SERP observations](../../templates/serp-observations.csv) and [project brief](../../templates/project-brief.md). Retain raw query and normalized cluster separately. Record source and confidence for every numerical value. Recheck the SERP before approving new commercial pages. If no first-party data exists, label initial mapping as hypothesis and establish a baseline after launch.
+Use [keyword map](../../templates/keyword-map.csv), [SERP snapshots](../../templates/serp-snapshots.csv) and [results v2](../../templates/serp-results-v2.csv) and [project brief](../../templates/project-brief.md). Retain raw query and normalized cluster separately. Record source and confidence for every numerical value. Recheck the SERP before approving new commercial pages. If no first-party data exists, label initial mapping as hypothesis and establish a baseline after launch.
 
 ## Sources
 

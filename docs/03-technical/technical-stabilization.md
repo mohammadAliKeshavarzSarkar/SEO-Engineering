@@ -1,6 +1,6 @@
 # Advanced technical stabilization
 
-Checkpoint: dev.12 initial development completed; TS03 targeted portable installation hardening. Corrected TS02 exact-commit CI passed; TS03 changed-commit CI and wider gates must be checked separately. This is not certification.
+Historical opening checkpoint: dev.12 initial development and TS03 targeted portable installation hardening. The dated records below describe their exact revisions, not current CI or release certification. Consult [distribution metadata](../01-foundations/distribution-version.json) and the [knowledge consistency guide](../01-foundations/knowledge-consistency.md) for later review scope. Actual release gates remain separate.
 
 | Stage | Work | Exit evidence |
 |---|---|---|

@@ -53,7 +53,7 @@ Primary checks (2026-11-19): [Trends FAQ](https://support.google.com/trends/answ
 
 ## Outputs
 
-[Keyword observations template](../../templates/keyword-observations.csv) stores one row per source observation. [Keyword map](../../templates/keyword-map.csv) stores later intent/page decisions, not raw metrics. Use [SERP observations](../../templates/serp-observations.csv) for result evidence. Export source records separately; use evidence IDs to link decisions.
+[Keyword observations template](../../templates/keyword-observations.csv) stores one row per source observation. [Keyword map](../../templates/keyword-map.csv) stores later intent/page decisions, not raw metrics. For new detailed SERP evidence use [snapshots](../../templates/serp-snapshots.csv) and [results v2](../../templates/serp-results-v2.csv); keep the [legacy observations form](../../templates/serp-observations.csv) only for historical/simple records. Do not backfill unavailable context when importing legacy evidence. Export source records separately; use evidence IDs to link decisions.
 
 ## Primary sources checked 2026-11-18
 

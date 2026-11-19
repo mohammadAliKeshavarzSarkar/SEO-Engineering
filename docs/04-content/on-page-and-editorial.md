@@ -23,3 +23,5 @@ Source checkpoint 2026-11-19: [people-first content](https://developers.google.c
 Publish checklist: intent answered, factual review, meaningful title/description, stable URL, accessible images, related links, mobile reading, approved CTA, sitemap and inspection. Refresh by evidence and business relevance, not cosmetic timestamps.
 
 Sources: [helpful content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [title links](https://developers.google.com/search/docs/appearance/title-link), [snippets](https://developers.google.com/search/docs/appearance/snippet), [spam policies](https://developers.google.com/search/docs/essentials/spam-policies).
+
+Use the [editorial claim review](../../templates/editorial-claim-review.csv) for material claims and [content brief](../../templates/content-brief.md) for the page-level decision. The claim register is a planning/review artifact, not a proof of factual accuracy, authority or publication approval. Keep source evidence privately when necessary; publish only the approved claim wording and references.

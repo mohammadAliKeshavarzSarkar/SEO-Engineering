@@ -1,6 +1,6 @@
 # v0.2.0 stabilization and release readiness
 
-Status: 0.2.0-rc.1 source candidate; not stably released or behaviorally certified. S06 checkpoint: 2026-11-18.
+Historical status at S06 checkpoint 2026-11-18: 0.2.0-rc.1 source candidate; not stably released or behaviorally certified. For current bundled status use [distribution metadata](../01-foundations/distribution-version.json) and [advanced technical stabilization](../03-technical/technical-stabilization.md). Do not interpret the historical counts below as the current test suite.
 
 ## Roadmap
 

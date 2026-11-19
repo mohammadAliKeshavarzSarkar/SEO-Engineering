@@ -5,9 +5,9 @@
 0. Scope/authority: agreed origin, environments, goals, owners, data boundaries. Baseline current site and search/analytics where access exists.
 1. Inventory: canonical routes and intended state, template, source/rendered HTML, HTTP behavior, redirects, robots, sitemap, links. Compare representative URLs and enumerate edge cases.
 2. Diagnose and prioritize: reproduce each issue; evidence, affected templates, impact, severity, confidence and dependency. Check whether issue is live or only a code observation.
-3. Implement: small reversible changes; preserve stable URLs and UX; use branch/PR and decision record; test locally.
+3. If implementation is explicitly authorized, make small reversible changes; preserve stable URLs and UX; use branch/PR and decision record; test locally. Audit-only tasks stop at findings and recommendations.
 4. Pre-release: [release checklist](../../templates/release-checklist.md), review crawl/render/schema, mobile, forms and consent. Block privacy, security, widespread eligibility and critical function regressions.
-5. Deploy and sample production via GET, browser, search inspection and analytics. Verify sitemap and canonical alignment. Record release annotation, owner, monitoring and rollback decision.
+5. Deploy only after separate appropriate release authorization. Sample production with permitted GET, browser, search inspection and analytics where applicable; record actual pass/fail/blocked/not-run/N/A with scope and evidence. Verify sitemap and canonical alignment where relevant. Record release annotation, owner, monitoring and rollback decision; submission and monitoring require their own permission/configuration.
 6. Measure after appropriate crawl/report latency. Distinguish eligibility passed, indexed, ranking and business outcome. Don't declare final success based on a build.
 
 ## Checklist severity

@@ -1,6 +1,6 @@
 # SEO Engineering — agent-first architecture
 
-Status: initial implementation, v0.2.0 in development. Owner direction: reusable across website types, stacks, languages and targets; no project-specific default.
+Status: architecture introduced during v0.2.0 development; consult [current bundled development metadata](distribution-version.json) for version and release status. Owner direction: reusable across website types, stacks, languages and targets; no project-specific default.
 
 ## Design
 
