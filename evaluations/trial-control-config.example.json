@@ -1,0 +1,19 @@
+{
+  "model": "REPLACE with exact model/version",
+  "runtime": "REPLACE with runtime version",
+  "inference_settings": "REPLACE with exact settings",
+  "tool_config": "REPLACE with matched permissions/tools",
+  "permission_mode": "read-only synthetic project",
+  "skill_commit": "REPLACE with 40-hex commit",
+  "archive_sha256": "REPLACE with actual 64-hex candidate archive digest",
+  "launch_protocol": "REPLACE with launch isolation record",
+  "review_protocol": "REPLACE with reviewers and adjudication",
+  "suite_kind": "public_regression",
+  "repeats": 1,
+  "treatment": "complete_toolkit",
+  "task_context_sha256": "REPLACE with actual common context digest",
+  "seed": 41926,
+  "budget": "REPLACE with equal budget",
+  "rubric_access_policy": "REPLACE with reviewed restrictions",
+  "candidate_variant": "rubric_restricted"
+}

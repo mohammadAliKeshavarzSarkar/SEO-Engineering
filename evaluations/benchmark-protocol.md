@@ -41,3 +41,7 @@ See [grade schema](benchmark-grades.md). The scorer validates the suite and plan
 Record the experiment ID, frozen suite and plan hashes, candidate checksum, environments, run status, sanitized outputs, reviewer judgments, disagreements, missingness, critical outcomes, costs and reasons for any deviations. Diagnose errors by knowledge, routing, evidence, judgment, execution, verification or scope (use more than one if needed); fix general procedures, not memorize public expected answers. Freeze an independent new held-out set when training against failures. Retain negative outcomes. No private project data, arbitrary external tool calls or production writes are needed for the synthetic benchmark.
 
 Source: [OpenAI evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices) supports task-specific evaluation, comparison, blinded human review and calibration. The local scorer and proposed gates are internal conventions and do not depend on a hosted eval service.
+
+## TS04 trial control
+
+Use the [controlled public pilot and maintainer trial controller](trial-control.md) to freeze the cohort, balance launch order, retain all failures and separate operator dispatch from blind review. This does not execute inference or establish model effectiveness. The fixed initial pilot is 16 pairs / 32 planned runs, separate from full public and private held-out cohorts.

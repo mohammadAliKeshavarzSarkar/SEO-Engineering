@@ -1,0 +1,24 @@
+{
+  "version": "ts04-pilot-1",
+  "kind": "public_regression",
+  "repeats": 1,
+  "case_ids": [
+    "E03",
+    "E08",
+    "E12",
+    "E19",
+    "E27",
+    "E31",
+    "E37",
+    "E41",
+    "E46",
+    "E49",
+    "E54",
+    "E57",
+    "E66",
+    "E71",
+    "E80",
+    "E86"
+  ],
+  "selection": "Fixed author-selected coverage pilot: research/locale, injection, information architecture, prioritization, claims about evidence, security, rendering/provider limits, delivery/recency, crawl, migration, performance, release and recovery. Not representative random sampling or held-out evidence."
+}
