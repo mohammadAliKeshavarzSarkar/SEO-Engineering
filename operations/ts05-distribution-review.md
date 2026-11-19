@@ -30,3 +30,7 @@ For each file in the manual review, use state reviewed_no_issue, reviewed_with_f
 - Promotion: only after all mandatory gates and explicit owner approval; no unsupported stable version, public asset or release tag.
 
 The package remains 0.3.0-dev.12. TS04 real agent results and A.2.4 evidence exchange are not manufactured by release preparation.
+
+## First execution finding
+
+[CI 44470186709](https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44470186709) executed 295 tests; 294 passed and the scanner assertion failed because the synthetic URL with userinfo also matched the email heuristic. Both signals intentionally remain visible. Corrected the expected test set, not the scanner; content pre-review step was skipped in the failed run. Recheck exact next revision before claiming actual screening results.

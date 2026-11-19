@@ -50,7 +50,7 @@ class ReviewDistributionTests(unittest.TestCase):
              "-----BEGIN "+"PRIVATE KEY-----\n"+"api_key = 'fictional-test-value'").encode()
         state,s=scan_bytes(raw)
         self.assertEqual(state,"scanned")
-        self.assertEqual({x["rule"] for x in s},{"url_userinfo","token_shape","private_key_marker","credential_assignment"})
+        self.assertEqual({x["rule"] for x in s},{"url_userinfo","token_shape","private_key_marker","credential_assignment","email_shape"})
 
     def test_non_utf8_and_nul_explicit(self):
         self.assertEqual(scan_bytes(b"\xff")[0],"non_utf8")
