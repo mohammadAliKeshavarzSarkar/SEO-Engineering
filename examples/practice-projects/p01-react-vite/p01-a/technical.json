@@ -1,0 +1,643 @@
+{
+  "schema_version": "1",
+  "scope": "P01 p01-a fictional supplied observations; no HTTP/browser/search collection",
+  "audit_id": "P01-p01-a",
+  "context_ref": "P01/p01-a/cohort/offline-fixture",
+  "reviewed_revision": "p01-a",
+  "tasks": {
+    "T01": {
+      "state": "ready",
+      "reason": "Reviewed fictional projection for explicit scope",
+      "input": {
+        "schema_version": "1",
+        "scope": "P01 p01-a fictional supplied observations; no HTTP/browser/search collection",
+        "declared_dependencies": {
+          "vite": "^7",
+          "react": "^19"
+        },
+        "routes": [
+          {
+            "id": "home",
+            "expected": "public",
+            "declared_strategy": "ssg",
+            "status": 200,
+            "source_content": "present",
+            "rendered_content": "present",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P01/p01-a/home/MOCK-architecture"
+          },
+          {
+            "id": "features",
+            "expected": "public",
+            "declared_strategy": "ssg",
+            "status": 200,
+            "source_content": "present",
+            "rendered_content": "unknown",
+            "initial_noindex": false,
+            "rendered_noindex": null,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P01/p01-a/features/MOCK-architecture"
+          },
+          {
+            "id": "guide",
+            "expected": "public",
+            "declared_strategy": "ssg",
+            "status": 200,
+            "source_content": "absent",
+            "rendered_content": "present",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P01/p01-a/guide/MOCK-architecture"
+          },
+          {
+            "id": "pricing",
+            "expected": "public",
+            "declared_strategy": "ssg",
+            "status": 200,
+            "source_content": "present",
+            "rendered_content": "present",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P01/p01-a/pricing/MOCK-architecture"
+          },
+          {
+            "id": "dashboard",
+            "expected": "private",
+            "declared_strategy": "csr",
+            "status": null,
+            "source_content": "unknown",
+            "rendered_content": "unknown",
+            "initial_noindex": null,
+            "rendered_noindex": null,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P01/p01-a/dashboard/MOCK-architecture"
+          },
+          {
+            "id": "missing",
+            "expected": "missing",
+            "declared_strategy": "unknown",
+            "status": 200,
+            "source_content": "absent",
+            "rendered_content": "absent",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "P01/p01-a/missing/MOCK-architecture"
+          }
+        ]
+      },
+      "input_ref": "P01/p01-a/cohort/T01"
+    },
+    "T02": {
+      "state": "ready",
+      "reason": "Reviewed fictional projection for explicit scope",
+      "input": {
+        "schema_version": "1",
+        "scope": "P01 p01-a fictional supplied observations; no HTTP/browser/search collection",
+        "routes": [
+          {
+            "id": "home",
+            "index_intent": true,
+            "http_status": 200,
+            "http_noindex": false,
+            "comparability": "matched",
+            "readiness": "met",
+            "required_link_targets": [
+              "features",
+              "guide",
+              "pricing"
+            ],
+            "source": {
+              "status": "complete",
+              "context_id": "P01/p01-a/home/MOCK-anonymous-mobile-en",
+              "evidence_ref": "P01/p01-a/home/MOCK-source",
+              "primary_content": "present",
+              "titles": [
+                "Workspace planning"
+              ],
+              "canonicals": [
+                "https://workspace.example/"
+              ],
+              "meta_noindex": false,
+              "link_targets": [
+                "features",
+                "guide",
+                "pricing"
+              ]
+            },
+            "rendered": {
+              "status": "complete",
+              "context_id": "P01/p01-a/home/MOCK-anonymous-mobile-en",
+              "evidence_ref": "P01/p01-a/home/MOCK-render",
+              "primary_content": "present",
+              "titles": [
+                "Workspace planning"
+              ],
+              "canonicals": [
+                "https://workspace.example/"
+              ],
+              "meta_noindex": false,
+              "link_targets": [
+                "features",
+                "guide",
+                "pricing"
+              ]
+            }
+          },
+          {
+            "id": "features",
+            "index_intent": true,
+            "http_status": 200,
+            "http_noindex": false,
+            "comparability": "matched",
+            "readiness": "unknown",
+            "required_link_targets": [
+              "home",
+              "guide",
+              "pricing"
+            ],
+            "source": {
+              "status": "complete",
+              "context_id": "P01/p01-a/features/MOCK-anonymous-mobile-en",
+              "evidence_ref": "P01/p01-a/features/MOCK-source",
+              "primary_content": "present",
+              "titles": [
+                "Workspace features"
+              ],
+              "canonicals": [
+                "https://workspace.example/features/"
+              ],
+              "meta_noindex": false,
+              "link_targets": [
+                "home",
+                "guide",
+                "pricing"
+              ]
+            },
+            "rendered": {
+              "status": "not_collected",
+              "context_id": "P01/p01-a/features/MOCK-anonymous-mobile-en",
+              "evidence_ref": null,
+              "primary_content": "unknown",
+              "titles": null,
+              "canonicals": null,
+              "meta_noindex": null,
+              "link_targets": null
+            }
+          },
+          {
+            "id": "guide",
+            "index_intent": true,
+            "http_status": 200,
+            "http_noindex": false,
+            "comparability": "matched",
+            "readiness": "met",
+            "required_link_targets": [
+              "home",
+              "features"
+            ],
+            "source": {
+              "status": "complete",
+              "context_id": "P01/p01-a/guide/MOCK-anonymous-mobile-en",
+              "evidence_ref": "P01/p01-a/guide/MOCK-source",
+              "primary_content": "absent",
+              "titles": [
+                "Workspace planning"
+              ],
+              "canonicals": [
+                "https://workspace.example/"
+              ],
+              "meta_noindex": false,
+              "link_targets": [
+                "features",
+                "guide",
+                "pricing"
+              ]
+            },
+            "rendered": {
+              "status": "complete",
+              "context_id": "P01/p01-a/guide/MOCK-anonymous-mobile-en",
+              "evidence_ref": "P01/p01-a/guide/MOCK-render",
+              "primary_content": "present",
+              "titles": [
+                "Getting started"
+              ],
+              "canonicals": [
+                "https://workspace.example/guides/getting-started/"
+              ],
+              "meta_noindex": false,
+              "link_targets": [
+                "home",
+                "features"
+              ]
+            }
+          },
+          {
+            "id": "pricing",
+            "index_intent": true,
+            "http_status": 200,
+            "http_noindex": false,
+            "comparability": "matched",
+            "readiness": "met",
+            "required_link_targets": [
+              "home",
+              "features"
+            ],
+            "source": {
+              "status": "complete",
+              "context_id": "P01/p01-a/pricing/MOCK-anonymous-mobile-en",
+              "evidence_ref": "P01/p01-a/pricing/MOCK-source",
+              "primary_content": "present",
+              "titles": [
+                "Workspace pricing"
+              ],
+              "canonicals": [
+                "https://workspace.example/"
+              ],
+              "meta_noindex": false,
+              "link_targets": [
+                "home",
+                "features"
+              ]
+            },
+            "rendered": {
+              "status": "complete",
+              "context_id": "P01/p01-a/pricing/MOCK-anonymous-mobile-en",
+              "evidence_ref": "P01/p01-a/pricing/MOCK-render",
+              "primary_content": "present",
+              "titles": [
+                "Workspace pricing"
+              ],
+              "canonicals": [
+                "https://workspace.example/"
+              ],
+              "meta_noindex": false,
+              "link_targets": [
+                "home",
+                "features"
+              ]
+            }
+          }
+        ]
+      },
+      "input_ref": "P01/p01-a/cohort/T02"
+    },
+    "T03": {
+      "state": "ready",
+      "reason": "Reviewed fictional projection for explicit scope",
+      "input": {
+        "schema_version": "1",
+        "scope": "P01 p01-a local handwritten plan (not Vite output)",
+        "routes": [
+          {
+            "id": "home",
+            "url": "https://workspace.example/",
+            "purpose": "acquisition",
+            "delivery": "prerendered",
+            "sitemap_expected": true,
+            "canonical_expected": "https://workspace.example/",
+            "html_file": "index.html",
+            "required_files": []
+          },
+          {
+            "id": "features",
+            "url": "https://workspace.example/features/",
+            "purpose": "acquisition",
+            "delivery": "prerendered",
+            "sitemap_expected": true,
+            "canonical_expected": "https://workspace.example/features/",
+            "html_file": "features/index.html",
+            "required_files": []
+          },
+          {
+            "id": "guide",
+            "url": "https://workspace.example/guides/getting-started/",
+            "purpose": "acquisition",
+            "delivery": "prerendered",
+            "sitemap_expected": true,
+            "canonical_expected": "https://workspace.example/guides/getting-started/",
+            "html_file": "guides/getting-started/index.html",
+            "required_files": []
+          },
+          {
+            "id": "pricing",
+            "url": "https://workspace.example/pricing/",
+            "purpose": "acquisition",
+            "delivery": "prerendered",
+            "sitemap_expected": true,
+            "canonical_expected": "https://workspace.example/pricing/",
+            "html_file": "pricing/index.html",
+            "required_files": []
+          },
+          {
+            "id": "dashboard",
+            "url": "https://workspace.example/app/dashboard/",
+            "purpose": "protected",
+            "delivery": "spa_shell",
+            "sitemap_expected": false,
+            "canonical_expected": null,
+            "html_file": "shell.html",
+            "required_files": []
+          },
+          {
+            "id": "missing",
+            "url": "https://workspace.example/missing-page/",
+            "purpose": "missing",
+            "delivery": "spa_shell",
+            "sitemap_expected": false,
+            "canonical_expected": null,
+            "html_file": "shell.html",
+            "required_files": []
+          }
+        ]
+      },
+      "input_ref": "P01/p01-a/cohort/T03"
+    },
+    "T04": {
+      "state": "not_applicable",
+      "reason": "Not the declared Next.js delivery scenario",
+      "input": null,
+      "input_ref": null
+    },
+    "T05": {
+      "state": "ready",
+      "reason": "Reviewed fictional projection for explicit scope",
+      "input": {
+        "schema_version": "1",
+        "scope": "P01 p01-a fictional supplied observations; no HTTP/browser/search collection",
+        "crawler_policy": "Fictional reviewed policy labels, not actual robots evaluation",
+        "coverage": "partial",
+        "stop_reason": "Protected route excluded; revised host status and other observations not collected",
+        "urls": [
+          {
+            "id": "home",
+            "purpose": "acquisition",
+            "index_intent": true,
+            "sitemap_member": true,
+            "canonical_self": true,
+            "noindex": false,
+            "critical_resource": false,
+            "inbound_link_observed": true,
+            "collection": "observed",
+            "http_status": 200,
+            "robots": "allowed",
+            "robots_ref": "P01/p01-a/home/MOCK-robots",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "P01/p01-a/home/MOCK-discovery",
+            "discovery": [
+              "registry",
+              "sitemap",
+              "link"
+            ]
+          },
+          {
+            "id": "features",
+            "purpose": "acquisition",
+            "index_intent": true,
+            "sitemap_member": true,
+            "canonical_self": true,
+            "noindex": false,
+            "critical_resource": false,
+            "inbound_link_observed": true,
+            "collection": "observed",
+            "http_status": 200,
+            "robots": "allowed",
+            "robots_ref": "P01/p01-a/features/MOCK-robots",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "P01/p01-a/features/MOCK-discovery",
+            "discovery": [
+              "registry",
+              "sitemap",
+              "link"
+            ]
+          },
+          {
+            "id": "guide",
+            "purpose": "acquisition",
+            "index_intent": true,
+            "sitemap_member": true,
+            "canonical_self": false,
+            "noindex": false,
+            "critical_resource": false,
+            "inbound_link_observed": true,
+            "collection": "observed",
+            "http_status": 200,
+            "robots": "allowed",
+            "robots_ref": "P01/p01-a/guide/MOCK-robots",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "P01/p01-a/guide/MOCK-discovery",
+            "discovery": [
+              "registry",
+              "sitemap",
+              "link"
+            ]
+          },
+          {
+            "id": "pricing",
+            "purpose": "acquisition",
+            "index_intent": true,
+            "sitemap_member": true,
+            "canonical_self": false,
+            "noindex": false,
+            "critical_resource": false,
+            "inbound_link_observed": true,
+            "collection": "observed",
+            "http_status": 200,
+            "robots": "allowed",
+            "robots_ref": "P01/p01-a/pricing/MOCK-robots",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "P01/p01-a/pricing/MOCK-discovery",
+            "discovery": [
+              "registry",
+              "sitemap",
+              "link"
+            ]
+          },
+          {
+            "id": "dashboard",
+            "purpose": "protected",
+            "index_intent": false,
+            "sitemap_member": false,
+            "canonical_self": null,
+            "noindex": null,
+            "critical_resource": false,
+            "inbound_link_observed": null,
+            "collection": "excluded",
+            "http_status": null,
+            "robots": "unknown",
+            "robots_ref": null,
+            "robots_agent": null,
+            "evidence_ref": "P01/p01-a/dashboard/MOCK-discovery",
+            "discovery": [
+              "registry"
+            ]
+          },
+          {
+            "id": "missing",
+            "purpose": "missing",
+            "index_intent": false,
+            "sitemap_member": false,
+            "canonical_self": null,
+            "noindex": false,
+            "critical_resource": false,
+            "inbound_link_observed": null,
+            "collection": "observed",
+            "http_status": 200,
+            "robots": "unknown",
+            "robots_ref": null,
+            "robots_agent": null,
+            "evidence_ref": "P01/p01-a/missing/MOCK-discovery",
+            "discovery": [
+              "registry"
+            ]
+          }
+        ]
+      },
+      "input_ref": "P01/p01-a/cohort/T05"
+    },
+    "T06": {
+      "state": "ready",
+      "reason": "Reviewed fictional projection for explicit scope",
+      "input": {
+        "schema_version": "1",
+        "scope": "P01 p01-a fictional supplied observations; no HTTP/browser/search collection",
+        "urls": [
+          {
+            "id": "home",
+            "url": "https://workspace.example/",
+            "intent": "representative",
+            "preferred_url": "https://workspace.example/",
+            "changed_at": "2026-10-01T10:00:00Z",
+            "current": {
+              "status": "complete",
+              "evidence_ref": "P01/p01-a/home/MOCK-current",
+              "observed_at": "2026-10-01T10:00:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": false,
+              "sitemap_member": true,
+              "source_canonicals": [
+                "https://workspace.example/"
+              ],
+              "header_canonicals": [],
+              "rendered_canonicals": [
+                "https://workspace.example/"
+              ]
+            },
+            "processed": null
+          },
+          {
+            "id": "features",
+            "url": "https://workspace.example/features/",
+            "intent": "representative",
+            "preferred_url": "https://workspace.example/features/",
+            "changed_at": "2026-10-01T10:00:00Z",
+            "current": {
+              "status": "partial",
+              "evidence_ref": "P01/p01-a/features/MOCK-current",
+              "observed_at": "2026-10-01T10:00:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": null,
+              "sitemap_member": true,
+              "source_canonicals": [
+                "https://workspace.example/features/"
+              ],
+              "header_canonicals": [],
+              "rendered_canonicals": null
+            },
+            "processed": null
+          },
+          {
+            "id": "guide",
+            "url": "https://workspace.example/guides/getting-started/",
+            "intent": "representative",
+            "preferred_url": "https://workspace.example/guides/getting-started/",
+            "changed_at": "2026-10-01T10:00:00Z",
+            "current": {
+              "status": "complete",
+              "evidence_ref": "P01/p01-a/guide/MOCK-current",
+              "observed_at": "2026-10-01T10:00:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": false,
+              "sitemap_member": true,
+              "source_canonicals": [
+                "https://workspace.example/"
+              ],
+              "header_canonicals": [],
+              "rendered_canonicals": [
+                "https://workspace.example/guides/getting-started/"
+              ]
+            },
+            "processed": {
+              "evidence_ref": "P01/MOCK/search/guide/old",
+              "property": "sc-domain:workspace.example",
+              "retrieved_at": "2026-10-01T09:00:00Z",
+              "last_crawl_at": "2026-09-29T12:00:00Z",
+              "state": "not_indexed",
+              "user_canonical": "https://workspace.example/",
+              "selected_canonical": "https://workspace.example/"
+            }
+          },
+          {
+            "id": "pricing",
+            "url": "https://workspace.example/pricing/",
+            "intent": "representative",
+            "preferred_url": "https://workspace.example/pricing/",
+            "changed_at": "2026-10-01T10:00:00Z",
+            "current": {
+              "status": "complete",
+              "evidence_ref": "P01/p01-a/pricing/MOCK-current",
+              "observed_at": "2026-10-01T10:00:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": false,
+              "sitemap_member": true,
+              "source_canonicals": [
+                "https://workspace.example/"
+              ],
+              "header_canonicals": [],
+              "rendered_canonicals": [
+                "https://workspace.example/"
+              ]
+            },
+            "processed": null
+          }
+        ]
+      },
+      "input_ref": "P01/p01-a/cohort/T06"
+    },
+    "T07": {
+      "state": "not_applicable",
+      "reason": "No migration proposed",
+      "input": null,
+      "input_ref": null
+    },
+    "T08": {
+      "state": "blocked",
+      "reason": "Required dedicated evidence not supplied in this lab",
+      "input": null,
+      "input_ref": null
+    },
+    "T09": {
+      "state": "blocked",
+      "reason": "Required dedicated evidence not supplied in this lab",
+      "input": null,
+      "input_ref": null
+    }
+  },
+  "groups": []
+}

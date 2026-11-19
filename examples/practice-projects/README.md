@@ -1,18 +1,18 @@
 # Coherent synthetic practice projects
 
-TS08.1 — design and coverage plan, not completed practice projects, real websites, actual deployment or independent agent evaluations. This directory will contain only fictional, educational material that can be used offline. Start with the existing native examples and utilities; do not duplicate an entire module or write a second crawler.
+TS08 — educational project plan and implemented offline examples, not real websites, actual deployment or independent agent evaluations. This directory will contain only fictional, educational material that can be used offline. Start with the existing native examples and utilities; do not duplicate an entire module or write a second crawler.
 
 ## Select a practice project
 
 | ID | Planned exercise | Principal gap to address |
 |---|---|---|
-| P01 | React/Vite marketing and protected routes (TS08.2) | Same site/route identity across architecture, static/source/render observations, host fallback, missing paths and candidate gates |
+| P01 | [React/Vite marketing and protected routes (TS08.2)](p01-react-vite/README.md) — offline fixture implemented | Same site/route identity across architecture, static/source/render observations, host fallback, missing paths and candidate gates |
 | P02 | Next.js hybrid catalogue (TS08.3) | Revision-bound freshness, static/runtime delivery, metadata and field/lab boundaries |
 | P03 | Persian service business (TS08.4) | Native query evidence through page ownership, stable locale URLs, RTL and measurement/claim safeguards |
 | P04 | Traffic-loss incident (TS08.5) | Shared deployment/report timeline, competing causes, escalation and assertion-specific recovery |
 | P05 | Integrated research-to-implementation capstone (TS08.6) | Evidence-to-decision-to-local-patch-to-verification handoff using an existing completed practice project |
 
-Each exercise is planned, not yet implemented. The scope is selected for teaching handoffs, not every possible industry or stack. Do not use this list as an actual evaluation cohort. No rights to an external project, source, model or data are implied.
+P01 is an implemented offline fixture; P02–P05 are planned, not yet implemented. The scope is selected for teaching handoffs, not every possible industry or stack. Do not use this list as an actual evaluation cohort. No rights to an external project, source, model or data are implied.
 
 ## Reuse the existing fixtures
 

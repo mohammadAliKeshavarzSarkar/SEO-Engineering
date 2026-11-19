@@ -1,0 +1,60 @@
+{
+  "schema_version": "2",
+  "release_id": "P01-p01-a",
+  "policy_ref": "P01-reviewed-educational-policy",
+  "subject": {
+    "stage": "candidate",
+    "revision": "p01-a",
+    "artifact": "p01-a-handwritten",
+    "environment": "offline-fixture",
+    "profile": "anonymous-mobile-en",
+    "config_ref": "p01-a-simulated-host",
+    "scope_ref": "P01-six-route-registry"
+  },
+  "gates": [
+    {
+      "id": "local-html",
+      "required": true,
+      "rationale": "Local file verification; bind actual test receipt during exercise",
+      "assertion": "Four declared public HTML files pass local explicit-head project-policy audit",
+      "evidence": null
+    },
+    {
+      "id": "missing-http",
+      "required": true,
+      "rationale": "An error document alone does not establish HTTP response",
+      "assertion": "Missing route returns intended HTTP 404 in reviewed candidate host",
+      "evidence": {
+        "subject": {
+          "stage": "candidate",
+          "revision": "p01-a",
+          "artifact": "p01-a-handwritten",
+          "environment": "offline-fixture",
+          "profile": "anonymous-mobile-en",
+          "config_ref": "p01-a-simulated-host",
+          "scope_ref": "P01-six-route-registry"
+        },
+        "outcome": "fail",
+        "ref": "P01/p01-a/missing/MOCK-architecture",
+        "policy_ref": "P01-reviewed-educational-policy",
+        "gate_id": "missing-http",
+        "assertion": "Missing route returns intended HTTP 404 in reviewed candidate host"
+      }
+    },
+    {
+      "id": "private-access",
+      "required": true,
+      "rationale": "No private access test supplied",
+      "assertion": "Protected route denies unauthorized access at host and data layer",
+      "evidence": null
+    },
+    {
+      "id": "matched-render",
+      "required": true,
+      "rationale": "Mock inputs cannot satisfy an actual browser assertion",
+      "assertion": "Required public route browser assertions verified in actual candidate environment",
+      "evidence": null
+    }
+  ],
+  "exposure": null
+}

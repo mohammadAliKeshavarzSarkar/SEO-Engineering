@@ -1,0 +1,71 @@
+{
+  "project_id": "P01",
+  "origin": "https://workspace.example",
+  "scope": "Fictional workspace-planning SaaS; offline synthetic educational use only",
+  "revisions": [
+    "p01-a",
+    "p01-b"
+  ],
+  "routes": [
+    {
+      "id": "home",
+      "path": "/",
+      "purpose": "acquisition",
+      "file": "index.html",
+      "url": "https://workspace.example/",
+      "index_intent": true,
+      "expected_http": 200
+    },
+    {
+      "id": "features",
+      "path": "/features/",
+      "purpose": "acquisition",
+      "file": "features/index.html",
+      "url": "https://workspace.example/features/",
+      "index_intent": true,
+      "expected_http": 200
+    },
+    {
+      "id": "guide",
+      "path": "/guides/getting-started/",
+      "purpose": "acquisition",
+      "file": "guides/getting-started/index.html",
+      "url": "https://workspace.example/guides/getting-started/",
+      "index_intent": true,
+      "expected_http": 200
+    },
+    {
+      "id": "pricing",
+      "path": "/pricing/",
+      "purpose": "acquisition",
+      "file": "pricing/index.html",
+      "url": "https://workspace.example/pricing/",
+      "index_intent": true,
+      "expected_http": 200
+    },
+    {
+      "id": "dashboard",
+      "path": "/app/dashboard/",
+      "purpose": "protected",
+      "file": "shell.html",
+      "url": "https://workspace.example/app/dashboard/",
+      "index_intent": false,
+      "expected_http": null
+    },
+    {
+      "id": "missing",
+      "path": "/missing-page/",
+      "purpose": "missing",
+      "file": null,
+      "url": "https://workspace.example/missing-page/",
+      "index_intent": false,
+      "expected_http": 404
+    }
+  ],
+  "limitations": [
+    "Framework dependency hints, not actual installed dependencies",
+    "Local artifacts are handwritten HTML",
+    "HTTP, browser and search observations are simulated or unavailable",
+    "No writes to real targets or network access"
+  ]
+}

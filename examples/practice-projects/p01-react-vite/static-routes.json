@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://workspace.example/",
+    "file": "index.html"
+  },
+  {
+    "url": "https://workspace.example/features/",
+    "file": "features/index.html"
+  },
+  {
+    "url": "https://workspace.example/guides/getting-started/",
+    "file": "guides/getting-started/index.html"
+  },
+  {
+    "url": "https://workspace.example/pricing/",
+    "file": "pricing/index.html"
+  }
+]
