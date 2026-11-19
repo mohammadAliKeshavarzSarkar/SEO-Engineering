@@ -27,3 +27,7 @@ The timestamp restriction is an intentional limited exchange policy, not a deter
 5. Jointly record actual observation coverage and restrictions before A.2.4 closure. Actual exchange, provenance, authorization and operational integration remain unverified until evidence exists.
 
 Broader cross-language behavior (including additional URI/date/number edge cases and resource limits) remains explicit future contract work. The local preflight is a proposal and does not authorize collection or release.
+
+## Subsequent agreement (2026-11-19)
+
+WebsiteBotScroll accepted the bounded profile as `seo-crawl-evidence-exchange-profile/0.1.0`, with explicit DEL rejection and sidecar identity. See [proposed exact manifest layout](exchange-manifest-layout.md). Original exploratory results remain unchanged. Actual exported file not delivered; A.2.4 remains open.

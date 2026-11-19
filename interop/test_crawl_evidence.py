@@ -116,7 +116,7 @@ class CompatibilityTests(unittest.TestCase):
                 raw=read_local(self.root/item["path"])
                 r=preflight(raw,self.validator)
                 self.assertEqual(r["disposition"],"candidate_for_joint_review",r)
-                self.assertEqual(r["profile_agreement"],"pending_producer_review")
+                self.assertEqual(r["profile_agreement"],"accepted_for_bounded_synthetic_exchange")
                 self.assertFalse(r["actual_exchange_verified"])
 
     def test_exchange_profile_five_known_differences(self):
@@ -157,6 +157,20 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIn("non_integer_number_spelling",r["profile"]["reasons"])
         self.assertEqual(profile(b'{"x":1,"x":2}')["status"],"not_assessed")
         self.assertEqual(preflight(b'{}',self.validator)["disposition"],"hold")
+
+    def test_profile_forbids_del_and_controls_in_entire_url_header(self):
+        for value in ("</fa>; title="+chr(127), "</fa>; title="+chr(9), r"</fa>; title=\x"):
+            d=json.loads(self.raw("complete-page.json"))
+            d["pages"][0]["observations"]["http"]["value"]["transactions"][-1]["headers"].append(
+                {"name":"link","values":[value]})
+            result=preflight(json.dumps(d).encode(),self.validator)
+            self.assertEqual(result["disposition"],"hold")
+            self.assertIn("ambiguous_url_representation",result["profile"]["reasons"])
+
+    def test_profile_requires_rfc3339_timestamp(self):
+        d=json.loads(self.raw("complete-page.json"))
+        d["run"]["started_at"]="2026-11-18"
+        self.assertIn("timestamp_not_supported_rfc3339",profile(json.dumps(d).encode())["reasons"])
 
 
 if __name__=="__main__":

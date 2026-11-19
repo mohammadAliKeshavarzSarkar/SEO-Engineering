@@ -28,3 +28,7 @@ Reproduce using the commands in [workflow](../.github/workflows/interop.yml), wi
 ## First-exchange profile proposal
 
 See [exchange profile](exchange-profile-proposal.md) and `exchange_profile.py`. The proposed profile is checked independently of both actual validator outcomes. It holds input outside the bounded representability rules and cannot change a canonical verdict. Differential reporting now includes a distinct profile gate and joint-candidate count. Producer agreement and a real authorized synthetic crawl export are still required; no automatic promotion from profile eligibility to actual exchange or operational readiness.
+
+## Accepted profile and A.2.4 intake
+
+The producer accepted the bounded profile on 2026-11-19. The earlier proposal is historical; the agreed identifier is `seo-crawl-evidence-exchange-profile/0.1.0`. The consumer now checks DEL and entire URL-bearing header values in addition to previous restrictions. See [proposed sidecar protocol](exchange-manifest-layout.md) and `python -m interop.verify_exchange --help`. Manifest exact field names and export commit require coordination; real producer declaration and authorization are not independently established by a checksum. Actual evidence exchange remains pending. The new differential suite adds three probes (58 total) without erasing the original 55-case record.

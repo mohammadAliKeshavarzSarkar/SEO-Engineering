@@ -40,7 +40,7 @@ jobs:
           "$py" -m pip install -r interop/requirements-compatibility.txt
           "$py" --version
           "$py" -m pip freeze
-          WBS_FIXTURE_ROOT="$RUNNER_TEMP/websitebotscroll-pinned" "$py" -m unittest interop.test_crawl_evidence -v
+          WBS_FIXTURE_ROOT="$RUNNER_TEMP/websitebotscroll-pinned" "$py" -m unittest interop.test_crawl_evidence interop.test_verify_exchange -v
       - name: Verify local CLI receipt and no-overwrite contract
         shell: bash
         run: |

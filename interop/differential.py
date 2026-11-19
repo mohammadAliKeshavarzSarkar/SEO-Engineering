@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 from interop.validate_crawl_evidence import digest, load_pin, load_validator, read_local, validate
-from interop.exchange_profile import PROFILE_ID, profile
+from interop.exchange_profile import PROFILE_ID, PROFILE_AGREEMENT, profile
 
 
 def write_json(path, data):
@@ -100,6 +100,9 @@ def prepare(root, work):
     mutate("header-url-port",lambda d:headers(d).append({"name":"location","values":["https://example.com:99999/"]}),None,mode="review")
     mutate("uri-unicode-host",lambda d:canonical(d,"https://مثال.test/"),None,mode="review")
     mutate("timestamp-leap-second",lambda d:d["run"].update(finished_at="2026-12-31T23:59:60Z"),None,mode="review")
+    mutate("del-in-link-header",lambda d:headers(d).append({"name":"link","values":["</fa>; title="+chr(127)]}),None,mode="review")
+    mutate("control-in-link-parameter",lambda d:headers(d).append({"name":"link","values":["</fa>; title="+chr(9)]}),None,mode="review")
+    mutate("fractional-integer-spelling",lambda d:d["run"]["limits"].update(max_pages=10.0),None,mode="review")
     write_json(work/"manifest.json", {"producer_commit":pin["producer_commit"], "cases":cases})
     print("Prepared",len(cases),"immutable synthetic input files")
 
@@ -149,7 +152,7 @@ def compare(root, work, ts_path, out):
     summary["profile_pass"] = sum(row["profile_gate_pass"] for row in rows)
     summary["profile_fail"] = len(rows)-summary["profile_pass"]
     summary["joint_candidates"] = sum(row["joint_candidate"] for row in rows)
-    report={"profile_id":PROFILE_ID,"profile_agreement":"pending_producer_review",
+    report={"profile_id":PROFILE_ID,"profile_agreement":PROFILE_AGREEMENT,
             "producer_commit":pin["producer_commit"],"schema_sha256":pin["contract"]["schema_sha256"],
             "node":ts["node"],"python":sys.version.split()[0],"summary":summary,"cases":rows,
             "actual_exchange_verified":False,"operational_integration_approved":False,
