@@ -53,6 +53,12 @@ Record each actual unit with snapshot ID, evidence locator and type. Ads/sponsor
 
 Inspect a representative set of landing pages, not only snippets. Record access failure honestly. Classify page type (home, category, product, service, guide, comparison, tool, support, local page, forum etc.), primary task fulfilled, format, specific evidence, trust, freshness and UX fit. Note observed competing domains and URLs; business competitors and SERP competitors differ. Never copy their content or assume ranking proves every claim on the page. Use descriptive first-hand observations, source links and dates.
 
+### 3a. Position semantics and AI search evidence
+
+Google Search Console position is an average over recorded impressions, based on the highest applicable result position for the page/property at its aggregation scope. Compound results can assign one position to several links, and ads do not consume organic position numbers. AI Overviews share the containing element's position across their included links; AI Mode follow-up questions yield separate query observations under the documented metric rules. See [position and click definitions](https://support.google.com/webmasters/answer/7042828). Verify the actual report and search surface, including current generative AI reporting definitions.
+
+Do not substitute a snapshot's blue-link ordinal for reported average position, rank a competitor from a Search Console property average, or convert an AI citation order into an ordinary organic rank. Keep result feature observations, reported position, organic ordinal, query impressions and citation evidence distinct. When checking changes in observed results, note any change in sample composition or result type before attributing movement to a particular page. An absent position without an impression is not a zero rank; missing rank stays unknown.
+
 ### 4. Synthesize intent and confidence
 
 For each snapshot, tally comparable observed results by page type and inferred primary task; track unclassified results separately. Report counts and denominator, e.g. 7/10 observed comparable organic results are categories, not '70% of searchers want categories'. Do not aggregate mismatched location/device/engine/date scopes as one population. Features and page observations add qualitative clues. This is an internal sampling method, not a Google score.
