@@ -63,3 +63,5 @@ Maintainer checkpoint: [consolidated TS05 candidate acceptance](operations/ts05-
 TS07.6 development: [instruction evaluation and incomplete-run review](operations/ts07-instruction-evaluation.md). Normal completed grades and separate partial-run safety review must both inform pilot continuation; neither establishes actual behavioral efficacy without independent execution and assessment.
 
 TS08 practice development: [synthetic project architecture and planned exercises](examples/practice-projects/README.md). Existing module fixtures and composite checks remain available; new coherent projects are planned, not yet executed or independently evaluated. See [coverage review](operations/ts08-practice-architecture.md) for baseline inventory and gaps.
+
+TS09 operational readiness: [exact TS08 baseline and next evidence gates](operations/ts09-readiness-review.md). The five offline practice projects have passed source CI; runtime activation and independent evaluation are still outstanding. Main remains a held development snapshot.

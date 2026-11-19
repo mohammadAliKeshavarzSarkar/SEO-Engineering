@@ -63,6 +63,7 @@ jobs:
           test "$status" = 2
           python3 -E -s -B "$lib/scripts/review_release_gates.py" --input "$lib/examples/deployment-regression/sample.json" --output private/release.json
           python3 -E -s -B "$lib/scripts/review_incident.py" --input "$lib/examples/technical-incident/sample.json" --output private/incident.json
+          python3 -E -s -B "$lib/examples/practice-projects/p05-capstone/run_lab.py" --out "$project/private/capstone.json"
           python3 -E -s -B - <<'PY'
           import json
           from pathlib import Path
@@ -76,7 +77,13 @@ jobs:
           assert release["disposition"] == "review_optional" and not release["deployment_authorized"]
           assert incident["disposition"] == "investigate" and not incident["incident_closed"]
           assert not incident["search_recovery_established"]
-          assert {p.name for p in Path("private").iterdir()} == {"research.json", "audit.json", "release.json", "incident.json"}
+          capstone = load("capstone")
+          assert capstone["source_unchanged"] and capstone["disposable_copy_removed"]
+          assert len(capstone["changed_files"]) == 3
+          assert capstone["reports"]["html-after"]["exit_code"] == 0
+          assert capstone["reports"]["gate"]["report"]["disposition"] == "hold"
+          assert not capstone["actual_external_verification"] and not capstone["deployment_authorized"]
+          assert {p.name for p in Path("private").iterdir()} == {"research.json", "audit.json", "release.json", "incident.json", "capstone.json"}
           assert {p.name for p in Path(".").iterdir()} == {".agents", "private", "index.html"}
           PY
           cmp index.html "$RUNNER_TEMP/target-before.html"

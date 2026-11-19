@@ -1,0 +1,181 @@
+{
+  "schema_version": "1",
+  "record_kind": "internal_development_review_checkpoint",
+  "recorded_date": "2026-11-19",
+  "candidate": {
+    "source_commit": "a931f6fde2ecce1d551a8a1e52134049f77b74ac",
+    "archive_sha256": "dc2943c5ae42924cb30d3fb6a2e57d9bcb2a5967bbcdc88ef047ba82ba22f760",
+    "version": "0.3.0-dev.12",
+    "scope": "standalone_portable_skill"
+  },
+  "verified_environment": {
+    "python": "3.12.3",
+    "zlib": "1.3",
+    "platform": "hosted_linux",
+    "ci_run": 44487898347,
+    "tests_passed": 356,
+    "archive_files": 284,
+    "tracked_files_scanned": 389,
+    "archive_files_flagged": 1,
+    "archive_signals": 3,
+    "tracked_files_flagged": 9,
+    "tracked_signals": 19
+  },
+  "gates": [
+    {
+      "id": "offline_tests",
+      "required": true,
+      "state": "observed_pass",
+      "observation": "Exact TS08.6 source CI passed 356 tests, including the P05 disposable local implementation. Actual model behavior is not covered.",
+      "evidence_refs": [
+        "https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44487898347"
+      ]
+    },
+    {
+      "id": "archive_identity",
+      "required": true,
+      "state": "observed_pass",
+      "observation": "Exact-source CI verified 284 archive members; SHA-256 recorded from the job, not independently downloaded by this review.",
+      "evidence_refs": [
+        "https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44487898347"
+      ]
+    },
+    {
+      "id": "reproducibility",
+      "required": true,
+      "state": "observed_pass",
+      "observation": "Same-input two-build comparison passed in recorded hosted Python 3.12.3 / zlib 1.3; no cross-platform guarantee.",
+      "evidence_refs": [
+        "https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44487898347"
+      ]
+    },
+    {
+      "id": "relocated_installation",
+      "required": true,
+      "state": "observed_pass",
+      "observation": "Extracted portable skill and selected offline diagnostics passed relocated synthetic project checks with unchanged installed tree and sentinel target. P05 was tested in source; a relocated P05 check is added after this baseline, not yet observed.",
+      "evidence_refs": [
+        "https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44487898347"
+      ]
+    },
+    {
+      "id": "automated_privacy_screen",
+      "required": true,
+      "state": "observed_pass",
+      "observation": "CI counted 389 tracked and 284 archived files, zero unscanned; 9 tracked files/19 signals, 1 archive file/3 signals. Completed screening, not human clearance.",
+      "evidence_refs": [
+        "https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44487898347"
+      ]
+    },
+    {
+      "id": "runtime_activation",
+      "required": true,
+      "state": "not_run",
+      "observation": "No observed Cursor/Codex discovery or activation on the intended external runtime. The review environment had no codex, cursor-agent or agent executable on PATH; this is not evidence about the operator machine.",
+      "evidence_refs": []
+    },
+    {
+      "id": "supported_runtime_matrix",
+      "required": true,
+      "state": "pending",
+      "observation": "Observed exact hosted Linux Python 3.12.3; declared minimum 3.10 and other OS/runtime combinations remain unverified. Local review container Python 3.13.5 availability is not a candidate test.",
+      "evidence_refs": []
+    },
+    {
+      "id": "pilot_behavior",
+      "required": true,
+      "state": "not_run",
+      "observation": "32 planned sessions; CI staged two synthetic workspaces, zero agent executions in that job. No actual independent paired output/trace/grades received. Preserve any already-frozen experimental candidate.",
+      "evidence_refs": []
+    },
+    {
+      "id": "full_public_behavior",
+      "required": true,
+      "state": "not_run",
+      "observation": "86 public cases, 516 planned sessions at three repeats per arm; no actual reviewed full benchmark received.",
+      "evidence_refs": []
+    },
+    {
+      "id": "held_out_behavior",
+      "required": true,
+      "state": "not_run",
+      "observation": "No independently authored private held-out tasks, matched executions or adjudication received.",
+      "evidence_refs": []
+    },
+    {
+      "id": "manual_content_privacy",
+      "required": true,
+      "state": "pending",
+      "observation": "Automated counts only; inspect exact candidate and actual archive privately, including flagged and unflagged content, history/exposure separately. No human approval recorded.",
+      "evidence_refs": []
+    },
+    {
+      "id": "source_accuracy",
+      "required": true,
+      "state": "pending",
+      "observation": "TS06 reviewed selected technical, research, content, localization and measurement claims; consistency fixes and TS07/TS08 additions are not a comprehensive current source review.",
+      "evidence_refs": [
+        "ts06-technical-accuracy.md",
+        "ts06-research-accuracy.md",
+        "ts06-content-accuracy.md",
+        "ts06-localization-accuracy.md",
+        "ts06-measurement-accuracy.md"
+      ]
+    },
+    {
+      "id": "ownership_and_rights",
+      "required": true,
+      "state": "pending",
+      "observation": "Public repository reports no license and no root license/notice file at exact reviewed source. Refreshed source inventory against TS05: 110 added, 54 modified, 225 unchanged paths. All 389 rows pending rights review, including unchanged files.",
+      "evidence_refs": [
+        "ts09-rights-inventory.csv",
+        "ts05-governance.md"
+      ]
+    },
+    {
+      "id": "license_and_distribution",
+      "required": true,
+      "state": "pending",
+      "observation": "Owner decision, license/notice terms and authorized channel remain unresolved. No permission inferred from public visibility.",
+      "evidence_refs": []
+    },
+    {
+      "id": "candidate_handoff",
+      "required": true,
+      "state": "pending",
+      "observation": "No actual separately downloaded archive, newly frozen pilot identity or approved recipient/channel handoff. This is an internal baseline, not a candidate substitution.",
+      "evidence_refs": []
+    },
+    {
+      "id": "owner_release_approval",
+      "required": true,
+      "state": "pending",
+      "observation": "No explicit approval for final exact artifact, supported scope and release channel received.",
+      "evidence_refs": []
+    },
+    {
+      "id": "websitebotscroll_exchange",
+      "required": false,
+      "state": "not_run",
+      "observation": "Separate optional consumer scope; historical synthetic compatibility evidence only. No actual authorized producer export, byte replay or joint acceptance supplied.",
+      "evidence_refs": [
+        "https://github.com/mohammadAliKeshavarzSarkar/SEO-Engineering/actions/runs/44467221190"
+      ]
+    }
+  ],
+  "release_decision": "hold",
+  "release_approved": false,
+  "published": false,
+  "license_assigned": false,
+  "source_review_complete": false,
+  "privacy_approved": false,
+  "boundaries": [
+    "This is not a release candidate version or an approval to distribute.",
+    "Observed hosted checks are exact-revision records, not signed attestations.",
+    "Same archive hash does not authorize substituting another source revision or candidate during a frozen trial.",
+    "Private review records, actual artifacts, rights decisions, and independent grades remain outside public Git.",
+    "No automatic promotion; a future approved release requires separately reviewed evidence and explicit owner action.",
+    "TS09.1 records the exact pre-review TS08.6 commit, not the later review commit. The TS05 historical checkpoint remains unchanged.",
+    "Rights inventory is an observed Git tree/derived expected archive mapping, not actual receipt or proof of rights."
+  ]
+}
