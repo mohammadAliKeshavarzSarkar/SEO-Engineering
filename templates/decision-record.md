@@ -14,7 +14,7 @@ Eligibility requirement / recommendation / project policy / hypothesis; severity
 Include doing nothing, costs and dependency.
 
 ## Decision and why
-Approved approach; constraints, privacy, migration/UX risks; source links and dates.
+Proposed or actually approved approach (distinguish them); authority reference if established; constraints, privacy, migration/UX risks; source links and dates. State no-change or hold if justified.
 
 ## Acceptance criteria and test plan
 Concrete expected status, canonical/rendering, data or behavior; tools and sample routes.

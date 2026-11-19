@@ -45,3 +45,7 @@ Stable route IDs in the skill router identify a reference family, not an automat
 ## Progressive loading (TS07.3)
 
 The router distinguishes initial context, necessary decision dependencies, optional implementation/QA and operator-only resources. Its 48/80 KiB initial soft budgets count unique full-file raw bytes, not runtime tokens. They are local editorial planning guides; evidence and safety override them. A route's first document plus designated workflow/privacy support is a starting point, not evidence that subsequent references are unnecessary. Measure actual runtime context, retrieval, truncation, duplicate reads and behavior independently; static loading estimates do not model these effects.
+
+## Proportional deliverables (TS07.5)
+
+Use the [deliverable quality method](deliverable-quality.md) for complex outputs. Direct answers, decision briefs, work packages and incident updates differ in depth, not permissions. Keep actual disposition, coverage, material uncertainty and test stages visible; summarize supporting evidence rather than reproduce all records. The optional delivery summary is a human handoff, not a release gate or evidence validator. No measured agent-output quality improvement is established.

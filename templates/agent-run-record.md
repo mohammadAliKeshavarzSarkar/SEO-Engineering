@@ -36,3 +36,5 @@ Route selection (primary route IDs / necessary dependencies with reasons / condi
 Reference-loading record (only as useful): initial resources, later full/section reads and decision reasons, blocked dependencies, repeated reads if observed, budget deviations and actual measured usage if available. Separate static byte estimate from runtime-reported tokens; do not reconstruct unobserved tool traces.
 
 Cross-module decisions (where material): noncomparable vs contradictory evidence, prerequisite IDs/conditions and actual reviewed assertions, held actions, independent urgent escalation and safe work, reopening triggers and owners.
+
+Delivery format (direct / decision brief / work package / incident update, where useful); summary of actual disposition, coverage and material blockers; supporting artifacts actually created or supplied. Use [delivery summary](delivery-summary.md) for a separate concise handoff if needed. No duplicate reporting merely to complete templates.

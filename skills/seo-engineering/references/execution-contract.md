@@ -36,7 +36,7 @@ Each material finding records ID, target, date, source/tool, exact scope, observ
 
 ## Verification and deliverable contract
 
-Record planned assertions before execution and actual status separately: pass, fail, blocked, not-run, N/A with justification. Missing tooling or permission is blocked, not N/A. Distinguish static output, browser/render, deployed HTTP, processed index and measured outcomes. Keep failures and limitations visible. Use templates/agent-run-record.md proportionately: scope/mode, references actually used, decision and alternatives, actual changes or no changes, evidence, test results, remaining risks, next action and measurement/rollback where applicable. Do not claim execution or success from plans, or guarantee indexing, rankings or revenue.
+Record planned assertions before execution and actual status separately: pass, fail, blocked, not-run, N/A with justification. Missing tooling or permission is blocked, not N/A. Distinguish static output, browser/render, deployed HTTP, processed index and measured outcomes. Keep failures and limitations visible. Use templates/agent-run-record.md proportionately. Lead with the actual decision/outcome and material blockers; a narrow explanation need not become a full report. For complex handoffs consult docs/01-foundations/deliverable-quality.md and optionally templates/delivery-summary.md. Keep scope, evidence, actual changes or no changes, tests, uncertainty, next action and rollback where relevant. Do not claim execution or success from plans, or guarantee indexing, rankings or revenue.
 
 ## Technical handoffs
 
