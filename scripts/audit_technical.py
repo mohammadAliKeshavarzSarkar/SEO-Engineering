@@ -13,7 +13,7 @@ else:
     import audit_crawl_evidence, audit_index_evidence, audit_migration, audit_metadata
     import audit_performance, prioritize_opportunities
 
-METHOD = 'T10-v1'
+METHOD = 'T10-v2'
 MODULES = {
     'T01': (inspect_architecture, inspect_architecture.summarize),
     'T02': (audit_rendering, audit_rendering.audit),
@@ -116,6 +116,10 @@ def group_signals(groups, signals):
     used,ids=set(),set()
     backlog=[]
     for g in groups:
+        if not isinstance(g,dict) or set(g)!={'id','scope','reviewer','rationale','owner','next_check',
+                                             'signal_ids','severity','fit','risk','confidence',
+                                             'impact','effort_days','depends_on'}:
+            raise ValueError('invalid reviewed group shape')
         ident=g['id']
         if not text(ident) or ident in ids or not all(text(g[k]) for k in
                 ('reviewer','scope','rationale','owner','next_check')):
@@ -134,7 +138,12 @@ def group_signals(groups, signals):
 
 
 def audit(data, artifact_root=None):
-    json.dumps(data,allow_nan=False)
+    # Validate the shared envelope before launching independent diagnostics.
+    # Invalid grouping contents are deliberately handled after native collection.
+    if not isinstance(data,dict) or set(data)!={'schema_version','scope','audit_id','context_ref',
+                                              'reviewed_revision','tasks','groups'}:
+        raise ValueError('invalid audit envelope fields')
+    manifest_hash=digest(data)  # Reject non-finite data or unencodable text before work.
     if data['schema_version']!='1' or not all(text(data[k]) for k in
             ('scope','audit_id','context_ref','reviewed_revision')):
         raise ValueError('invalid audit envelope')
@@ -142,6 +151,8 @@ def audit(data, artifact_root=None):
     if not isinstance(tasks,dict) or set(tasks)!=set(MODULES):
         raise ValueError('explicit task state required for each T01–T09')
     for key,task in tasks.items():
+        if not isinstance(task,dict) or set(task)!={'state','reason','input','input_ref'}:
+            raise ValueError('invalid task envelope fields')
         if task['state'] not in ('ready','blocked','not_applicable') or not text(task['reason']):
             raise ValueError('invalid task state or missing reason')
         if task['state']=='ready':
@@ -179,15 +190,25 @@ def audit(data, artifact_root=None):
                     found=get_signals(key,report,h,binding)
                     row.update(status='processed',native_report=report,report_sha256=h)
                     signals.extend(found)
-                except (ValueError,TypeError,KeyError,AttributeError,OSError,OverflowError,RecursionError) as exc:
+                except (ValueError,TypeError,KeyError,IndexError,AttributeError,OSError,OverflowError,RecursionError) as exc:
                     # Avoid leaking arbitrary contents from malformed input into logs.
                     row.update(status='failed',failure_type=type(exc).__name__)
         rows.append(row)
-    grouped=group_signals(data['groups'],signals)
+    grouping_status='not_requested' if data['groups']==[] else 'processed'
+    grouping_failure=None
+    try:
+        grouped=group_signals(data['groups'],signals)
+    except (ValueError,TypeError,KeyError,IndexError,AttributeError,OverflowError,RecursionError) as exc:
+        # Refuse the entire invalid reviewed grouping batch, not the native diagnostics.
+        # Do not echo malformed content, false priority, or a partial grouping.
+        grouping_status='rejected'
+        grouping_failure=type(exc).__name__
+        grouped=group_signals([],signals)
     counts={s:sum(r['status']==s for r in rows) for s in ('processed','blocked','not_applicable','failed')}
     return {'method':METHOD,'audit_id':data['audit_id'],'scope':data['scope'],
             'context_ref':data['context_ref'],'reviewed_revision':data['reviewed_revision'],
-            'manifest_sha256':digest(data),'modules':rows,'signals':signals,
+            'manifest_sha256':manifest_hash,'modules':rows,'signals':signals,
+            'grouping_status':grouping_status,'grouping_failure_type':grouping_failure,
             'coverage':{'module_counts':counts,'review_candidates':sum(s['kind']=='review_candidate' for s in signals),
                         'deferred_signals':sum(s['kind']=='deferred' for s in signals),
                         'escalation_candidate_ids':[s['id'] for s in signals if s['escalation_review']]},
@@ -215,7 +236,7 @@ def main():
         print('Audit coordination failed:',type(exc).__name__)
         return 1
     print('Offline audit report written; review required.')
-    return 2 if report['coverage']['module_counts']['failed'] else 0
+    return 2 if report['coverage']['module_counts']['failed'] or report['grouping_status']=='rejected' else 0
 
 
 if __name__=='__main__':

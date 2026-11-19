@@ -1,4 +1,7 @@
 import json
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 from scripts.audit_technical import audit, MODULES, digest
@@ -84,7 +87,10 @@ class TechnicalAuditTests(unittest.TestCase):
         self.assertEqual(len(r['ungrouped_candidate_ids']),r['coverage']['review_candidates'])
         ref=next(s['id'] for s in r['signals'] if s['kind']=='deferred')
         d['groups']=[group(ref)]
-        with self.assertRaises(ValueError): self.run_audit(d)
+        report=self.run_audit(d)
+        self.assertEqual(report['grouping_status'],'rejected')
+        self.assertEqual(report['groups'],[])
+        self.assertIsNone(report['triage'])
 
     def test_stale_duplicate_and_dependency_groups_rejected(self):
         d=fixture();r=self.run_audit(d)
@@ -92,7 +98,11 @@ class TechnicalAuditTests(unittest.TestCase):
         for groups in ([group('stale')],[group(ref),group(ref,id='other')],
                        [group(ref,depends_on=['absent'])]):
             d['groups']=groups
-            with self.assertRaises(ValueError): self.run_audit(d)
+            report=self.run_audit(d)
+            self.assertEqual(report['grouping_status'],'rejected')
+            self.assertEqual(report['groups'],[])
+            self.assertIsNone(report['triage'])
+            self.assertEqual(report['coverage']['module_counts']['processed'],9)
 
     def test_escalation_survives_grouping(self):
         d=fixture()
@@ -110,8 +120,60 @@ class TechnicalAuditTests(unittest.TestCase):
         signal=next(s for s in r['signals'] if s['id']==ref)
         d['tasks'][signal['module']]['input_ref']='fixture:changed-evidence-ref'
         d['groups']=[group(ref)]
-        with self.assertRaises(ValueError): self.run_audit(d)
+        self.assertEqual(self.run_audit(d)['grouping_status'],'rejected')
 
     def test_nonfinite_rejected(self):
         d=fixture();d['x']=float('nan')
         with self.assertRaises(ValueError): self.run_audit(d)
+
+    def test_invalid_grouping_does_not_erase_exposure_or_failed_module(self):
+        d=fixture()
+        d['tasks']['T01']['input']['routes'][0].update(expected='private',unauthorized_content_visible=True)
+        d['tasks']['T02']['input']={}
+        d['groups']=[group('expired-signal')]
+        r=self.run_audit(d)
+        self.assertEqual(r['grouping_status'],'rejected')
+        self.assertEqual(r['coverage']['module_counts']['failed'],1)
+        self.assertEqual(r['coverage']['module_counts']['processed'],8)
+        self.assertTrue(r['coverage']['escalation_candidate_ids'])
+        self.assertIsNotNone(r['modules'][0]['native_report'])
+        self.assertIsNone(r['triage'])
+        self.assertEqual(len(r['ungrouped_candidate_ids']),r['coverage']['review_candidates'])
+
+    def test_dependency_cycle_rejects_whole_grouping(self):
+        d=fixture(); r=self.run_audit(d)
+        ids=[s['id'] for s in r['signals'] if s['kind']=='review_candidate']
+        d['groups']=[group(ids[0],id='a',depends_on=['b']),group(ids[1],id='b',depends_on=['a'])]
+        out=self.run_audit(d)
+        self.assertEqual(out['grouping_status'],'rejected')
+        self.assertIsNone(out['triage'])
+        self.assertEqual(out['groups'],[])
+
+    def test_malformed_group_shapes_preserve_diagnostics(self):
+        for invalid in (None,{},[None],[{'id':'x'}]):
+            d=fixture();d['groups']=invalid
+            r=self.run_audit(d)
+            self.assertEqual(r['grouping_status'],'rejected')
+            self.assertEqual(r['coverage']['module_counts']['processed'],9)
+
+    def test_invalid_shared_envelope_is_rejected(self):
+        for data in (None,[],{},dict(fixture(), unexpected='not allowed')):
+            with self.assertRaises(ValueError):
+                self.run_audit(data)
+        d=fixture(); d['tasks']['T01']['extra']='not allowed'
+        with self.assertRaises(ValueError):
+            self.run_audit(d)
+
+    def test_cli_partial_report_exit_two_and_no_overwrite(self):
+        d=fixture();d['groups']=[group('stale')]
+        with tempfile.TemporaryDirectory() as tmp:
+            src=Path(tmp)/'input.json';dst=Path(tmp)/'out.json'
+            src.write_text(json.dumps(d))
+            cmd=[sys.executable,str(ROOT/'scripts/audit_technical.py'),'--input',str(src),'--output',str(dst),
+                 '--artifact-root',str(ROOT/'examples/spa-build/artifacts')]
+            r=subprocess.run(cmd,capture_output=True)
+            self.assertEqual(r.returncode,2,r.stderr)
+            self.assertEqual(json.loads(dst.read_bytes())['grouping_status'],'rejected')
+            original=dst.read_bytes()
+            self.assertEqual(subprocess.run(cmd,capture_output=True).returncode,1)
+            self.assertEqual(dst.read_bytes(),original)

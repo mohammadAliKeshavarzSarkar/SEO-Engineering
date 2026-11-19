@@ -15,6 +15,7 @@ def exact(value, keys):
 def string(value):
     if not isinstance(value, str) or not value.strip():
         raise ValueError("nonempty string required")
+    value.encode("utf-8")  # Reject lone surrogate code points in reviewed identifiers.
 
 
 def subject(value):

@@ -1,0 +1,946 @@
+{
+  "schema_version": "1",
+  "audit_id": "synthetic-T10",
+  "scope": "Composite synthetic exercises; not a single live site or shared route identity",
+  "context_ref": "fixture:independent-reviewed-projections",
+  "reviewed_revision": "synthetic-v1",
+  "tasks": {
+    "T01": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:architecture",
+      "input": {
+        "schema_version": "1",
+        "scope": "fictional site, one synthetic environment",
+        "declared_dependencies": {
+          "vite": "^7",
+          "react": "^19"
+        },
+        "routes": [
+          {
+            "id": "guide",
+            "expected": "private",
+            "declared_strategy": "unknown",
+            "status": 200,
+            "source_content": "present",
+            "rendered_content": "present",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": true,
+            "evidence_ref": "synthetic observation"
+          },
+          {
+            "id": "catalog",
+            "expected": "public",
+            "declared_strategy": "csr",
+            "status": 200,
+            "source_content": "absent",
+            "rendered_content": "present",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "synthetic observation"
+          },
+          {
+            "id": "missing",
+            "expected": "missing",
+            "declared_strategy": "unknown",
+            "status": 200,
+            "source_content": "absent",
+            "rendered_content": "absent",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "synthetic observation"
+          },
+          {
+            "id": "dashboard",
+            "expected": "private",
+            "declared_strategy": "unknown",
+            "status": 401,
+            "source_content": "unknown",
+            "rendered_content": "unknown",
+            "initial_noindex": false,
+            "rendered_noindex": false,
+            "unauthorized_content_visible": false,
+            "evidence_ref": "synthetic observation"
+          },
+          {
+            "id": "unknown-page",
+            "expected": "public",
+            "declared_strategy": "unknown",
+            "status": null,
+            "source_content": "unknown",
+            "rendered_content": "unknown",
+            "initial_noindex": null,
+            "rendered_noindex": null,
+            "unauthorized_content_visible": null,
+            "evidence_ref": "synthetic observation"
+          }
+        ]
+      }
+    },
+    "T02": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:rendering",
+      "input": {}
+    },
+    "T03": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:spa-build",
+      "input": {
+        "schema_version": "1",
+        "scope": "Synthetic route artifact plan; hand-authored not actual Vite output",
+        "routes": [
+          {
+            "id": "guide",
+            "url": "https://example.org/guide/",
+            "purpose": "acquisition",
+            "delivery": "prerendered",
+            "sitemap_expected": true,
+            "canonical_expected": "https://example.org/guide/",
+            "html_file": "guide/index.html",
+            "required_files": [
+              "guide/data.json"
+            ]
+          },
+          {
+            "id": "article",
+            "url": "https://example.org/blog/second/",
+            "purpose": "acquisition",
+            "delivery": "prerendered",
+            "sitemap_expected": true,
+            "canonical_expected": "https://example.org/blog/second/",
+            "html_file": "blog/second/index.html",
+            "required_files": []
+          },
+          {
+            "id": "app",
+            "url": "https://example.org/app/",
+            "purpose": "protected",
+            "delivery": "spa_shell",
+            "sitemap_expected": false,
+            "canonical_expected": null,
+            "html_file": "shell.html",
+            "required_files": []
+          },
+          {
+            "id": "missing",
+            "url": "https://example.org/missing/",
+            "purpose": "missing",
+            "delivery": "spa_shell",
+            "sitemap_expected": false,
+            "canonical_expected": null,
+            "html_file": "shell.html",
+            "required_files": []
+          },
+          {
+            "id": "dynamic",
+            "url": "https://example.org/catalog/",
+            "purpose": "acquisition",
+            "delivery": "runtime",
+            "sitemap_expected": true,
+            "canonical_expected": "https://example.org/catalog/",
+            "html_file": null,
+            "required_files": []
+          }
+        ]
+      }
+    },
+    "T04": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:next-delivery",
+      "input": {
+        "schema_version": "1",
+        "scope": "Synthetic reviewed Next.js plan and samples only",
+        "routes": [
+          {
+            "id": "guide",
+            "plan_ref": "fixture:plan-guide",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "runtime",
+            "strategy": "hybrid",
+            "purpose": "public",
+            "expected_context": "synthetic-public-en-release",
+            "required_features": [],
+            "expected_statuses": [
+              200
+            ],
+            "expected_content_revision": "content-v2",
+            "fresh_by": "2026-11-18T10:05:00Z",
+            "samples": [
+              {
+                "id": "S1",
+                "context_id": "synthetic-public-en-release",
+                "capture_status": "complete",
+                "evidence_ref": "fixture:S1",
+                "observed_at": "2026-11-18T10:04:00Z",
+                "http_status": 200,
+                "content_revision": "content-v1",
+                "private_payload_visible": null
+              },
+              {
+                "id": "S2",
+                "context_id": "synthetic-public-en-release",
+                "capture_status": "complete",
+                "evidence_ref": "fixture:S2",
+                "observed_at": "2026-11-18T10:06:00Z",
+                "http_status": 200,
+                "content_revision": "content-v1",
+                "private_payload_visible": null
+              },
+              {
+                "id": "S3",
+                "context_id": "synthetic-public-en-release",
+                "capture_status": "complete",
+                "evidence_ref": "fixture:S3",
+                "observed_at": "2026-11-18T10:07:00Z",
+                "http_status": 200,
+                "content_revision": "content-v2",
+                "private_payload_visible": null
+              }
+            ]
+          },
+          {
+            "id": "export",
+            "plan_ref": "fixture:plan-export",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "static_export",
+            "strategy": "isr",
+            "purpose": "public",
+            "expected_context": "synthetic-public-en-release",
+            "required_features": [
+              "isr",
+              "runtime_dynamic_paths"
+            ],
+            "expected_statuses": [
+              200
+            ],
+            "expected_content_revision": null,
+            "fresh_by": null,
+            "samples": []
+          },
+          {
+            "id": "uncertain",
+            "plan_ref": "fixture:plan-uncertain",
+            "next_major": 16,
+            "router": "app",
+            "cache_model": "app_cache_components",
+            "deployment": "runtime",
+            "strategy": "hybrid",
+            "purpose": "public",
+            "expected_context": "synthetic-public-en-release",
+            "required_features": [],
+            "expected_statuses": [
+              200
+            ],
+            "expected_content_revision": "content-v2",
+            "fresh_by": "2026-11-18T10:05:00Z",
+            "samples": [
+              {
+                "id": "S4",
+                "context_id": "different-release",
+                "capture_status": "complete",
+                "evidence_ref": "fixture:S4",
+                "observed_at": "2026-11-18T10:04:00Z",
+                "http_status": 200,
+                "content_revision": "content-v1",
+                "private_payload_visible": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "T05": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:crawl-evidence",
+      "input": {
+        "schema_version": "1",
+        "scope": "Synthetic bounded inventory, not an actual crawl",
+        "crawler_policy": "Reviewed synthetic Googlebot decision labels, not a matcher",
+        "coverage": "partial",
+        "stop_reason": "sample limit",
+        "urls": [
+          {
+            "id": "guide",
+            "purpose": "acquisition",
+            "index_intent": true,
+            "sitemap_member": true,
+            "canonical_self": true,
+            "noindex": false,
+            "critical_resource": false,
+            "inbound_link_observed": true,
+            "collection": "observed",
+            "http_status": 200,
+            "robots": "allowed",
+            "robots_ref": "fixture:rules",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "fixture:guide",
+            "discovery": [
+              "sitemap",
+              "link"
+            ]
+          },
+          {
+            "id": "blocked",
+            "purpose": "acquisition",
+            "index_intent": true,
+            "sitemap_member": true,
+            "canonical_self": true,
+            "noindex": true,
+            "critical_resource": false,
+            "inbound_link_observed": true,
+            "collection": "observed",
+            "http_status": 200,
+            "robots": "disallowed",
+            "robots_ref": "fixture:rules",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "fixture:separate-authorized-source",
+            "discovery": [
+              "sitemap",
+              "link"
+            ]
+          },
+          {
+            "id": "redirect",
+            "purpose": "redirect",
+            "index_intent": false,
+            "sitemap_member": true,
+            "canonical_self": null,
+            "noindex": null,
+            "critical_resource": false,
+            "inbound_link_observed": true,
+            "collection": "observed",
+            "http_status": 301,
+            "robots": "allowed",
+            "robots_ref": "fixture:rules",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "fixture:redirect",
+            "discovery": [
+              "sitemap",
+              "link"
+            ]
+          },
+          {
+            "id": "undiscovered",
+            "purpose": "acquisition",
+            "index_intent": true,
+            "sitemap_member": true,
+            "canonical_self": null,
+            "noindex": null,
+            "critical_resource": false,
+            "inbound_link_observed": false,
+            "collection": "not_attempted",
+            "http_status": null,
+            "robots": "unknown",
+            "robots_ref": null,
+            "robots_agent": null,
+            "evidence_ref": "fixture:registry",
+            "discovery": [
+              "registry"
+            ]
+          },
+          {
+            "id": "resource",
+            "purpose": "utility",
+            "index_intent": false,
+            "sitemap_member": false,
+            "canonical_self": null,
+            "noindex": null,
+            "critical_resource": true,
+            "inbound_link_observed": true,
+            "collection": "excluded",
+            "http_status": null,
+            "robots": "disallowed",
+            "robots_ref": "fixture:rules",
+            "robots_agent": "Googlebot",
+            "evidence_ref": "fixture:resource-dependency",
+            "discovery": [
+              "other"
+            ]
+          }
+        ]
+      }
+    },
+    "T06": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:index-evidence",
+      "input": {
+        "schema_version": "1",
+        "scope": "Synthetic local review, not actual search data",
+        "urls": [
+          {
+            "id": "guide",
+            "url": "https://example.org/guide/",
+            "intent": "representative",
+            "preferred_url": "https://example.org/guide/",
+            "changed_at": "2026-11-17T00:00:00Z",
+            "current": {
+              "status": "complete",
+              "evidence_ref": "fixture:guide",
+              "observed_at": "2026-11-18T10:00:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": false,
+              "sitemap_member": true,
+              "source_canonicals": [
+                "https://example.org/guide/"
+              ],
+              "header_canonicals": [],
+              "rendered_canonicals": [
+                "https://example.org/guide/"
+              ]
+            },
+            "processed": {
+              "evidence_ref": "fixture:historical",
+              "property": "sc-domain:example.org",
+              "retrieved_at": "2026-11-18T10:10:00Z",
+              "last_crawl_at": "2026-11-16T00:00:00Z",
+              "state": "not_indexed",
+              "user_canonical": "https://example.org/guide/",
+              "selected_canonical": "https://example.org/guide/?view=print"
+            }
+          },
+          {
+            "id": "print",
+            "url": "https://example.org/guide/?view=print",
+            "intent": "duplicate",
+            "preferred_url": "https://example.org/guide/",
+            "changed_at": "2026-11-17T00:00:00Z",
+            "current": {
+              "status": "complete",
+              "evidence_ref": "fixture:print",
+              "observed_at": "2026-11-18T10:00:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": false,
+              "sitemap_member": false,
+              "source_canonicals": [
+                "https://example.org/guide/"
+              ],
+              "header_canonicals": [
+                "https://example.org/guide/?view=print"
+              ],
+              "rendered_canonicals": [
+                "https://example.org/guide/"
+              ]
+            },
+            "processed": null
+          },
+          {
+            "id": "other",
+            "url": "https://example.org/other/",
+            "intent": "representative",
+            "preferred_url": "https://example.org/other/",
+            "changed_at": "2026-11-17T00:00:00Z",
+            "current": {
+              "status": "partial",
+              "evidence_ref": "fixture:other",
+              "observed_at": "2026-11-18T10:00:00Z",
+              "http_status": 200,
+              "robots": "allowed",
+              "http_noindex": false,
+              "initial_noindex": false,
+              "rendered_noindex": null,
+              "sitemap_member": true,
+              "source_canonicals": [],
+              "header_canonicals": [],
+              "rendered_canonicals": null
+            },
+            "processed": null
+          }
+        ]
+      }
+    },
+    "T07": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:migration",
+      "input": {
+        "schema_version": "1",
+        "scope": "Synthetic reviewed migration map and traces, not live requests",
+        "policy_version": "fixture-1",
+        "allowed_origins": [
+          "https://old.example.org",
+          "https://new.example.org"
+        ],
+        "routes": [
+          {
+            "id": "guide",
+            "old_url": "https://old.example.org/guide/",
+            "target_url": "https://new.example.org/guide/",
+            "action": "permanent_redirect",
+            "plan_ref": "fixture:plan-guide",
+            "replacement_reviewed": true,
+            "terminal_statuses": [
+              200
+            ],
+            "trace": {
+              "status": "complete",
+              "context_matched": true,
+              "evidence_ref": "fixture:trace-guide",
+              "transactions": [
+                {
+                  "url": "https://old.example.org/guide/",
+                  "status": 301,
+                  "resolved_location": "https://new.example.org/guide/",
+                  "evidence_ref": "fixture:https://old.example.org/guide/"
+                },
+                {
+                  "url": "https://new.example.org/guide/",
+                  "status": 200,
+                  "resolved_location": null,
+                  "evidence_ref": "fixture:https://new.example.org/guide/"
+                }
+              ]
+            }
+          },
+          {
+            "id": "catalog",
+            "old_url": "https://old.example.org/catalog/?size=large",
+            "target_url": "https://new.example.org/catalog/?size=large",
+            "action": "permanent_redirect",
+            "plan_ref": "fixture:plan-catalog",
+            "replacement_reviewed": true,
+            "terminal_statuses": [
+              200
+            ],
+            "trace": {
+              "status": "complete",
+              "context_matched": true,
+              "evidence_ref": "fixture:trace-catalog",
+              "transactions": [
+                {
+                  "url": "https://old.example.org/catalog/?size=large",
+                  "status": 301,
+                  "resolved_location": "https://new.example.org/catalog/",
+                  "evidence_ref": "fixture:https://old.example.org/catalog/?size=large"
+                },
+                {
+                  "url": "https://new.example.org/catalog/",
+                  "status": 200,
+                  "resolved_location": null,
+                  "evidence_ref": "fixture:https://new.example.org/catalog/"
+                }
+              ]
+            }
+          },
+          {
+            "id": "partial",
+            "old_url": "https://old.example.org/article/",
+            "target_url": "https://new.example.org/article/",
+            "action": "permanent_redirect",
+            "plan_ref": "fixture:plan-partial",
+            "replacement_reviewed": true,
+            "terminal_statuses": [
+              200
+            ],
+            "trace": {
+              "status": "partial",
+              "context_matched": true,
+              "evidence_ref": "fixture:partial",
+              "transactions": [
+                {
+                  "url": "https://old.example.org/article/",
+                  "status": 301,
+                  "resolved_location": "https://new.example.org/article/",
+                  "evidence_ref": "fixture:https://old.example.org/article/"
+                }
+              ]
+            }
+          },
+          {
+            "id": "retired",
+            "old_url": "https://old.example.org/retired/",
+            "target_url": null,
+            "action": "remove",
+            "plan_ref": "fixture:plan-retired",
+            "replacement_reviewed": null,
+            "terminal_statuses": [
+              404,
+              410
+            ],
+            "trace": {
+              "status": "complete",
+              "context_matched": true,
+              "evidence_ref": "fixture:trace-retired",
+              "transactions": [
+                {
+                  "url": "https://old.example.org/retired/",
+                  "status": 410,
+                  "resolved_location": null,
+                  "evidence_ref": "fixture:https://old.example.org/retired/"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "T08": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:metadata",
+      "input": {
+        "schema_version": "1",
+        "scope": "Synthetic public metadata facts and supplied capture strings, not real website",
+        "pages": [
+          {
+            "id": "guide",
+            "expected_context": "fixture:context",
+            "plan": {
+              "reviewed": true,
+              "facts_ref": "fixture:public-facts",
+              "title": "راهنمای انتخاب صندلی",
+              "description": "راهنمای بررسی ابعاد و تناسب صندلی.",
+              "share_title": "راهنمای صندلی",
+              "share_description": "بررسی ابعاد و تناسب",
+              "locale": "fa",
+              "canonical": "https://example.org/fa/راهنما/",
+              "share_image": "https://example.org/img/chair.jpg",
+              "article": {
+                "type": "BlogPosting",
+                "headline": "راهنمای انتخاب صندلی",
+                "author_type": "Organization",
+                "author_name": "Example",
+                "image": "https://example.org/img/chair.jpg",
+                "date_published": "2026-11-17",
+                "date_modified": null,
+                "facts_ref": "fixture:article"
+              }
+            },
+            "source": {
+              "status": "complete",
+              "context_id": "fixture:context",
+              "evidence_ref": "fixture:source",
+              "metadata": {
+                "title": [
+                  "راهنمای انتخاب صندلی"
+                ],
+                "description": [
+                  "راهنمای بررسی ابعاد و تناسب صندلی."
+                ],
+                "canonical": [
+                  "https://example.org/fa/راهنما/"
+                ],
+                "og:title": [
+                  "راهنمای صندلی"
+                ],
+                "og:description": [
+                  "بررسی ابعاد و تناسب"
+                ],
+                "og:type": [
+                  "article"
+                ],
+                "og:url": [
+                  "https://example.org/fa/راهنما/"
+                ],
+                "og:image": [
+                  "https://example.org/img/chair.jpg"
+                ]
+              },
+              "jsonld_blocks": [
+                "{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"@id\":\"https://example.org/fa/راهنما/#article\",\"mainEntityOfPage\":\"https://example.org/fa/راهنما/\",\"headline\":\"راهنمای انتخاب صندلی\",\"image\":\"https://example.org/img/chair.jpg\",\"datePublished\":\"2026-11-17\",\"author\":{\"@type\":\"Organization\",\"name\":\"Example\"},\"inLanguage\":\"fa\"}"
+              ]
+            },
+            "rendered": {
+              "status": "complete",
+              "context_id": "fixture:context",
+              "evidence_ref": "fixture:rendered",
+              "metadata": {
+                "title": [
+                  "راهنمای انتخاب صندلی"
+                ],
+                "description": [
+                  "راهنمای بررسی ابعاد و تناسب صندلی."
+                ],
+                "canonical": [
+                  "https://example.org/fa/راهنما/"
+                ],
+                "og:title": [
+                  "راهنمای صندلی"
+                ],
+                "og:description": [
+                  "بررسی ابعاد و تناسب"
+                ],
+                "og:type": [
+                  "article"
+                ],
+                "og:url": [
+                  "https://example.org/fa/راهنما/"
+                ],
+                "og:image": [
+                  "https://example.org/img/chair.jpg"
+                ]
+              },
+              "jsonld_blocks": [
+                "{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"@id\":\"https://example.org/fa/راهنما/#article\",\"mainEntityOfPage\":\"https://example.org/fa/راهنما/\",\"headline\":\"راهنمای انتخاب صندلی\",\"image\":\"https://example.org/img/chair.jpg\",\"datePublished\":\"2026-11-17\",\"author\":{\"@type\":\"Organization\",\"name\":\"Example\"},\"inLanguage\":\"fa\"}"
+              ]
+            }
+          },
+          {
+            "id": "second",
+            "expected_context": "fixture:context",
+            "plan": {
+              "reviewed": true,
+              "facts_ref": "fixture:public-facts",
+              "title": "راهنمای دوم",
+              "description": "راهنمای بررسی ابعاد و تناسب صندلی.",
+              "share_title": "راهنمای صندلی",
+              "share_description": "بررسی ابعاد و تناسب",
+              "locale": "fa",
+              "canonical": "https://example.org/fa/دوم/",
+              "share_image": "https://example.org/img/chair.jpg",
+              "article": {
+                "type": "BlogPosting",
+                "headline": "راهنمای انتخاب صندلی",
+                "author_type": "Organization",
+                "author_name": "Example",
+                "image": "https://example.org/img/chair.jpg",
+                "date_published": "2026-11-17",
+                "date_modified": null,
+                "facts_ref": "fixture:article"
+              }
+            },
+            "source": {
+              "status": "complete",
+              "context_id": "fixture:context",
+              "evidence_ref": "fixture:conflict",
+              "metadata": {
+                "title": [
+                  "Generic title"
+                ],
+                "description": [
+                  "راهنمای بررسی ابعاد و تناسب صندلی."
+                ],
+                "canonical": [
+                  "https://example.org/fa/دوم/",
+                  "https://example.org/fa/راهنما/"
+                ],
+                "og:title": [
+                  "راهنمای صندلی"
+                ],
+                "og:description": [
+                  "بررسی ابعاد و تناسب"
+                ],
+                "og:type": [
+                  "article"
+                ],
+                "og:url": [
+                  "https://example.org/fa/راهنما/"
+                ],
+                "og:image": [
+                  "https://example.org/img/chair.jpg"
+                ]
+              },
+              "jsonld_blocks": [
+                "{"
+              ]
+            },
+            "rendered": {
+              "status": "not_collected",
+              "context_id": "fixture:context",
+              "evidence_ref": null,
+              "metadata": {
+                "title": null,
+                "description": null,
+                "canonical": null,
+                "og:title": null,
+                "og:description": null,
+                "og:type": null,
+                "og:url": null,
+                "og:image": null
+              },
+              "jsonld_blocks": null
+            }
+          }
+        ]
+      }
+    },
+    "T09": {
+      "state": "ready",
+      "reason": "Exercise existing independent synthetic utility fixture",
+      "input_ref": "fixture:performance",
+      "input": {
+        "schema_version": "1",
+        "scope": "Hand-authored synthetic evidence, no actual performance measurements",
+        "field": [
+          {
+            "id": "field-origin",
+            "source": "crux",
+            "level": "origin",
+            "subject": "https://example.org",
+            "device": "mobile",
+            "start": "2026-10-21",
+            "end": "2026-11-17",
+            "method": "synthetic p75",
+            "evidence_ref": "fixture:origin",
+            "p75": {
+              "lcp_ms": 3200,
+              "inp_ms": null,
+              "cls": 0.08
+            }
+          }
+        ],
+        "lab": [
+          {
+            "id": "guide-lcp",
+            "metric": "lcp_ms",
+            "expected_profile": "fixed-mobile-cold-navigation",
+            "baseline_revision": "old",
+            "candidate_revision": "new",
+            "minimum_runs": 3,
+            "allowed_regression": 100,
+            "baseline": [
+              {
+                "id": "old0",
+                "revision": "old",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 3100,
+                "evidence_ref": "fixture:old0"
+              },
+              {
+                "id": "old1",
+                "revision": "old",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 3200,
+                "evidence_ref": "fixture:old1"
+              },
+              {
+                "id": "old2",
+                "revision": "old",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 3300,
+                "evidence_ref": "fixture:old2"
+              }
+            ],
+            "candidate": [
+              {
+                "id": "new0",
+                "revision": "new",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 2200,
+                "evidence_ref": "fixture:new0"
+              },
+              {
+                "id": "new1",
+                "revision": "new",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 2300,
+                "evidence_ref": "fixture:new1"
+              },
+              {
+                "id": "new2",
+                "revision": "new",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 2400,
+                "evidence_ref": "fixture:new2"
+              }
+            ]
+          },
+          {
+            "id": "mismatched",
+            "metric": "lcp_ms",
+            "expected_profile": "fixed-mobile-cold-navigation",
+            "baseline_revision": "old",
+            "candidate_revision": "new",
+            "minimum_runs": 3,
+            "allowed_regression": 100,
+            "baseline": [
+              {
+                "id": "old0",
+                "revision": "old",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 3100,
+                "evidence_ref": "fixture:old0"
+              },
+              {
+                "id": "old1",
+                "revision": "old",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 3200,
+                "evidence_ref": "fixture:old1"
+              },
+              {
+                "id": "old2",
+                "revision": "old",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 3300,
+                "evidence_ref": "fixture:old2"
+              }
+            ],
+            "candidate": [
+              {
+                "id": "new0",
+                "revision": "new",
+                "profile": "other",
+                "status": "complete",
+                "value": 2200,
+                "evidence_ref": "fixture:new0"
+              },
+              {
+                "id": "new1",
+                "revision": "new",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 2300,
+                "evidence_ref": "fixture:new1"
+              },
+              {
+                "id": "new2",
+                "revision": "new",
+                "profile": "fixed-mobile-cold-navigation",
+                "status": "complete",
+                "value": 2400,
+                "evidence_ref": "fixture:new2"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "groups": [
+    {
+      "id": "expired-fictional-group",
+      "scope": "synthetic",
+      "reviewer": "synthetic",
+      "rationale": "synthetic",
+      "owner": "synthetic",
+      "next_check": "review current evidence",
+      "signal_ids": [
+        "expired-synthetic-signal"
+      ],
+      "severity": "P0",
+      "fit": "eligible",
+      "risk": "high",
+      "confidence": "high",
+      "impact": null,
+      "effort_days": null,
+      "depends_on": []
+    }
+  ]
+}

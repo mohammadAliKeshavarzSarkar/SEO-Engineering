@@ -43,14 +43,20 @@ def main():
         run(label + ': HTML intentional failure', root, ['scripts/audit_html.py','--manifest','examples/routes-failing.json','--root','examples/site'], 1)
         run(label + ': audit_spa_build.py', root, ['scripts/audit_spa_build.py','--input','examples/spa-build/sample.json','--root','examples/spa-build/artifacts','--output',str(out / (label + '-audit_spa_build.py.json'))])
         run(label + ': audit_technical.py', root, ['scripts/audit_technical.py','--input','examples/technical-audit/sample.json','--artifact-root','examples/spa-build/artifacts','--output',str(out / (label + '-audit_technical.py.json'))])
+        run(label + ': audit_technical adverse', root, ['scripts/audit_technical.py','--input','examples/technical-audit/adverse.json','--artifact-root','examples/spa-build/artifacts','--output',str(out / (label + '-audit_technical_adverse.json'))],2)
         for script, fixture in FIXTURES:
             run(label + ': ' + script, root, ['scripts/' + script,'--input',fixture,'--output',str(out / (label + '-' + script + '.json'))])
 
     def semantic_smoke(label, work):
         # Parity is not correctness: assert expected meaning in both layouts.
         cases = (
-            ('audit_technical.py', lambda r: r['coverage']['module_counts']['processed'] == 9
+            ('audit_technical.py', lambda r: r['method'] == 'T10-v2'
+             and r['grouping_status'] == 'not_requested' and r['coverage']['module_counts']['processed'] == 9
              and r['review_required'] is True and r['authorization_required'] is True),
+            ('audit_technical_adverse.json', lambda r: r['grouping_status'] == 'rejected'
+             and r['coverage']['module_counts']['failed'] == 1
+             and r['coverage']['module_counts']['processed'] == 8
+             and bool(r['coverage']['escalation_candidate_ids']) and r['triage'] is None),
             ('review_release_gates.py', lambda r: r['method'] == 'T11-v2'
              and r['disposition'] == 'review_optional' and r['deployment_authorized'] is False
              and r['optional_review'] == ['field-performance']),
@@ -62,7 +68,7 @@ def main():
         )
         for name, expectation in cases:
             try:
-                report = json.loads((work / (label + '-' + name + '.json')).read_bytes())
+                report = json.loads((work / (label + '-' + name + ('' if name.endswith('.json') else '.json'))).read_bytes())
                 ok = bool(expectation(report))
             except (OSError, ValueError, TypeError, KeyError, IndexError):
                 ok = False
@@ -94,7 +100,7 @@ def main():
                 results.append({'check':'archive structure','pass':True})
                 smoke(library, 'package', work)
                 semantic_smoke('package', work)
-                for script in [name for name, _ in FIXTURES] + ['audit_spa_build.py', 'audit_technical.py']:
+                for script in [name for name, _ in FIXTURES] + ['audit_spa_build.py', 'audit_technical.py', 'audit_technical_adverse']:
                     left, right = [work / (label + '-' + script + '.json') for label in ('repo','package')]
                     equal = left.is_file() and right.is_file() and left.read_bytes() == right.read_bytes()
                     results.append({'check':'fixture parity: '+script,'pass':equal})

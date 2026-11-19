@@ -14,7 +14,7 @@ Status: TS01 reviewed internal architecture. This is a procedural integration co
 ## Preserve distinct axes
 
 - Observation completeness (complete/partial/unknown or native equivalent) and context match are not the same as issue severity.
-- T10 processed/blocked/failed/not_applicable describes execution; processed is not pass. Native deferred flags remain unknown. T10 grouping validation errors require rerunning without rejected groups to recover native output; do not silently reuse stale groups.
+- T10 processed/blocked/failed/not_applicable describes execution; processed is not pass. Native deferred flags remain unknown. T10-v2 preserves native output even when grouping is rejected; inspect grouping_status and independent escalation. Correct rejected groups in a fresh reviewed run; do not silently reuse stale groups.
 - Review candidate is not confirmed defect; human review establishes expectations, relevance, affected scope and decision.
 - Required gate pass/fail/incomplete/missing/stale and optional gaps are T11 dispositions under reviewed policy, not site-wide health. Exposure is escalated independently when reported.
 - T12 support_only/refute_only/conflicting/unresolved are descriptions of assessed evidence, not causal inference. Technical recovery review is not incident closure.
