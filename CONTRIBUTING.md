@@ -1,3 +1,5 @@
 # Contributing
 
 Use small branches and reviewable commits. Record why a guideline changes with primary-source URL and date, distinction between policy and recommendation, applicability and validation. Examples must use fictitious or approved public data. Keep private audits, personal data, logs and credentials outside Git. Do not invent authorship, claim guaranteed rankings, copy third-party text or add unsupported feature claims. Update README navigation and CHANGELOG when adding modules. Run documentation checks and unit tests. Review output before committing; no license is assumed. The owner decides licensing and publication policy.
+
+Before accepting changes for distribution, record actual provenance, permission for intended reuse, applicable third-party notices and source-review evidence. Do not claim that a contribution transfers copyright or is licensed automatically when no project license has been assigned. Follow the [pending ownership and distribution framework](operations/ts05-governance.md). An owner decision on licensing and contribution terms is required; do not add a license, approval or legal attestation on another person's behalf.

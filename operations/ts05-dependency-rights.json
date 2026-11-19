@@ -1,0 +1,141 @@
+{
+  "source_commit": "7c1649419205fccc69a568d69fc49d8cb5c11558",
+  "source_file": "interop/requirements-compatibility.txt",
+  "inventory_kind": "declared_version_lock_not_SBOM",
+  "license_review": "pending",
+  "included_in_portable_archive": false,
+  "dependencies": [
+    {
+      "dependency": "arrow",
+      "version": "1.4.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "attrs",
+      "version": "26.1.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "fqdn",
+      "version": "1.6.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "idna",
+      "version": "3.20",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "isoduration",
+      "version": "20.11.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "jsonpointer",
+      "version": "3.12",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "jsonschema[format]",
+      "version": "4.23.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "python-dateutil",
+      "version": "4.0.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "referencing",
+      "version": "0.37.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "rfc3339-validator",
+      "version": "0.1.4",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "rfc3987",
+      "version": "1.3.8",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "rpds-py",
+      "version": "2026.9.1",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "six",
+      "version": "1.17.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "typing-extensions",
+      "version": "4.16.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "tzdata",
+      "version": "2026.6",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "uri-template",
+      "version": "1.3.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    },
+    {
+      "dependency": "webcolors",
+      "version": "25.10.0",
+      "scope": "optional_comparison_environment",
+      "license_verification": "pending",
+      "redistribution": "not_approved"
+    }
+  ],
+  "other_dependencies": [
+    "Python runtime and standard library: independently installed",
+    "Pinned WebsiteBotScroll checkout and pnpm lock dependencies: upstream review required",
+    "Hosted CI actions and agent runtimes: review separately if redistributed"
+  ],
+  "notes": "No dependency license inferred from name, version, package metadata or usage. Installing for CI does not grant redistribution rights. Do not bundle dependency code or upstream fixture files without exact-version rights review."
+}
