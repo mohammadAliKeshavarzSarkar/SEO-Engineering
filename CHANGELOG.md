@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- TS04.2: local source-matched trial stager, evaluation-subtree omission, fixed-path artifact-byte checks, all-slot initial ledger, reviewer agreement report and ten synthetic regression methods; offline paired workspace smoke. No actual independent sessions or grades.
+
 - TS04: maintainer-only controlled pilot scheduler, complete execution ledger, blind review packet and hash-declaration-bound grading, 16-case public pilot and ten synthetic controller tests. No actual model sessions or independent grades; held-out gate remains open.
 
 - TS03: installed-directory source comparison, conservative portable path/name checks, nine new regression methods, stronger independent project offline relocation checks (research/T10 adverse/T11/T12, target sentinel and installed integrity), Cursor/Codex placement sources. Corrected TS02 exact CI passed (255 tests, 212 source-matched files); TS03 exact CI separate. External agent activation, privacy review and distribution approval pending.

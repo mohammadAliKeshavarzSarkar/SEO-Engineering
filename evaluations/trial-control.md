@@ -25,3 +25,7 @@ python3 scripts/control_benchmark.py finalize --suite evaluations/cases.json --c
 
 No API credentials or autonomous inference; no external agent sessions accessible in current authoring environment. No efficacy claim until actually run. Initial pilot results must not be pooled with independent holdout. Define a practical meaningful improvement and guardrails before launch, review paired regressions even if average improves, and avoid tuning on held-out material. Actual external activation, privacy, source review and owner approval remain separate.
 
+
+## TS04.2 execution preparation
+
+Use [pilot execution](pilot-execution.md) for the actual workspace stager, fixed-path artifact-byte checks, initial ledger, independent reviewer agreement and the stronger blind/finalize wrappers. The original controller remains useful for metadata-only tests; those alone do not verify file content or actual sessions. No agent execution or grading yet.

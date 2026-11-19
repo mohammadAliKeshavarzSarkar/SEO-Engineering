@@ -89,6 +89,43 @@ jobs:
           set -euo pipefail
           python3 scripts/score_benchmark.py prepare --suite evaluations/cases.json --config evaluations/benchmark-config.example.json --out "$RUNNER_TEMP/benchmark-plan.json"
           python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); assert len(p["tasks"]) == 258; assert all(set(t)=={"case_id","repeat","prompt"} for t in p["tasks"])' "$RUNNER_TEMP/benchmark-plan.json"
+      - name: Stage paired public pilot workspaces (no model calls)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B - "$RUNNER_TEMP" "$GITHUB_SHA" <<'PY'
+          import json, sys
+          from pathlib import Path
+          from scripts.control_benchmark import schedule, fingerprint
+          from scripts.prepare_trial import stage, initial_ledger, check_artifacts
+          from scripts.verify_package import digest
+          tmp=Path(sys.argv[1]); root=Path.cwd()
+          suite=json.loads((root/"evaluations/cases.json").read_bytes())
+          cohort=json.loads((root/"evaluations/public-pilot.json").read_bytes())
+          archive=tmp/"seo-a.zip"
+          context=tmp/"pilot-context.txt";context.write_text("Fictional CI workspace; no actual model run",encoding="utf-8")
+          cfg=dict(model="synthetic CI not an actual model",runtime="offline fixture",inference_settings="none",
+            tool_config="none",permission_mode="read-only",skill_commit=sys.argv[2],
+            archive_sha256=digest(archive.read_bytes()),launch_protocol="synthetic local staging",
+            review_protocol="none in CI",suite_kind="public_regression",repeats=1,treatment="complete_toolkit",
+            task_context_sha256=digest(context.read_bytes()),seed=41926,budget="equal offline",
+            rubric_access_policy="omit evaluation subtree",candidate_variant="rubric_restricted")
+          control=schedule(suite,cfg,cohort["case_ids"])
+          assert len(control["slots"])==32
+          pair=control["slots"][:2]
+          receipts={s["arm"]:stage(root,suite,control,s["blind_id"],archive,context,tmp/("pilot-"+s["arm"])) for s in pair}
+          baseline,skill=receipts["baseline"],receipts["skill"]
+          assert set(baseline["installed_files"])=={"context.txt"}
+          assert baseline["context_sha256"]==skill["context_sha256"]
+          assert any(x.endswith("/evaluations/cases.json") for x in skill["omitted_archive_paths"])
+          assert not any("/evaluations/" in x for x in skill["installed_files"])
+          assert ".agents/skills/seo-engineering/SKILL.md" in skill["installed_files"]
+          ledger=initial_ledger(control)
+          assert all(x["status"]=="not_started" for x in ledger["runs"])
+          artifacts=tmp/"pilot-artifacts";artifacts.mkdir()
+          assert check_artifacts(control,ledger,artifacts)["verified_artifacts"]==[]
+          print("TS04 pilot: 32 planned slots, two staged workspaces; zero agent executions")
+          PY
       - name: Verify development version in source and archive
         shell: bash
         run: |

@@ -43,3 +43,5 @@ T11 adds E79–E82 (staging policy, stale evidence, production regression and in
 T12 adds E83–E86 (demand and reporting confounds, technical versus search recovery, conflicting hypothesis evidence, exposure and recovery risk). Current 86-case suite at three repeats plans 258 matched pairs / 516 individual runs; none independently executed.
 
 TS04 adds [trial control](trial-control.md) and a fixed 16-case public pilot (32 planned sessions). No actual agent execution or independent scoring yet. The full 86-case suite and private independent holdout remain separate.
+
+TS04.2 adds [pilot workspace preparation](pilot-execution.md) and actual local artifact-byte checks for supplied records. No independent behavioral results.
