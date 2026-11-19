@@ -57,3 +57,5 @@ This is a maintained initial edition, not an assertion that every platform polic
 Maintainers: use the [distribution privacy pre-review](operations/ts05-distribution-review.md) to review both the source-matched package and current public tracked content. The pre-review is not approval. See the [runtime pilot launch guide](operations/ts04-runtime-launch.md) for the separate actual agent evaluation.
 
 Maintainers: see the [TS05 ownership and distribution decision framework](operations/ts05-governance.md) for the pending rights inventory, owner decision and proposed release channels. No new license, distribution permission or stable readiness is asserted.
+
+Maintainer checkpoint: [consolidated TS05 candidate acceptance](operations/ts05-candidate-acceptance.md) records the exact tested development snapshot and remaining mandatory gates. This is a held review checkpoint, not a release approval or a new distribution version.
