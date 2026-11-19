@@ -105,3 +105,7 @@ Maintainer-only `scripts/score_benchmark.py` prepares prompt tasks from a frozen
 TS01 contract revision: T11/T12 accept schema v2 only. Gate evidence includes exact scope/policy/gate/assertion binding; incident recovery evidence includes assertion/outcome binding. Existing v1 inputs require reviewed migration; no automatic conversion. The repository release verifier checks expected semantic outputs in both repository and portable smoke in addition to output parity.
 
 TS02: T10-v2 retains native output and independent escalation references after reviewed grouping rejection; inspect grouping_status before using R08 triage. No automatic promotion from T10 to T11 or T12. Cross-module synthetic regression tests expressly construct reviewed local evidence, never generate a pass from diagnostic processing.
+
+## TS03 installed skill verification (maintainer only)
+
+The source-checkout command `python3 scripts/verify_package.py --archive skill.zip --installed '/path/to/project/.agents/skills/seo-engineering' --report installed-receipt.json` verifies source-matched ZIP and then exact installed membership and bytes. Use a fresh trusted installation; do not auto-delete extra files. It does not test model loading, scan private contents or authorize distribution. See [portable acceptance](../docs/01-foundations/portable-skill-acceptance.md).

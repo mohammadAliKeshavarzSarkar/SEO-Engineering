@@ -47,13 +47,42 @@ jobs:
         run: |
           set -euo pipefail
           project="$RUNNER_TEMP/seo installation smoke"
-          mkdir -p "$project/.agents/skills"
+          mkdir -p "$project/.agents/skills" "$project/private"
+          printf 'synthetic target; leave unchanged\n' > "$project/index.html"
+          cp "$project/index.html" "$RUNNER_TEMP/target-before.html"
           python3 -m zipfile -e "$RUNNER_TEMP/seo-a.zip" "$project/.agents/skills"
+          installed="$project/.agents/skills/seo-engineering"
+          lib="$installed/references/library"
+          python3 -B scripts/verify_package.py --archive "$RUNNER_TEMP/seo-a.zip" --installed "$installed" --report "$RUNNER_TEMP/install-before.json"
           cd "$project"
-          lib="$project/.agents/skills/seo-engineering/references/library"
-          python3 "$lib/scripts/check_docs.py"
-          python3 "$lib/scripts/validate_research.py" --input "$lib/examples/research-handoff/sample.json" --output "$RUNNER_TEMP/relocated-handoff.json"
-          test -f "$project/.agents/skills/seo-engineering/SKILL.md"
+          # Ignore PYTHONPATH, user site and bytecode writes into the verified installation.
+          python3 -E -s -B "$lib/scripts/check_docs.py"
+          python3 -E -s -B "$lib/scripts/validate_research.py" --input "$lib/examples/research-handoff/sample.json" --output private/research.json
+          status=0
+          python3 -E -s -B "$lib/scripts/audit_technical.py" --input "$lib/examples/technical-audit/adverse.json" --artifact-root "$lib/examples/spa-build/artifacts" --output private/audit.json || status=$?
+          test "$status" = 2
+          python3 -E -s -B "$lib/scripts/review_release_gates.py" --input "$lib/examples/deployment-regression/sample.json" --output private/release.json
+          python3 -E -s -B "$lib/scripts/review_incident.py" --input "$lib/examples/technical-incident/sample.json" --output private/incident.json
+          python3 -E -s -B - <<'PY'
+          import json
+          from pathlib import Path
+          def load(name):
+              return json.loads(Path("private", name + ".json").read_bytes())
+          audit, release, incident = map(load, ("audit", "release", "incident"))
+          assert audit["grouping_status"] == "rejected"
+          assert audit["coverage"]["module_counts"]["failed"] == 1
+          assert audit["coverage"]["module_counts"]["processed"] == 8
+          assert audit["coverage"]["escalation_candidate_ids"] and audit["triage"] is None
+          assert release["disposition"] == "review_optional" and not release["deployment_authorized"]
+          assert incident["disposition"] == "investigate" and not incident["incident_closed"]
+          assert not incident["search_recovery_established"]
+          assert {p.name for p in Path("private").iterdir()} == {"research.json", "audit.json", "release.json", "incident.json"}
+          assert {p.name for p in Path(".").iterdir()} == {".agents", "private", "index.html"}
+          PY
+          cmp index.html "$RUNNER_TEMP/target-before.html"
+          python3 -B "$GITHUB_WORKSPACE/scripts/verify_package.py" --archive "$RUNNER_TEMP/seo-a.zip" --installed "$installed" --report "$RUNNER_TEMP/install-after.json"
+          cmp "$RUNNER_TEMP/install-before.json" "$RUNNER_TEMP/install-after.json"
+          echo "Relocated project offline acceptance passed; external agent activation not tested"
       - name: Prepare public benchmark plan (no model calls)
         shell: bash
         run: |

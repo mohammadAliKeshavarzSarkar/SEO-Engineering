@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- TS03: installed-directory source comparison, conservative portable path/name checks, nine new regression methods, stronger independent project offline relocation checks (research/T10 adverse/T11/T12, target sentinel and installed integrity), Cursor/Codex placement sources. Corrected TS02 exact CI passed (255 tests, 212 source-matched files); TS03 exact CI separate. External agent activation, privacy review and distribution approval pending.
+
 - TS02: T10-v2 preserves native output and independent escalation on rejected grouping, exact shared envelope keys, 11 new targeted adverse/integration tests, combined adverse fixture with expected exit 2 and semantic portable parity; malformed reviewed Unicode identifiers rejected in T11/T12. TS01 exact CI passed. Changed-commit CI pending separate check. No live collection, external adapter or candidate release.
 
 - TS01 targeted technical architecture review: T11/T12 local schemas v2 bind scope/policy/gate/assertion or recovery assertion/outcome, prevent cross-gate/HTTP-to-rendered evidence reuse, reject v1 pending reviewed migration; six new regression methods and semantic repository/package smoke checks. Added cross-module handoff contract and documented remaining TS02 risks. Base T12 hosted CI passed; changed-commit CI separate. No stable release or external integration.
