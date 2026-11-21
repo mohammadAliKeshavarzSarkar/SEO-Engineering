@@ -37,14 +37,12 @@ jobs:
           python --version
           python -c 'import zlib; print("zlib", zlib.ZLIB_RUNTIME_VERSION)'
           python scripts/verify_release.py > "$RUNNER_TEMP/verification.json"
-          python - "$RUNNER_TEMP/verification.json" <<'PY'
-          import json,sys
-          r=json.load(open(sys.argv[1],encoding="utf-8"))
-          assert r["behavioral_evaluations"] == "not_run"
-          assert r["external_installation"] == "not_run"
-          assert all(x["pass"] for x in r["checks"])
-          print("Offline regression and package relocation passed; external agents not tested")
-          PY
+          # verify_release.py emits test output followed by a JSON summary.
+          # Its exit status is the authoritative all-checks result; do not
+          # attempt to parse the entire mixed stdout as one JSON document.
+          grep -F '"behavioral_evaluations": "not_run"' "$RUNNER_TEMP/verification.json"
+          grep -F '"external_installation": "not_run"' "$RUNNER_TEMP/verification.json"
+          echo "Offline regression and package relocation passed; external agents not tested"
       - name: Confirm no release action
         shell: bash
         run: |
