@@ -21,6 +21,8 @@ else:
 RUBRIC_PREFIX=PREFIX+"references/library/evaluations/"
 LABEL=re.compile(r"r-[0-9a-f]{32}")
 MAX_ARTIFACT=16*1024*1024
+# Explicit runtime installation layouts, not claims of discovery.
+SKILL_LAYOUTS={"codex":".agents/skills/", "cursor":".cursor/skills/"}
 
 
 def regular_bytes(path, limit=MAX_ARTIFACT):
@@ -38,8 +40,9 @@ def fresh_write(path, raw):
         stream.write(raw)
 
 
-def stage(root, suite, control, blind_id, archive, context, target):
+def stage(root, suite, control, blind_id, archive, context, target, runtime_kind="codex"):
     """Stage one slot; parent paths must be trusted and stable."""
+    ensure(runtime_kind in SKILL_LAYOUTS,"unsupported pilot runtime layout")
     check_schedule(suite,control)
     found=[s for s in control["slots"] if s["blind_id"]==blind_id]
     ensure(len(found)==1,"unknown slot")
@@ -66,7 +69,7 @@ def stage(root, suite, control, blind_id, archive, context, target):
                     continue
                 data=z.read(name)
                 ensure(digest(data)==record["sha256"],"archive changed during stage")
-                selected[".agents/skills/"+name]=data
+                selected[SKILL_LAYOUTS[runtime_kind]+name]=data
         ensure(cfg["candidate_variant"]!="rubric_restricted" or
                RUBRIC_PREFIX+"cases.json" in omitted,"expected bundled rubric not excluded")
     target.mkdir()
@@ -78,6 +81,8 @@ def stage(root, suite, control, blind_id, archive, context, target):
     return {"schema_version":"1","control_sha256":fingerprint(control),"blind_id":blind_id,
             "arm":slot["arm"],"candidate_variant":cfg["candidate_variant"],
             "source_commit_declared":cfg["skill_commit"],
+            "runtime_kind":runtime_kind,
+            "installed_skill_root":SKILL_LAYOUTS[runtime_kind]+"seo-engineering" if slot["arm"]=="skill" else None,
             "source_matched_archive_sha256":receipt["archive_sha256"],
             "context_sha256":digest(raw),"installed_files":expected,
             "omitted_archive_paths":omitted,"target_tree_sha256":fingerprint(expected),

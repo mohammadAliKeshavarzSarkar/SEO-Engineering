@@ -13,13 +13,13 @@ if __package__:
     from .build_skill import build, ROOT
     from .verify_package import digest, verify
     from .control_benchmark import schedule, fingerprint, ensure, dispatch
-    from .prepare_trial import stage, initial_ledger, regular_bytes
+    from .prepare_trial import stage, initial_ledger, regular_bytes, SKILL_LAYOUTS
     from .score_benchmark import load
 else:
     from build_skill import build, ROOT
     from verify_package import digest, verify
     from control_benchmark import schedule, fingerprint, ensure, dispatch
-    from prepare_trial import stage, initial_ledger, regular_bytes
+    from prepare_trial import stage, initial_ledger, regular_bytes, SKILL_LAYOUTS
     from score_benchmark import load
 
 DERIVED={"skill_commit","archive_sha256","task_context_sha256"}
@@ -45,8 +45,16 @@ def separate(paths):
            "checkout, operator and workspace roots must be distinct and non-nested")
 
 
-def prepare(root, commit, config, operator, workspaces, context_bytes=None):
+def prepare(root, commit, config, operator, workspaces, context_bytes=None, runtime_kind="codex"):
     """Prepare the 32-slot public pilot, staging only the first pair."""
+    ensure(runtime_kind in SKILL_LAYOUTS,"runtime kind must be codex or cursor")
+    ensure(isinstance(config,dict),"invalid operator config")
+    # Prevent an obvious runtime/layout mismatch even with a free-text version field.
+    declared=config.get("runtime","")
+    ensure(isinstance(declared,str),"invalid declared runtime")
+    mentioned={kind for kind in SKILL_LAYOUTS if kind in declared.lower()}
+    ensure(not mentioned or mentioned=={runtime_kind},
+           "declared runtime differs from installation layout")
     root,operator,workspaces=map(Path,(root,operator,workspaces))
     separate((root,operator,workspaces))
     ensure(not operator.exists() and not operator.is_symlink()
@@ -85,11 +93,17 @@ def prepare(root, commit, config, operator, workspaces, context_bytes=None):
     (operator/"artifacts").mkdir()
     (operator/"launch-records").mkdir()
     workspaces.mkdir(mode=0o700)
+    pair=control["slots"][:2]
+    ensure(len(pair)==2 and pair[0]["case_id"]==pair[1]["case_id"]
+           and pair[0]["repeat"]==pair[1]["repeat"]
+           and pair[0]["prompt"]==pair[1]["prompt"]
+           and {s["arm"] for s in pair}=={"baseline","skill"},
+           "first two slots must be an exact matched pair")
     launch=[]
-    for s in control["slots"][:2]:
+    for s in pair:
         ident=s["blind_id"]
         target=workspaces/ident
-        r=stage(root,suite,control,ident,archive,supplied,target)
+        r=stage(root,suite,control,ident,archive,supplied,target,runtime_kind=runtime_kind)
         prompt=dispatch(control,ident)["prompt"]
         # Same fixed context instruction for both arms; no arm indicator.
         with (operator/(ident+".prompt.txt")).open("x",encoding="utf-8") as fp:
@@ -99,6 +113,8 @@ def prepare(root, commit, config, operator, workspaces, context_bytes=None):
                        "workspace":str(target.resolve()),"prompt_file":str((operator/(ident+".prompt.txt")).resolve()),
                        "staging_receipt":str((operator/(ident+".staging.json")).resolve())})
     report={"control_sha256":fingerprint(control),"candidate_commit":commit,
+            "runtime_kind":runtime_kind,
+            "runtime_activation_observed":False,
             "archive_sha256":receipt["archive_sha256"],"planned_slots":len(control["slots"]),
             "staged_slots":2,"first_pair_in_launch_order":launch,
             "actual_agent_runs":0,"runtime_activation":"not_tested","runtime_isolation":"not_verified",
@@ -113,13 +129,16 @@ def main():
     p.add_argument("--operator",type=Path,required=True)
     p.add_argument("--workspaces",type=Path,required=True)
     p.add_argument("--context",type=Path)
+    p.add_argument("--runtime-kind",choices=sorted(SKILL_LAYOUTS),required=True,
+                   help="Explicit project skill installation location; not activation verification")
     args=p.parse_args()
     try:
         actual=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
         ensure(not subprocess.check_output(["git","status","--porcelain","--untracked-files=all"],
                                            cwd=ROOT,text=True).strip(),"clean source checkout required")
         r=prepare(ROOT,actual,load(args.settings),args.operator,args.workspaces,
-                  regular_bytes(args.context) if args.context else None)
+                  regular_bytes(args.context) if args.context else None,
+                  runtime_kind=args.runtime_kind)
         print(json.dumps(r,indent=2))
     except (OSError,ValueError,TypeError,KeyError,AttributeError,subprocess.CalledProcessError) as exc:
         print("Pilot preparation failed:",exc)

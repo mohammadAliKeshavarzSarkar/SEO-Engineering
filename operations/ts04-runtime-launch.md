@@ -27,12 +27,13 @@ Copy the example settings [JSON](ts04-runtime-settings.example.json) outside the
 
 ```sh
 python3 scripts/start_public_pilot.py \
+  --runtime-kind codex \
   --settings /private/runtime-settings.json \
   --operator /private/pilot-operator \
   --workspaces /isolated/pilot-workspaces
 ```
 
-The tool creates the complete 32-slot randomized control and all-not-started ledger; builds and verifies the candidate; stages just the first matched pair; and writes private launch.json in actual randomized order. The operator-only prompts contain the same context instruction and exact task, no arm label. Use the staged folder only, not an IDE window with this source repo open. Do not expose launch.json, staging receipts or original archive. Separate the agent account from the operator account; the directories alone do not enforce isolation.
+Use `--runtime-kind cursor` for Cursor: it stages the treatment under `.cursor/skills/seo-engineering`; for Codex the explicit `codex` value stages `.agents/skills/seo-engineering`. The declared runtime in the private settings must agree with the chosen kind. This is an installation-layout fix, not proof that an installed CLI discovered the skill. The tool creates the complete 32-slot randomized control and all-not-started ledger; builds and verifies the candidate; stages just the first matched pair; and writes private launch.json in actual randomized order. The operator-only prompts contain the same context instruction and exact task, no arm label. Use the staged folder only, not an IDE window with this source repo open. Do not expose launch.json, staging receipts or original archive. Separate the agent account from the operator account; the directories alone do not enforce isolation.
 
 ## 3. Non-scored activation check BEFORE running
 

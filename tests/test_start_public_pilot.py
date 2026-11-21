@@ -52,6 +52,35 @@ class StartPilotTests(unittest.TestCase):
         self.assertEqual(r["runtime_isolation"],"not_verified")
         with self.assertRaisesRegex(ValueError,"fresh"): prepare(self.root,"a"*40,self.cfg,op,work)
 
+    def test_cursor_pair_has_correct_layout_and_identical_prompts(self):
+        op,work=self.base/"cursor-operator",self.base/"cursor-work"
+        cfg=self.cfg|{"runtime":"Cursor CLI 0-fixture"}
+        result=prepare(self.root,"a"*40,cfg,op,work,runtime_kind="cursor")
+        self.assertEqual(result["runtime_kind"],"cursor")
+        self.assertFalse(result["runtime_activation_observed"])
+        pair=result["first_pair_in_launch_order"]
+        self.assertEqual(pair[0]["case_id"],pair[1]["case_id"])
+        self.assertEqual(Path(pair[0]["prompt_file"]).read_bytes(),
+                         Path(pair[1]["prompt_file"]).read_bytes())
+        self.assertEqual({s["arm"] for s in pair},{"baseline","skill"})
+        for s in pair:
+            folder=Path(s["workspace"])
+            if s["arm"]=="skill":
+                self.assertTrue((folder/".cursor/skills/seo-engineering/SKILL.md").is_file())
+                self.assertFalse((folder/".agents").exists())
+                self.assertFalse(any(folder.rglob("cases.json")))
+            else:
+                self.assertEqual(sorted(p.relative_to(folder).as_posix() for p in folder.rglob("*")
+                                        if p.is_file()),["context.txt"])
+
+    def test_declared_runtime_mismatch_rejected_before_creating_roots(self):
+        op,work=self.base/"operator",self.base/"work"
+        cfg=self.cfg|{"runtime":"Cursor CLI 0-fixture"}
+        with self.assertRaisesRegex(ValueError,"differs from installation layout"):
+            prepare(self.root,"a"*40,cfg,op,work,runtime_kind="codex")
+        self.assertFalse(op.exists())
+        self.assertFalse(work.exists())
+
     def test_invalid_config_and_nested_paths(self):
         op,work=self.base/"operator",self.base/"work"
         with self.assertRaisesRegex(ValueError,"derived"):
