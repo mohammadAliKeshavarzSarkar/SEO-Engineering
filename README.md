@@ -65,3 +65,5 @@ TS07.6 development: [instruction evaluation and incomplete-run review](operation
 TS08 practice development: [synthetic project architecture and planned exercises](examples/practice-projects/README.md). Existing module fixtures and composite checks remain available; new coherent projects are planned, not yet executed or independently evaluated. See [coverage review](operations/ts08-practice-architecture.md) for baseline inventory and gaps.
 
 TS09 operational readiness: [exact TS08 baseline and next evidence gates](operations/ts09-readiness-review.md). The five offline practice projects have passed source CI; runtime activation and independent evaluation are still outstanding. Main remains a held development snapshot.
+
+Operational validation: [TS09.2/TS09.3 installation and runtime preparation](operations/ts09-runtime-readiness.md) describes the separate Cursor/Codex project paths, maintainer preflight and Linux Python compatibility matrix. Agent activation, authorization, human privacy and license review are **not** implied by passing these checks.

@@ -109,3 +109,5 @@ TS02: T10-v2 retains native output and independent escalation references after r
 ## TS03 installed skill verification (maintainer only)
 
 The source-checkout command `python3 scripts/verify_package.py --archive skill.zip --installed '/path/to/project/.agents/skills/seo-engineering' --report installed-receipt.json` verifies source-matched ZIP and then exact installed membership and bytes. Use a fresh trusted installation; do not auto-delete extra files. It does not test model loading, scan private contents or authorize distribution. See [portable acceptance](../docs/01-foundations/portable-skill-acceptance.md).
+
+TS09 maintainer-only installation check: `scripts/preflight_runtime.py` matches a trusted archive and external project installation, then detects whether a Codex/Cursor command name exists on PATH. It never invokes that command, uses no credentials, does not test skill discovery or permissions and must not be called proof of runtime acceptance. See `operations/ts09-runtime-readiness.md`.
