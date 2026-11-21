@@ -35,6 +35,15 @@ python3 scripts/start_public_pilot.py \
 
 Use `--runtime-kind cursor` for Cursor: it stages the treatment under `.cursor/skills/seo-engineering`; for Codex the explicit `codex` value stages `.agents/skills/seo-engineering`. The declared runtime in the private settings must agree with the chosen kind. This is an installation-layout fix, not proof that an installed CLI discovered the skill. The tool creates the complete 32-slot randomized control and all-not-started ledger; builds and verifies the candidate; stages just the first matched pair; and writes private launch.json in actual randomized order. The operator-only prompts contain the same context instruction and exact task, no arm label. Use the staged folder only, not an IDE window with this source repo open. Do not expose launch.json, staging receipts or original archive. Separate the agent account from the operator account; the directories alone do not enforce isolation.
 
+Before handing the first pair to any agent, verify source-matched staging without invoking a model:
+```sh
+python3 scripts/check_pilot_staging.py \
+  --operator /private/pilot-operator \
+  --workspaces /isolated/pilot-workspaces \
+  --out /private/first-pair-integrity.json
+```
+This check fails if the controlled task, archived skill files, a staged prompt, receipts, or the all-not-started ledger changed. It does not prove read isolation, actual discovery, skill activation or safe access. Inspect its private report and perform the operator's actual sandbox/activation checks. When staging any **later** slot through `scripts/prepare_trial.py stage`, supply the same required `--runtime-kind cursor` or `--runtime-kind codex` explicitly; do not switch layouts or reuse a scored workspace.
+
 ## 3. Non-scored activation check BEFORE running
 
 In separate disposable copies of both staged environments, verify baseline cannot discover SEO Engineering and treatment can discover and read it. Start fresh sessions, inspect discovery metadata and actual tool/skill-loading trace or observed file reads; a model saying it used the skill is insufficient. Ask to identify locally visible skills and, only in the treatment activation check, explicitly request the SEO Engineering entrypoint and a routed resource. This is not the scored task. Record exact evidence, check for access to an intentionally harmless sentinel outside the permitted workspace, do not attempt to access real secrets. Stop if the runtime cannot enforce isolation or if skill visibility is wrong. Do not reuse activation sessions or their altered workspace for scored runs. Stage fresh copies for the real first pair if necessary; preserve the original task and settings. Verify actual skill discovery/activation during the scored run too; record unobservability rather than pretending a file was read. Do not explicitly request the skill in only one scored prompt.

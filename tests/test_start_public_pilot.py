@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 import json
 from scripts.start_public_pilot import prepare, separate
+from scripts.check_pilot_staging import inspect as inspect_pair
 from scripts.build_skill import LIBRARY_DIRS
 
 class StartPilotTests(unittest.TestCase):
@@ -80,6 +81,53 @@ class StartPilotTests(unittest.TestCase):
             prepare(self.root,"a"*40,cfg,op,work,runtime_kind="codex")
         self.assertFalse(op.exists())
         self.assertFalse(work.exists())
+
+    def test_first_pair_pre_run_integrity_both_runtimes(self):
+        for kind in ("codex","cursor"):
+            with self.subTest(kind=kind):
+                op,work=self.base/(kind+"-operator"),self.base/(kind+"-work")
+                cfg=self.cfg|{"runtime":kind.title()+" CLI fixture"}
+                prepare(self.root,"a"*40,cfg,op,work,runtime_kind=kind)
+                result=inspect_pair(self.root,op,work)
+                self.assertEqual(result["runtime_kind"],kind)
+                self.assertEqual(result["planned_slots"],32)
+                self.assertEqual(len(result["verified_unstarted_pair"]),2)
+                self.assertTrue(result["matched_task_and_prompt"])
+                self.assertTrue(result["stage_bytes_matched_to_source_archive"])
+                self.assertFalse(result["filesystem_read_isolation_verified"])
+                self.assertFalse(result["runtime_discovery_verified"])
+                self.assertFalse(result["release_approved"])
+
+    def test_first_pair_tampered_skill_or_prompt_rejected(self):
+        op,work=self.base/"operator",self.base/"work"
+        p=prepare(self.root,"a"*40,self.cfg,op,work)
+        skill=next(s for s in p["first_pair_in_launch_order"] if s["arm"]=="skill")
+        doc=Path(skill["workspace"])/".agents/skills/seo-engineering/SKILL.md"
+        doc.write_text("changed",encoding="utf-8")
+        with self.assertRaisesRegex(ValueError,"staged files changed"):
+            inspect_pair(self.root,op,work)
+        doc.write_text("---\\nname: seo-engineering\\ndescription: Test skill\\n---\\n",encoding="utf-8")
+        prompt=Path(skill["prompt_file"])
+        prompt.write_text("different prompt",encoding="utf-8")
+        with self.assertRaisesRegex(ValueError,"staged prompt changed"):
+            inspect_pair(self.root,op,work)
+
+    def test_first_pair_changed_ledger_or_control_rejected(self):
+        op,work=self.base/"operator",self.base/"work"
+        prepare(self.root,"a"*40,self.cfg,op,work)
+        ledger=op/"ledger.json"
+        record=json.loads(ledger.read_text(encoding="utf-8"))
+        record["runs"][0]["status"]="timeout"
+        ledger.write_text(json.dumps(record),encoding="utf-8")
+        with self.assertRaises(ValueError):
+            inspect_pair(self.root,op,work)
+        # A different frozen control also fails before the modified ledger is inspected.
+        control=op/"control.json"
+        packet=json.loads(control.read_text(encoding="utf-8"))
+        packet["slots"][0]["arm"]="skill" if packet["slots"][0]["arm"]=="baseline" else "baseline"
+        control.write_text(json.dumps(packet),encoding="utf-8")
+        with self.assertRaisesRegex(ValueError,"control differs"):
+            inspect_pair(self.root,op,work)
 
     def test_invalid_config_and_nested_paths(self):
         op,work=self.base/"operator",self.base/"work"

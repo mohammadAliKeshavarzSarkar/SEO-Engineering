@@ -191,6 +191,8 @@ def main():
     for name in ("suite","control","archive","context","target","ledger","artifacts","packet","first","second","grades","out"):
         ap.add_argument("--"+name,type=Path)
     ap.add_argument("--blind-id")
+    ap.add_argument("--runtime-kind",choices=sorted(SKILL_LAYOUTS),
+                    help="Required for stage mode; use codex or cursor explicitly")
     a=ap.parse_args()
     try:
         if a.mode=="compare-reviewers":
@@ -199,11 +201,14 @@ def main():
             suite,control=load(a.suite),load(a.control)
             check_schedule(suite,control)
             if a.mode=="stage":
+                ensure(a.runtime_kind in SKILL_LAYOUTS,
+                       "--runtime-kind is required for stage mode")
                 actual=subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
                 ensure(actual==control["plan"]["config"]["skill_commit"],"source revision mismatch")
                 ensure(not subprocess.check_output(["git","status","--porcelain","--untracked-files=all"],cwd=ROOT,text=True).strip(),
                        "require clean source checkout")
-                out=stage(ROOT,suite,control,a.blind_id,a.archive,a.context,a.target)
+                out=stage(ROOT,suite,control,a.blind_id,a.archive,a.context,a.target,
+                          runtime_kind=a.runtime_kind)
                 out["source_checkout_revision_verified"]=True
             elif a.mode=="init-ledger":
                 out=initial_ledger(control)
