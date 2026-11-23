@@ -133,6 +133,73 @@ class TrialTests(unittest.TestCase):
         self.assertTrue(all(r["status"]=="not_started" for r in ledger["runs"]))
         self.assertEqual(check_artifacts(self.ctl,ledger,root)["verified_artifacts"],[])
 
+
+    def test_unreferenced_trace_inside_known_slot_is_rejected(self):
+        ledger,root=self.ledger()
+        ident=ledger["runs"][0]["blind_id"]
+        (root/ident/"partial-extra.txt").write_bytes(b"unreported fictional trace")
+        with self.assertRaisesRegex(ValueError,"undeclared artifact file"):
+            check_artifacts(self.ctl,ledger,root)
+
+    def test_orphan_top_level_file_is_rejected(self):
+        ledger,root=self.ledger()
+        (root/"unreported.txt").write_bytes(b"synthetic stray output")
+        with self.assertRaisesRegex(ValueError,"unexpected artifact root entry"):
+            check_artifacts(self.ctl,ledger,root)
+
+    def test_unknown_slot_directory_is_rejected_even_when_empty(self):
+        ledger,root=self.ledger()
+        (root/("r-"+"0"*32)).mkdir()
+        with self.assertRaisesRegex(ValueError,"unexpected artifact root entry"):
+            check_artifacts(self.ctl,ledger,root)
+
+    def test_nested_and_symlink_evidence_is_rejected(self):
+        ledger,root=self.ledger()
+        folder=root/ledger["runs"][0]["blind_id"]
+        nested=folder/"nested"
+        nested.mkdir()
+        with self.assertRaisesRegex(ValueError,"unexpected nonregular artifact entry"):
+            check_artifacts(self.ctl,ledger,root)
+        nested.rmdir()
+        (folder/"out-link.txt").symlink_to(folder/"output.txt")
+        with self.assertRaisesRegex(ValueError,"unexpected nonregular artifact entry"):
+            check_artifacts(self.ctl,ledger,root)
+
+    def test_unrecorded_artifact_of_unstarted_slot_is_rejected(self):
+        ledger=initial_ledger(self.ctl)
+        root=self.tmp/"artifacts"
+        root.mkdir()
+        ident=ledger["runs"][0]["blind_id"]
+        folder=root/ident
+        folder.mkdir()
+        (folder/"trace.txt").write_bytes(b"synthetic unrecorded partial trace")
+        with self.assertRaisesRegex(ValueError,"undeclared artifact file"):
+            check_artifacts(self.ctl,ledger,root)
+
+    def test_unstarted_execution_references_are_rejected(self):
+        ledger=initial_ledger(self.ctl)
+        root=self.tmp/"artifacts"
+        root.mkdir()
+        ledger["runs"][0]["session_ref"]="unexpected prior session"
+        with self.assertRaisesRegex(ValueError,"not-started slot contains execution references"):
+            check_artifacts(self.ctl,ledger,root)
+
+    def test_only_expected_evidence_and_empty_known_directory_are_allowed(self):
+        ledger,root=self.ledger()
+        result=check_artifacts(self.ctl,ledger,root)
+        self.assertTrue(result["artifact_inventory_complete"])
+        self.assertEqual(len(result["verified_artifacts"]),4)
+        ledger["runs"][0]["status"]="timeout"
+        ledger["runs"][0]["failure_reason"]="fictional timeout"
+        for kind in ("output","trace"):
+            path=root/ledger["runs"][0][kind+"_ref"]
+            path.unlink()
+            ledger["runs"][0][kind+"_ref"]=None
+            ledger["runs"][0][kind+"_sha256"]=None
+        result=check_artifacts(self.ctl,ledger,root)
+        self.assertTrue(result["artifact_inventory_complete"])
+        self.assertEqual(len(result["verified_artifacts"]),2)
+
     def reviewers(self):
         l,root=self.ledger()
         packet=blind_packet(self.suite,self.ctl,l)

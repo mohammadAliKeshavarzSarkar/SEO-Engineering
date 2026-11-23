@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- TS09.7: fail-closed full artifact-root inventory in maintainer pilot validation; reject undeclared or nested traces, stray slot directories, symlinks and execution references on unstarted slots; eight synthetic checks including consolidated handoff rejection. No external sessions or safety clearance.
+
 - TS09.6: reject contradictory or malformed activation-intake summaries in the consolidated private pilot handoff; bind exact summary SHA-256, preserve critical escalations and add four synthetic regression methods. No independent agent execution, activation, privacy review or release authorization.
 
 - TS05.2: targeted primary-source review, clarified all-variant domain migration coverage, Cache Components runtime branches and Search Console anomaly checks; content changes create a distinct development archive, not a new stable release. Existing pilot stays pinned to its original candidate if already preregistered.

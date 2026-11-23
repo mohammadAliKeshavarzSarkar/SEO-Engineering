@@ -118,8 +118,16 @@ def check_artifacts(control,ledger,root):
     ensure(root.is_dir() and not root.is_symlink(),"invalid artifact root")
     records=[]
     sessions=set()
+    # Keep a complete manifest of referenced evidence. Checking only references
+    # would silently ignore undisclosed or stale files inside the artifact root.
+    expected_paths=set()
     for ident,row in rows.items():
         ensure(isinstance(ident,str) and LABEL.fullmatch(ident),"invalid blind label")
+        if row["status"]=="not_started":
+            ensure(all(row[k] is None for k in
+                       ("session_ref","environment_ref","output_ref","output_sha256",
+                        "trace_ref","trace_sha256")),
+                   "not-started slot contains execution references")
         session=row["session_ref"]
         if session is not None:
             ensure(isinstance(session,str) and session.strip() and session not in sessions,
@@ -137,9 +145,28 @@ def check_artifacts(control,ledger,root):
             raw=regular_bytes(root/expected)
             ensure(raw and digest(raw)==h,"artifact missing, empty or changed")
             raw.decode("utf-8",errors="strict")
+            expected_paths.add(expected)
             records.append({"blind_id":ident,"kind":kind,"bytes":len(raw),"sha256":h})
+
+    # A fresh, dedicated evidence root must contain no undisclosed files,
+    # unrelated slot directories or nested paths. We only inspect names/types;
+    # this does not ingest unexpected private content. Empty known slot folders
+    # are allowed for failures with no captured artifacts.
+    observed_paths=set()
+    for folder in root.iterdir():
+        ensure(not folder.is_symlink(),"unexpected or symlink artifact root entry")
+        ensure(folder.is_dir() and folder.name in rows,
+               "unexpected artifact root entry")
+        for item in folder.iterdir():
+            ensure(not item.is_symlink() and item.is_file(),
+                   "unexpected nonregular artifact entry")
+            path=folder.name+"/"+item.name
+            ensure(path in expected_paths,"undeclared artifact file")
+            observed_paths.add(path)
+    ensure(observed_paths==expected_paths,"artifact inventory mismatch")
     return {"control_sha256":fingerprint(control),"ledger_sha256":fingerprint(ledger),
             "verified_artifacts":records,"artifact_bytes_verified":True,
+            "artifact_inventory_complete":True,
             "actual_execution_verified":False,"review_independence_verified":False}
 
 

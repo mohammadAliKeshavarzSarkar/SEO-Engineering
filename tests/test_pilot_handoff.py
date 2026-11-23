@@ -230,5 +230,16 @@ class HandoffTests(unittest.TestCase):
                    activation_intake=activation)
 
 
+
+    def test_handoff_rejects_undisclosed_partial_trace(self):
+        self.complete((0,))
+        unstarted=self.ledger["runs"][1]["blind_id"]
+        folder=self.artifacts/unstarted
+        folder.mkdir()
+        (folder/"trace.txt").write_bytes(b"synthetic undisclosed trace")
+        with self.assertRaisesRegex(ValueError,"undeclared artifact file"):
+            review(self.suite,self.control,self.ledger,self.artifacts,self.grades())
+        self.assertFalse((self.artifacts/"pilot-handoff.json").exists())
+
 if __name__=="__main__":
     unittest.main()
