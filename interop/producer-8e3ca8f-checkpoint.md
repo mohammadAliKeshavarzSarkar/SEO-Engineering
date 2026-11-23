@@ -34,3 +34,7 @@ The producer's own `verify-exchange.ts` checks for the string, so producer self-
 ## Status
 
 **Stage A.2.4: HOLD — producer/consumer manifest mismatch and no privately delivered real authorized synthetic export yet.** This is not a claim against successful internal producer tests, production-worker implementation, or migrations. REST/MCP, strategy adapters, release, distribution, and live-site authorization remain separate gates. The independent SEO Engineering package and legacy canonical schema/fixture pin remain unchanged.
+
+## Follow-up — corrected in producer `3e11019e57882c25462c43ed8706cd4a9af5d3cd`
+
+The above incompatibility is retained as a historical source finding for `8e3ca8f`. WebsiteBotScroll corrected the exact manifest object representation in both producer emission and verification at `3e11019e57882c25462c43ed8706cd4a9af5d3cd`; this specific format blocker is now **resolved**. See [corrected producer checkpoint](producer-3e11019-checkpoint.md). An actual authorized frozen exchange still has not been submitted or independently accepted.

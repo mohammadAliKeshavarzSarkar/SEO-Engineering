@@ -2,6 +2,9 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- A.2.4 correction: source-verify WebsiteBotScroll `3e11019` corrected 17-field manifest contract, retain historical 0.1.0 canonical pin, and add an optional real-serializer-to-Python synthetic byte-pair compatibility bridge. No actual authorized crawl export or provenance acceptance.
+
+
 - A.2.4 producer checkpoint: source-review WebsiteBotScroll `8e3ca8f` observation-platform remediation, identify current manifest `contract` string vs accepted object mismatch, add two synthetic negative tests and hold real exchange until producer correction and actual authorized byte-pair review. No contract/schema/fixture pin or portable-skill change.
 
 - TS09.9: add maintainer-only runtime capture/ledger consistency intake; fixed operator-private UTF-8 event capture hashes, frozen prompt/settings/session/terminal matching, complete capture inventory and independent-review holds/escalation in pilot handoff. Fourteen synthetic regression methods; no agent inference, runtime attestation or release approval.

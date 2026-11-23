@@ -81,6 +81,34 @@ jobs:
         run: |
           set -euo pipefail
           "$RUNNER_TEMP/interop-venv/bin/python" -m interop.differential compare --producer-root "$RUNNER_TEMP/websitebotscroll-pinned" --work "$RUNNER_TEMP/diff-inputs" --typescript-results "$RUNNER_TEMP/typescript-results.json" --output "$RUNNER_TEMP/differential-report.json"
+      - name: Verify corrected producer manifest against independent consumer on synthetic bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          corrected="$RUNNER_TEMP/websitebotscroll-corrected"
+          git init "$corrected"
+          git -C "$corrected" remote add origin https://github.com/mohammadAliKeshavarzSarkar/WebsiteBotScroll.git
+          git -C "$corrected" fetch --depth=1 origin 3e11019e57882c25462c43ed8706cd4a9af5d3cd
+          git -C "$corrected" checkout --detach FETCH_HEAD
+          test "$(git -C "$corrected" rev-parse HEAD)" = 3e11019e57882c25462c43ed8706cd4a9af5d3cd
+          cd "$corrected"
+          pnpm install --frozen-lockfile
+          cp "$GITHUB_WORKSPACE/interop/corrected-producer-manifest.test.ts" packages/evidence-producer/test/seo-consumer-manifest.test.ts
+          WBS_CORRECTED_SOURCE_FIXTURE="$RUNNER_TEMP/websitebotscroll-pinned/packages/evidence-contract/fixtures/valid/complete-page.json" \
+          WBS_CORRECTED_EXCHANGE_DIR="$RUNNER_TEMP/corrected-manifest-pair" \
+          WBS_CORRECTED_COMMIT=3e11019e57882c25462c43ed8706cd4a9af5d3cd \
+            pnpm --filter @website-bot-scroll/evidence-producer exec vitest run test/seo-consumer-manifest.test.ts
+          cd "$GITHUB_WORKSPACE"
+          py="$RUNNER_TEMP/interop-venv/bin/python"
+          "$py" -m interop.verify_exchange \
+            --schema "$RUNNER_TEMP/websitebotscroll-pinned/packages/evidence-contract/schema/seo-crawl-evidence/0.1.0/schema.json" \
+            --manifest "$RUNNER_TEMP/corrected-manifest-pair/corrected-producer.synthetic.manifest.json" \
+            --evidence "$RUNNER_TEMP/corrected-manifest-pair/corrected-producer.synthetic.evidence.json" \
+            --reviewed-producer-commit 3e11019e57882c25462c43ed8706cd4a9af5d3cd \
+            --output "$RUNNER_TEMP/corrected-consumer-receipt.json"
+          "$py" -c 'import json,sys; r=json.load(open(sys.argv[1],encoding="utf-8")); assert r["disposition"]=="candidate_for_joint_review" and r["checksum_verified"] and r["manifest_binding_verified"] and r["consumer_validation"]=="valid" and r["consumer_preflight"]["status"]=="within_profile" and r["actual_exchange_verified"] is False and r["authorization_verified"] is False and r["operational_integration_approved"] is False' "$RUNNER_TEMP/corrected-consumer-receipt.json"
+          echo "Synthetic cross-repo export format accepted; no actual crawl or authorization verified."
+
       - name: Retain synthetic comparison receipt
         if: always()
         uses: actions/upload-artifact@v4
