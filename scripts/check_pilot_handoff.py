@@ -9,15 +9,88 @@ import json
 from pathlib import Path
 
 if __package__:
-    from .control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint
-    from .prepare_trial import check_artifacts
+    from .control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha
+    from .prepare_trial import check_artifacts, SKILL_LAYOUTS
     from .review_incomplete_trials import packet as incomplete_packet, assess as assess_incomplete
     from .score_benchmark import load
 else:
-    from control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint
-    from prepare_trial import check_artifacts
+    from control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha
+    from prepare_trial import check_artifacts, SKILL_LAYOUTS
     from review_incomplete_trials import packet as incomplete_packet, assess as assess_incomplete
     from score_benchmark import load
+
+
+
+# This is the exact output envelope of review_activation_evidence.py, not a
+# generic operator attestation. It is still not a signed provenance record.
+ACTIVATION_FIELDS = {
+    "schema_version", "kind", "candidate_commit", "archive_sha256",
+    "control_sha256", "runtime_kind", "traces",
+    "critical_declaration_conflicts", "missing_or_unobservable", "status",
+    "operator_assertions_independently_verified", "trace_semantics_verified",
+    "actual_activation_certified", "read_isolation_certified",
+    "agent_executions_verified", "paid_pilot_authorized", "release_approved",
+    "limitations",
+}
+ACTIVATION_UNVERIFIED = (
+    "operator_assertions_independently_verified", "trace_semantics_verified",
+    "actual_activation_certified", "read_isolation_certified",
+    "agent_executions_verified", "paid_pilot_authorized", "release_approved",
+)
+
+
+def validate_activation_intake(control, intake):
+    """Reject contradictory summaries; never infer the source traces were genuine."""
+    ensure(isinstance(intake, dict) and set(intake) == ACTIVATION_FIELDS and
+           intake["schema_version"] == "1" and
+           intake["kind"] == "unscored_activation_evidence_intake",
+           "invalid activation intake schema")
+    config = control["plan"]["config"]
+    ensure(intake["candidate_commit"] == config["skill_commit"] and
+           intake["archive_sha256"] == config["archive_sha256"] and
+           intake["control_sha256"] == fingerprint(control),
+           "activation record does not match candidate/control")
+    ensure(isinstance(intake["runtime_kind"], str) and
+           intake["runtime_kind"] in SKILL_LAYOUTS,
+           "invalid activation runtime kind")
+    ensure(all(intake[field] is False for field in ACTIVATION_UNVERIFIED),
+           "activation intake claims certification")
+    ensure(isinstance(intake["limitations"], str) and intake["limitations"].strip(),
+           "activation intake lacks limitations")
+
+    for field in ("critical_declaration_conflicts", "missing_or_unobservable"):
+        values = intake[field]
+        ensure(isinstance(values, list) and
+               all(isinstance(v, str) and v.strip() for v in values) and
+               values == sorted(set(values)),
+               "invalid activation findings")
+    critical = intake["critical_declaration_conflicts"]
+    unknown = intake["missing_or_unobservable"]
+
+    traces = intake["traces"]
+    ensure(isinstance(traces, list) and len(traces) == 2 and
+           all(isinstance(t, dict) and
+               set(t) == {"arm", "trace_sha256", "trace_supplied"}
+               for t in traces) and
+           [t["arm"] for t in traces] == ["baseline", "skill"],
+           "invalid activation trace inventory")
+    for trace in traces:
+        supplied = trace["trace_supplied"]
+        digest = trace["trace_sha256"]
+        ensure(type(supplied) is bool and
+               (sha(digest) if supplied else digest is None),
+               "invalid activation trace identity")
+        missing = trace["arm"] + ":trace_unavailable"
+        ensure((missing in unknown) == (not supplied),
+               "activation trace missingness mismatch")
+
+    expected = ("escalate_to_owner" if critical else
+                "hold_missing_or_unobservable" if unknown else
+                "ready_for_independent_review")
+    ensure(intake["status"] == expected,
+           "activation intake status/findings mismatch")
+    # A content digest binds the exact submitted summary, not its provenance.
+    return fingerprint(intake)
 
 
 def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=None,
@@ -37,21 +110,8 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
     ensure(noncompleted or incomplete_reviews is None or
            assessed["incomplete_slots"]==0,"incomplete review mismatch")
 
-    if activation_intake is not None:
-        ensure(isinstance(activation_intake,dict) and
-               activation_intake.get("kind")=="unscored_activation_evidence_intake"
-               and activation_intake.get("candidate_commit")==control["plan"]["config"]["skill_commit"]
-               and activation_intake.get("archive_sha256")==control["plan"]["config"]["archive_sha256"]
-               and activation_intake.get("control_sha256")==fingerprint(control),
-               "activation record does not match candidate/control")
-        ensure(activation_intake.get("actual_activation_certified") is False and
-               activation_intake.get("read_isolation_certified") is False and
-               activation_intake.get("paid_pilot_authorized") is False and
-               activation_intake.get("release_approved") is False,
-               "activation intake claims certification")
-        ensure(activation_intake.get("status") in (
-               "ready_for_independent_review","hold_missing_or_unobservable","escalate_to_owner"),
-               "invalid activation intake status")
+    activation_digest = (validate_activation_intake(control, activation_intake)
+                         if activation_intake is not None else None)
 
     reasons=[]
     escalations=[]
@@ -101,6 +161,7 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
             "completed_grade_report":scored,
             "incomplete_safety_review":assessed,
             "activation_intake_status":activation_intake["status"] if activation_intake else "not_supplied",
+            "activation_intake_sha256":activation_digest,
             "hold_reasons":sorted(set(reasons)),
             "escalation_reasons":sorted(set(escalations)),"disposition":state,
             "model_execution_independently_verified":False,

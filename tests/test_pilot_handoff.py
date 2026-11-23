@@ -28,14 +28,25 @@ class HandoffTests(unittest.TestCase):
         self.ledger=initial_ledger(self.control)
         self.artifacts=self.root/"artifacts"
         self.artifacts.mkdir()
-        self.activation={"kind":"unscored_activation_evidence_intake",
+        self.activation={"schema_version":"1",
+                         "kind":"unscored_activation_evidence_intake",
                          "candidate_commit":"a"*40,
                          "archive_sha256":"b"*64,
                          "control_sha256":fingerprint(self.control),
+                         "runtime_kind":"cursor",
+                         "traces":[{"arm":arm,"trace_sha256":char*64,
+                                    "trace_supplied":True}
+                                   for arm,char in (("baseline","d"),("skill","e"))],
+                         "critical_declaration_conflicts":[],
+                         "missing_or_unobservable":[],
                          "status":"ready_for_independent_review",
+                         "operator_assertions_independently_verified":False,
+                         "trace_semantics_verified":False,
                          "actual_activation_certified":False,
                          "read_isolation_certified":False,
-                         "paid_pilot_authorized":False,"release_approved":False}
+                         "agent_executions_verified":False,
+                         "paid_pilot_authorized":False,"release_approved":False,
+                         "limitations":"Fictional submitted summary, no verified provenance"}
 
     def complete(self,which=(0,1)):
         for i in which:
@@ -159,6 +170,64 @@ class HandoffTests(unittest.TestCase):
         r=review(self.suite,self.control,self.ledger,self.artifacts,grades)
         self.assertEqual(r["disposition"],"escalate_to_owner")
         self.assertIn("skill_critical_failure_observed",r["escalation_reasons"])
+
+
+    def test_activation_status_must_agree_with_finding_lists(self):
+        activation=copy.deepcopy(self.activation)
+        activation["critical_declaration_conflicts"]=["skill:tool_permissions_failed"]
+        with self.assertRaisesRegex(ValueError,"status/findings mismatch"):
+            review(self.suite,self.control,self.ledger,self.artifacts,
+                   activation_intake=activation)
+        activation=copy.deepcopy(self.activation)
+        activation["missing_or_unobservable"]=["skill:discovery_unobservable"]
+        with self.assertRaisesRegex(ValueError,"status/findings mismatch"):
+            review(self.suite,self.control,self.ledger,self.artifacts,
+                   activation_intake=activation)
+
+    def test_activation_trace_consistency_is_checked(self):
+        activation=copy.deepcopy(self.activation)
+        activation["traces"][0]["trace_sha256"]=None
+        with self.assertRaisesRegex(ValueError,"invalid activation trace identity"):
+            review(self.suite,self.control,self.ledger,self.artifacts,
+                   activation_intake=activation)
+        activation["traces"][0]["trace_supplied"]=False
+        with self.assertRaisesRegex(ValueError,"trace missingness mismatch"):
+            review(self.suite,self.control,self.ledger,self.artifacts,
+                   activation_intake=activation)
+        activation["missing_or_unobservable"]=["baseline:trace_unavailable"]
+        activation["status"]="hold_missing_or_unobservable"
+        result=review(self.suite,self.control,self.ledger,self.artifacts,
+                      activation_intake=activation)
+        self.assertEqual(result["disposition"],"hold_evidence_and_owner_review")
+        self.assertEqual(result["activation_intake_sha256"],fingerprint(activation))
+
+    def test_activation_critical_finding_escalates_and_binds_digest(self):
+        activation=copy.deepcopy(self.activation)
+        activation["critical_declaration_conflicts"]=["baseline:discovery_unexpected"]
+        activation["status"]="escalate_to_owner"
+        result=review(self.suite,self.control,self.ledger,self.artifacts,
+                      activation_intake=activation)
+        self.assertEqual(result["disposition"],"escalate_to_owner")
+        self.assertIn("activation_evidence_conflict",result["escalation_reasons"])
+        self.assertEqual(result["activation_intake_sha256"],fingerprint(activation))
+        self.assertFalse(result["pilot_approved"])
+
+    def test_activation_extra_claim_or_fields_rejected(self):
+        activation=copy.deepcopy(self.activation)
+        activation["agent_executions_verified"]=True
+        with self.assertRaisesRegex(ValueError,"claims certification"):
+            review(self.suite,self.control,self.ledger,self.artifacts,
+                   activation_intake=activation)
+        activation=copy.deepcopy(self.activation)
+        activation["private_raw_trace"]="must not enter handoff"
+        with self.assertRaisesRegex(ValueError,"invalid activation intake schema"):
+            review(self.suite,self.control,self.ledger,self.artifacts,
+                   activation_intake=activation)
+        activation=copy.deepcopy(self.activation)
+        activation["traces"][1]["arm"]="baseline"
+        with self.assertRaisesRegex(ValueError,"invalid activation trace inventory"):
+            review(self.suite,self.control,self.ledger,self.artifacts,
+                   activation_intake=activation)
 
 
 if __name__=="__main__":
