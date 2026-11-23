@@ -59,3 +59,7 @@ The operator-only public pilot launcher now requires `--runtime-kind codex|curso
 ## First-pair integrity gate (TS09.4 offline safeguard)
 
 A separate maintainer-only `scripts/check_pilot_staging.py` command now verifies the first frozen two-slot pilot packet against the actual current source-selected archive, matching prompts, context digest, fixed source paths, runtime-specific skill layout, missing rubric members and all-not-started ledger. It fails on modified staged bytes or unmatched operator records. This is a **private local integrity check only**; it does not launch agents, verify that the process cannot read operator material, establish skill activation or certify safe behavior. The operator must perform an independent unscored activation and read-isolation probe before scored sessions. A later slot staged using the lower-level CLI now requires an explicit runtime kind. The scorer and suite remain unchanged.
+
+## Operator-side activation evidence intake
+
+The [private activation evidence intake](ts09-activation-intake.md) can bind sanitized trace digests and operator-declared observations to the frozen first-pair record without interpreting traces or calling a model. It flags unknowns and contradictions but cannot establish activation/isolation or authorize a paid pilot. Real independently reviewed runtime evidence remains the prerequisite.
