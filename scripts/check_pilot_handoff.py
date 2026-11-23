@@ -11,12 +11,14 @@ from pathlib import Path
 if __package__:
     from .control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha, blind_packet
     from .review_completed_adjudication import assess as assess_completed
+    from .review_runtime_observations import review as review_runtime
     from .prepare_trial import check_artifacts, SKILL_LAYOUTS
     from .review_incomplete_trials import packet as incomplete_packet, assess as assess_incomplete
     from .score_benchmark import load
 else:
     from control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha, blind_packet
     from review_completed_adjudication import assess as assess_completed
+    from review_runtime_observations import review as review_runtime
     from prepare_trial import check_artifacts, SKILL_LAYOUTS
     from review_incomplete_trials import packet as incomplete_packet, assess as assess_incomplete
     from score_benchmark import load
@@ -97,7 +99,8 @@ def validate_activation_intake(control, intake):
 
 def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=None,
            activation_intake=None, first_review=None, second_review=None,
-           adjudication_resolutions=None):
+           adjudication_resolutions=None, runtime_observations=None,
+           runtime_captures=None):
     """Bind independently authored records to the same exact original ledger."""
     check_schedule(suite, control)
     checked=check_artifacts(control,ledger,artifacts)
@@ -123,6 +126,12 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
                        first_review, second_review, grades, adjudication_resolutions)
                         if first_review is not None else None)
 
+    ensure((runtime_observations is None) == (runtime_captures is None),
+           "runtime declarations and capture root required together")
+    runtime_check = (review_runtime(suite,control,ledger,artifacts,
+                     runtime_observations,runtime_captures)
+                     if runtime_observations is not None else None)
+
     activation_digest = (validate_activation_intake(control, activation_intake)
                          if activation_intake is not None else None)
 
@@ -132,6 +141,15 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
         reasons.append("not_started_slots")
     if noncompleted:
         reasons.append("incomplete_or_failed_slots")
+    if sum(counts[s] for s in ("completed","incomplete","timeout","error")) and runtime_check is None:
+        reasons.append("runtime_observation_evidence_missing")
+    elif runtime_check is not None:
+        if runtime_check["status"] == "escalate_to_owner":
+            escalations.append("runtime_operator_conflict_observed")
+        elif runtime_check["status"] == "hold_missing_or_unobservable":
+            reasons.append("runtime_operator_evidence_incomplete")
+        else:
+            reasons.append("runtime_not_independently_verified")
     if counts["completed"] and grades is None:
         reasons.append("completed_slots_without_grades")
     if scored is not None and scored["completed_ungraded"]:
@@ -179,6 +197,7 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
             "source_commit":control["plan"]["config"]["skill_commit"],
             "execution_counts":counts,"verified_submitted_artifacts":len(checked["verified_artifacts"]),
             "completed_grade_report":scored,
+            "runtime_capture_integrity":runtime_check,
             "completed_adjudication_integrity":completed_review,
             "incomplete_safety_review":assessed,
             "activation_intake_status":activation_intake["status"] if activation_intake else "not_supplied",
@@ -205,6 +224,8 @@ def main():
     ap.add_argument("--first-review",type=Path)
     ap.add_argument("--second-review",type=Path)
     ap.add_argument("--adjudication-resolutions",type=Path)
+    ap.add_argument("--runtime-observations",type=Path)
+    ap.add_argument("--runtime-captures",type=Path)
     ap.add_argument("--out",type=Path,required=True,
                     help="New private result file, not inside a model-visible workspace")
     args=ap.parse_args()
@@ -215,7 +236,9 @@ def main():
                    load(args.activation_intake) if args.activation_intake else None,
                    load(args.first_review) if args.first_review else None,
                    load(args.second_review) if args.second_review else None,
-                   load(args.adjudication_resolutions) if args.adjudication_resolutions else None)
+                   load(args.adjudication_resolutions) if args.adjudication_resolutions else None,
+                   load(args.runtime_observations) if args.runtime_observations else None,
+                   args.runtime_captures)
         with args.out.open("x",encoding="utf-8") as h:
             json.dump(out,h,indent=2,ensure_ascii=False,allow_nan=False)
             h.write("\n")

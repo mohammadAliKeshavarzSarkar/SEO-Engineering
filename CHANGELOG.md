@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- TS09.9: add maintainer-only runtime capture/ledger consistency intake; fixed operator-private UTF-8 event capture hashes, frozen prompt/settings/session/terminal matching, complete capture inventory and independent-review holds/escalation in pilot handoff. Fourteen synthetic regression methods; no agent inference, runtime attestation or release approval.
+
 - TS09.8: add maintainer-only completed-run adjudication integrity validation, exact original/final packet digests, missing-review and unresolved-dispute holds, recorded criterion resolutions and original safety-signal escalation; twelve synthetic regression tests. No independent human review or model sessions executed.
 
 - TS09.7: fail-closed full artifact-root inventory in maintainer pilot validation; reject undeclared or nested traces, stray slot directories, symlinks and execution references on unstarted slots; eight synthetic checks including consolidated handoff rejection. No external sessions or safety clearance.

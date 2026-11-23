@@ -276,5 +276,17 @@ class HandoffTests(unittest.TestCase):
         self.assertEqual(r["completed_adjudication_integrity"]["resolved_disagreements"],1)
         self.assertFalse(r["pilot_approved"])
 
+    def test_runtime_intake_missing_is_explicit_hold(self):
+        self.complete()
+        r=review(self.suite,self.control,self.ledger,self.artifacts,self.grades())
+        self.assertIn("runtime_observation_evidence_missing",r["hold_reasons"])
+
+    def test_runtime_capture_args_must_be_paired(self):
+        self.complete()
+        with self.assertRaisesRegex(ValueError,"required together"):
+            review(self.suite,self.control,self.ledger,self.artifacts,self.grades(),
+                   runtime_observations={"record_kind":"incorrect"})
+
+
 if __name__=="__main__":
     unittest.main()
