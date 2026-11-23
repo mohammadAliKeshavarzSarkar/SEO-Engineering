@@ -46,3 +46,24 @@ This check only authenticates *internal consistency and the supplied summary's d
 `scripts/prepare_trial.py check_artifacts` now checks *every* entry within the supplied dedicated artifact root, not just the exact paths referenced in the ledger. Existing byte/hash and UTF-8 checks remain. A valid root contains only folders corresponding to the frozen blind slot identifiers and the fixed `output.txt` / `trace.txt` files explicitly declared by that ledger; empty known slot folders are permitted. Unexpected top-level files or directories, nested directories, symlinks and unreferenced partial evidence cause a nonzero failure rather than silently dropping material that could change a safety review. An `artifact_inventory_complete: true` field is emitted only on successful validation. An all-not-started slot cannot have execution references.
 
 Do **not** automatically delete an unexpected artifact to make validation pass. Preserve and investigate it privately, reconcile against actual observed execution and hashes, and use a separately reviewed fresh evidence root where appropriate. Restrict the directory to the single frozen pilot, outside the agent-visible workspace, source checkout and other candidates. Name/type enumeration is not a guarantee against concurrent filesystem mutation, forged ledger data, trace semantics or successful OS read isolation; an authorized reviewer still checks provenance and privacy. The pilot remains **HOLD** for actual independent execution and owner decisions.
+
+## TS09.8 — Independent reviewer and adjudication integrity
+
+The former scoring path could consume a favorable adjudicated grade packet without validating it against the two original blind reviews. Maintainers can now submit two original completed-run grade packets (`--first-review` and `--second-review`) and, if applicable, an `--adjudication-resolutions` packet to the consolidated pilot handoff. Original packet and final grades are each matched against the *freshly regenerated*, byte-verified blind packet from the same control and ledger. Both original reviews must be provided together; scoring without them remains a visible `completed_independent_reviews_missing` hold.
+
+```sh
+python3 scripts/check_pilot_handoff.py \
+  --suite evaluations/cases.json \
+  --control /private/pilot-operator/control.json \
+  --ledger /private/pilot-operator/ledger.json \
+  --artifacts /private/pilot-operator/artifacts \
+  --grades /private/grades-adjudicated.json \
+  --first-review /private/grades-reviewer-a.json \
+  --second-review /private/grades-reviewer-b.json \
+  --adjudication-resolutions /private/grade-resolutions.json \
+  --out /private/handoff-reviewed.json
+```
+
+The separate `scripts/review_completed_adjudication.py` command also accepts `--packet`, `--first`, `--second`, `--adjudicated`, optional `--resolutions`, and `--out` for a preliminary private review. Its result binds canonical SHA-256 digests of all four packets, counts reviewer overlap, records unresolved disagreements and missing coverage, and preserves original `observed` disqualifier signals **even when final adjudication declares `absent`**. Those signals escalate in the consolidated handoff. Consensus cannot silently be overridden; an observed disagreement requires an explicit matching resolution or remains held.
+
+A resolution file has exactly `packet_sha256`, `first_sha256`, `second_sha256`, `adjudicated_sha256` and `records`. Each record is `blind_id`, `kind` (`expected` or `disqualifiers`), 1-based `criterion`, `selected_status`, `adjudicator` and `rationale`. Only actual disputed criteria may be resolved. The adjudicator identifier must differ from the two original reviewer identifiers for that slot, but **identifier inequality is not verification of human identity or independence**. Preserve the originals and evidence in a restricted private store. If no disputes exist, omit `--adjudication-resolutions`. If reviews are missing, original observations unobservable, or disagreements unresolved, hold. A consistent synthetic report never authorizes paid model calls, distribution, a stable release or a safety certificate.

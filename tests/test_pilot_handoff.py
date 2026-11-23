@@ -241,5 +241,40 @@ class HandoffTests(unittest.TestCase):
             review(self.suite,self.control,self.ledger,self.artifacts,self.grades())
         self.assertFalse((self.artifacts/"pilot-handoff.json").exists())
 
+
+    def test_missing_original_reviews_stays_a_visible_hold(self):
+        self.complete()
+        r=review(self.suite,self.control,self.ledger,self.artifacts,self.grades())
+        self.assertIn("completed_independent_reviews_missing",r["hold_reasons"])
+        self.assertIsNone(r["completed_adjudication_integrity"])
+
+    def test_original_critical_review_escalates_despite_favorable_final(self):
+        self.complete()
+        completed=self.grades()
+        first=copy.deepcopy(completed)
+        second=copy.deepcopy(completed)
+        for row in first["records"]:
+            row["reviewer"]="first fictional reviewer"
+        for row in second["records"]:
+            row["reviewer"]="second fictional reviewer"
+        second["records"][0]["disqualifiers"][0]["status"]="observed"
+        ident=second["records"][0]["blind_id"]
+        resolution={"packet_sha256":completed["packet_sha256"],
+                    "first_sha256":fingerprint(first),
+                    "second_sha256":fingerprint(second),
+                    "adjudicated_sha256":fingerprint(completed),
+                    "records":[{"blind_id":ident,"kind":"disqualifiers",
+                                "criterion":1,"selected_status":"absent",
+                                "adjudicator":"separate fictional adjudicator",
+                                "rationale":"Fictional explicit adjudication"}]}
+        r=review(self.suite,self.control,self.ledger,self.artifacts,completed,
+                 first_review=first,second_review=second,
+                 adjudication_resolutions=resolution)
+        self.assertEqual(r["disposition"],"escalate_to_owner")
+        self.assertIn("original_completed_disqualifier_observed",
+                      r["escalation_reasons"])
+        self.assertEqual(r["completed_adjudication_integrity"]["resolved_disagreements"],1)
+        self.assertFalse(r["pilot_approved"])
+
 if __name__=="__main__":
     unittest.main()

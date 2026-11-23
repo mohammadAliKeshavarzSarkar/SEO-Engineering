@@ -9,12 +9,14 @@ import json
 from pathlib import Path
 
 if __package__:
-    from .control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha
+    from .control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha, blind_packet
+    from .review_completed_adjudication import assess as assess_completed
     from .prepare_trial import check_artifacts, SKILL_LAYOUTS
     from .review_incomplete_trials import packet as incomplete_packet, assess as assess_incomplete
     from .score_benchmark import load
 else:
-    from control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha
+    from control_benchmark import check_schedule, ledger_index, finalize, ensure, fingerprint, sha, blind_packet
+    from review_completed_adjudication import assess as assess_completed
     from prepare_trial import check_artifacts, SKILL_LAYOUTS
     from review_incomplete_trials import packet as incomplete_packet, assess as assess_incomplete
     from score_benchmark import load
@@ -94,7 +96,8 @@ def validate_activation_intake(control, intake):
 
 
 def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=None,
-           activation_intake=None):
+           activation_intake=None, first_review=None, second_review=None,
+           adjudication_resolutions=None):
     """Bind independently authored records to the same exact original ledger."""
     check_schedule(suite, control)
     checked=check_artifacts(control,ledger,artifacts)
@@ -110,6 +113,16 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
     ensure(noncompleted or incomplete_reviews is None or
            assessed["incomplete_slots"]==0,"incomplete review mismatch")
 
+    ensure((first_review is None) == (second_review is None),
+           "both original completed reviews must be provided together")
+    ensure(first_review is None or grades is not None,
+           "adjudicated grades required for paired review")
+    ensure(adjudication_resolutions is None or first_review is not None,
+           "adjudication resolutions require both original reviews")
+    completed_review = (assess_completed(blind_packet(suite,control,ledger),
+                       first_review, second_review, grades, adjudication_resolutions)
+                        if first_review is not None else None)
+
     activation_digest = (validate_activation_intake(control, activation_intake)
                          if activation_intake is not None else None)
 
@@ -123,6 +136,13 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
         reasons.append("completed_slots_without_grades")
     if scored is not None and scored["completed_ungraded"]:
         reasons.append("completed_slots_without_grades")
+    if counts["completed"] and completed_review is None:
+        reasons.append("completed_independent_reviews_missing")
+    if completed_review is not None:
+        if completed_review["hold_reasons"]:
+            reasons.extend("completed_review_" + r for r in completed_review["hold_reasons"])
+        if completed_review["original_observed_disqualifier_signals"]:
+            escalations.append("original_completed_disqualifier_observed")
     if noncompleted and assessed is None:
         reasons.append("incomplete_safety_review_missing")
     if assessed is not None:
@@ -159,6 +179,7 @@ def review(suite, control, ledger, artifacts, grades=None, incomplete_reviews=No
             "source_commit":control["plan"]["config"]["skill_commit"],
             "execution_counts":counts,"verified_submitted_artifacts":len(checked["verified_artifacts"]),
             "completed_grade_report":scored,
+            "completed_adjudication_integrity":completed_review,
             "incomplete_safety_review":assessed,
             "activation_intake_status":activation_intake["status"] if activation_intake else "not_supplied",
             "activation_intake_sha256":activation_digest,
@@ -181,6 +202,9 @@ def main():
     ap.add_argument("--grades",type=Path)
     ap.add_argument("--incomplete-reviews",type=Path)
     ap.add_argument("--activation-intake",type=Path)
+    ap.add_argument("--first-review",type=Path)
+    ap.add_argument("--second-review",type=Path)
+    ap.add_argument("--adjudication-resolutions",type=Path)
     ap.add_argument("--out",type=Path,required=True,
                     help="New private result file, not inside a model-visible workspace")
     args=ap.parse_args()
@@ -188,7 +212,10 @@ def main():
         out=review(load(args.suite),load(args.control),load(args.ledger),args.artifacts,
                    load(args.grades) if args.grades else None,
                    load(args.incomplete_reviews) if args.incomplete_reviews else None,
-                   load(args.activation_intake) if args.activation_intake else None)
+                   load(args.activation_intake) if args.activation_intake else None,
+                   load(args.first_review) if args.first_review else None,
+                   load(args.second_review) if args.second_review else None,
+                   load(args.adjudication_resolutions) if args.adjudication_resolutions else None)
         with args.out.open("x",encoding="utf-8") as h:
             json.dump(out,h,indent=2,ensure_ascii=False,allow_nan=False)
             h.write("\n")

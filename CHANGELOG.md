@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- TS09.8: add maintainer-only completed-run adjudication integrity validation, exact original/final packet digests, missing-review and unresolved-dispute holds, recorded criterion resolutions and original safety-signal escalation; twelve synthetic regression tests. No independent human review or model sessions executed.
+
 - TS09.7: fail-closed full artifact-root inventory in maintainer pilot validation; reject undeclared or nested traces, stray slot directories, symlinks and execution references on unstarted slots; eight synthetic checks including consolidated handoff rejection. No external sessions or safety clearance.
 
 - TS09.6: reject contradictory or malformed activation-intake summaries in the consolidated private pilot handoff; bind exact summary SHA-256, preserve critical escalations and add four synthetic regression methods. No independent agent execution, activation, privacy review or release authorization.
