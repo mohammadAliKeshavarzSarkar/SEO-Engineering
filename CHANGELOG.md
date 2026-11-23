@@ -2,6 +2,8 @@
 
 ## Unreleased — 0.3.0-dev.12
 
+- A.2.4 producer checkpoint: source-review WebsiteBotScroll `8e3ca8f` observation-platform remediation, identify current manifest `contract` string vs accepted object mismatch, add two synthetic negative tests and hold real exchange until producer correction and actual authorized byte-pair review. No contract/schema/fixture pin or portable-skill change.
+
 - TS09.9: add maintainer-only runtime capture/ledger consistency intake; fixed operator-private UTF-8 event capture hashes, frozen prompt/settings/session/terminal matching, complete capture inventory and independent-review holds/escalation in pilot handoff. Fourteen synthetic regression methods; no agent inference, runtime attestation or release approval.
 
 - TS09.8: add maintainer-only completed-run adjudication integrity validation, exact original/final packet digests, missing-review and unresolved-dispute holds, recorded criterion resolutions and original safety-signal escalation; twelve synthetic regression tests. No independent human review or model sessions executed.

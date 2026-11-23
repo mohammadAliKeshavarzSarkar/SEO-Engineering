@@ -77,6 +77,24 @@ class ExchangeTests(unittest.TestCase):
                 self.m[field]=original
         self.assertEqual(self.check(name="wrong.json")["disposition"],"hold")
 
+    def test_producer_8e3ca8f_contract_string_holds(self):
+        # The real producer's exchange-manifest.ts at 8e3ca8f emits this string;
+        # our accepted 17-key layout requires an object, not a second format.
+        self.m["contract"]="seo-crawl-evidence/0.1.0"
+        r=self.check()
+        self.assertEqual(r["disposition"],"hold")
+        self.assertIn("manifest.contract_mismatch",r["issues"])
+        self.assertFalse(r["byte_length_verified"])
+        self.assertFalse(r["manifest_binding_verified"])
+        self.assertEqual(r["consumer_validation"],"not_run")
+
+    def test_observation_definition_version_does_not_change_contract_pin(self):
+        self.m["contract"]={"name":"seo-crawl-evidence","version":"1.1.0"}
+        r=self.check()
+        self.assertEqual(r["disposition"],"hold")
+        self.assertIn("manifest.contract_mismatch",r["issues"])
+        # Observation definition 1.1.0 is separate from evidence schema 0.1.0.
+
     def test_manifest_binding(self):
         for field,value in (("run_id","wrong"),("authorization_ref"," "),
                             ("authorized_scope",{}),("coverage_limitations",[{}]),
