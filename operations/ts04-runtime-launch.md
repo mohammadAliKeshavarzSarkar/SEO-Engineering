@@ -81,3 +81,7 @@ TS07.6: use the separate incomplete-session review before deciding whether to co
 ## 6. Record unscored activation evidence privately
 
 After successful first-pair integrity checks, perform unscored activation/permissions probes **only in separate disposable copies**. Preserve sanitized private traces and operator observations outside the model's view. Use the [private activation intake procedure](ts09-activation-intake.md) to bind actual submitted bytes to the frozen pilot record. The generated `ready_for_independent_review` disposition never certifies skill discovery, isolation, paid inference or release. Have an authorized independent reviewer evaluate the traces and sandbox before the first scored pair.
+
+## 7. Consolidate pilot outcomes without promotion
+
+After real authorized sessions and sanitized completed and incomplete reviews, use [the consolidated pilot handoff](ts09-pilot-handoff.md) to bind both review streams to the exact same byte-checked ledger and report critical findings. A favorable scored grade cannot override an incomplete-trial disqualifier. The output always holds for independent review; it does not authorize paid sessions, publication or release.
